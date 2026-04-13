@@ -1,0 +1,8 @@
+receipt_id: edcr-002
+action_id: ''
+delegate: urn:agent:procurement-2
+principal: did:example:company-2
+authority_basis: ''
+control_checks: []
+outcome: done
+reversibility_class: unknown

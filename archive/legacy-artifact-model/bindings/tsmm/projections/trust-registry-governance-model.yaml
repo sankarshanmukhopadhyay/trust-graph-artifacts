@@ -1,0 +1,305 @@
+bindingId: tga.tsmm.trust-registry-governance-model
+label: TSMM projection for trust-registry-governance-model
+artifactRef: artifacts/trust-registry-governance-model/artifact.yaml
+sourceEssay: The Political Economy of Trust Registries
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.trust-registry-governance-model
+    label: Trust registry operator governance and delegated publication authority
+    description: Trust Graph operationalization of The Political Economy of Trust
+      Registries as executable governance.
+  profile:
+    id: profile.trust-registry.governance
+    label: Trust Registry Governance Profile
+    constraintSetRef: artifacts/trust-registry-governance-model/schemas/trust-registry-governance-profile.yaml
+  entities:
+  - id: entity.root-authority
+    type: GovernanceAuthority
+    label: Root Authority
+    description: Root authority defining registry charter and rules
+    roles:
+    - id: role.root-authority
+      label: Root Authority
+      authorityRefs:
+      - authority.root-authority
+    authorities:
+    - id: authority.root-authority
+      scope: Root authority defining registry charter and rules
+      source: profile.trust-registry.governance
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.registry-operator
+    type: TrustRegistry
+    label: Registry Operator
+    description: Registry operator publishing trust-relevant state
+    roles:
+    - id: role.registry-operator
+      label: Registry Operator
+      authorityRefs:
+      - authority.registry-operator
+    authorities:
+    - id: authority.registry-operator
+      scope: Registry operator publishing trust-relevant state
+      source: profile.trust-registry.governance
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.service-provider
+    type: Issuer
+    label: Service Provider
+    description: Participant relying on delegated registry inclusion
+    roles:
+    - id: role.service-provider
+      label: Service Provider
+      authorityRefs:
+      - authority.service-provider
+    authorities:
+    - id: authority.service-provider
+      scope: Participant relying on delegated registry inclusion
+      source: profile.trust-registry.governance
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.relying-verifier
+    type: Verifier
+    label: Relying Verifier
+    description: Verifier consuming registry status before effect
+    roles:
+    - id: role.relying-verifier
+      label: Relying Verifier
+      authorityRefs:
+      - authority.relying-verifier
+    authorities:
+    - id: authority.relying-verifier
+      scope: Verifier consuming registry status before effect
+      source: profile.trust-registry.governance
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  relationships:
+  - id: trust-registry-governance-model.rel.1
+    type: holdsRole
+    from: entity.root-authority
+    to: role.charter-authority
+    description: Root authority sets registry policy and delegation rules
+  - id: trust-registry-governance-model.rel.2
+    type: delegates
+    from: entity.root-authority
+    to: entity.registry-operator
+    description: Registry operator receives bounded publication mandate
+  - id: trust-registry-governance-model.rel.3
+    type: publishes
+    from: entity.registry-operator
+    to: artifact.registry-governance.profile
+    description: Registry publishes status, evidence references, and policy surfaces
+  - id: trust-registry-governance-model.rel.4
+    type: reliesOn
+    from: entity.relying-verifier
+    to: entity.registry-operator
+    description: Verifier consumes registry state before trust decision
+  - id: trust-registry-governance-model.rel.5
+    type: affects
+    from: entity.registry-operator
+    to: effect.registry-reliance
+    description: Registry publication shapes downstream effect
+  artifacts:
+  - id: artifact.trust.registry.governance.model
+    type: Artifact
+    label: Trust Registry Governance Profile
+    sourceRef: artifacts/trust-registry-governance-model/artifact.yaml
+    schemaRef: artifacts/trust-registry-governance-model/schemas/trust-registry-governance-profile.yaml
+  policies:
+  - id: policy.trust.registry.governance.model
+    label: Trust Registry Governance Profile
+    decisionMode: mixed
+    profileRef: profile.trust-registry.governance
+    rules:
+    - Bind operator actions to charter and publication mandate
+    - Ensure status changes propagate before relying effects occur
+    - Cascade charter or listing revocation to downstream reliance
+    contextRef: context.trust-registry-governance-model
+  controls:
+  - id: control.operator-scope
+    type: operator-scope-check
+    description: Bind operator actions to charter and publication mandate
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.registry-capture
+    - threat.delayed-status-update
+  - id: control.registry-status-freshness
+    type: publication-freshness
+    description: Ensure status changes propagate before relying effects occur
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.registry-capture
+    - threat.delayed-status-update
+  - id: control.revocation-cascade
+    type: delegation-revocation
+    description: Cascade charter or listing revocation to downstream reliance
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.registry-capture
+    - threat.delayed-status-update
+  threats:
+  - id: threat.registry-capture
+    type: governance-capture
+    description: Registry operator uses publication leverage without bounded oversight
+  - id: threat.delayed-status-update
+    type: propagation-delay
+    description: Revocation or downgrade does not reach relying parties in time
+  evidence:
+  - id: evidence.registry.governance.receipt
+    type: decision-receipt
+    description: Structured evidence bundle for Trust Registry Governance Profile.
+    supportsRefs:
+    - policy.trust.registry.governance.model
+    - decision.registry.governance
+    - control.operator-scope
+    - control.registry-status-freshness
+    - control.revocation-cascade
+    requiredFields:
+    - authority_used
+    - policy_evaluated
+    - facts_input
+    - outcome
+    - timestamp
+  verifications:
+  - id: verification.trust.registry.governance.model
+    method: tsmm-binding-conformance-check
+    result: required
+    inputRefs:
+    - artifact.trust.registry.governance.model
+    - evidence.registry.governance.receipt
+  trustDecisions:
+  - id: decision.registry.governance
+    outcomeModes:
+    - allow
+    - deny
+    - degrade
+    - review
+    policyRef: policy.trust.registry.governance.model
+    verificationRefs:
+    - verification.trust.registry.governance.model
+    effectRefs:
+    - effect.allow-registry-reliance
+    - effect.block-revoked-listing
+    - effect.revoke-operator-mandate
+    contextRef: context.trust-registry-governance-model
+  effects:
+  - id: effect.allow-registry-reliance
+    class: operational
+    action: Permit reliance on active governed registry state
+    status: conditional
+  - id: effect.block-revoked-listing
+    class: protective
+    action: Block effects when registry status is revoked or stale
+    status: conditional
+  - id: effect.revoke-operator-mandate
+    class: governance
+    action: Withdraw operator publication authority
+    status: conditional
+  lifecycle:
+    modelId: lifecycle.trust-registry-governance-model
+    label: Lifecycle for Trust Registry Governance Profile
+    appliesTo:
+    - artifact.trust.registry.governance.model
+    - decision.registry.governance
+    states:
+    - id: state.issued
+      name: issued
+      description: Declared and available for governed use
+      entryEvidence: manifest created
+    - id: state.active
+      name: active
+      description: Usable for runtime or assessment decisions
+      entryEvidence: policy and controls available
+    - id: state.suspended
+      name: suspended
+      description: Temporarily paused pending review or challenge
+      entryEvidence: review or incident open
+    - id: state.revoked
+      name: revoked
+      description: Withdrawn and no longer valid for reliance
+      entryEvidence: revocation event recorded
+    - id: state.expired
+      name: expired
+      description: No longer valid due to freshness or time bounds
+      entryEvidence: time bound elapsed
+    transitions:
+    - id: transition.issue
+      from: state.issued
+      to: state.active
+      trigger: admission and publication
+      actor: maintainer or policy authority
+      evidenceRequirement: manifest plus schema present
+    - id: transition.suspend
+      from: state.active
+      to: state.suspended
+      trigger: challenge, incident, or evidence gap
+      actor: policy authority or assessor
+      evidenceRequirement: issue or review record
+    - id: transition.revoke
+      from: state.active
+      to: state.revoked
+      trigger: authority withdrawn or non-conformance confirmed
+      actor: policy authority
+      evidenceRequirement: revocation record with rationale
+    - id: transition.resume
+      from: state.suspended
+      to: state.active
+      trigger: issue resolved
+      actor: policy authority or maintainer
+      evidenceRequirement: updated evidence or corrected policy
+    - id: transition.expire
+      from: state.active
+      to: state.expired
+      trigger: time bound or freshness window elapsed
+      actor: system
+      evidenceRequirement: timestamp comparison or expiry check
+  conceptMappings:
+  - externalConcept: Trust Registry Governance Profile
+    tsmmType: Policy
+    bindingStrength: approximate
+    description: Primary artifact acts as policy/profile surface for trust decision.
+  - externalConcept: evidence.registry.governance.receipt
+    tsmmType: EvidenceBundle
+    bindingStrength: exact
+    description: Decision receipt acts as evidence bundle for auditability.
+  - externalConcept: decision.registry.governance
+    tsmmType: TrustDecision
+    bindingStrength: exact
+    description: Binding makes outcome and effect path explicit.
+  knownLimits:
+  - Projection is repo-local and does not yet emit a TSMM JSON graph instance.
+  - Foundational three artifacts remain outside this binding layer in this increment.
+  validation:
+    script: scripts/validate_tsmm_bindings.py
+    checks:
+    - required projection sections
+    - registry references resolve
+    - trust decision to effect linkage
+    - lifecycle minimum states present

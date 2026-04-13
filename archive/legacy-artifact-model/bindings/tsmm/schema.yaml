@@ -1,0 +1,33 @@
+schemaVersion: 1.0.0
+title: TGA TSMM Projection Schema
+description: Repo-local YAML contract for projecting a Trust Graph artifact into TSMM-aligned
+  entities, relationships, controls, evidence, trust decisions, effects, and lifecycle
+  semantics.
+required:
+- bindingId
+- artifactRef
+- tsmmVersion
+- projection
+projection_required:
+- governanceContext
+- profile
+- entities
+- relationships
+- artifacts
+- policies
+- controls
+- threats
+- evidence
+- verifications
+- trustDecisions
+- effects
+- lifecycle
+field_notes:
+  bindingStrength: Use exact, approximate, or composite in conceptMappings.
+  entity.type: Use TSMM ecosystem types such as Subject, Agent, Verifier, GovernanceAuthority,
+    TrustRegistry, RegistryService, Issuer, Assessment, RelyingParty, Policy, Effect.
+  lifecycle.states: At minimum include issued, active, suspended, revoked, expired.
+  validation.requiredChecks:
+  - projection completeness
+  - registry references resolve
+  - each trust decision references a policy and at least one effect

@@ -1,0 +1,9 @@
+record_id: ncr-002
+subject_id: did:example:person-23
+contested_output:
+  system: ''
+  classification: ''
+decision_context: ''
+correction_statement: ''
+requested_remedy: whatever
+review_status: done

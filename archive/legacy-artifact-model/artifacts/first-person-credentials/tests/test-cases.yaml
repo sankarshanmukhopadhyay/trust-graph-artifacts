@@ -1,0 +1,9 @@
+tests:
+  - id: fpae-valid-001
+    input: ../examples/valid/example-01.yaml
+    expect: pass
+    reason: Required fields present; evidence and dispute path declared.
+  - id: fpae-invalid-001
+    input: ../examples/invalid/example-01.yaml
+    expect: fail
+    reason: Missing claim.statement, empty evidence_links, empty requirements, confidence_score out of range.

@@ -1,0 +1,17 @@
+delegation_id: del-001
+principal: did:example:bank
+delegate: did:example:agent-7
+scope:
+- retrieve-kyc-status
+conditions:
+- type: risk-threshold
+  value: medium-or-lower
+subdelegation:
+  allowed: false
+  max_depth: 0
+  allowed_delegate_classes: []
+revocation:
+  check_uri: https://example.org/revocations/del-001
+  max_staleness: 60s
+  fail_closed: true
+challenge_endpoint: https://example.org/challenges/delegation

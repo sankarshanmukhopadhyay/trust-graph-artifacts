@@ -1,0 +1,14 @@
+controller_id: ctrl-001
+controller_type: platform
+lever_class:
+- ranking-control
+- kill-switch
+affected_systems:
+- marketplace-feed
+authority_basis: platform-governance-charter-v2
+override_conditions:
+- market-abuse
+review_cycle: P90D
+risk_tags:
+- market-access
+redress_contact: https://example.org/redress/systemic-controller

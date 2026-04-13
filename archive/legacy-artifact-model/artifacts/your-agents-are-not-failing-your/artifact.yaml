@@ -1,0 +1,49 @@
+id: ttg-artifact-006
+title: Agent Mandate Envelope
+status: draft
+source:
+  essay_title: Your Agents Are Not Failing. Your Mandates Are
+  essay_url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
+  published_date: '2026-02-26'
+signal:
+  engagement_rate: 13.64
+  tier: B
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - agents
+  - mandates
+  - governance
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-005
+  - ttg-artifact-014
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/your-agents-are-not-failing-your.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

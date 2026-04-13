@@ -1,0 +1,49 @@
+id: ttg-artifact-014
+title: Execution Delegation Control Receipt
+status: draft
+source:
+  essay_title: 'Execution-Time Delegation: Legitimacy After Transparency'
+  essay_url: https://thetrustgraph.substack.com/p/execution-time-delegation-legitimacy
+  published_date: '2026-03-05'
+signal:
+  engagement_rate: 2.44
+  tier: C
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - execution
+  - delegation
+  - receipts
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-005
+  - ttg-artifact-006
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/execution-time-delegation.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

@@ -1,0 +1,54 @@
+id: proof-requirement-profile
+version: 0.1.0
+type: object
+required:
+- profile_id
+- claim_class
+- accepted_proof_forms
+- issuer_legitimacy
+- status_checks
+properties:
+  profile_id:
+    type: string
+  claim_class:
+    type: string
+  accepted_proof_forms:
+    type: array
+    minItems: 1
+    items:
+      type: string
+      enum:
+      - verifiable-credential
+      - registry-proof
+      - signed-assertion
+      - manual-exception
+  issuer_legitimacy:
+    type: object
+    required:
+    - required
+    - sources
+    properties:
+      required:
+        type: boolean
+      sources:
+        type: array
+        items:
+          type: string
+  status_checks:
+    type: object
+    required:
+    - revocation
+    - freshness
+    properties:
+      revocation:
+        type: boolean
+      freshness:
+        type: string
+      fail_closed:
+        type: boolean
+  manual_exception_policy:
+    type: string
+  insufficiency_reason_codes:
+    type: array
+    items:
+      type: string

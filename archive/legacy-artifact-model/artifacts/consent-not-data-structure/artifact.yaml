@@ -1,0 +1,48 @@
+id: ttg-artifact-002
+title: Consent Enforcement Schema
+status: draft
+source:
+  essay_title: Consent Is Not a Data Structure
+  essay_url: pending-external-link
+  published_date: 2026-01-09
+signal:
+  engagement_rate: 20.0
+  tier: A
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - consent
+  - privacy
+  - governance
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: 2026-04-13
+  last_updated: 2026-04-13
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/consent-not-data-structure.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

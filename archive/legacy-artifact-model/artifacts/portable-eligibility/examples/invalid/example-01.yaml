@@ -1,0 +1,9 @@
+credential_id: pecp-002
+subject: did:example:smallbiz-8
+eligibility_class: ''
+qualifying_basis: []
+validity:
+  valid_from: '2026-01-01'
+  valid_until: ''
+  suspension_source: ''
+reliance_conditions: []

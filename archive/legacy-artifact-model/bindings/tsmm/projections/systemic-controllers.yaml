@@ -1,0 +1,306 @@
+bindingId: tga.tsmm.systemic-controllers
+label: TSMM projection for systemic-controllers
+artifactRef: artifacts/systemic-controllers/artifact.yaml
+sourceEssay: 'Systemic Controllers: How Hidden Levers in Digital Infrastructure Create
+  Real-World Risk'
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.systemic-controllers
+    label: Hidden control-surface identification and accountability
+    description: 'Trust Graph operationalization of Systemic Controllers: How Hidden
+      Levers in Digital Infrastructure Create Real-World Risk as executable governance.'
+  profile:
+    id: profile.systemic.controller
+    label: Systemic Controller Registry Entry
+    constraintSetRef: artifacts/systemic-controllers/schemas/systemic-controller-registry-entry.yaml
+  entities:
+  - id: entity.platform-operator
+    type: GovernanceAuthority
+    label: Platform Operator
+    description: Operator holding hidden or concentrated control leverage
+    roles:
+    - id: role.platform-operator
+      label: Platform Operator
+      authorityRefs:
+      - authority.platform-operator
+    authorities:
+    - id: authority.platform-operator
+      scope: Operator holding hidden or concentrated control leverage
+      source: profile.systemic.controller
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.control-registry
+    type: TrustRegistry
+    label: Control Registry
+    description: Registry documenting systemic control surfaces
+    roles:
+    - id: role.control-registry
+      label: Control Registry
+      authorityRefs:
+      - authority.control-registry
+    authorities:
+    - id: authority.control-registry
+      scope: Registry documenting systemic control surfaces
+      source: profile.systemic.controller
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.affected-party
+    type: Subject
+    label: Affected Party
+    description: Party affected by controller action
+    roles:
+    - id: role.affected-party
+      label: Affected Party
+      authorityRefs:
+      - authority.affected-party
+    authorities:
+    - id: authority.affected-party
+      scope: Party affected by controller action
+      source: profile.systemic.controller
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.assessor
+    type: Assessment
+    label: Assessor
+    description: Assessor reviewing hidden leverage and control implications
+    roles:
+    - id: role.assessor
+      label: Assessor
+      authorityRefs:
+      - authority.assessor
+    authorities:
+    - id: authority.assessor
+      scope: Assessor reviewing hidden leverage and control implications
+      source: profile.systemic.controller
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  relationships:
+  - id: systemic-controllers.rel.1
+    type: holdsRole
+    from: entity.platform-operator
+    to: role.controller
+    description: Operator can shape downstream access or behavior
+  - id: systemic-controllers.rel.2
+    type: publishes
+    from: entity.control-registry
+    to: artifact.systemic-controller.entry
+    description: Registry records controller, scope, and evidence
+  - id: systemic-controllers.rel.3
+    type: assesses
+    from: entity.assessor
+    to: artifact.systemic-controller.entry
+    description: Assessment examines concentration and dependency risk
+  - id: systemic-controllers.rel.4
+    type: affects
+    from: entity.platform-operator
+    to: entity.affected-party
+    description: Controller action changes downstream operational reality
+  - id: systemic-controllers.rel.5
+    type: supports
+    from: artifact.systemic-controller.entry
+    to: decision.systemic.controller
+    description: Registry entry supports governance decision
+  artifacts:
+  - id: artifact.systemic.controllers
+    type: Artifact
+    label: Systemic Controller Registry Entry
+    sourceRef: artifacts/systemic-controllers/artifact.yaml
+    schemaRef: artifacts/systemic-controllers/schemas/systemic-controller-registry-entry.yaml
+  policies:
+  - id: policy.systemic.controllers
+    label: Systemic Controller Registry Entry
+    decisionMode: mixed
+    profileRef: profile.systemic.controller
+    rules:
+    - Require declaration of hidden control surfaces and dependencies
+    - Record who can override or constrain downstream action
+    - Map systemic dependencies that can create concentrated risk
+    contextRef: context.systemic-controllers
+  controls:
+  - id: control.controller-disclosure
+    type: transparency-control
+    description: Require declaration of hidden control surfaces and dependencies
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.hidden-control-lever
+    - threat.unbounded-override
+  - id: control.override-accountability
+    type: override-recording
+    description: Record who can override or constrain downstream action
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.hidden-control-lever
+    - threat.unbounded-override
+  - id: control.dependency-mapping
+    type: dependency-mapping
+    description: Map systemic dependencies that can create concentrated risk
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.hidden-control-lever
+    - threat.unbounded-override
+  threats:
+  - id: threat.hidden-control-lever
+    type: opacity-risk
+    description: Critical control is exercised without visibility or contestability
+  - id: threat.unbounded-override
+    type: governance-concentration
+    description: Operator override changes effects without accountable review
+  evidence:
+  - id: evidence.systemic.controller.record
+    type: decision-receipt
+    description: Structured evidence bundle for Systemic Controller Registry Entry.
+    supportsRefs:
+    - policy.systemic.controllers
+    - decision.systemic.controller
+    - control.controller-disclosure
+    - control.override-accountability
+    - control.dependency-mapping
+    requiredFields:
+    - authority_used
+    - policy_evaluated
+    - facts_input
+    - outcome
+    - timestamp
+  verifications:
+  - id: verification.systemic.controllers
+    method: tsmm-binding-conformance-check
+    result: required
+    inputRefs:
+    - artifact.systemic.controllers
+    - evidence.systemic.controller.record
+  trustDecisions:
+  - id: decision.systemic.controller
+    outcomeModes:
+    - allow
+    - deny
+    - degrade
+    - review
+    policyRef: policy.systemic.controllers
+    verificationRefs:
+    - verification.systemic.controllers
+    effectRefs:
+    - effect.record-controller
+    - effect.flag-concentrated-risk
+    - effect.require-compensating-control
+    contextRef: context.systemic-controllers
+  effects:
+  - id: effect.record-controller
+    class: governance
+    action: Record controller in governed registry
+    status: conditional
+  - id: effect.flag-concentrated-risk
+    class: protective
+    action: Flag governance concentration for review or mitigation
+    status: conditional
+  - id: effect.require-compensating-control
+    class: operational
+    action: Require additional safeguards before reliance
+    status: conditional
+  lifecycle:
+    modelId: lifecycle.systemic-controllers
+    label: Lifecycle for Systemic Controller Registry Entry
+    appliesTo:
+    - artifact.systemic.controllers
+    - decision.systemic.controller
+    states:
+    - id: state.issued
+      name: issued
+      description: Declared and available for governed use
+      entryEvidence: manifest created
+    - id: state.active
+      name: active
+      description: Usable for runtime or assessment decisions
+      entryEvidence: policy and controls available
+    - id: state.suspended
+      name: suspended
+      description: Temporarily paused pending review or challenge
+      entryEvidence: review or incident open
+    - id: state.revoked
+      name: revoked
+      description: Withdrawn and no longer valid for reliance
+      entryEvidence: revocation event recorded
+    - id: state.expired
+      name: expired
+      description: No longer valid due to freshness or time bounds
+      entryEvidence: time bound elapsed
+    transitions:
+    - id: transition.issue
+      from: state.issued
+      to: state.active
+      trigger: admission and publication
+      actor: maintainer or policy authority
+      evidenceRequirement: manifest plus schema present
+    - id: transition.suspend
+      from: state.active
+      to: state.suspended
+      trigger: challenge, incident, or evidence gap
+      actor: policy authority or assessor
+      evidenceRequirement: issue or review record
+    - id: transition.revoke
+      from: state.active
+      to: state.revoked
+      trigger: authority withdrawn or non-conformance confirmed
+      actor: policy authority
+      evidenceRequirement: revocation record with rationale
+    - id: transition.resume
+      from: state.suspended
+      to: state.active
+      trigger: issue resolved
+      actor: policy authority or maintainer
+      evidenceRequirement: updated evidence or corrected policy
+    - id: transition.expire
+      from: state.active
+      to: state.expired
+      trigger: time bound or freshness window elapsed
+      actor: system
+      evidenceRequirement: timestamp comparison or expiry check
+  conceptMappings:
+  - externalConcept: Systemic Controller Registry Entry
+    tsmmType: Policy
+    bindingStrength: approximate
+    description: Primary artifact acts as policy/profile surface for trust decision.
+  - externalConcept: evidence.systemic.controller.record
+    tsmmType: EvidenceBundle
+    bindingStrength: exact
+    description: Decision receipt acts as evidence bundle for auditability.
+  - externalConcept: decision.systemic.controller
+    tsmmType: TrustDecision
+    bindingStrength: exact
+    description: Binding makes outcome and effect path explicit.
+  knownLimits:
+  - Projection is repo-local and does not yet emit a TSMM JSON graph instance.
+  - Foundational three artifacts remain outside this binding layer in this increment.
+  validation:
+    script: scripts/validate_tsmm_bindings.py
+    checks:
+    - required projection sections
+    - registry references resolve
+    - trust decision to effect linkage
+    - lifecycle minimum states present

@@ -1,0 +1,49 @@
+id: ttg-artifact-005
+title: Delegation Chain Policy
+status: draft
+source:
+  essay_title: Delegation After Identity
+  essay_url: https://thetrustgraph.substack.com/p/delegation-after-identity
+  published_date: '2026-02-18'
+signal:
+  engagement_rate: 18.18
+  tier: B
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - delegation
+  - identity
+  - agents
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-010
+  - ttg-artifact-014
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/delegation-after-identity.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

@@ -1,0 +1,18 @@
+consent_id: ces-001
+subject_id: did:example:reva
+controller_id: did:example:health-app
+purpose_binding: medication-reminder-service
+context_scope: mobile-app-primary-account
+permitted_actions:
+  - collect
+  - store
+constraints:
+  time_bound: until-2026-12-31
+  jurisdiction: IN
+  data_category:
+    - medication-schedule
+    - notification-preference
+downstream_processing_allowed: false
+enforcement_endpoint: https://example.org/consent/check/ces-001
+revocation_endpoint: https://example.org/consent/revoke/ces-001
+audit_reference: https://example.org/audit/consent/ces-001
