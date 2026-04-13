@@ -1,0 +1,30 @@
+name: Validate TSMM bindings
+
+on:
+  push:
+    paths:
+      - 'artifacts/**'
+      - 'bindings/tsmm/**'
+      - 'entities/**'
+      - 'controls/**'
+      - 'scripts/validate_tsmm_bindings.py'
+      - '.github/workflows/validate-tsmm-bindings.yml'
+  pull_request:
+    paths:
+      - 'artifacts/**'
+      - 'bindings/tsmm/**'
+      - 'entities/**'
+      - 'controls/**'
+      - 'scripts/validate_tsmm_bindings.py'
+      - '.github/workflows/validate-tsmm-bindings.yml'
+
+jobs:
+  validate-tsmm-bindings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pyyaml
+      - run: python scripts/validate_tsmm_bindings.py

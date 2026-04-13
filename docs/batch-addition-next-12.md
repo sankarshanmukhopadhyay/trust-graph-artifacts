@@ -16,3 +16,7 @@ This document records the expansion from the initial 3 artifacts to a governed s
 - the-proof-gap
 - execution-time-delegation
 - crisis-of-narrative-control
+
+## TSMM binding completion
+
+This batch now includes a fully implemented TSMM binding layer for the 12-artifact expansion set. Each included artifact has a machine-readable projection, manifest-level binding reference, shared entity and control registry linkage, and validation coverage.

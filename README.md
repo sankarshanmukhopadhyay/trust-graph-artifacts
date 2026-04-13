@@ -174,11 +174,31 @@ It is designed to make:
 ## Next steps
 
 - expand artifact depth with richer examples and challenge flows
-- introduce validation harness
-- integrate with TRQP and TSMM where relevant
+- extend TSMM projection coverage beyond the current 12-artifact set
+- emit native TSMM graph JSON instances where useful
 - verify and harden provisional source metadata
 
 ---
+
+
+## TSMM binding layer
+
+The repository now includes a concrete TSMM binding layer for the 12-artifact expansion set. This makes the artifact layer structurally legible in terms of:
+
+- entities and roles
+- bounded authority
+- relationships and delegation
+- controls, threats, and evidence
+- trust decisions and downstream effects
+- lifecycle and revocation semantics
+
+See:
+
+- `bindings/tsmm/README.md`
+- `bindings/tsmm/projections/`
+- `entities/registry.yaml`
+- `controls/registry.yaml`
+- `docs/tsmm-binding-layer.md`
 
 ## Current artifact set
 

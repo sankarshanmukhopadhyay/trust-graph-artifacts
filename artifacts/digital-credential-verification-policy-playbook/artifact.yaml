@@ -41,3 +41,10 @@ validation:
 lifecycle:
   created: '2026-04-13'
   last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/digital-credential-verification-policy-playbook.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

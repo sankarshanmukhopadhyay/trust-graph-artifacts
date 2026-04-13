@@ -29,3 +29,5 @@ This directory tracks essays that have entered the artifact pipeline.
 ## Notes
 
 Where direct canonical post links were available from Substack they have been used in artifact manifests. A small number of older essay links are provisional title-based slugs and should be verified during the next metadata refresh.
+
+The 12-artifact expansion set now also carries TSMM projections under `bindings/tsmm/projections/`, making those artifacts structurally comparable across entities, controls, decisions, effects, and lifecycle semantics.

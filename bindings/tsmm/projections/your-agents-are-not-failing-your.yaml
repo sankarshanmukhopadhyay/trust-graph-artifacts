@@ -1,0 +1,305 @@
+bindingId: tga.tsmm.your-agents-are-not-failing-your
+label: TSMM projection for your-agents-are-not-failing-your
+artifactRef: artifacts/your-agents-are-not-failing-your/artifact.yaml
+sourceEssay: Your Agents Are Not Failing. Your Mandates Are
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.your-agents-are-not-failing-your
+    label: Agent mandate quality and admissibility governance
+    description: Trust Graph operationalization of Your Agents Are Not Failing. Your
+      Mandates Are as executable governance.
+  profile:
+    id: profile.agent.mandate
+    label: Agent Mandate Envelope
+    constraintSetRef: artifacts/your-agents-are-not-failing-your/schemas/agent-mandate-envelope.yaml
+  entities:
+  - id: entity.operator
+    type: GovernanceAuthority
+    label: Operator
+    description: Operator or principal issuing the mandate
+    roles:
+    - id: role.operator
+      label: Operator
+      authorityRefs:
+      - authority.operator
+    authorities:
+    - id: authority.operator
+      scope: Operator or principal issuing the mandate
+      source: profile.agent.mandate
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.agent
+    type: Agent
+    label: Agent
+    description: Agent executing the mandate
+    roles:
+    - id: role.agent
+      label: Agent
+      authorityRefs:
+      - authority.agent
+    authorities:
+    - id: authority.agent
+      scope: Agent executing the mandate
+      source: profile.agent.mandate
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.policy-engine
+    type: Verifier
+    label: Policy Engine
+    description: Policy engine testing mandate sufficiency
+    roles:
+    - id: role.policy-engine
+      label: Policy Engine
+      authorityRefs:
+      - authority.policy-engine
+    authorities:
+    - id: authority.policy-engine
+      scope: Policy engine testing mandate sufficiency
+      source: profile.agent.mandate
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.reviewer
+    type: RelyingParty
+    label: Reviewer
+    description: Human or automated reviewer examining contested mandate use
+    roles:
+    - id: role.reviewer
+      label: Reviewer
+      authorityRefs:
+      - authority.reviewer
+    authorities:
+    - id: authority.reviewer
+      scope: Human or automated reviewer examining contested mandate use
+      source: profile.agent.mandate
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  relationships:
+  - id: your-agents-are-not-failing-your.rel.1
+    type: holdsRole
+    from: entity.operator
+    to: role.mandate-issuer
+    description: Operator defines mandate and admissibility conditions
+  - id: your-agents-are-not-failing-your.rel.2
+    type: holdsRole
+    from: entity.agent
+    to: role.mandate-executor
+    description: Agent acts only under validated mandate
+  - id: your-agents-are-not-failing-your.rel.3
+    type: issues
+    from: entity.operator
+    to: artifact.agent-mandate.envelope
+    description: Mandate artifact expresses scope, constraints, and receipts
+  - id: your-agents-are-not-failing-your.rel.4
+    type: evaluates
+    from: entity.policy-engine
+    to: artifact.agent-mandate.envelope
+    description: Engine checks sufficiency before effect
+  - id: your-agents-are-not-failing-your.rel.5
+    type: routesTo
+    from: entity.policy-engine
+    to: entity.reviewer
+    description: Ambiguous or weak mandates route to review
+  artifacts:
+  - id: artifact.your.agents.are.not.failing.your
+    type: Artifact
+    label: Agent Mandate Envelope
+    sourceRef: artifacts/your-agents-are-not-failing-your/artifact.yaml
+    schemaRef: artifacts/your-agents-are-not-failing-your/schemas/agent-mandate-envelope.yaml
+  policies:
+  - id: policy.your.agents.are.not.failing.your
+    label: Agent Mandate Envelope
+    decisionMode: mixed
+    profileRef: profile.agent.mandate
+    rules:
+    - Require explicit task, scope, constraints, and review path
+    - Bind tool invocation to declared mandate fields
+    - Generate decision receipt for each material action
+    contextRef: context.your-agents-are-not-failing-your
+  controls:
+  - id: control.mandate-completeness
+    type: admissibility-check
+    description: Require explicit task, scope, constraints, and review path
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.mandate-ambiguity
+    - threat.untracked-tool-use
+  - id: control.tool-use-constraint
+    type: tool-binding
+    description: Bind tool invocation to declared mandate fields
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.mandate-ambiguity
+    - threat.untracked-tool-use
+  - id: control.receipt-generation
+    type: evidence-capture
+    description: Generate decision receipt for each material action
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.mandate-ambiguity
+    - threat.untracked-tool-use
+  threats:
+  - id: threat.mandate-ambiguity
+    type: admissibility-gap
+    description: Agent receives vague instructions that cannot bound authority
+  - id: threat.untracked-tool-use
+    type: oversight-gap
+    description: Material tool actions occur without mandate-linked evidence
+  evidence:
+  - id: evidence.agent.mandate.receipt
+    type: decision-receipt
+    description: Structured evidence bundle for Agent Mandate Envelope.
+    supportsRefs:
+    - policy.your.agents.are.not.failing.your
+    - decision.agent.mandate
+    - control.mandate-completeness
+    - control.tool-use-constraint
+    - control.receipt-generation
+    requiredFields:
+    - authority_used
+    - policy_evaluated
+    - facts_input
+    - outcome
+    - timestamp
+  verifications:
+  - id: verification.your.agents.are.not.failing.your
+    method: tsmm-binding-conformance-check
+    result: required
+    inputRefs:
+    - artifact.your.agents.are.not.failing.your
+    - evidence.agent.mandate.receipt
+  trustDecisions:
+  - id: decision.agent.mandate
+    outcomeModes:
+    - allow
+    - deny
+    - degrade
+    - review
+    policyRef: policy.your.agents.are.not.failing.your
+    verificationRefs:
+    - verification.your.agents.are.not.failing.your
+    effectRefs:
+    - effect.allow-mandated-action
+    - effect.route-for-review
+    - effect.block-unbounded-action
+    contextRef: context.your-agents-are-not-failing-your
+  effects:
+  - id: effect.allow-mandated-action
+    class: operational
+    action: Permit action under sufficient mandate
+    status: conditional
+  - id: effect.route-for-review
+    class: governance
+    action: Route incomplete mandate to human review
+    status: conditional
+  - id: effect.block-unbounded-action
+    class: protective
+    action: Deny action where mandate is insufficient
+    status: conditional
+  lifecycle:
+    modelId: lifecycle.your-agents-are-not-failing-your
+    label: Lifecycle for Agent Mandate Envelope
+    appliesTo:
+    - artifact.your.agents.are.not.failing.your
+    - decision.agent.mandate
+    states:
+    - id: state.issued
+      name: issued
+      description: Declared and available for governed use
+      entryEvidence: manifest created
+    - id: state.active
+      name: active
+      description: Usable for runtime or assessment decisions
+      entryEvidence: policy and controls available
+    - id: state.suspended
+      name: suspended
+      description: Temporarily paused pending review or challenge
+      entryEvidence: review or incident open
+    - id: state.revoked
+      name: revoked
+      description: Withdrawn and no longer valid for reliance
+      entryEvidence: revocation event recorded
+    - id: state.expired
+      name: expired
+      description: No longer valid due to freshness or time bounds
+      entryEvidence: time bound elapsed
+    transitions:
+    - id: transition.issue
+      from: state.issued
+      to: state.active
+      trigger: admission and publication
+      actor: maintainer or policy authority
+      evidenceRequirement: manifest plus schema present
+    - id: transition.suspend
+      from: state.active
+      to: state.suspended
+      trigger: challenge, incident, or evidence gap
+      actor: policy authority or assessor
+      evidenceRequirement: issue or review record
+    - id: transition.revoke
+      from: state.active
+      to: state.revoked
+      trigger: authority withdrawn or non-conformance confirmed
+      actor: policy authority
+      evidenceRequirement: revocation record with rationale
+    - id: transition.resume
+      from: state.suspended
+      to: state.active
+      trigger: issue resolved
+      actor: policy authority or maintainer
+      evidenceRequirement: updated evidence or corrected policy
+    - id: transition.expire
+      from: state.active
+      to: state.expired
+      trigger: time bound or freshness window elapsed
+      actor: system
+      evidenceRequirement: timestamp comparison or expiry check
+  conceptMappings:
+  - externalConcept: Agent Mandate Envelope
+    tsmmType: Policy
+    bindingStrength: approximate
+    description: Primary artifact acts as policy/profile surface for trust decision.
+  - externalConcept: evidence.agent.mandate.receipt
+    tsmmType: EvidenceBundle
+    bindingStrength: exact
+    description: Decision receipt acts as evidence bundle for auditability.
+  - externalConcept: decision.agent.mandate
+    tsmmType: TrustDecision
+    bindingStrength: exact
+    description: Binding makes outcome and effect path explicit.
+  knownLimits:
+  - Projection is repo-local and does not yet emit a TSMM JSON graph instance.
+  - Foundational three artifacts remain outside this binding layer in this increment.
+  validation:
+    script: scripts/validate_tsmm_bindings.py
+    checks:
+    - required projection sections
+    - registry references resolve
+    - trust decision to effect linkage
+    - lifecycle minimum states present

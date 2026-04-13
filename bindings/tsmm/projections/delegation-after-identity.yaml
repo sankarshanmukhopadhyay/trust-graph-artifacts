@@ -1,0 +1,305 @@
+bindingId: tga.tsmm.delegation-after-identity
+label: TSMM projection for delegation-after-identity
+artifactRef: artifacts/delegation-after-identity/artifact.yaml
+sourceEssay: Delegation After Identity
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.delegation-after-identity
+    label: Delegated authority governance for agent and service chains
+    description: Trust Graph operationalization of Delegation After Identity as executable
+      governance.
+  profile:
+    id: profile.delegation.chain
+    label: Delegation Chain Policy
+    constraintSetRef: artifacts/delegation-after-identity/schemas/delegation-chain-policy.yaml
+  entities:
+  - id: entity.principal
+    type: Subject
+    label: Principal
+    description: Originating principal that delegates bounded authority
+    roles:
+    - id: role.principal
+      label: Principal
+      authorityRefs:
+      - authority.principal
+    authorities:
+    - id: authority.principal
+      scope: Originating principal that delegates bounded authority
+      source: profile.delegation.chain
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.delegate-agent
+    type: Agent
+    label: Delegate Agent
+    description: Delegate receiving bounded authority
+    roles:
+    - id: role.delegate-agent
+      label: Delegate Agent
+      authorityRefs:
+      - authority.delegate-agent
+    authorities:
+    - id: authority.delegate-agent
+      scope: Delegate receiving bounded authority
+      source: profile.delegation.chain
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.downstream-service
+    type: RegistryService
+    label: Downstream Service
+    description: Downstream service consuming delegated authority
+    roles:
+    - id: role.downstream-service
+      label: Downstream Service
+      authorityRefs:
+      - authority.downstream-service
+    authorities:
+    - id: authority.downstream-service
+      scope: Downstream service consuming delegated authority
+      source: profile.delegation.chain
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.scope-verifier
+    type: Verifier
+    label: Scope Verifier
+    description: Service validating delegation chain, scope, and status
+    roles:
+    - id: role.scope-verifier
+      label: Scope Verifier
+      authorityRefs:
+      - authority.scope-verifier
+    authorities:
+    - id: authority.scope-verifier
+      scope: Service validating delegation chain, scope, and status
+      source: profile.delegation.chain
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  relationships:
+  - id: delegation-after-identity.rel.1
+    type: holdsRole
+    from: entity.principal
+    to: role.delegator
+    description: Principal originates bounded mandate
+  - id: delegation-after-identity.rel.2
+    type: holdsRole
+    from: entity.delegate-agent
+    to: role.delegate
+    description: Agent executes within bounded scope
+  - id: delegation-after-identity.rel.3
+    type: delegates
+    from: entity.principal
+    to: entity.delegate-agent
+    description: Delegation creates chain with max depth and scope rules
+  - id: delegation-after-identity.rel.4
+    type: invokes
+    from: entity.delegate-agent
+    to: entity.downstream-service
+    description: Delegate invokes downstream service under mandate
+  - id: delegation-after-identity.rel.5
+    type: verifies
+    from: entity.scope-verifier
+    to: artifact.delegation-chain.policy
+    description: Verifier checks chain before effect
+  artifacts:
+  - id: artifact.delegation.after.identity
+    type: Artifact
+    label: Delegation Chain Policy
+    sourceRef: artifacts/delegation-after-identity/artifact.yaml
+    schemaRef: artifacts/delegation-after-identity/schemas/delegation-chain-policy.yaml
+  policies:
+  - id: policy.delegation.after.identity
+    label: Delegation Chain Policy
+    decisionMode: mixed
+    profileRef: profile.delegation.chain
+    rules:
+    - Ensure child scope is narrower than parent
+    - Verify parent chain continuity and status
+    - Invalidate derived authority when parent authority changes
+    contextRef: context.delegation-after-identity
+  controls:
+  - id: control.scope-boundary
+    type: delegation-scope
+    description: Ensure child scope is narrower than parent
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.permission-laundering
+    - threat.broken-cascade
+  - id: control.parent-chain-check
+    type: chain-validation
+    description: Verify parent chain continuity and status
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.permission-laundering
+    - threat.broken-cascade
+  - id: control.cascading-revocation
+    type: revocation-propagation
+    description: Invalidate derived authority when parent authority changes
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.permission-laundering
+    - threat.broken-cascade
+  threats:
+  - id: threat.permission-laundering
+    type: privilege-escalation
+    description: Downstream action exceeds original delegated mandate
+  - id: threat.broken-cascade
+    type: revocation-failure
+    description: Parent revocation does not reach active delegations
+  evidence:
+  - id: evidence.delegation.chain.receipt
+    type: decision-receipt
+    description: Structured evidence bundle for Delegation Chain Policy.
+    supportsRefs:
+    - policy.delegation.after.identity
+    - decision.delegation.chain
+    - control.scope-boundary
+    - control.parent-chain-check
+    - control.cascading-revocation
+    requiredFields:
+    - authority_used
+    - policy_evaluated
+    - facts_input
+    - outcome
+    - timestamp
+  verifications:
+  - id: verification.delegation.after.identity
+    method: tsmm-binding-conformance-check
+    result: required
+    inputRefs:
+    - artifact.delegation.after.identity
+    - evidence.delegation.chain.receipt
+  trustDecisions:
+  - id: decision.delegation.chain
+    outcomeModes:
+    - allow
+    - deny
+    - degrade
+    - review
+    policyRef: policy.delegation.after.identity
+    verificationRefs:
+    - verification.delegation.after.identity
+    effectRefs:
+    - effect.allow-bounded-execution
+    - effect.deny-excess-scope
+    - effect.revoke-chain
+    contextRef: context.delegation-after-identity
+  effects:
+  - id: effect.allow-bounded-execution
+    class: operational
+    action: Permit action within validated scope
+    status: conditional
+  - id: effect.deny-excess-scope
+    class: protective
+    action: Deny action beyond inherited authority
+    status: conditional
+  - id: effect.revoke-chain
+    class: governance
+    action: Invalidate active delegation chain
+    status: conditional
+  lifecycle:
+    modelId: lifecycle.delegation-after-identity
+    label: Lifecycle for Delegation Chain Policy
+    appliesTo:
+    - artifact.delegation.after.identity
+    - decision.delegation.chain
+    states:
+    - id: state.issued
+      name: issued
+      description: Declared and available for governed use
+      entryEvidence: manifest created
+    - id: state.active
+      name: active
+      description: Usable for runtime or assessment decisions
+      entryEvidence: policy and controls available
+    - id: state.suspended
+      name: suspended
+      description: Temporarily paused pending review or challenge
+      entryEvidence: review or incident open
+    - id: state.revoked
+      name: revoked
+      description: Withdrawn and no longer valid for reliance
+      entryEvidence: revocation event recorded
+    - id: state.expired
+      name: expired
+      description: No longer valid due to freshness or time bounds
+      entryEvidence: time bound elapsed
+    transitions:
+    - id: transition.issue
+      from: state.issued
+      to: state.active
+      trigger: admission and publication
+      actor: maintainer or policy authority
+      evidenceRequirement: manifest plus schema present
+    - id: transition.suspend
+      from: state.active
+      to: state.suspended
+      trigger: challenge, incident, or evidence gap
+      actor: policy authority or assessor
+      evidenceRequirement: issue or review record
+    - id: transition.revoke
+      from: state.active
+      to: state.revoked
+      trigger: authority withdrawn or non-conformance confirmed
+      actor: policy authority
+      evidenceRequirement: revocation record with rationale
+    - id: transition.resume
+      from: state.suspended
+      to: state.active
+      trigger: issue resolved
+      actor: policy authority or maintainer
+      evidenceRequirement: updated evidence or corrected policy
+    - id: transition.expire
+      from: state.active
+      to: state.expired
+      trigger: time bound or freshness window elapsed
+      actor: system
+      evidenceRequirement: timestamp comparison or expiry check
+  conceptMappings:
+  - externalConcept: Delegation Chain Policy
+    tsmmType: Policy
+    bindingStrength: approximate
+    description: Primary artifact acts as policy/profile surface for trust decision.
+  - externalConcept: evidence.delegation.chain.receipt
+    tsmmType: EvidenceBundle
+    bindingStrength: exact
+    description: Decision receipt acts as evidence bundle for auditability.
+  - externalConcept: decision.delegation.chain
+    tsmmType: TrustDecision
+    bindingStrength: exact
+    description: Binding makes outcome and effect path explicit.
+  knownLimits:
+  - Projection is repo-local and does not yet emit a TSMM JSON graph instance.
+  - Foundational three artifacts remain outside this binding layer in this increment.
+  validation:
+    script: scripts/validate_tsmm_bindings.py
+    checks:
+    - required projection sections
+    - registry references resolve
+    - trust decision to effect linkage
+    - lifecycle minimum states present

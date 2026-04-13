@@ -1,11 +1,30 @@
-# TSMM Mapping Notes: delegation-after-identity
+# TSMM Mapping: delegation-after-identity
 
-## Purpose
+## Binding summary
 
-This artifact preserves executable governance semantics for *Delegation After Identity* rather than flattening it into descriptive prose.
+This artifact now has a machine-readable TSMM projection at:
 
-## Mapping focus
+- `bindings/tsmm/projections/delegation-after-identity.yaml`
 
-- authority and scope boundaries
-- lifecycle and status semantics
-- evidence and challenge surfaces where applicable
+## Mapped TSMM surfaces
+
+- governance context
+- profile and policy surface
+- entities, roles, and bounded authority
+- relationships and delegation path where applicable
+- controls and threats
+- evidence and verification
+- trust decision and downstream effects
+- lifecycle and revocation semantics
+
+## Primary TSMM alignment
+
+- Core model: authority, policy, control, evidence, trust decision, effect
+- Relationship model: role-bearing entities, constrained delegation, governed reliance
+- Lifecycle model: issued, active, suspended, revoked, expired
+
+## Local schema linkage
+
+- Manifest: `artifacts/delegation-after-identity/artifact.yaml`
+- Artifact schema: `artifacts/delegation-after-identity/schemas/delegation-chain-policy.yaml`
+- TSMM projection: `bindings/tsmm/projections/delegation-after-identity.yaml`

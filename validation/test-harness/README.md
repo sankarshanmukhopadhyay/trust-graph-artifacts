@@ -1,5 +1,15 @@
 # Test Harness
 
-This directory is reserved for validation scripts and harness logic.
+This directory records validation logic and harness notes for the repository.
 
-At the starter stage, it may remain empty except for documentation.
+## Active validator
+
+- `scripts/validate_tsmm_bindings.py` validates the TSMM binding layer for the 12-artifact expansion set.
+
+Current checks:
+
+- manifest-level TSMM binding references
+- projection completeness
+- shared registry reference integrity
+- trust decision to effect linkage
+- lifecycle minimum-state coverage

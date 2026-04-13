@@ -66,3 +66,9 @@ Draft
 - refine field cardinality and enum coverage
 - add JSON Schema or equivalent validation form
 - add richer edge-case examples
+
+---
+
+## TSMM Binding
+
+This artifact now includes a TSMM projection at `bindings/tsmm/projections/machine-readable-privacy-terms.yaml`. The binding externalizes entities, relationships, controls, evidence, trust decisions, effects, and lifecycle semantics so the artifact can be compared as part of a wider trust-system model.

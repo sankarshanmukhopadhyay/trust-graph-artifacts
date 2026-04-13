@@ -1,0 +1,305 @@
+bindingId: tga.tsmm.execution-time-delegation
+label: TSMM projection for execution-time-delegation
+artifactRef: artifacts/execution-time-delegation/artifact.yaml
+sourceEssay: 'Execution-Time Delegation: Legitimacy After Transparency'
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.execution-time-delegation
+    label: Execution-time delegation legitimacy and decision receipts
+    description: 'Trust Graph operationalization of Execution-Time Delegation: Legitimacy
+      After Transparency as executable governance.'
+  profile:
+    id: profile.execution.delegation
+    label: Execution Delegation Control Receipt
+    constraintSetRef: artifacts/execution-time-delegation/schemas/execution-delegation-control-receipt.yaml
+  entities:
+  - id: entity.principal
+    type: Subject
+    label: Principal
+    description: Originating principal for delegated execution
+    roles:
+    - id: role.principal
+      label: Principal
+      authorityRefs:
+      - authority.principal
+    authorities:
+    - id: authority.principal
+      scope: Originating principal for delegated execution
+      source: profile.execution.delegation
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.agent
+    type: Agent
+    label: Agent
+    description: Agent executing live delegated authority
+    roles:
+    - id: role.agent
+      label: Agent
+      authorityRefs:
+      - authority.agent
+    authorities:
+    - id: authority.agent
+      scope: Agent executing live delegated authority
+      source: profile.execution.delegation
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.runtime-enforcer
+    type: Verifier
+    label: Runtime Enforcer
+    description: Runtime authority and policy enforcer
+    roles:
+    - id: role.runtime-enforcer
+      label: Runtime Enforcer
+      authorityRefs:
+      - authority.runtime-enforcer
+    authorities:
+    - id: authority.runtime-enforcer
+      scope: Runtime authority and policy enforcer
+      source: profile.execution.delegation
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  - id: entity.relying-service
+    type: RegistryService
+    label: Relying Service
+    description: Downstream service consuming execution result
+    roles:
+    - id: role.relying-service
+      label: Relying Service
+      authorityRefs:
+      - authority.relying-service
+    authorities:
+    - id: authority.relying-service
+      scope: Downstream service consuming execution result
+      source: profile.execution.delegation
+      conditions:
+      - bounded by declared profile and policy
+      - subject to lifecycle status and revocation checks
+      revocationStatus: active
+      timeBounds: bounded-by-profile
+      obligations:
+      - generate or preserve evidence for material decisions
+  relationships:
+  - id: execution-time-delegation.rel.1
+    type: delegates
+    from: entity.principal
+    to: entity.agent
+    description: Principal grants live delegated authority under runtime constraints
+  - id: execution-time-delegation.rel.2
+    type: evaluates
+    from: entity.runtime-enforcer
+    to: artifact.execution.delegation.receipt
+    description: Enforcer validates authority at execution time
+  - id: execution-time-delegation.rel.3
+    type: invokes
+    from: entity.agent
+    to: entity.relying-service
+    description: Agent invokes relying service under validated authority
+  - id: execution-time-delegation.rel.4
+    type: supports
+    from: artifact.execution.delegation.receipt
+    to: decision.execution.delegation
+    description: Receipt substantiates live decision
+  - id: execution-time-delegation.rel.5
+    type: affects
+    from: decision.execution.delegation
+    to: effect.execution-outcome
+    description: Decision determines whether effect occurs
+  artifacts:
+  - id: artifact.execution.time.delegation
+    type: Artifact
+    label: Execution Delegation Control Receipt
+    sourceRef: artifacts/execution-time-delegation/artifact.yaml
+    schemaRef: artifacts/execution-time-delegation/schemas/execution-delegation-control-receipt.yaml
+  policies:
+  - id: policy.execution.time.delegation
+    label: Execution Delegation Control Receipt
+    decisionMode: mixed
+    profileRef: profile.execution.delegation
+    rules:
+    - Verify scope, freshness, and revocation at execution time
+    - Generate structured receipt for material delegated action
+    - Stop downstream effect when delegated authority is revoked
+    contextRef: context.execution-time-delegation
+  controls:
+  - id: control.live-authority-check
+    type: runtime-check
+    description: Verify scope, freshness, and revocation at execution time
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.legitimacy-gap
+    - threat.stale-downstream-authority
+  - id: control.decision-receipt
+    type: receipt-generation
+    description: Generate structured receipt for material delegated action
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.legitimacy-gap
+    - threat.stale-downstream-authority
+  - id: control.cascading-stop
+    type: revocation-stop
+    description: Stop downstream effect when delegated authority is revoked
+    registryRef: controls/registry.yaml
+    mitigatesThreatRefs:
+    - threat.legitimacy-gap
+    - threat.stale-downstream-authority
+  threats:
+  - id: threat.legitimacy-gap
+    type: runtime-governance-failure
+    description: Authority is transparent but not enforceable at execution time
+  - id: threat.stale-downstream-authority
+    type: propagation-delay
+    description: Downstream service acts on stale delegated authority
+  evidence:
+  - id: evidence.execution.delegation.receipt
+    type: decision-receipt
+    description: Structured evidence bundle for Execution Delegation Control Receipt.
+    supportsRefs:
+    - policy.execution.time.delegation
+    - decision.execution.delegation
+    - control.live-authority-check
+    - control.decision-receipt
+    - control.cascading-stop
+    requiredFields:
+    - authority_used
+    - policy_evaluated
+    - facts_input
+    - outcome
+    - timestamp
+  verifications:
+  - id: verification.execution.time.delegation
+    method: tsmm-binding-conformance-check
+    result: required
+    inputRefs:
+    - artifact.execution.time.delegation
+    - evidence.execution.delegation.receipt
+  trustDecisions:
+  - id: decision.execution.delegation
+    outcomeModes:
+    - allow
+    - deny
+    - degrade
+    - review
+    policyRef: policy.execution.time.delegation
+    verificationRefs:
+    - verification.execution.time.delegation
+    effectRefs:
+    - effect.allow-live-execution
+    - effect.block-live-execution
+    - effect.invalidate-downstream-action
+    contextRef: context.execution-time-delegation
+  effects:
+  - id: effect.allow-live-execution
+    class: operational
+    action: Permit execution under live validated authority
+    status: conditional
+  - id: effect.block-live-execution
+    class: protective
+    action: Block execution on stale or invalid authority
+    status: conditional
+  - id: effect.invalidate-downstream-action
+    class: governance
+    action: Invalidate downstream use when live authority fails
+    status: conditional
+  lifecycle:
+    modelId: lifecycle.execution-time-delegation
+    label: Lifecycle for Execution Delegation Control Receipt
+    appliesTo:
+    - artifact.execution.time.delegation
+    - decision.execution.delegation
+    states:
+    - id: state.issued
+      name: issued
+      description: Declared and available for governed use
+      entryEvidence: manifest created
+    - id: state.active
+      name: active
+      description: Usable for runtime or assessment decisions
+      entryEvidence: policy and controls available
+    - id: state.suspended
+      name: suspended
+      description: Temporarily paused pending review or challenge
+      entryEvidence: review or incident open
+    - id: state.revoked
+      name: revoked
+      description: Withdrawn and no longer valid for reliance
+      entryEvidence: revocation event recorded
+    - id: state.expired
+      name: expired
+      description: No longer valid due to freshness or time bounds
+      entryEvidence: time bound elapsed
+    transitions:
+    - id: transition.issue
+      from: state.issued
+      to: state.active
+      trigger: admission and publication
+      actor: maintainer or policy authority
+      evidenceRequirement: manifest plus schema present
+    - id: transition.suspend
+      from: state.active
+      to: state.suspended
+      trigger: challenge, incident, or evidence gap
+      actor: policy authority or assessor
+      evidenceRequirement: issue or review record
+    - id: transition.revoke
+      from: state.active
+      to: state.revoked
+      trigger: authority withdrawn or non-conformance confirmed
+      actor: policy authority
+      evidenceRequirement: revocation record with rationale
+    - id: transition.resume
+      from: state.suspended
+      to: state.active
+      trigger: issue resolved
+      actor: policy authority or maintainer
+      evidenceRequirement: updated evidence or corrected policy
+    - id: transition.expire
+      from: state.active
+      to: state.expired
+      trigger: time bound or freshness window elapsed
+      actor: system
+      evidenceRequirement: timestamp comparison or expiry check
+  conceptMappings:
+  - externalConcept: Execution Delegation Control Receipt
+    tsmmType: Policy
+    bindingStrength: approximate
+    description: Primary artifact acts as policy/profile surface for trust decision.
+  - externalConcept: evidence.execution.delegation.receipt
+    tsmmType: EvidenceBundle
+    bindingStrength: exact
+    description: Decision receipt acts as evidence bundle for auditability.
+  - externalConcept: decision.execution.delegation
+    tsmmType: TrustDecision
+    bindingStrength: exact
+    description: Binding makes outcome and effect path explicit.
+  knownLimits:
+  - Projection is repo-local and does not yet emit a TSMM JSON graph instance.
+  - Foundational three artifacts remain outside this binding layer in this increment.
+  validation:
+    script: scripts/validate_tsmm_bindings.py
+    checks:
+    - required projection sections
+    - registry references resolve
+    - trust decision to effect linkage
+    - lifecycle minimum states present
