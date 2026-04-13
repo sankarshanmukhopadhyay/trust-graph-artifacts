@@ -1,0 +1,25 @@
+{
+  "packageId": "ttg.evidence-model.legitimate-control-decision-receipt",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.legitimate.control.decision.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Primary receipt for proving a consequential action was exercised under legitimate control.",
+      "supportsRefs": [
+        "policy.control.requirements",
+        "decision.action.gate",
+        "control.authority-reference-required",
+        "control.reasoning-trace-required",
+        "control.redress-state-required",
+        "control.verification-window-required"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "authority and issuer references",
+    "policy version and gate decision outcome",
+    "trace reconstruction or contribution references",
+    "remediation state and action class",
+    "receipt timestamp relative to verification window"
+  ]
+}

@@ -1,3 +1,9 @@
+## Newly added from *Enforceable Authority Without Legitimate Control*
+
+- `patterns/authority-legitimacy-validation` — validation pattern that distinguishes authority presence from authority legitimacy
+- `overlays/legitimate-control-enforcement` — overlay for revocation latency, attributable audit, redress proportionality, and designated accountability
+- `evidence/legitimate-control-decision-receipt` — evidence model for receipts proving consequential action occurred under legitimate control
+
 # Essay to TSMM package index
 
 | Essay | Kind | Package path |

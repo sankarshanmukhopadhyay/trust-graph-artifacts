@@ -1,0 +1,53 @@
+id: systemic-controller-registry-entry
+version: 0.1.0
+type: object
+required:
+- controller_id
+- controller_type
+- lever_class
+- affected_systems
+- authority_basis
+- review_cycle
+properties:
+  controller_id:
+    type: string
+  controller_type:
+    type: string
+    enum:
+    - operator
+    - platform
+    - registry
+    - regulator
+    - vendor
+    - model-owner
+  lever_class:
+    type: array
+    minItems: 1
+    items:
+      type: string
+      enum:
+      - override
+      - classification-threshold
+      - access-gate
+      - ranking-control
+      - kill-switch
+      - pricing-rule
+  affected_systems:
+    type: array
+    minItems: 1
+    items:
+      type: string
+  authority_basis:
+    type: string
+  override_conditions:
+    type: array
+    items:
+      type: string
+  review_cycle:
+    type: string
+  risk_tags:
+    type: array
+    items:
+      type: string
+  redress_contact:
+    type: string

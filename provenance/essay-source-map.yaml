@@ -1,4 +1,25 @@
 provenance:
+- slug: authority-legitimacy-validation
+  title: Authority Legitimacy Validation Pattern
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate
+  packageKind: pattern
+  packagePath: patterns/authority-legitimacy-validation
+  signalTier: priority
+- slug: legitimate-control-enforcement
+  title: Legitimate Control Enforcement Overlay
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate
+  packageKind: overlay
+  packagePath: overlays/legitimate-control-enforcement
+  signalTier: priority
+- slug: legitimate-control-decision-receipt
+  title: Legitimate Control Decision Receipt
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate
+  packageKind: evidence-model
+  packagePath: evidence/legitimate-control-decision-receipt
+  signalTier: priority
 - slug: execution-time-delegation
   title: Execution Delegation Control Receipt
   publishedDate: '2026-03-05'

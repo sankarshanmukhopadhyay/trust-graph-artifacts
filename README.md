@@ -108,6 +108,12 @@ Then browse:
 - [`systems/`](systems/)
 - [`evidence/`](evidence/)
 
+The newest addition is a three-package set derived from *Enforceable Authority Without Legitimate Control*:
+
+- `patterns/authority-legitimacy-validation`
+- `overlays/legitimate-control-enforcement`
+- `evidence/legitimate-control-decision-receipt`
+
 ## Repository structure
 
 ```text
@@ -125,6 +131,11 @@ Then browse:
 ├── validation/    # Validation matrix and execution notes
 └── docs/          # Developer and architecture documentation
 ```
+
+## Streamlining and archive policy
+
+The active repository surface is the TSMM-native package corpus and its supporting docs, schemas, provenance, and validation layers.
+Older material from the artifact-first and binding-transition phases is retained under [`archive/legacy-artifact-model/`](archive/legacy-artifact-model/) for reference only.
 
 ## Package taxonomy
 

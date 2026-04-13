@@ -1,0 +1,25 @@
+{
+  "packageId": "ttg.overlay.legitimate-control-enforcement",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.legitimate.control.overlay.receipt",
+      "artifactType": "assurance-receipt",
+      "description": "Receipt showing that control-side conditions were tested and satisfied for a service class.",
+      "supportsRefs": [
+        "policy.legitimate.control",
+        "decision.control.gate",
+        "control.bounded-revocation-latency",
+        "control.attributable-decision-trace",
+        "control.redress-proportionality",
+        "control.designated-accountability"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "revocation test results with measured latency",
+    "causal trace reconstruction sample",
+    "redress class matrix and escalation timers",
+    "signed accountability designation record",
+    "decision outcome for the assessed service"
+  ]
+}

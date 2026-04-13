@@ -2,6 +2,12 @@
 
 This repository has a deliberately simple architecture.
 
+## Layer 0: Archive boundary
+
+`archive/` is intentionally outside the active design surface.
+It preserves older repository approaches for traceability, but developers should not use it as a source of current package structure or terminology.
+
+
 ## Layer 1: Concept source
 
 `essays/` and `provenance/` preserve where the package idea came from.

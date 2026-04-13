@@ -1,0 +1,33 @@
+{
+  "packageId": "ttg.pattern.authority-legitimacy-validation",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.issuer-trust-check",
+      "type": "issuer-validation",
+      "description": "Reject authority issued by an untrusted or unverifiable issuer."
+    },
+    {
+      "id": "control.scope-validity-check",
+      "type": "scope-validation",
+      "description": "Reject authority that exceeds declared operational scope."
+    },
+    {
+      "id": "control.revocation-freshness",
+      "type": "revocation-propagation",
+      "description": "Require revocation state that is fresh enough for consequential action."
+    },
+    {
+      "id": "control.contextual-admissibility",
+      "type": "context-binding",
+      "description": "Require policy and context to remain admissible at the moment of execution."
+    }
+  ],
+  "failureModes": [
+    "Authority exists but issuer is no longer trusted",
+    "Authority exists but presented scope exceeds allowed action class",
+    "Revocation state is stale relative to action criticality",
+    "Context changed after issuance and legitimacy is no longer satisfied"
+  ],
+  "decisionPolicy": "Execution MUST NOT proceed unless legitimacy is verified at execution time."
+}

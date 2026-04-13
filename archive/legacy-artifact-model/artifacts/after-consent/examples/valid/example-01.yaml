@@ -1,0 +1,20 @@
+policy_id: consent-pol-001
+subject_id: did:example:subject-123
+permitted_actions:
+- share-insurance-eligibility
+purpose: care-coordination
+delegation_scope:
+  allowed_delegate_types:
+  - software-agent
+  max_chain_depth: 1
+  must_log_subdelegation: true
+protection_rules:
+- trigger: sensitive-data-request
+  effect: require-reconsent
+revocation:
+  mode: instant
+  latency_expectation: under-5-minutes
+  notify_subject: true
+appeal:
+  endpoint: https://example.org/appeals/consent
+  sla: 3-business-days

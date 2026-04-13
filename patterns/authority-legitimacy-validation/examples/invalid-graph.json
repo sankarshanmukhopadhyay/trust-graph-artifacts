@@ -1,0 +1,136 @@
+{
+  "graphId": "ttg.pattern.authority-legitimacy-validation",
+  "label": "Authority Legitimacy Validation Pattern",
+  "description": "TSMM-native pattern for checking whether presented authority remains legitimate at execution time.",
+  "profile": "pattern",
+  "contexts": [
+    "context.authority-legitimacy-validation"
+  ],
+  "nodes": [
+    {
+      "id": "context.authority-legitimacy-validation",
+      "type": "TrustDomain",
+      "label": "Authority legitimacy validation domain",
+      "description": "Domain where authority must be checked for legitimacy, not only presence."
+    },
+    {
+      "id": "authority.policy.authority",
+      "type": "GovernanceAuthority",
+      "label": "Policy authority",
+      "description": "Defines the policy and accountability thresholds for legitimate control."
+    },
+    {
+      "id": "authority.issuer",
+      "type": "Issuer",
+      "label": "Authority issuer",
+      "description": "Issues delegated authority subject to policy and scope."
+    },
+    {
+      "id": "agent.subject",
+      "type": "Agent",
+      "label": "Acting agent",
+      "description": "Presents authority and attempts execution."
+    },
+    {
+      "id": "policy.legitimacy.check",
+      "type": "Policy",
+      "label": "Legitimacy validation policy",
+      "description": "Requires issuer trust, scope validity, revocation freshness, and contextual admissibility."
+    },
+    {
+      "id": "verifier.legitimacy",
+      "type": "Verifier",
+      "label": "Legitimacy verifier",
+      "description": "Evaluates whether authority is still legitimate before consequential action."
+    },
+    {
+      "id": "decision.legitimacy",
+      "type": "TrustDecision",
+      "label": "Legitimacy decision",
+      "description": "Produces allow, deny, or escalate outcomes based on the legitimacy check."
+    },
+    {
+      "id": "evidence.legitimacy.receipt",
+      "type": "EvidenceBundle",
+      "label": "Legitimacy decision receipt",
+      "description": "Captures policy, issuer, scope, revocation, and context inputs used in the decision."
+    },
+    {
+      "id": "effect.execution.boundary",
+      "type": "Effect",
+      "label": "Execution boundary effect",
+      "description": "Either permits execution, blocks execution, or routes to human review."
+    },
+    {
+      "id": "relying.party.service",
+      "type": "RelyingParty",
+      "label": "Relying service",
+      "description": "Consumes the decision and enforces the resulting boundary."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.domain.governs.policy",
+      "type": "invalidRelation",
+      "from": "authority.policy.authority",
+      "to": "policy.legitimacy.check",
+      "description": "Policy authority governs the legitimacy policy."
+    },
+    {
+      "id": "edge.issuer.authorizes.agent",
+      "type": "authorizes",
+      "from": "authority.issuer",
+      "to": "agent.subject",
+      "description": "Issuer confers technically enforceable authority to the agent."
+    },
+    {
+      "id": "edge.policy.constrains.agent",
+      "type": "constrains",
+      "from": "policy.legitimacy.check",
+      "to": "agent.subject",
+      "description": "Legitimacy policy constrains execution based on validity conditions."
+    },
+    {
+      "id": "edge.verifier.verifies.agent",
+      "type": "verifies",
+      "from": "verifier.legitimacy",
+      "to": "agent.subject",
+      "description": "Verifier checks legitimacy of the authority being presented.",
+      "evidenceRefs": [
+        "evidence.legitimacy.receipt"
+      ]
+    },
+    {
+      "id": "edge.verifier.informs.decision",
+      "type": "informs",
+      "from": "verifier.legitimacy",
+      "to": "decision.legitimacy",
+      "description": "Verifier output informs the trust decision."
+    },
+    {
+      "id": "edge.decision.produces.evidence",
+      "type": "produces",
+      "from": "decision.legitimacy",
+      "to": "evidence.legitimacy.receipt",
+      "description": "Decision produces a receipt that can be audited later."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.legitimacy",
+      "to": "effect.execution.boundary",
+      "description": "Decision determines whether execution is allowed, denied, or escalated."
+    },
+    {
+      "id": "edge.service.relies.on.effect",
+      "type": "reliesOn",
+      "from": "relying.party.service",
+      "to": "effect.execution.boundary",
+      "description": "The relying service enforces the execution boundary effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate",
+    "focus": "legitimacy-over-presence"
+  }
+}

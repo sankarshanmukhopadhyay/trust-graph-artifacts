@@ -1,0 +1,17 @@
+profile_id: prp-001
+claim_class: degree-completion
+accepted_proof_forms:
+- verifiable-credential
+- manual-exception
+issuer_legitimacy:
+  required: true
+  sources:
+  - edu-registry
+status_checks:
+  revocation: true
+  freshness: P30D
+  fail_closed: true
+manual_exception_policy: route-to-human-review-when-no-vc-available
+insufficiency_reason_codes:
+- issuer-not-recognized
+- no-portable-proof

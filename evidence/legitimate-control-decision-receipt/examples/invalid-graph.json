@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.evidence-model.legitimate-control-decision-receipt",
+  "label": "Legitimate Control Decision Receipt",
+  "description": "TSMM-native evidence model for proving that a consequential action was taken under legitimate control.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.legitimate-control-decision-receipt"
+  ],
+  "nodes": [
+    {
+      "id": "context.legitimate-control-decision-receipt",
+      "type": "TrustDomain",
+      "label": "Legitimate control evidence domain",
+      "description": "Domain for receipts proving that control-side checks were satisfied before or during action."
+    },
+    {
+      "id": "agent.actioning.service",
+      "type": "Agent",
+      "label": "Actioning service",
+      "description": "Service executing the consequential action."
+    },
+    {
+      "id": "policy.control.requirements",
+      "type": "Policy",
+      "label": "Control requirement policy",
+      "description": "Policy describing which control-side proofs are required."
+    },
+    {
+      "id": "decision.action.gate",
+      "type": "TrustDecision",
+      "label": "Action gate decision",
+      "description": "Decision to allow, deny, or escalate the action."
+    },
+    {
+      "id": "evidence.control.decision.receipt",
+      "type": "EvidenceBundle",
+      "label": "Control decision receipt",
+      "description": "Evidence bundle containing legitimacy, attribution, and remediation references."
+    },
+    {
+      "id": "assessment.trace.reconstruction",
+      "type": "Assessment",
+      "label": "Trace reconstruction assessment",
+      "description": "Assessment that reconstructs causal contribution for the action."
+    },
+    {
+      "id": "effect.remediation.state",
+      "type": "Effect",
+      "label": "Remediation state effect",
+      "description": "Captures whether rollback, escalation, or compensation path is available."
+    },
+    {
+      "id": "verifier.receipt.consumer",
+      "type": "Verifier",
+      "label": "Receipt consumer",
+      "description": "Verifier or auditor that validates the receipt after action."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.policy.constrains.decision",
+      "type": "invalidRelation",
+      "from": "policy.control.requirements",
+      "to": "decision.action.gate",
+      "description": "Control requirement policy constrains the action gate decision."
+    },
+    {
+      "id": "edge.decision.produces.receipt",
+      "type": "produces",
+      "from": "decision.action.gate",
+      "to": "evidence.control.decision.receipt",
+      "description": "Action gate decision emits the receipt."
+    },
+    {
+      "id": "edge.assessment.informs.receipt",
+      "type": "informs",
+      "from": "assessment.trace.reconstruction",
+      "to": "evidence.control.decision.receipt",
+      "description": "Trace reconstruction informs the receipt with attributable reasoning context."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.action.gate",
+      "to": "effect.remediation.state",
+      "description": "Action gate decision records remediation posture."
+    },
+    {
+      "id": "edge.verifier.verifies.receipt",
+      "type": "verifies",
+      "from": "verifier.receipt.consumer",
+      "to": "evidence.control.decision.receipt",
+      "description": "Auditor or verifier validates the receipt after the fact."
+    },
+    {
+      "id": "edge.service.relies.on.decision",
+      "type": "reliesOn",
+      "from": "agent.actioning.service",
+      "to": "decision.action.gate",
+      "description": "Service relies on the gate decision before committing action."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate",
+    "focus": "proof-of-legitimate-control"
+  }
+}

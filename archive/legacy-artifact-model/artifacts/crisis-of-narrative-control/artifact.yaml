@@ -1,0 +1,47 @@
+id: ttg-artifact-015
+title: Narrative Contestability Record
+status: draft
+source:
+  essay_title: Crisis of Narrative Control
+  essay_url: https://thetrustgraph.substack.com/p/crisis-of-narrative-control
+  published_date: '2026-02-09'
+signal:
+  engagement_rate: 17.07
+  tier: B
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - narrative
+  - contestability
+  - identity
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - enforcement
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-003
+  - ttg-artifact-009
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/crisis-of-narrative-control.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

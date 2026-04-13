@@ -1,0 +1,228 @@
+bindingId: tga.tsmm.consent-not-data-structure
+label: TSMM projection for consent-not-data-structure
+artifactRef: artifacts/consent-not-data-structure/artifact.yaml
+sourceEssay: Consent Is Not a Data Structure
+tsmmVersion: v0.16.0
+tsmmReferences:
+  coreModel: docs/core-model.md
+  relationshipModel: docs/relationship-model.md
+  graphSchema: schemas/tsmm-graph.schema.json
+  bindingSchema: schemas/tsmm-binding.schema.json
+  lifecycleSchema: schemas/tsmm-lifecycle.schema.json
+projection:
+  governanceContext:
+    id: context.consent-not-data-structure
+    label: Runtime consent enforcement context
+    description: Trust Graph operationalization of consent as an execution-time authorization
+      constraint rather than a static record.
+  profile:
+    id: profile.consent.enforcement
+    label: Consent Enforcement Schema
+    constraintSetRef: artifacts/consent-not-data-structure/schemas/consent-enforcement-schema.yaml
+  entities:
+  - id: entity.data-subject
+    type: Subject
+    label: Data Subject
+    description: Subject whose permission and withdrawal rights are at stake
+    roles:
+    - id: role.data-subject
+      label: Data Subject
+      authorityRefs:
+      - authority.data-subject
+    authorities:
+    - id: authority.data-subject
+      scope: Grant, narrow, or revoke consent for declared uses
+      source: profile.consent.enforcement
+      conditions:
+      - consent is bounded by purpose, action, and context
+      revocationStatus: active
+      timeBounds: consent-window
+      obligations:
+      - provide explicit permitted actions and constraints for granted consent
+  - id: entity.controller
+    type: GovernanceAuthority
+    label: Controller
+    description: Controller requesting or exercising permission under the consent
+      object
+    roles:
+    - id: role.controller
+      label: Controller
+      authorityRefs:
+      - authority.controller
+    authorities:
+    - id: authority.controller
+      scope: Act only within declared purpose, action class, and constraints
+      source: profile.consent.enforcement
+      conditions:
+      - must validate purpose binding and status before action
+      - must expose audit reference and revocation path
+      revocationStatus: active
+      timeBounds: consent-window
+      obligations:
+      - log governed use and downstream delegation
+  - id: entity.downstream-processor
+    type: Agent
+    label: Downstream Processor
+    description: Delegated processor inheriting consent constraints
+    roles:
+    - id: role.downstream-processor
+      label: Downstream Processor
+      authorityRefs:
+      - authority.downstream-processor
+    authorities:
+    - id: authority.downstream-processor
+      scope: Process only if inherited consent constraints remain valid
+      source: profile.consent.enforcement
+      conditions:
+      - downstream processing must be explicitly allowed
+      - processor must inherit the same constraints or fail
+      revocationStatus: active
+      timeBounds: processor-window
+      obligations:
+      - cease processing on revocation or expiry
+  - id: entity.audit-service
+    type: Verifier
+    label: Audit Service
+    description: Service recording consent use, checks, and challenge events
+    roles:
+    - id: role.audit-service
+      label: Audit Service
+      authorityRefs:
+      - authority.audit-service
+    authorities:
+    - id: authority.audit-service
+      scope: Record use, evidence, and withdrawal events for contestability
+      source: profile.consent.enforcement
+      conditions:
+      - must maintain accessible audit reference
+      revocationStatus: active
+      timeBounds: retention-bounded
+      obligations:
+      - preserve event integrity for review
+  relationships:
+  - id: consent-not-data-structure.rel.1
+    type: authorizes
+    from: entity.data-subject
+    to: artifact.consent.enforcement
+    description: Subject grants bounded consent through the governed consent object
+  - id: consent-not-data-structure.rel.2
+    type: uses
+    from: entity.controller
+    to: artifact.consent.enforcement
+    description: Controller acts under declared purpose and action constraints
+  - id: consent-not-data-structure.rel.3
+    type: delegates
+    from: entity.controller
+    to: entity.downstream-processor
+    description: Controller delegates processing only where allowed by the consent
+      object
+  - id: consent-not-data-structure.rel.4
+    type: records
+    from: entity.audit-service
+    to: artifact.consent.enforcement
+    description: Audit service records use and withdrawal events
+  artifacts:
+  - id: artifact.consent.enforcement
+    type: Artifact
+    label: Consent Enforcement Schema
+    sourceRef: artifacts/consent-not-data-structure/artifact.yaml
+    schemaRef: artifacts/consent-not-data-structure/schemas/consent-enforcement-schema.yaml
+  policies:
+  - id: policy.consent.runtime
+    label: Runtime Consent Policy
+    decisionMode: deterministic
+    profileRef: profile.consent.enforcement
+    rules:
+    - Require purpose binding and permitted action before execution
+    - Deny downstream processing when inheritance conditions are not met
+    - Suspend or deny on revocation, expiry, or context mismatch
+    contextRef: context.consent-not-data-structure
+  controls:
+  - id: control.purpose-binding
+    type: purpose-binding
+    description: Restrict action to declared purpose and action class
+  - id: control.downstream-inheritance
+    type: constraint-inheritance
+    description: Require downstream processors to inherit and enforce consent constraints
+  - id: control.revocation-endpoint
+    type: revocation-endpoint
+    description: Require explicit withdrawal mechanism
+  - id: control.audit-reference-required
+    type: audit-linkage
+    description: Require accessible audit reference for governed use
+  threats:
+  - id: threat.purpose-drift
+    label: Purpose Drift
+    description: Controller reuses captured consent for a different purpose or action
+      class
+  - id: threat.downstream-bypass
+    label: Downstream Bypass
+    description: Delegated processor acts without inheriting the original constraints
+  evidence:
+  - id: evidence.consent-object
+    type: consent-record
+    description: Governed consent object with purpose, actions, constraints, and endpoints
+  - id: evidence.audit-log
+    type: audit-record
+    description: Trace of execution-time checks, use events, and revocation outcomes
+  verifications:
+  - id: verification.consent-runtime
+    label: Verify runtime consent validity
+    evidenceRef: evidence.consent-object
+    controlRefs:
+    - control.purpose-binding
+    - control.downstream-inheritance
+    - control.revocation-endpoint
+    - control.audit-reference-required
+    performedBy: entity.audit-service
+  trustDecisions:
+  - id: decision.consent.execution
+    label: Determine whether the requested action remains consent-authorized
+    policyRef: policy.consent.runtime
+    verificationRefs:
+    - verification.consent-runtime
+    effectRefs:
+    - effect.permit-action
+    - effect.pause-action
+    - effect.deny-action
+  effects:
+  - id: effect.permit-action
+    label: Permit Action
+    type: permit
+    description: Allow execution within purpose and constraint bounds
+  - id: effect.pause-action
+    label: Pause Action
+    type: suspend
+    description: Pause execution pending review or updated consent state
+  - id: effect.deny-action
+    label: Deny Action
+    type: deny
+    description: Block execution because consent is invalid, expired, or revoked
+  lifecycle:
+    states:
+    - name: issued
+      label: Issued
+    - name: active
+      label: Active
+    - name: suspended
+      label: Suspended
+    - name: revoked
+      label: Revoked
+    - name: expired
+      label: Expired
+    transitions:
+    - from: issued
+      to: active
+      trigger: consent-granted
+    - from: active
+      to: suspended
+      trigger: context-or-purpose-under-review
+    - from: active
+      to: revoked
+      trigger: subject-withdraws-consent
+    - from: active
+      to: expired
+      trigger: time-bound-reached
+    - from: suspended
+      to: active
+      trigger: review-complete-and-consent-remains-valid

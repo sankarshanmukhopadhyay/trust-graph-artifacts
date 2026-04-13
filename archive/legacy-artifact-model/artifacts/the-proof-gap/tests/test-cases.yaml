@@ -1,0 +1,9 @@
+tests:
+- id: proof-requirement-profile-valid-001
+  input: ../examples/valid/example-01.yaml
+  expect: pass
+  reason: Required fields present and structurally coherent.
+- id: proof-requirement-profile-invalid-001
+  input: ../examples/invalid/example-01.yaml
+  expect: fail
+  reason: Required fields missing or invalid enum/value combinations.

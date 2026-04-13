@@ -1,0 +1,33 @@
+{
+  "packageId": "ttg.overlay.legitimate-control-enforcement",
+  "kind": "overlay",
+  "controlSet": [
+    {
+      "id": "control.bounded-revocation-latency",
+      "type": "revocation-latency",
+      "description": "Revocation must reach the reasoning context within the declared latency bound for the action class."
+    },
+    {
+      "id": "control.attributable-decision-trace",
+      "type": "causal-reconstruction",
+      "description": "Consequential action must support layer-attributable reconstruction."
+    },
+    {
+      "id": "control.redress-proportionality",
+      "type": "redress-governance",
+      "description": "Redress speed must be proportional to action reversibility and harm potential."
+    },
+    {
+      "id": "control.designated-accountability",
+      "type": "accountability-designation",
+      "description": "A named operator must be empowered to invoke revocation, audit, and redress."
+    }
+  ],
+  "failureModes": [
+    "System can be stopped but cannot be corrected within the harm window",
+    "Action log exists but causal reasoning cannot be reconstructed",
+    "Liability is diffuse and no empowered operator can invoke corrective primitives",
+    "Redress exists only as ex post dispute handling rather than system-integrated control"
+  ],
+  "decisionPolicy": "Systems claiming legitimate control MUST demonstrate all four control-side conditions for the relevant action class."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "ttg.pattern.authority-legitimacy-validation",
+  "title": "Authority Legitimacy Validation Pattern",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Enforceable Authority Without Legitimate Control",
+    "url": "https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate",
+    "publishedDate": "2026-04-08"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from direct editorial prioritization rather than score-only selection."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "authority",
+    "legitimacy",
+    "delegation",
+    "validation",
+    "control-stack"
+  ],
+  "notes": [
+    "Derived directly from the control-side asymmetry articulated in the source essay.",
+    "Intended to align with existing delegation, evidence, and governance packages in the repository."
+  ]
+}

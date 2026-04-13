@@ -18,3 +18,7 @@
 ## Governance and release
 
 - `release-process.md` — release discipline and expectations
+
+## Historical material
+
+- `../archive/README.md` — what was archived and why it is no longer active

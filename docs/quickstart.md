@@ -40,3 +40,13 @@ When reading the repository, use this mental model:
 - **Package** = the reusable implementation unit in this repo
 
 If you maintain that distinction, the repository becomes much easier to navigate.
+
+## Recommended first package set
+
+A good starting cluster is the set derived from *Enforceable Authority Without Legitimate Control*:
+
+- `patterns/authority-legitimacy-validation`
+- `overlays/legitimate-control-enforcement`
+- `evidence/legitimate-control-decision-receipt`
+
+Together they show the difference between modeling authority, modeling control, and modeling the evidence needed to prove that control actually held.

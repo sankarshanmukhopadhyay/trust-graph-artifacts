@@ -1,0 +1,50 @@
+id: ttg-artifact-009
+title: Systemic Controller Registry Entry
+status: draft
+source:
+  essay_title: 'Systemic Controllers: How Hidden Levers in Digital Infrastructure
+    Create Real-World Risk'
+  essay_url: https://thetrustgraph.substack.com/p/systemic-controllers-how-hidden-levers
+  published_date: '2025-12-09'
+signal:
+  engagement_rate: 8.33
+  tier: C
+classification:
+  artifact_type:
+  - schema
+  - mapping
+  - control-model
+  domain:
+  - controllers
+  - infrastructure
+  - risk
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - enforcement
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-010
+  - ttg-artifact-012
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: bindings/tsmm/projections/systemic-controllers.yaml
+  entity_registry: entities/registry.yaml
+  control_registry: controls/registry.yaml
+  tsmm_version: v0.16.0

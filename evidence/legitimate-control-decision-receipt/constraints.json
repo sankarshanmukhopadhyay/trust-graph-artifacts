@@ -1,0 +1,33 @@
+{
+  "packageId": "ttg.evidence-model.legitimate-control-decision-receipt",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.authority-reference-required",
+      "type": "authority-reference",
+      "description": "Receipt must identify the authority and issuer presented for the action."
+    },
+    {
+      "id": "control.reasoning-trace-required",
+      "type": "trace-reconstruction",
+      "description": "Receipt must reference a reconstructable reasoning trace or contribution record."
+    },
+    {
+      "id": "control.redress-state-required",
+      "type": "redress-state",
+      "description": "Receipt must record rollback, escalation, or compensation posture for the action."
+    },
+    {
+      "id": "control.verification-window-required",
+      "type": "verification-window",
+      "description": "Receipt must be available within the declared post-action verification window."
+    }
+  ],
+  "failureModes": [
+    "Action taken with no receipt linking authority, policy, and decision",
+    "Receipt exists but lacks attributable reasoning or contribution references",
+    "Receipt cannot show remediation state for the harm class",
+    "Receipt is emitted too late to support governance or review"
+  ],
+  "decisionPolicy": "Consequential actions MUST emit a receipt that makes legitimacy, attribution, and remediation reviewable."
+}

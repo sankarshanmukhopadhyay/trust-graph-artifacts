@@ -1,0 +1,25 @@
+{
+  "packageId": "ttg.pattern.authority-legitimacy-validation",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.authority.legitimacy.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Receipt proving that authority legitimacy was evaluated rather than merely assumed.",
+      "supportsRefs": [
+        "policy.legitimacy.check",
+        "decision.legitimacy",
+        "control.issuer-trust-check",
+        "control.scope-validity-check",
+        "control.revocation-freshness",
+        "control.contextual-admissibility"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "issuer identity and trust anchor",
+    "scope asserted at issuance and scope presented at execution",
+    "revocation status with freshness timestamp",
+    "policy version and contextual inputs",
+    "final decision outcome and enforcement target"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "graphId": "ttg.overlay.legitimate-control-enforcement",
+  "label": "Legitimate Control Enforcement Overlay",
+  "description": "TSMM-native overlay for revocation latency, attributable audit, redress proportionality, and designated accountability.",
+  "profile": "overlay",
+  "contexts": [
+    "context.legitimate-control-enforcement"
+  ],
+  "nodes": [
+    {
+      "id": "context.legitimate-control-enforcement",
+      "type": "TrustDomain",
+      "label": "Legitimate control overlay domain",
+      "description": "Domain where control-side mechanisms must operate at execution speed."
+    },
+    {
+      "id": "authority.accountable.operator",
+      "type": "GovernanceAuthority",
+      "label": "Accountable operator",
+      "description": "Named operator with authority to invoke revocation, audit, and redress primitives."
+    },
+    {
+      "id": "policy.legitimate.control",
+      "type": "Policy",
+      "label": "Legitimate control policy",
+      "description": "Specifies control-side thresholds for deployed systems."
+    },
+    {
+      "id": "agent.controlled.service",
+      "type": "Agent",
+      "label": "Controlled service",
+      "description": "Service whose actions must remain interruptible, attributable, and remediable."
+    },
+    {
+      "id": "assessment.control.readiness",
+      "type": "Assessment",
+      "label": "Control readiness assessment",
+      "description": "Assesses whether the service satisfies the overlay thresholds."
+    },
+    {
+      "id": "decision.control.gate",
+      "type": "TrustDecision",
+      "label": "Control gate decision",
+      "description": "Allows, restricts, or escalates service operation based on overlay compliance."
+    },
+    {
+      "id": "evidence.control.receipt",
+      "type": "EvidenceBundle",
+      "label": "Legitimate control receipt",
+      "description": "Evidence showing revocation, audit, attribution, and redress readiness."
+    },
+    {
+      "id": "effect.control.enforcement",
+      "type": "Effect",
+      "label": "Control enforcement effect",
+      "description": "Applies an operational boundary when the overlay is not met."
+    },
+    {
+      "id": "registry.governance.record",
+      "type": "TrustRegistry",
+      "label": "Governance designation record",
+      "description": "Publishes accountable operator designation and control commitments."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.defines.policy",
+      "type": "invalidRelation",
+      "from": "authority.accountable.operator",
+      "to": "policy.legitimate.control",
+      "description": "Accountable operator defines the legitimate control overlay."
+    },
+    {
+      "id": "edge.policy.constrains.service",
+      "type": "constrains",
+      "from": "policy.legitimate.control",
+      "to": "agent.controlled.service",
+      "description": "Overlay constrains the service with control-side requirements."
+    },
+    {
+      "id": "edge.assessment.assesses.service",
+      "type": "assesses",
+      "from": "assessment.control.readiness",
+      "to": "agent.controlled.service",
+      "description": "Assessment evaluates the service against the overlay thresholds.",
+      "evidenceRefs": [
+        "evidence.control.receipt"
+      ]
+    },
+    {
+      "id": "edge.assessment.informs.decision",
+      "type": "informs",
+      "from": "assessment.control.readiness",
+      "to": "decision.control.gate",
+      "description": "Assessment outcome informs the operational gate."
+    },
+    {
+      "id": "edge.decision.produces.evidence",
+      "type": "produces",
+      "from": "decision.control.gate",
+      "to": "evidence.control.receipt",
+      "description": "Gate decision emits a receipt showing whether control requirements were met."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.control.gate",
+      "to": "effect.control.enforcement",
+      "description": "Gate decision produces enforcement effect."
+    },
+    {
+      "id": "edge.authority.publishes.record",
+      "type": "publishes",
+      "from": "authority.accountable.operator",
+      "to": "registry.governance.record",
+      "description": "Accountable operator publishes a signed governance designation record."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/enforceable-authority-without-legitimate",
+    "focus": "control-stack-thresholds"
+  }
+}
