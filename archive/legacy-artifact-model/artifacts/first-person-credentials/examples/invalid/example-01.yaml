@@ -1,8 +1,0 @@
-assertion_id: fpae-002
-subject_id: did:example:anita
-claim:
-  type: employment-eligibility
-attestation_method: self-signed
-evidence_links: []
-counterparty_requirements: []
-confidence_score: 1.3

@@ -1,7 +1,0 @@
-mandate_id: mandate-002
-issuer: did:example:lender
-operator: did:example:loan-agent
-permitted_actions: []
-prohibited_actions: []
-escalation_rules: []
-evidence_requirements: []

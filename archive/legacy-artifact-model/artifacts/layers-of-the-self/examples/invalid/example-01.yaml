@@ -1,9 +1,0 @@
-projection_id: cip-002
-base_identity_reference: did:example:maya
-active_role: licensed-clinician
-context: telehealth-consultation
-attribute_subset: []
-disclosure_policy:
-  permitted_use: provider-verification
-linkage_rules:
-  correlatable: maybe

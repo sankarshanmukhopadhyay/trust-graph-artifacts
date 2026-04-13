@@ -1,8 +1,0 @@
-consent_id: ces-002
-subject_id: did:example:reva
-controller_id: did:example:health-app
-purpose_binding: general-service-improvement
-permitted_actions: []
-constraints:
-  jurisdiction: IN
-  data_category: []

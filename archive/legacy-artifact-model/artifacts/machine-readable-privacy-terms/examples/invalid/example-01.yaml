@@ -1,9 +1,0 @@
-profile_id: ptep-002
-allowed_purposes: []
-prohibited_uses: []
-retention:
-  max_duration: ''
-  deletion_mode: keep
-transfer_policy:
-  allow_onward_transfer: true
-complaint_channel: ''
