@@ -1,6 +1,9 @@
 name: validate-tsmm-native
 
 on:
+  # Validate all package classes on every push to main and on every pull request.
+  # This keeps the repository trustworthy as a developer-facing corpus rather than
+  # allowing invalid examples or broken package metadata to accumulate silently.
   push:
     branches: [ main ]
   pull_request:

@@ -177,5 +177,6 @@
       "additionalProperties": false
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$comment": "This schema is part of the developer-facing contract for the TSMM-native repository. It exists both to enforce structural consistency and to make package expectations legible to contributors."
 }

@@ -1,16 +1,31 @@
-# Profile Taxonomy
+# Package taxonomy
+
+Choosing the right package type is an architectural decision.
 
 ## Profile
-Use when the primary output is a bounded trust-system profile that another implementer could adopt or compare.
+
+Use a **profile** when the package represents a reusable trust-system configuration with bounded roles, controls, and decisions.
 
 ## Pattern
-Use when the primary output is a recurring structural arrangement such as delegation, hidden control, or mandate decomposition.
+
+Use a **pattern** when the package captures a recurring governance or control arrangement that can appear in multiple systems.
 
 ## Overlay
-Use when the primary output modifies or constrains other structures by adding policy, governance, or interpretive rules.
+
+Use an **overlay** when the package applies cross-cutting policy or governance constraints across other packages.
 
 ## System
-Use when the primary output is a worked trust-system model with named actors and explicit effect production.
 
-## Evidence model
-Use when the primary output is the proof surface itself: what evidence must exist, how it is verified, and how decisions become accountable.
+Use a **system** when the package models a worked end-to-end arrangement with named actors and operational effects.
+
+## Evidence-model
+
+Use an **evidence-model** when the package primarily defines what proof, receipt, verification output, or audit trace must be produced.
+
+## Practical test
+
+Ask this question:
+
+> Is the package mainly about reusable structure, recurring behavior, cross-cutting constraint, composed operation, or proof output?
+
+The answer usually points to the correct package type.

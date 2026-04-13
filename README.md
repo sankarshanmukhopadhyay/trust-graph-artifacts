@@ -1,80 +1,203 @@
 # Trust Graph TSMM Patterns
 
-## TSMM-native trust system profiles, patterns, overlays, systems, and evidence models derived from The Trust Graph
+**A TSMM-native pattern and profile library derived from The Trust Graph.**
 
-This repository operationalizes concepts from **The Trust Graph** as **TSMM-native packages**.
+This repository sits at the line between two things that are often blurred together:
 
-The governing idea is simple:
+- **Trust Systems Meta Model (TSMM)** provides the structural grammar for modeling trust systems
+- **The Trust Graph** provides the conceptual pressure, problem selection, and architectural stance
 
-- **TSMM** supplies the meta-model and system grammar
-- **The essays** supply the problem framing, conceptual pressure, and package selection logic
-- **This repository** turns those essay-derived concepts into native TSMM profiles, patterns, overlays, systems, and evidence models
+This repository exists to make that line explicit and useful.
 
-There is no secondary structural model in this repository. TSMM is the only grammar used to design, describe, and validate the corpus.
+It does **not** treat essays as executable truth. It treats them as a source of questions and design pressure.
+It does **not** treat TSMM as a loose reference. It treats TSMM as the only modeling language allowed in the repository.
 
-## Why this repo exists
+The result is a corpus of **TSMM-native packages** that help developers and software architects move from:
 
-The essays argue that governance becomes real only when it is executable at the layer where systems decide, constrain, permit, deny, propagate, and record effects. A narrative claim is not yet infrastructure. It becomes infrastructure when it can be represented as policy, authority, evidence, decision, effect, and lifecycle semantics.
+- interesting governance claims
+- to concrete system shapes
+- to testable structures
+- to evidence-bearing decisions
 
-This repository exists to make that conversion explicit.
+## The core distinction
+
+### What TSMM does
+
+TSMM is the **meta model**.
+It gives this repository a shared vocabulary for expressing:
+
+- entities and roles
+- authority and delegation
+- controls and constraints
+- decisions and effects
+- evidence and auditability
+- lifecycle and revocation
+
+TSMM answers the question:
+
+> **What is the structure of a trust system?**
+
+### What The Trust Graph does
+
+The Trust Graph is the **concept source**.
+It frames the operational problems that matter:
+
+- why identity without authority is insufficient
+- why revocation that does not propagate is governance theater
+- why logs are not the same as decision evidence
+- why contestability must exist at execution time, not only in policy language
+
+The essays answer the question:
+
+> **Which trust problems are worth modeling, and why do they fail in practice?**
+
+### What this repository does
+
+This repository is the implementation layer between the two.
+
+It answers the question:
+
+> **How do we express an essay-derived trust problem as a TSMM-native, developer-usable package?**
+
+That is the repository’s real intent.
+
+## Who this repository is for
+
+### For developers
+
+Use this repository when you need examples of how governance-heavy concepts can be represented as machine-readable trust-system components.
+
+A package gives you:
+
+- a `graph.json` describing the TSMM-native structure
+- a `constraints.json` describing operational controls and failure boundaries
+- an `evidence.json` describing the proof surfaces the system must emit
+- valid and invalid examples
+- a test vector the validator can exercise
+
+### For software architects
+
+Use this repository to study how architectural choices become governance choices.
+
+The packages are intentionally opinionated. They foreground:
+
+- bounded authority
+- constrained delegation
+- verification and admissibility
+- evidence-bearing trust decisions
+- revocation and lifecycle semantics
+
+The point is not just to model systems. The point is to model systems in a way that makes governance legible at execution time.
+
+## Start here
+
+If you are new to the repository, read these in order:
+
+1. [`docs/quickstart.md`](docs/quickstart.md)
+2. [`docs/architecture.md`](docs/architecture.md)
+3. [`docs/tsmm-and-the-trust-graph.md`](docs/tsmm-and-the-trust-graph.md)
+4. [`docs/package-anatomy.md`](docs/package-anatomy.md)
+5. [`docs/methodology.md`](docs/methodology.md)
+6. [`docs/authoring-model.md`](docs/authoring-model.md)
+
+Then browse:
+
+- [`profiles/`](profiles/)
+- [`patterns/`](patterns/)
+- [`overlays/`](overlays/)
+- [`systems/`](systems/)
+- [`evidence/`](evidence/)
 
 ## Repository structure
 
 ```text
 .
-├── profiles/      # TSMM-native profiles
-├── patterns/      # TSMM-native patterns
-├── overlays/      # TSMM-native overlays
-├── systems/       # TSMM-native system models
-├── evidence/      # TSMM-native evidence models
-├── essays/        # source essay catalog
-├── provenance/    # essay-to-package provenance records
-├── registries/    # shared machine-readable registries
-├── schemas/       # validation schemas
-├── scripts/       # validation and maintenance scripts
-├── validation/    # validation matrix and notes
-└── docs/          # methodology, taxonomy, and governance docs
+├── profiles/      # Reusable TSMM-native trust system profiles
+├── patterns/      # Recurring governance and control structures
+├── overlays/      # Cross-cutting policy and governance constraints
+├── systems/       # Worked system compositions with named actors and effects
+├── evidence/      # Evidence and decision-receipt models
+├── essays/        # Catalog of source essays from The Trust Graph
+├── provenance/    # Essay-to-package provenance records
+├── registries/    # Shared entity, control, evidence, decision, and lifecycle vocabularies
+├── schemas/       # JSON Schemas for package and graph validation
+├── scripts/       # Validation and repository maintenance scripts
+├── validation/    # Validation matrix and execution notes
+└── docs/          # Developer and architecture documentation
 ```
 
 ## Package taxonomy
 
-Every package in this repository is one of:
+Every package in this repository is one of the following:
 
-- **profile** — a bounded, reusable trust-system profile
-- **pattern** — a recurring trust-system structure or control arrangement
-- **overlay** — a policy or governance layer applied across other structures
-- **system** — a worked trust-system model with named actors and effects
-- **evidence-model** — an explicit model of proof, receipt, and verification expectations
+- **profile** — a bounded trust-system configuration meant for reuse
+- **pattern** — a recurring control or governance arrangement
+- **overlay** — a cross-cutting policy layer applied to other structures
+- **system** — a composed trust-system model with concrete actors and effects
+- **evidence-model** — a model of what the system must produce to justify actions and decisions
 
-## Validation
+The important point is that these are all **TSMM-native package types**.
+They are not artifacts waiting to be translated.
 
-Validation is native.
+## Validation model
 
-The repository validates:
+Validation is intentionally simple and developer-friendly.
 
-- `package.json` against `schemas/tsmm-native-package.schema.json`
-- `graph.json` against `schemas/tsmm-graph.schema.json`
-- valid examples must pass
-- invalid examples must fail
-- package references must resolve to local TSMM-native files
+The repository checks that:
 
-Run:
+- `package.json` conforms to the native package schema
+- `graph.json` conforms to the TSMM graph schema
+- the valid example passes schema validation
+- the invalid example fails schema validation
+- references between package surfaces resolve locally
+
+Run locally:
 
 ```bash
 python3 scripts/validate_tsmm_native.py
 ```
 
-## Start here
+See [`validation/README.md`](validation/README.md) for the execution model and what is currently in scope.
 
-- `docs/methodology.md`
-- `docs/essay-to-tsmm-method.md`
-- `docs/profile-taxonomy.md`
-- `docs/authoring-model.md`
-- `provenance/essay-source-map.yaml`
-- `essays/source-catalog.yaml`
+## How to read a package
 
-## Strategic position
+Every package README now explains three different things separately:
 
-This repository is a **standalone TSMM-native pattern and profile library**.
+1. **The essay contribution** — what conceptual pressure came from The Trust Graph
+2. **The TSMM contribution** — how that pressure is expressed structurally
+3. **The implementation contribution** — what a developer can reuse, inspect, validate, or extend
 
-It is not a fork of TSMM and not a translation repository. It is a distinct implementation corpus that uses TSMM as its only design grammar while remaining explicitly sourced from The Trust Graph essays.
+That separation is deliberate. It is the fastest way to understand what belongs to the essay, what belongs to TSMM, and what belongs to the package authoring layer.
+
+## Design stance
+
+This repository is opinionated.
+
+It assumes that governance only becomes credible when it is visible in system structure.
+That means packages in this repository favor:
+
+- explicit decision points over implied behavior
+- bounded scope over ambient authority
+- evidence outputs over narrative assertions
+- lifecycle semantics over static eligibility
+- contestability and reviewability over silent automation
+
+## Contribution model
+
+Contributions should preserve the line between concept and model.
+
+A good contribution does not paste an essay into a schema.
+A good contribution does not invent new package structure when TSMM-native structure already exists.
+A good contribution:
+
+- identifies the trust problem clearly
+- classifies it into the right package type
+- models it using the existing TSMM-native grammar
+- adds examples and validation cases
+- explains what a developer or architect should learn from it
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/authoring-model.md`](docs/authoring-model.md).
+
+## In one sentence
+
+**TSMM provides the modeling discipline. The Trust Graph provides the reason to model these problems at all. This repository turns that relationship into reusable, testable packages.**
