@@ -1,0 +1,29 @@
+{
+  "id": "ttg.overlay.after-consent",
+  "title": "Delegated Consent Protection Policy",
+  "kind": "overlay",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "After Consent: Rebuilding Choice, Delegation, and Protection for an AI-Mediated World",
+    "url": "https://thetrustgraph.substack.com/p/after-consent",
+    "publishedDate": "2025-12-23"
+  },
+  "signal": {
+    "tier": "B",
+    "engagementRate": 17.65
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "overlay",
+    "consent",
+    "delegation",
+    "protection"
+  ],
+  "notes": [
+    "TSMM-native overlay for delegated consent protection in AI-mediated action chains."
+  ]
+}

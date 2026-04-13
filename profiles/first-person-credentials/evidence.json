@@ -1,0 +1,51 @@
+{
+  "packageId": "ttg.profile.first-person-credentials",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.assertion-envelope",
+      "artifactType": "assertion-envelope",
+      "description": "Structured first-person assertion with subject binding, claim, and evidence links",
+      "supportsRefs": []
+    },
+    {
+      "id": "evidence.admissibility-record",
+      "artifactType": "decision-receipt",
+      "description": "Record of counterparty admissibility decision and verification outcome",
+      "supportsRefs": []
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.assertion-envelope",
+      "method": "schema-validation",
+      "performedBy": "entity.verifier",
+      "controlRefs": [
+        "control.assertion-binding",
+        "control.evidence-link-integrity",
+        "control.dispute-endpoint-required"
+      ],
+      "inputRefs": []
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.first-person.admissibility",
+      "policyRef": "policy.first-person.admissibility",
+      "verificationRefs": [
+        "verification.assertion-envelope"
+      ],
+      "effectRefs": [
+        "effect.accept-assertion",
+        "effect.challenge-assertion",
+        "effect.reject-assertion"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/tga-tsmm-native/schemas/tsmm-native-package.schema.json",
+  "title": "TGA TSMM Native Package",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "kind",
+    "status",
+    "sourceEssay",
+    "tsmm"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "profile",
+        "pattern",
+        "overlay",
+        "system",
+        "evidence-model"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "experimental",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "sourceEssay": {
+      "type": "object",
+      "required": [
+        "title",
+        "url",
+        "publishedDate"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "publishedDate": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "signal": {
+      "type": "object"
+    },
+    "tsmm": {
+      "type": "object",
+      "required": [
+        "graph",
+        "constraints",
+        "evidence"
+      ],
+      "properties": {
+        "graph": {
+          "type": "string"
+        },
+        "constraints": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

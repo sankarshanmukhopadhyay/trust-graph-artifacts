@@ -1,0 +1,29 @@
+{
+  "id": "ttg.profile.layers-of-the-self",
+  "title": "Contextual Identity Projection",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Layers of the Self",
+    "url": "pending-external-link",
+    "publishedDate": "2026-01-12"
+  },
+  "signal": {
+    "tier": "A",
+    "engagementRate": 20.0
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "profile",
+    "identity",
+    "disclosure",
+    "privacy"
+  ],
+  "notes": [
+    "TSMM-native profile for contextual identity projection, separation, and controlled linkage across domains."
+  ]
+}

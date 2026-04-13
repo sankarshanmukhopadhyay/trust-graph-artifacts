@@ -1,0 +1,98 @@
+{
+  "packageId": "ttg.evidence-model.execution-time-delegation",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.live-authority-check",
+      "type": "runtime-check",
+      "description": "Verify scope, freshness, and revocation at execution time"
+    },
+    {
+      "id": "control.decision-receipt",
+      "type": "receipt-generation",
+      "description": "Generate structured receipt for material delegated action"
+    },
+    {
+      "id": "control.cascading-stop",
+      "type": "revocation-stop",
+      "description": "Stop downstream effect when delegated authority is revoked"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.execution.time.delegation",
+      "rules": [
+        "Verify scope, freshness, and revocation at execution time",
+        "Generate structured receipt for material delegated action",
+        "Stop downstream effect when delegated authority is revoked"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.legitimacy-gap",
+      "type": "runtime-governance-failure",
+      "description": "Authority is transparent but not enforceable at execution time"
+    },
+    {
+      "id": "threat.stale-downstream-authority",
+      "type": "propagation-delay",
+      "description": "Downstream service acts on stale delegated authority"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.resume",
+        "from": "state.suspended",
+        "to": "state.active",
+        "trigger": "issue resolved",
+        "actor": "policy authority or maintainer",
+        "evidenceRequirement": "updated evidence or corrected policy"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.active",
+        "to": "state.expired",
+        "trigger": "time bound or freshness window elapsed",
+        "actor": "system",
+        "evidenceRequirement": "timestamp comparison or expiry check"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

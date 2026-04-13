@@ -1,0 +1,88 @@
+{
+  "packageId": "ttg.profile.first-person-credentials",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.assertion-binding",
+      "type": "assertion-binding",
+      "description": "Bind a first-person assertion cryptographically to the originating subject"
+    },
+    {
+      "id": "control.evidence-link-integrity",
+      "type": "evidence-integrity",
+      "description": "Require supporting evidence references for material first-person claims"
+    },
+    {
+      "id": "control.counterparty-policy-check",
+      "type": "admissibility-check",
+      "description": "Require evaluation against declared acceptance requirements"
+    },
+    {
+      "id": "control.dispute-endpoint-required",
+      "type": "contestability",
+      "description": "Require a challenge path for corrections and disputes"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.first-person.admissibility",
+      "rules": [
+        "Require a bound subject identifier and attestation method",
+        "Require at least one supporting or corroborating evidence link for material claims",
+        "Require a dispute endpoint for contested assertions"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.unbound-assertion",
+      "label": "Unbound Assertion",
+      "description": "A first-person claim is presented without trustworthy binding to the originating subject"
+    },
+    {
+      "id": "threat.non-contestable-acceptance",
+      "label": "Non-Contestable Acceptance",
+      "description": "A counterparty accepts or rejects a material assertion without a challenge path"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "from": "issued",
+        "to": "active",
+        "trigger": "assertion-published"
+      },
+      {
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence-under-challenge"
+      },
+      {
+        "from": "active",
+        "to": "revoked",
+        "trigger": "subject-withdraws-or-supersedes-assertion"
+      },
+      {
+        "from": "active",
+        "to": "expired",
+        "trigger": "valid-until-reached"
+      },
+      {
+        "from": "suspended",
+        "to": "active",
+        "trigger": "challenge-resolved-and-assertion-maintained"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

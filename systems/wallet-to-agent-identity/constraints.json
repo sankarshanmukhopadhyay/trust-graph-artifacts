@@ -1,0 +1,98 @@
+{
+  "packageId": "ttg.system.wallet-to-agent-identity",
+  "kind": "system",
+  "controlSet": [
+    {
+      "id": "control.binding-integrity",
+      "type": "binding-validation",
+      "description": "Ensure wallet-agent binding is intact and current"
+    },
+    {
+      "id": "control.session-scope",
+      "type": "context-bound-scope",
+      "description": "Restrict execution to declared session or task context"
+    },
+    {
+      "id": "control.detach-on-revoke",
+      "type": "revocation-propagation",
+      "description": "Terminate binding when wallet authorization is withdrawn"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.wallet.to.agent.identity",
+      "rules": [
+        "Ensure wallet-agent binding is intact and current",
+        "Restrict execution to declared session or task context",
+        "Terminate binding when wallet authorization is withdrawn"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.identity-authority-collapse",
+      "type": "scope-confusion",
+      "description": "Identity proof is mistaken for execution authority"
+    },
+    {
+      "id": "threat.stale-binding",
+      "type": "stale-state",
+      "description": "Revoked wallet-agent linkage remains usable downstream"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.resume",
+        "from": "state.suspended",
+        "to": "state.active",
+        "trigger": "issue resolved",
+        "actor": "policy authority or maintainer",
+        "evidenceRequirement": "updated evidence or corrected policy"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.active",
+        "to": "state.expired",
+        "trigger": "time bound or freshness window elapsed",
+        "actor": "system",
+        "evidenceRequirement": "timestamp comparison or expiry check"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

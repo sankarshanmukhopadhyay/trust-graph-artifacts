@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.systemic-controllers",
+  "title": "Systemic Controller Registry Entry",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Systemic Controllers: How Hidden Levers in Digital Infrastructure Create Real-World Risk",
+    "url": "https://thetrustgraph.substack.com/p/systemic-controllers-how-hidden-levers",
+    "publishedDate": "2025-12-09"
+  },
+  "signal": {
+    "tier": "C",
+    "engagementRate": 8.33
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "controllers",
+    "infrastructure",
+    "risk"
+  ],
+  "notes": [
+    "TSMM-native pattern for identifying hidden control surfaces, institutional leverage, and downstream risk effects."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.profile.portable-eligibility",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.portable.eligibility.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Portable Eligibility Credential Profile.",
+      "supportsRefs": [
+        "policy.portable.eligibility",
+        "decision.portable.eligibility",
+        "control.portability-bounds",
+        "control.eligibility-freshness",
+        "control.dependency-disclosure"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.portable.eligibility",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.portable.eligibility",
+        "evidence.portable.eligibility.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.portable.eligibility",
+      "policyRef": "policy.portable.eligibility",
+      "verificationRefs": [
+        "verification.portable.eligibility"
+      ],
+      "effectRefs": [
+        "effect.grant-market-access",
+        "effect.require-step-up-check",
+        "effect.deny-portability"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.system.wallet-to-agent-identity",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.wallet.agent.binding.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Wallet-Agent Binding Contract.",
+      "supportsRefs": [
+        "policy.wallet.to.agent.identity",
+        "decision.wallet.agent.binding",
+        "control.binding-integrity",
+        "control.session-scope",
+        "control.detach-on-revoke"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.wallet.to.agent.identity",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.wallet.to.agent.identity",
+        "evidence.wallet.agent.binding.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.wallet.agent.binding",
+      "policyRef": "policy.wallet.to.agent.identity",
+      "verificationRefs": [
+        "verification.wallet.to.agent.identity"
+      ],
+      "effectRefs": [
+        "effect.allow-bound-execution",
+        "effect.block-unbound-execution",
+        "effect.detach-agent-binding"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

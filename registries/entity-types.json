@@ -1,0 +1,46 @@
+{
+  "version": "0.1.0",
+  "description": "Shared TSMM-addressable entity roles used by the Trust Graph TSMM-native corpus.",
+  "entityTypes": [
+    {
+      "id": "Subject",
+      "tsmmNodeType": "Subject",
+      "description": "Human or organizational principal affected by the trust decision."
+    },
+    {
+      "id": "Agent",
+      "tsmmNodeType": "Agent",
+      "description": "Software actor exercising delegated or bounded authority."
+    },
+    {
+      "id": "Verifier",
+      "tsmmNodeType": "Verifier",
+      "description": "Actor that evaluates evidence, attestations, or constraints."
+    },
+    {
+      "id": "RelyingParty",
+      "tsmmNodeType": "RelyingParty",
+      "description": "Decision consumer relying on assertions or effects."
+    },
+    {
+      "id": "GovernanceAuthority",
+      "tsmmNodeType": "GovernanceAuthority",
+      "description": "Actor defining policy, adjudication, or institutional governance."
+    },
+    {
+      "id": "TrustRegistry",
+      "tsmmNodeType": "TrustRegistry",
+      "description": "Registry actor or surface for authority publication and discovery."
+    },
+    {
+      "id": "RegistryService",
+      "tsmmNodeType": "RegistryService",
+      "description": "Service endpoint exposing registry or policy functionality."
+    },
+    {
+      "id": "Issuer",
+      "tsmmNodeType": "Issuer",
+      "description": "Actor issuing credentials or authoritative assertions."
+    }
+  ]
+}

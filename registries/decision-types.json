@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0",
+  "decisionTypes": [
+    {
+      "id": "decision.after-consent.enforcement"
+    },
+    {
+      "id": "decision.agent.mandate"
+    },
+    {
+      "id": "decision.consent.execution"
+    },
+    {
+      "id": "decision.delegation.chain"
+    },
+    {
+      "id": "decision.execution.delegation"
+    },
+    {
+      "id": "decision.first-person.admissibility"
+    },
+    {
+      "id": "decision.identity-projection"
+    },
+    {
+      "id": "decision.narrative.control"
+    },
+    {
+      "id": "decision.portable.eligibility"
+    },
+    {
+      "id": "decision.privacy.term"
+    },
+    {
+      "id": "decision.proof.requirement"
+    },
+    {
+      "id": "decision.registry.governance"
+    },
+    {
+      "id": "decision.systemic.controller"
+    },
+    {
+      "id": "decision.verification.policy"
+    },
+    {
+      "id": "decision.wallet.agent.binding"
+    }
+  ]
+}

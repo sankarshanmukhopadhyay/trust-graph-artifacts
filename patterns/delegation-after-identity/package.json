@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.delegation-after-identity",
+  "title": "Delegation Chain Policy",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Delegation After Identity",
+    "url": "https://thetrustgraph.substack.com/p/delegation-after-identity",
+    "publishedDate": "2026-02-18"
+  },
+  "signal": {
+    "tier": "B",
+    "engagementRate": 18.18
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "delegation",
+    "identity",
+    "agents"
+  ],
+  "notes": [
+    "TSMM-native delegation pattern for bounded authority, scope inheritance, and revocation-aware chains."
+  ]
+}

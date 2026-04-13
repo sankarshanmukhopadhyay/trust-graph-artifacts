@@ -1,0 +1,249 @@
+{
+  "graphId": "ttg.profile.layers-of-the-self",
+  "label": "Contextual Identity Projection",
+  "description": "TSMM-native profile for contextual identity projection, separation, and controlled linkage across domains.",
+  "profile": "profile",
+  "contexts": [
+    "context.layers-of-the-self"
+  ],
+  "nodes": [
+    {
+      "id": "context.layers-of-the-self",
+      "type": "TrustDomain",
+      "label": "Contextual identity projection context",
+      "description": "Trust Graph operationalization of bounded identity disclosure and correlation control."
+    },
+    {
+      "id": "profile.contextual.identity.projection",
+      "type": "AssuranceProfile",
+      "label": "Contextual Identity Projection",
+      "attributes": {
+        "constraintSetRef": "artifacts/layers-of-the-self/schemas/contextual-identity-projection.yaml"
+      }
+    },
+    {
+      "id": "policy.identity.projection",
+      "type": "Policy",
+      "label": "Contextual Disclosure Policy",
+      "attributes": {
+        "decisionMode": "deterministic"
+      }
+    },
+    {
+      "id": "entity.base-identity-holder",
+      "type": "Subject",
+      "label": "Base Identity Holder",
+      "description": "Holder of the base identity from which projections are derived",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.wallet",
+      "type": "Subject",
+      "label": "Wallet",
+      "description": "Wallet or holder surface carrying the contextual projection",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.presentation-verifier",
+      "type": "Verifier",
+      "label": "Presentation Verifier",
+      "description": "Verifier checking validity, audience, and minimization bounds",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.linkage-authority",
+      "type": "GovernanceAuthority",
+      "label": "Linkage Authority",
+      "description": "Authority permitted to correlate a projection back to the base identity under declared rules",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.identity-projection",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Identity Projection",
+      "description": "Contextual projection containing role, context, attribute subset, and disclosure policy",
+      "attributes": {
+        "artifactType": "projection-record"
+      }
+    },
+    {
+      "id": "evidence.presentation-record",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Presentation Record",
+      "description": "Record of audience, permitted use, and verification outcome for each projection presentation",
+      "attributes": {
+        "artifactType": "presentation-receipt"
+      }
+    },
+    {
+      "id": "verification.identity-projection",
+      "type": "Assessment",
+      "label": "Verify projection disclosure bounds",
+      "attributes": {
+        "method": ""
+      }
+    },
+    {
+      "id": "decision.identity-projection",
+      "type": "TrustDecision",
+      "label": "Determine whether the projection is acceptable for the declared context",
+      "attributes": {
+        "outcomeModes": []
+      }
+    },
+    {
+      "id": "effect.accept-projection",
+      "type": "Effect",
+      "label": "Accept Projection",
+      "description": "Accept the projection for the declared audience and use",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "permit"
+      }
+    },
+    {
+      "id": "effect.limit-projection",
+      "type": "Effect",
+      "label": "Limit Projection",
+      "description": "Require a narrower subset or stricter presentation condition",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "modify"
+      }
+    },
+    {
+      "id": "effect.reject-projection",
+      "type": "Effect",
+      "label": "Reject Projection",
+      "description": "Reject the projection because context, audience, or correlation rules are violated",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "deny"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "layers-of-the-self.edge.context-profile",
+      "type": "anchors",
+      "from": "context.layers-of-the-self",
+      "to": "profile.contextual.identity.projection",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "layers-of-the-self.edge.profile-policy.projection",
+      "type": "defines",
+      "from": "profile.contextual.identity.projection",
+      "to": "policy.identity.projection",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "layers-of-the-self.edge.context-policy.projection",
+      "type": "governs",
+      "from": "context.layers-of-the-self",
+      "to": "policy.identity.projection",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "layers-of-the-self.rel.1",
+      "type": "reliesOn",
+      "from": "entity.base-identity-holder",
+      "to": "profile.contextual.identity.projection",
+      "description": "Base identity holder derives a bounded projection"
+    },
+    {
+      "id": "layers-of-the-self.rel.2",
+      "type": "reliesOn",
+      "from": "entity.wallet",
+      "to": "profile.contextual.identity.projection",
+      "description": "Wallet presents the projection within declared audience and use"
+    },
+    {
+      "id": "layers-of-the-self.rel.3",
+      "type": "verifies",
+      "from": "entity.presentation-verifier",
+      "to": "profile.contextual.identity.projection",
+      "description": "Verifier checks context, minimization, and validity before acceptance"
+    },
+    {
+      "id": "layers-of-the-self.rel.4",
+      "type": "reliesOn",
+      "from": "entity.linkage-authority",
+      "to": "entity.base-identity-holder",
+      "description": "Linkage authority may correlate the projection only when explicitly allowed"
+    },
+    {
+      "id": "layers-of-the-self.edge.evidence-assessment.identity-projection",
+      "type": "substantiates",
+      "from": "evidence.identity-projection",
+      "to": "verification.identity-projection",
+      "description": "Evidence substantiates the assessment."
+    },
+    {
+      "id": "layers-of-the-self.edge.assessment-decision.identity-projection.identity-projection",
+      "type": "informs",
+      "from": "verification.identity-projection",
+      "to": "decision.identity-projection",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "layers-of-the-self.edge.decision-effect.identity-projection.accept-projection",
+      "type": "produces",
+      "from": "decision.identity-projection",
+      "to": "effect.accept-projection",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "layers-of-the-self.edge.decision-effect.identity-projection.limit-projection",
+      "type": "produces",
+      "from": "decision.identity-projection",
+      "to": "effect.limit-projection",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "layers-of-the-self.edge.decision-effect.identity-projection.reject-projection",
+      "type": "produces",
+      "from": "decision.identity-projection",
+      "to": "effect.reject-projection",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "layers-of-the-self.edge.policy-decision.identity-projection",
+      "type": "informs",
+      "from": "policy.identity.projection",
+      "to": "decision.identity-projection",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "layers-of-the-self.edge.policy-entity.projection",
+      "type": "constrains",
+      "from": "policy.identity.projection",
+      "to": "entity.base-identity-holder",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Layers of the Self",
+    "sourceUrl": "pending-external-link",
+    "publishedDate": "2026-01-12",
+    "signalTier": "A",
+    "engagementRate": 20.0,
+    "packageKind": "profile"
+  }
+}

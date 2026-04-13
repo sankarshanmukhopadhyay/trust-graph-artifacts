@@ -1,228 +1,114 @@
-# trust-graph-artifacts
+# trust-graph-tsmm-native
 
-## Converting Governance from Narrative to Infrastructure
+## TSMM-native trust system profiles and patterns derived from The Trust Graph
 
-Most governance in digital systems is still expressed as narrative:
+This repository operationalizes concepts from **The Trust Graph** as **TSMM-native** packages.
 
-- policies describe intent
-- documentation describes constraints
-- audits describe outcomes
+The governing idea is simple:
 
-But at execution time, authority is exercised by systems that:
+- **TSMM** supplies the meta-model and system grammar
+- **The essays** supply the problem framing, conceptual pressure, and package selection logic
+- **This repository** turns those essay-derived concepts into native TSMM profiles, patterns, overlays, systems, and evidence models
 
-- validate inputs
-- apply rules
-- permit or deny actions
-- propagate effects across boundaries
+That means this repository no longer treats TSMM as a secondary binding layer. TSMM is the only structural grammar used to design and validate the corpus.
 
-If governance claims cannot be implemented, tested, revoked, and contested at this layer, they are not infrastructure.
+## Why this repo exists
 
-This repository exists to close that gap.
+The essays argue that governance becomes real only when it is executable at the layer where systems actually decide, constrain, permit, deny, propagate, and record effects. A narrative claim is not yet infrastructure. It becomes infrastructure when it can be represented as policy, authority, evidence, decision, effect, and lifecycle semantics.
 
----
+This repository exists to make that conversion explicit.
 
-## What this repository does
-
-This repository converts high-signal concepts from The Trust Graph into:
-
-- schemas
-- control models
-- artifact definitions
-- example payloads
-- validation structures
-
-Each artifact represents a governance claim that has been:
-
-1. observed in narrative form
-2. validated through audience signal
-3. formalized into a machine-legible structure
-4. prepared for testing and implementation
-
----
-
-## What qualifies as an artifact
-
-Artifacts are not created for every essay.
-
-An essay must demonstrate:
-
-- strong engagement signal (concept selection by audience)
-- structural clarity (can be modeled)
-- enforceability (can affect runtime behavior)
-- lifecycle semantics (can be revoked or superseded)
-
-See:
-
-- `evaluation/`
-- `SIGNAL_MODEL.md`
-
----
-
-## Repository structure
+## What is in the repository
 
 ```text
 .
-├── artifacts/
-├── essays/
-├── evaluation/
-├── shared/
-├── validation/
-└── docs/
+├── profiles/     # TSMM-native profiles
+├── patterns/     # TSMM-native patterns
+├── overlays/     # TSMM-native overlays
+├── systems/      # TSMM-native system models
+├── evidence/     # TSMM-native evidence models
+├── essays/       # source essay catalog and provenance
+├── mappings/     # essay-to-package crosswalks
+├── registries/   # shared machine-readable registries
+├── schemas/      # vendored schemas used for validation
+├── scripts/      # validation and index scripts
+├── validation/   # validation matrix and notes
+└── docs/         # methodology, taxonomy, and governance docs
 ```
 
-- `artifacts/` → executable governance constructs
-- `essays/` → source narrative context
-- `evaluation/` → selection and scoring of candidates
-- `shared/` → vocabularies and reusable components
-- `validation/` → conformance and test logic
-- `docs/` → system design and lifecycle
+## Package taxonomy
 
----
+Every package in this repository is one of:
 
-## Artifact lifecycle
+- **profile** — a bounded, reusable trust-system profile
+- **pattern** — a recurring trust-system structure or control arrangement
+- **overlay** — a policy or governance layer applied across other structures
+- **system** — a worked trust-system model with named actors and effects
+- **evidence-model** — an explicit model of proof, receipt, and verification expectations
 
-```text
-Idea → Essay → Evaluated → Draft → Experimental → Stable → Deprecated
+## Current corpus
+
+### Profiles
+- `profiles/first-person-credentials`
+- `profiles/layers-of-the-self`
+- `profiles/digital-credential-verification-policy-playbook`
+- `profiles/portable-eligibility`
+- `profiles/trust-registry-governance-model`
+
+### Patterns
+- `patterns/delegation-after-identity`
+- `patterns/your-agents-are-not-failing-your`
+- `patterns/systemic-controllers`
+
+### Overlays
+- `overlays/consent-not-data-structure`
+- `overlays/after-consent`
+- `overlays/machine-readable-privacy-terms`
+- `overlays/crisis-of-narrative-control`
+
+### Systems
+- `systems/wallet-to-agent-identity`
+
+### Evidence models
+- `evidence/the-proof-gap`
+- `evidence/execution-time-delegation`
+
+## Authoring stance
+
+The essay is not the artifact.
+
+The essay is the **source narrative** that qualifies a concept for formalization. The package is the **TSMM-native implementation surface**.
+
+That distinction matters because it keeps editorial argument and machine-verifiable structure separate while preserving explicit provenance between them.
+
+## Validation
+
+Validation is native, not translational.
+
+The repository validates:
+
+- `package.json` against `schemas/tsmm-native-package.schema.json`
+- `graph.json` against `schemas/tsmm-graph.schema.json`
+- valid examples must pass
+- invalid examples must fail
+
+Run:
+
+```bash
+python3 scripts/validate_tsmm_native.py
 ```
 
-Artifacts evolve. They are not static.
+## Start here
 
-Each artifact must declare:
-
-- status
-- lineage
-- validation state
-
----
-
-## Governance model
-
-### Authority
-
-Artifact creation and approval are controlled by repository maintainers.
-
-### Delegation
-
-Contributors may:
-
-- propose artifacts
-- refine schemas
-- add examples and tests
-- challenge semantics
-
-### Enforcement
-
-All artifacts must:
-
-- include a manifest
-- follow structural conventions
-- pass validation checks when defined
-
-### Revocation
-
-Artifacts may be:
-
-- deprecated
-- superseded
-- archived
-
-### Redress
-
-Disputes are handled through:
-
-- issues
-- structured discussion
-- revision and versioning
-
----
-
-## What this repository is not
-
-- Not a content archive
-- Not a speculative idea store
-- Not a documentation-only system
-
-This is an execution layer, not a publication layer.
-
----
-
-## How to get started
-
-1. Read `ARTIFACT_INDEX.md`
-2. Explore an artifact folder
-3. Review schema and examples
-4. Examine validation logic
-
----
+- `docs/methodology.md`
+- `docs/essay-to-tsmm-method.md`
+- `docs/profile-taxonomy.md`
+- `docs/authoring-model.md`
+- `mappings/essay-to-tsmm.yaml`
+- `essays/source-catalog.yaml`
 
 ## Strategic position
 
-This repository treats governance as:
+This repository is a **standalone TSMM-native pattern and profile library**.
 
-> a system of enforceable constraints, not descriptive intent
-
-It is designed to make:
-
-- authority explicit
-- delegation inspectable
-- enforcement testable
-- revocation possible
-- redress structured
-
----
-
-## Next steps
-
-- expand artifact depth with richer examples and challenge flows
-- extend TSMM projection coverage beyond the current 15-artifact set
-- emit native TSMM graph JSON instances where useful
-- verify and harden provisional source metadata
-
----
-
-
-## TSMM binding layer
-
-The repository now includes a concrete TSMM binding layer for all 15 governed artifacts. This makes the artifact layer structurally legible in terms of:
-
-- entities and roles
-- bounded authority
-- relationships and delegation
-- controls, threats, and evidence
-- trust decisions and downstream effects
-- lifecycle and revocation semantics
-
-See:
-
-- `bindings/tsmm/README.md`
-- `bindings/tsmm/projections/`
-- `entities/registry.yaml`
-- `controls/registry.yaml`
-- `docs/tsmm-binding-layer.md`
-
-## Current artifact set
-
-The repository now includes the initial Tier A set and a next-wave expansion derived from the current dataset.
-
-### Foundational set
-
-- `first-person-credentials`
-- `consent-not-data-structure`
-- `layers-of-the-self`
-
-### Expansion set
-
-- `after-consent`
-- `delegation-after-identity`
-- `your-agents-are-not-failing-your`
-- `wallet-to-agent-identity`
-- `digital-credential-verification-policy-playbook`
-- `systemic-controllers`
-- `trust-registry-governance-model`
-- `machine-readable-privacy-terms`
-- `portable-eligibility`
-- `the-proof-gap`
-- `execution-time-delegation`
-- `crisis-of-narrative-control`
-
-These are first-cut formalizations and should be treated as draft operational models rather than finished specifications.
+It is not a fork of TSMM and not a secondary binding repository. It is a distinct implementation corpus that uses TSMM as its only design grammar while remaining explicitly sourced from The Trust Graph essays.

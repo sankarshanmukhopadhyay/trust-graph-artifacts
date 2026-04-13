@@ -1,0 +1,235 @@
+{
+  "graphId": "ttg.profile.portable-eligibility",
+  "label": "Portable Eligibility Credential Profile",
+  "description": "TSMM-native profile for portable eligibility assertions, composable market access, and bounded reuse.",
+  "profile": "profile",
+  "contexts": [
+    "context.portable-eligibility"
+  ],
+  "nodes": [
+    {
+      "id": "context.portable-eligibility",
+      "type": "TrustDomain",
+      "label": "Portable eligibility and composable market access governance",
+      "description": "Trust Graph operationalization of Portable Eligibility: Turning Credentials into Composable Market Access as executable governance."
+    },
+    {
+      "id": "profile.portable.eligibility",
+      "type": "AssuranceProfile",
+      "label": "Portable Eligibility Credential Profile",
+      "attributes": {
+        "constraintSetRef": "artifacts/portable-eligibility/schemas/portable-eligibility-credential-profile.yaml"
+      }
+    },
+    {
+      "id": "policy.portable.eligibility",
+      "type": "Policy",
+      "label": "Portable Eligibility Credential Profile",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.eligibility-issuer",
+      "type": "Issuer",
+      "label": "Eligibility Issuer",
+      "description": "Issuer of portable eligibility assertion",
+      "attributes": {
+        "originalType": "Issuer",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.market-service",
+      "type": "RegistryService",
+      "label": "Market Service",
+      "description": "Service or marketplace consuming eligibility",
+      "attributes": {
+        "originalType": "RegistryService",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Holder of eligibility status",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Verifier",
+      "description": "Verifier checking portability, freshness, and constraints",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.portable.eligibility.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Portable.Eligibility.Receipt",
+      "description": "Structured evidence bundle for Portable Eligibility Credential Profile.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.portable.eligibility",
+      "type": "Assessment",
+      "label": "verification.portable.eligibility",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.portable.eligibility",
+      "type": "TrustDecision",
+      "label": "decision.portable.eligibility",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.grant-market-access",
+      "type": "Effect",
+      "label": "Grant bounded market access",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.require-step-up-check",
+      "type": "Effect",
+      "label": "Require additional review or evidence",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.deny-portability",
+      "type": "Effect",
+      "label": "Deny reuse outside portability rules",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "portable-eligibility.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.portable-eligibility",
+      "to": "profile.portable.eligibility",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "portable-eligibility.edge.profile-policy.eligibility",
+      "type": "defines",
+      "from": "profile.portable.eligibility",
+      "to": "policy.portable.eligibility",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "portable-eligibility.edge.context-policy.eligibility",
+      "type": "governs",
+      "from": "context.portable-eligibility",
+      "to": "policy.portable.eligibility",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "portable-eligibility.rel.1",
+      "type": "issues",
+      "from": "entity.eligibility-issuer",
+      "to": "profile.portable.eligibility",
+      "description": "Issuer packages eligibility assertion and portability terms"
+    },
+    {
+      "id": "portable-eligibility.rel.2",
+      "type": "reliesOn",
+      "from": "entity.market-service",
+      "to": "entity.verifier",
+      "description": "Market service relies on verified eligibility outcome"
+    },
+    {
+      "id": "portable-eligibility.rel.3",
+      "type": "assesses",
+      "from": "entity.verifier",
+      "to": "profile.portable.eligibility",
+      "description": "Verifier checks admissibility and reuse constraints"
+    },
+    {
+      "id": "portable-eligibility.rel.5",
+      "type": "reliesOn",
+      "from": "entity.subject",
+      "to": "decision.portable.eligibility",
+      "description": "Subject presents portable eligibility for decision"
+    },
+    {
+      "id": "portable-eligibility.edge.assessment-decision.eligibility.eligibility",
+      "type": "informs",
+      "from": "verification.portable.eligibility",
+      "to": "decision.portable.eligibility",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "portable-eligibility.edge.decision-effect.eligibility.grant-market-access",
+      "type": "produces",
+      "from": "decision.portable.eligibility",
+      "to": "effect.grant-market-access",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "portable-eligibility.edge.decision-effect.eligibility.require-step-up-check",
+      "type": "produces",
+      "from": "decision.portable.eligibility",
+      "to": "effect.require-step-up-check",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "portable-eligibility.edge.decision-effect.eligibility.deny-portability",
+      "type": "produces",
+      "from": "decision.portable.eligibility",
+      "to": "effect.deny-portability",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "portable-eligibility.edge.policy-decision.eligibility",
+      "type": "informs",
+      "from": "policy.portable.eligibility",
+      "to": "decision.portable.eligibility",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "portable-eligibility.edge.policy-entity.eligibility",
+      "type": "constrains",
+      "from": "policy.portable.eligibility",
+      "to": "entity.eligibility-issuer",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Portable Eligibility: Turning Credentials into Composable Market Access",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/portable-eligibility",
+    "publishedDate": "2026-01-23",
+    "signalTier": "B",
+    "engagementRate": 12.5,
+    "packageKind": "profile"
+  }
+}

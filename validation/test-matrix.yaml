@@ -1,0 +1,9 @@
+checks:
+- id: pkg-schema
+  description: package.json validates against package schema
+- id: graph-schema
+  description: graph.json validates against TSMM graph schema
+- id: valid-example
+  description: examples/valid-graph.json passes graph validation
+- id: invalid-example
+  description: examples/invalid-graph.json fails graph validation

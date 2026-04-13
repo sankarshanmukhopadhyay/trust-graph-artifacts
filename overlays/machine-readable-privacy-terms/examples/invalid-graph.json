@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.overlay.machine-readable-privacy-terms",
+  "label": "Privacy Term Enforcement Profile",
+  "description": "TSMM-native privacy policy overlay for executable terms, machine legibility, and constrained use.",
+  "profile": "overlay",
+  "contexts": [
+    "context.machine-readable-privacy-terms"
+  ],
+  "nodes": [
+    {
+      "id": "context.machine-readable-privacy-terms",
+      "type": "TrustDomain",
+      "label": "Machine-readable privacy constraints at runtime",
+      "description": "Trust Graph operationalization of Machine-Readable Privacy Terms and the Infrastructure of Control as executable governance."
+    },
+    {
+      "id": "profile.privacy.term.enforcement",
+      "type": "AssuranceProfile",
+      "label": "Privacy Term Enforcement Profile",
+      "attributes": {
+        "constraintSetRef": "artifacts/machine-readable-privacy-terms/schemas/privacy-term-enforcement-profile.yaml"
+      }
+    },
+    {
+      "id": "policy.machine.readable.privacy.terms",
+      "type": "Policy",
+      "label": "Privacy Term Enforcement Profile",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.data-subject",
+      "type": "Subject",
+      "label": "Data Subject",
+      "description": "Person whose privacy terms govern use",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.processor-agent",
+      "type": "Agent",
+      "label": "Processor Agent",
+      "description": "Processor or service acting on privacy-constrained data",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-engine",
+      "type": "Verifier",
+      "label": "Policy Engine",
+      "description": "Policy engine evaluating privacy terms",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.controller-authority",
+      "type": "GovernanceAuthority",
+      "label": "Controller Authority",
+      "description": "Authority defining applicable privacy profile or overrides",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.privacy.term.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Privacy.Term.Receipt",
+      "description": "Structured evidence bundle for Privacy Term Enforcement Profile.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.machine.readable.privacy.terms",
+      "type": "Assessment",
+      "label": "verification.machine.readable.privacy.terms",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.privacy.term",
+      "type": "TrustDecision",
+      "label": "decision.privacy.term",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-compliant-processing",
+      "type": "Effect",
+      "label": "Permit processing under compliant privacy terms",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.deny-noncompliant-processing",
+      "type": "Effect",
+      "label": "Deny processing or sharing outside allowed terms",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.route-privacy-appeal",
+      "type": "Effect",
+      "label": "Escalate contested privacy handling outcome",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "machine-readable-privacy-terms.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.machine-readable-privacy-terms",
+      "to": "profile.privacy.term.enforcement",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.profile-policy.terms",
+      "type": "defines",
+      "from": "profile.privacy.term.enforcement",
+      "to": "policy.machine.readable.privacy.terms",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.context-policy.terms",
+      "type": "governs",
+      "from": "context.machine-readable-privacy-terms",
+      "to": "policy.machine.readable.privacy.terms",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "machine-readable-privacy-terms.rel.3",
+      "type": "assesses",
+      "from": "entity.policy-engine",
+      "to": "profile.privacy.term.enforcement",
+      "description": "Engine enforces privacy obligations at runtime"
+    },
+    {
+      "id": "machine-readable-privacy-terms.rel.4",
+      "type": "constrains",
+      "from": "profile.privacy.term.enforcement",
+      "to": "entity.processor-agent",
+      "description": "Profile constrains purpose, retention, onward transfer, and sharing"
+    },
+    {
+      "id": "machine-readable-privacy-terms.rel.5",
+      "type": "informs",
+      "from": "entity.policy-engine",
+      "to": "entity.controller-authority",
+      "description": "Contested or exceptional cases route to authority"
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.assessment-decision.term.terms",
+      "type": "informs",
+      "from": "verification.machine.readable.privacy.terms",
+      "to": "decision.privacy.term",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.decision-effect.term.allow-compliant-processing",
+      "type": "produces",
+      "from": "decision.privacy.term",
+      "to": "effect.allow-compliant-processing",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.decision-effect.term.deny-noncompliant-processing",
+      "type": "produces",
+      "from": "decision.privacy.term",
+      "to": "effect.deny-noncompliant-processing",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.decision-effect.term.route-privacy-appeal",
+      "type": "produces",
+      "from": "decision.privacy.term",
+      "to": "effect.route-privacy-appeal",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.policy-decision.term",
+      "type": "informs",
+      "from": "policy.machine.readable.privacy.terms",
+      "to": "decision.privacy.term",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "machine-readable-privacy-terms.edge.policy-entity.terms",
+      "type": "constrains",
+      "from": "policy.machine.readable.privacy.terms",
+      "to": "entity.data-subject",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Machine-Readable Privacy Terms and the Infrastructure of Control",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/machine-readable-privacy-terms",
+    "publishedDate": "2026-01-30",
+    "signalTier": "B",
+    "engagementRate": 18.42,
+    "packageKind": "overlay"
+  }
+}

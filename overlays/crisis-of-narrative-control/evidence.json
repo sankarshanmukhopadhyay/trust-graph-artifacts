@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.overlay.crisis-of-narrative-control",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.narrative.control.record",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Narrative Contestability Record.",
+      "supportsRefs": [
+        "policy.crisis.of.narrative.control",
+        "decision.narrative.control",
+        "control.reason-code-required",
+        "control.appeal-route",
+        "control.effect-traceability"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.crisis.of.narrative.control",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.crisis.of.narrative.control",
+        "evidence.narrative.control.record"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.narrative.control",
+      "policyRef": "policy.crisis.of.narrative.control",
+      "verificationRefs": [
+        "verification.crisis.of.narrative.control"
+      ],
+      "effectRefs": [
+        "effect.apply-control-action",
+        "effect.route-contest",
+        "effect.reverse-control-action"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.system.wallet-to-agent-identity",
+  "label": "Wallet-Agent Binding Contract",
+  "description": "TSMM-native system model for wallet-to-agent bindings, execution interfaces, and accountable invocation.",
+  "profile": "system",
+  "contexts": [
+    "context.wallet-to-agent-identity"
+  ],
+  "nodes": [
+    {
+      "id": "context.wallet-to-agent-identity",
+      "type": "TrustDomain",
+      "label": "Wallet-mediated agent identity and execution control",
+      "description": "Trust Graph operationalization of Wallet-to-Agent Identity: When Identity Becomes an Execution Interface as executable governance."
+    },
+    {
+      "id": "profile.wallet.agent.binding",
+      "type": "AssuranceProfile",
+      "label": "Wallet-Agent Binding Contract",
+      "attributes": {
+        "constraintSetRef": "artifacts/wallet-to-agent-identity/schemas/wallet-agent-binding-contract.yaml"
+      }
+    },
+    {
+      "id": "policy.wallet.to.agent.identity",
+      "type": "Policy",
+      "label": "Wallet-Agent Binding Contract",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.wallet",
+      "type": "Subject",
+      "label": "Wallet",
+      "description": "Wallet or identity holder surface",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.agent",
+      "type": "Agent",
+      "label": "Agent",
+      "description": "Agent acting through wallet-mediated identity",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.service",
+      "type": "RegistryService",
+      "label": "Service",
+      "description": "External relying service or tool endpoint",
+      "attributes": {
+        "originalType": "RegistryService",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.binding-verifier",
+      "type": "Verifier",
+      "label": "Binding Verifier",
+      "description": "Verifier of wallet-agent binding and status",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.wallet.agent.binding.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Wallet.Agent.Binding.Receipt",
+      "description": "Structured evidence bundle for Wallet-Agent Binding Contract.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.wallet.to.agent.identity",
+      "type": "Assessment",
+      "label": "verification.wallet.to.agent.identity",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.wallet.agent.binding",
+      "type": "TrustDecision",
+      "label": "decision.wallet.agent.binding",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-bound-execution",
+      "type": "Effect",
+      "label": "Permit execution with valid wallet-agent binding",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.block-unbound-execution",
+      "type": "Effect",
+      "label": "Deny where identity exists without authority binding",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.detach-agent-binding",
+      "type": "Effect",
+      "label": "Invalidate downstream use after binding revocation",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "wallet-to-agent-identity.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.wallet-to-agent-identity",
+      "to": "profile.wallet.agent.binding",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.profile-policy.identity",
+      "type": "defines",
+      "from": "profile.wallet.agent.binding",
+      "to": "policy.wallet.to.agent.identity",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.context-policy.identity",
+      "type": "governs",
+      "from": "context.wallet-to-agent-identity",
+      "to": "policy.wallet.to.agent.identity",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "wallet-to-agent-identity.rel.3",
+      "type": "anchors",
+      "from": "entity.wallet",
+      "to": "entity.agent",
+      "description": "Wallet binds identity, permissions, and execution conditions to agent"
+    },
+    {
+      "id": "wallet-to-agent-identity.rel.4",
+      "type": "reliesOn",
+      "from": "entity.agent",
+      "to": "entity.service",
+      "description": "Agent presents wallet-bound contract at invocation time"
+    },
+    {
+      "id": "wallet-to-agent-identity.rel.5",
+      "type": "verifies",
+      "from": "entity.binding-verifier",
+      "to": "profile.wallet.agent.binding",
+      "description": "Verifier checks binding status, scope, and freshness"
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.assessment-decision.binding.identity",
+      "type": "informs",
+      "from": "verification.wallet.to.agent.identity",
+      "to": "decision.wallet.agent.binding",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.decision-effect.binding.allow-bound-execution",
+      "type": "produces",
+      "from": "decision.wallet.agent.binding",
+      "to": "effect.allow-bound-execution",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.decision-effect.binding.block-unbound-execution",
+      "type": "produces",
+      "from": "decision.wallet.agent.binding",
+      "to": "effect.block-unbound-execution",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.decision-effect.binding.detach-agent-binding",
+      "type": "produces",
+      "from": "decision.wallet.agent.binding",
+      "to": "effect.detach-agent-binding",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.policy-decision.binding",
+      "type": "informs",
+      "from": "policy.wallet.to.agent.identity",
+      "to": "decision.wallet.agent.binding",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "wallet-to-agent-identity.edge.policy-entity.identity",
+      "type": "constrains",
+      "from": "policy.wallet.to.agent.identity",
+      "to": "entity.wallet",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Wallet-to-Agent Identity: When Identity Becomes an Execution Interface",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/wallet-to-agent-identity",
+    "publishedDate": "2026-02-11",
+    "signalTier": "B",
+    "engagementRate": 13.33,
+    "packageKind": "system"
+  }
+}

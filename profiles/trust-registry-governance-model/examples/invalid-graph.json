@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.profile.trust-registry-governance-model",
+  "label": "Trust Registry Governance Profile",
+  "description": "TSMM-native profile for trust registry governance, operator authority, plurality, and forking rights.",
+  "profile": "profile",
+  "contexts": [
+    "context.trust-registry-governance-model"
+  ],
+  "nodes": [
+    {
+      "id": "context.trust-registry-governance-model",
+      "type": "TrustDomain",
+      "label": "Trust registry operator governance and delegated publication authority",
+      "description": "Trust Graph operationalization of The Political Economy of Trust Registries as executable governance."
+    },
+    {
+      "id": "profile.trust-registry.governance",
+      "type": "AssuranceProfile",
+      "label": "Trust Registry Governance Profile",
+      "attributes": {
+        "constraintSetRef": "artifacts/trust-registry-governance-model/schemas/trust-registry-governance-profile.yaml"
+      }
+    },
+    {
+      "id": "policy.trust.registry.governance.model",
+      "type": "Policy",
+      "label": "Trust Registry Governance Profile",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.root-authority",
+      "type": "GovernanceAuthority",
+      "label": "Root Authority",
+      "description": "Root authority defining registry charter and rules",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.registry-operator",
+      "type": "TrustRegistry",
+      "label": "Registry Operator",
+      "description": "Registry operator publishing trust-relevant state",
+      "attributes": {
+        "originalType": "TrustRegistry",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.service-provider",
+      "type": "Issuer",
+      "label": "Service Provider",
+      "description": "Participant relying on delegated registry inclusion",
+      "attributes": {
+        "originalType": "Issuer",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-verifier",
+      "type": "Verifier",
+      "label": "Relying Verifier",
+      "description": "Verifier consuming registry status before effect",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.registry.governance.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Registry.Governance.Receipt",
+      "description": "Structured evidence bundle for Trust Registry Governance Profile.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.trust.registry.governance.model",
+      "type": "Assessment",
+      "label": "verification.trust.registry.governance.model",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.registry.governance",
+      "type": "TrustDecision",
+      "label": "decision.registry.governance",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-registry-reliance",
+      "type": "Effect",
+      "label": "Permit reliance on active governed registry state",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.block-revoked-listing",
+      "type": "Effect",
+      "label": "Block effects when registry status is revoked or stale",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.revoke-operator-mandate",
+      "type": "Effect",
+      "label": "Withdraw operator publication authority",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "trust-registry-governance-model.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.trust-registry-governance-model",
+      "to": "profile.trust-registry.governance",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.profile-policy.model",
+      "type": "defines",
+      "from": "profile.trust-registry.governance",
+      "to": "policy.trust.registry.governance.model",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.context-policy.model",
+      "type": "governs",
+      "from": "context.trust-registry-governance-model",
+      "to": "policy.trust.registry.governance.model",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "trust-registry-governance-model.rel.2",
+      "type": "delegates",
+      "from": "entity.root-authority",
+      "to": "entity.registry-operator",
+      "description": "Registry operator receives bounded publication mandate"
+    },
+    {
+      "id": "trust-registry-governance-model.rel.3",
+      "type": "publishes",
+      "from": "entity.registry-operator",
+      "to": "profile.trust-registry.governance",
+      "description": "Registry publishes status, evidence references, and policy surfaces"
+    },
+    {
+      "id": "trust-registry-governance-model.rel.4",
+      "type": "reliesOn",
+      "from": "entity.relying-verifier",
+      "to": "entity.registry-operator",
+      "description": "Verifier consumes registry state before trust decision"
+    },
+    {
+      "id": "trust-registry-governance-model.edge.assessment-decision.governance.model",
+      "type": "informs",
+      "from": "verification.trust.registry.governance.model",
+      "to": "decision.registry.governance",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.decision-effect.governance.allow-registry-reliance",
+      "type": "produces",
+      "from": "decision.registry.governance",
+      "to": "effect.allow-registry-reliance",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.decision-effect.governance.block-revoked-listing",
+      "type": "produces",
+      "from": "decision.registry.governance",
+      "to": "effect.block-revoked-listing",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.decision-effect.governance.revoke-operator-mandate",
+      "type": "produces",
+      "from": "decision.registry.governance",
+      "to": "effect.revoke-operator-mandate",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.policy-decision.governance",
+      "type": "informs",
+      "from": "policy.trust.registry.governance.model",
+      "to": "decision.registry.governance",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "trust-registry-governance-model.edge.policy-entity.model",
+      "type": "constrains",
+      "from": "policy.trust.registry.governance.model",
+      "to": "entity.root-authority",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Political Economy of Trust Registries",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/the-political-economy-of-trust-registries",
+    "publishedDate": "2025-12-05",
+    "signalTier": "A",
+    "engagementRate": 25.0,
+    "packageKind": "profile"
+  }
+}

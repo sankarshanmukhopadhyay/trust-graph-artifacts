@@ -1,0 +1,88 @@
+{
+  "packageId": "ttg.overlay.consent-not-data-structure",
+  "kind": "overlay",
+  "controlSet": [
+    {
+      "id": "control.purpose-binding",
+      "type": "purpose-binding",
+      "description": "Restrict action to declared purpose and action class"
+    },
+    {
+      "id": "control.downstream-inheritance",
+      "type": "constraint-inheritance",
+      "description": "Require downstream processors to inherit and enforce consent constraints"
+    },
+    {
+      "id": "control.revocation-endpoint",
+      "type": "revocation-endpoint",
+      "description": "Require explicit withdrawal mechanism"
+    },
+    {
+      "id": "control.audit-reference-required",
+      "type": "audit-linkage",
+      "description": "Require accessible audit reference for governed use"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.consent.runtime",
+      "rules": [
+        "Require purpose binding and permitted action before execution",
+        "Deny downstream processing when inheritance conditions are not met",
+        "Suspend or deny on revocation, expiry, or context mismatch"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.purpose-drift",
+      "label": "Purpose Drift",
+      "description": "Controller reuses captured consent for a different purpose or action class"
+    },
+    {
+      "id": "threat.downstream-bypass",
+      "label": "Downstream Bypass",
+      "description": "Delegated processor acts without inheriting the original constraints"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "from": "issued",
+        "to": "active",
+        "trigger": "consent-granted"
+      },
+      {
+        "from": "active",
+        "to": "suspended",
+        "trigger": "context-or-purpose-under-review"
+      },
+      {
+        "from": "active",
+        "to": "revoked",
+        "trigger": "subject-withdraws-consent"
+      },
+      {
+        "from": "active",
+        "to": "expired",
+        "trigger": "time-bound-reached"
+      },
+      {
+        "from": "suspended",
+        "to": "active",
+        "trigger": "review-complete-and-consent-remains-valid"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

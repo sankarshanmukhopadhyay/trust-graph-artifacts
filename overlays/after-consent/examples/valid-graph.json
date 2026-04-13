@@ -1,0 +1,221 @@
+{
+  "graphId": "ttg.overlay.after-consent",
+  "label": "Delegated Consent Protection Policy",
+  "description": "TSMM-native overlay for delegated consent protection in AI-mediated action chains.",
+  "profile": "overlay",
+  "contexts": [
+    "context.after-consent"
+  ],
+  "nodes": [
+    {
+      "id": "context.after-consent",
+      "type": "TrustDomain",
+      "label": "AI-mediated choice and consent governance",
+      "description": "Trust Graph operationalization of After Consent: Rebuilding Choice, Delegation, and Protection for an AI-Mediated World as executable governance."
+    },
+    {
+      "id": "profile.after-consent.protection",
+      "type": "AssuranceProfile",
+      "label": "Delegated Consent Protection Policy",
+      "attributes": {
+        "constraintSetRef": "artifacts/after-consent/schemas/delegated-consent-protection-policy.yaml"
+      }
+    },
+    {
+      "id": "policy.after.consent",
+      "type": "Policy",
+      "label": "Delegated Consent Protection Policy",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Person whose consent and protection status is evaluated",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.delegate-agent",
+      "type": "Agent",
+      "label": "Delegate Agent",
+      "description": "Delegated agent acting within subject-bound constraints",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-enforcer",
+      "type": "Verifier",
+      "label": "Policy Enforcer",
+      "description": "Runtime policy enforcement service",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.redress-authority",
+      "type": "GovernanceAuthority",
+      "label": "Redress Authority",
+      "description": "Authority handling appeal and correction",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.after-consent.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.After Consent.Receipt",
+      "description": "Structured evidence bundle for Delegated Consent Protection Policy.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.after.consent",
+      "type": "Assessment",
+      "label": "verification.after.consent",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.after-consent.enforcement",
+      "type": "TrustDecision",
+      "label": "decision.after-consent.enforcement",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-delegated-action",
+      "type": "Effect",
+      "label": "Permit bounded delegated action",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.pause-action",
+      "type": "Effect",
+      "label": "Pause pending re-consent or review",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.route-redress",
+      "type": "Effect",
+      "label": "Escalate contested outcome to appeal",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "after-consent.edge.context-profile",
+      "type": "anchors",
+      "from": "context.after-consent",
+      "to": "profile.after-consent.protection",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "after-consent.edge.profile-policy.consent",
+      "type": "defines",
+      "from": "profile.after-consent.protection",
+      "to": "policy.after.consent",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "after-consent.edge.context-policy.consent",
+      "type": "governs",
+      "from": "context.after-consent",
+      "to": "policy.after.consent",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "after-consent.rel.4",
+      "type": "assesses",
+      "from": "entity.policy-enforcer",
+      "to": "profile.after-consent.protection",
+      "description": "Runtime enforcement evaluates policy before effect"
+    },
+    {
+      "id": "after-consent.rel.5",
+      "type": "informs",
+      "from": "entity.policy-enforcer",
+      "to": "entity.redress-authority",
+      "description": "Exceptions and contests route to redress"
+    },
+    {
+      "id": "after-consent.edge.assessment-decision.enforcement.consent",
+      "type": "informs",
+      "from": "verification.after.consent",
+      "to": "decision.after-consent.enforcement",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "after-consent.edge.decision-effect.enforcement.allow-delegated-action",
+      "type": "produces",
+      "from": "decision.after-consent.enforcement",
+      "to": "effect.allow-delegated-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "after-consent.edge.decision-effect.enforcement.pause-action",
+      "type": "produces",
+      "from": "decision.after-consent.enforcement",
+      "to": "effect.pause-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "after-consent.edge.decision-effect.enforcement.route-redress",
+      "type": "produces",
+      "from": "decision.after-consent.enforcement",
+      "to": "effect.route-redress",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "after-consent.edge.policy-decision.enforcement",
+      "type": "informs",
+      "from": "policy.after.consent",
+      "to": "decision.after-consent.enforcement",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "after-consent.edge.policy-entity.consent",
+      "type": "constrains",
+      "from": "policy.after.consent",
+      "to": "entity.subject",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "After Consent: Rebuilding Choice, Delegation, and Protection for an AI-Mediated World",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/after-consent",
+    "publishedDate": "2025-12-23",
+    "signalTier": "B",
+    "engagementRate": 17.65,
+    "packageKind": "overlay"
+  }
+}

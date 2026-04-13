@@ -1,0 +1,235 @@
+{
+  "graphId": "ttg.overlay.crisis-of-narrative-control",
+  "label": "Narrative Contestability Record",
+  "description": "TSMM-native overlay for narrative contestability, provenance, and governance of interpretation surfaces.",
+  "profile": "overlay",
+  "contexts": [
+    "context.crisis-of-narrative-control"
+  ],
+  "nodes": [
+    {
+      "id": "context.crisis-of-narrative-control",
+      "type": "TrustDomain",
+      "label": "Contestability and narrative control governance",
+      "description": "Trust Graph operationalization of Crisis of Narrative Control as executable governance."
+    },
+    {
+      "id": "profile.narrative.contestability",
+      "type": "AssuranceProfile",
+      "label": "Narrative Contestability Record",
+      "attributes": {
+        "constraintSetRef": "artifacts/crisis-of-narrative-control/schemas/narrative-contestability-record.yaml"
+      }
+    },
+    {
+      "id": "policy.crisis.of.narrative.control",
+      "type": "Policy",
+      "label": "Narrative Contestability Record",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.platform-operator",
+      "type": "GovernanceAuthority",
+      "label": "Platform Operator",
+      "description": "Platform or operator shaping narrative visibility and control",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-speaker",
+      "type": "Subject",
+      "label": "Affected Speaker",
+      "description": "Party affected by narrative control action",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.contestability-service",
+      "type": "Verifier",
+      "label": "Contestability Service",
+      "description": "Service recording reasons and enabling contest",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.review-panel",
+      "type": "Assessment",
+      "label": "Review Panel",
+      "description": "Review body evaluating contested decisions",
+      "attributes": {
+        "originalType": "Assessment",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.narrative.control.record",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Narrative.Control.Record",
+      "description": "Structured evidence bundle for Narrative Contestability Record.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.crisis.of.narrative.control",
+      "type": "Assessment",
+      "label": "verification.crisis.of.narrative.control",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.narrative.control",
+      "type": "TrustDecision",
+      "label": "decision.narrative.control",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.apply-control-action",
+      "type": "Effect",
+      "label": "Apply visibility or suppression control",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.route-contest",
+      "type": "Effect",
+      "label": "Route affected party to review",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.reverse-control-action",
+      "type": "Effect",
+      "label": "Reverse action upon successful contest",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "crisis-of-narrative-control.edge.context-profile",
+      "type": "anchors",
+      "from": "context.crisis-of-narrative-control",
+      "to": "profile.narrative.contestability",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.profile-policy.control",
+      "type": "defines",
+      "from": "profile.narrative.contestability",
+      "to": "policy.crisis.of.narrative.control",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.context-policy.control",
+      "type": "governs",
+      "from": "context.crisis-of-narrative-control",
+      "to": "policy.crisis.of.narrative.control",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "crisis-of-narrative-control.rel.2",
+      "type": "reliesOn",
+      "from": "entity.platform-operator",
+      "to": "entity.affected-speaker",
+      "description": "Narrative control action changes communicative effect"
+    },
+    {
+      "id": "crisis-of-narrative-control.rel.3",
+      "type": "reliesOn",
+      "from": "entity.contestability-service",
+      "to": "profile.narrative.contestability",
+      "description": "Service records reasons, facts, and appeal path"
+    },
+    {
+      "id": "crisis-of-narrative-control.rel.4",
+      "type": "informs",
+      "from": "entity.contestability-service",
+      "to": "entity.review-panel",
+      "description": "Contested actions route to structured review"
+    },
+    {
+      "id": "crisis-of-narrative-control.rel.5",
+      "type": "reliesOn",
+      "from": "profile.narrative.contestability",
+      "to": "decision.narrative.control",
+      "description": "Record substantiates control decision"
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.assessment-decision.control.control",
+      "type": "informs",
+      "from": "verification.crisis.of.narrative.control",
+      "to": "decision.narrative.control",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.decision-effect.control.apply-control-action",
+      "type": "produces",
+      "from": "decision.narrative.control",
+      "to": "effect.apply-control-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.decision-effect.control.route-contest",
+      "type": "produces",
+      "from": "decision.narrative.control",
+      "to": "effect.route-contest",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.decision-effect.control.reverse-control-action",
+      "type": "produces",
+      "from": "decision.narrative.control",
+      "to": "effect.reverse-control-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.policy-decision.control",
+      "type": "informs",
+      "from": "policy.crisis.of.narrative.control",
+      "to": "decision.narrative.control",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "crisis-of-narrative-control.edge.policy-entity.control",
+      "type": "constrains",
+      "from": "policy.crisis.of.narrative.control",
+      "to": "entity.platform-operator",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Crisis of Narrative Control",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/crisis-of-narrative-control",
+    "publishedDate": "2026-02-09",
+    "signalTier": "B",
+    "engagementRate": 17.07,
+    "packageKind": "overlay"
+  }
+}

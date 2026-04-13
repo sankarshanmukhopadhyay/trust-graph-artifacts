@@ -1,30 +1,28 @@
 # Contributing
 
-Contributions are welcome, but this repository is intentionally selective.
+## Before you contribute
 
-## Before opening a pull request
+Read:
 
-1. Determine whether the concept already has an essay and evaluation record.
-2. If proposing a new artifact, add an evaluation file under `evaluation/evaluations/` first.
-3. Use `artifacts/_template/` as the starting point.
-4. Include at minimum:
-   - `artifact.yaml`
-   - one schema or model definition
-   - one valid example
-   - one invalid example
-   - a short test case file
+- `docs/methodology.md`
+- `docs/essay-to-tsmm-method.md`
+- `docs/profile-taxonomy.md`
 
-## Contribution types
+## Pull request expectations
 
-- artifact proposal
-- schema refinement
-- additional examples
-- validation improvement
-- mapping notes
-- governance challenge or semantic dispute
+A package addition or change should include:
 
-## Review standard
+- updated `package.json`
+- updated or new `graph.json`
+- updated constraints or evidence model where applicable
+- valid and invalid examples
+- test-vector updates
+- refreshed mappings or essay catalog entries if the package set changes
 
-This repository does not admit artifacts merely because an idea is interesting.
+## Validation
 
-A contribution is stronger when it makes authority explicit, delegation constrained, enforcement testable, revocation possible, and redress intelligible.
+Run:
+
+```bash
+python3 scripts/validate_tsmm_native.py
+```

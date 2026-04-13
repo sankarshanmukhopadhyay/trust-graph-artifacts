@@ -1,0 +1,52 @@
+{
+  "packageId": "ttg.overlay.consent-not-data-structure",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.consent-object",
+      "artifactType": "consent-record",
+      "description": "Governed consent object with purpose, actions, constraints, and endpoints",
+      "supportsRefs": []
+    },
+    {
+      "id": "evidence.audit-log",
+      "artifactType": "audit-record",
+      "description": "Trace of execution-time checks, use events, and revocation outcomes",
+      "supportsRefs": []
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.consent-runtime",
+      "method": "schema-validation",
+      "performedBy": "entity.audit-service",
+      "controlRefs": [
+        "control.purpose-binding",
+        "control.downstream-inheritance",
+        "control.revocation-endpoint",
+        "control.audit-reference-required"
+      ],
+      "inputRefs": []
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.consent.execution",
+      "policyRef": "policy.consent.runtime",
+      "verificationRefs": [
+        "verification.consent-runtime"
+      ],
+      "effectRefs": [
+        "effect.permit-action",
+        "effect.pause-action",
+        "effect.deny-action"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

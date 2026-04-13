@@ -1,0 +1,106 @@
+mappings:
+- slug: execution-time-delegation
+  title: Execution Delegation Control Receipt
+  publishedDate: '2026-03-05'
+  url: https://thetrustgraph.substack.com/p/execution-time-delegation-legitimacy
+  packageKind: evidence-model
+  packagePath: evidence/execution-time-delegation
+  signalTier: C
+- slug: the-proof-gap
+  title: Proof Requirement Profile
+  publishedDate: '2026-03-16'
+  url: https://thetrustgraph.substack.com/p/the-proof-gap
+  packageKind: evidence-model
+  packagePath: evidence/the-proof-gap
+  signalTier: B
+- slug: after-consent
+  title: Delegated Consent Protection Policy
+  publishedDate: '2025-12-23'
+  url: https://thetrustgraph.substack.com/p/after-consent
+  packageKind: overlay
+  packagePath: overlays/after-consent
+  signalTier: B
+- slug: consent-not-data-structure
+  title: Consent Enforcement Schema
+  publishedDate: '2026-01-09'
+  url: https://thetrustgraph.substack.com/p/consent-is-not-a-data-structure
+  packageKind: overlay
+  packagePath: overlays/consent-not-data-structure
+  signalTier: A
+- slug: crisis-of-narrative-control
+  title: Narrative Contestability Record
+  publishedDate: '2026-02-09'
+  url: https://thetrustgraph.substack.com/p/crisis-of-narrative-control
+  packageKind: overlay
+  packagePath: overlays/crisis-of-narrative-control
+  signalTier: B
+- slug: machine-readable-privacy-terms
+  title: Privacy Term Enforcement Profile
+  publishedDate: '2026-01-30'
+  url: https://thetrustgraph.substack.com/p/machine-readable-privacy-terms
+  packageKind: overlay
+  packagePath: overlays/machine-readable-privacy-terms
+  signalTier: B
+- slug: delegation-after-identity
+  title: Delegation Chain Policy
+  publishedDate: '2026-02-18'
+  url: https://thetrustgraph.substack.com/p/delegation-after-identity
+  packageKind: pattern
+  packagePath: patterns/delegation-after-identity
+  signalTier: B
+- slug: systemic-controllers
+  title: Systemic Controller Registry Entry
+  publishedDate: '2025-12-09'
+  url: https://thetrustgraph.substack.com/p/systemic-controllers-how-hidden-levers
+  packageKind: pattern
+  packagePath: patterns/systemic-controllers
+  signalTier: C
+- slug: your-agents-are-not-failing-your
+  title: Agent Mandate Envelope
+  publishedDate: '2026-02-26'
+  url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
+  packageKind: pattern
+  packagePath: patterns/your-agents-are-not-failing-your
+  signalTier: B
+- slug: digital-credential-verification-policy-playbook
+  title: Verification Policy Profile
+  publishedDate: '2025-12-19'
+  url: https://thetrustgraph.substack.com/p/why-digital-credential-verification
+  packageKind: profile
+  packagePath: profiles/digital-credential-verification-policy-playbook
+  signalTier: A
+- slug: first-person-credentials
+  title: First-Person Assertion Envelope
+  publishedDate: '2026-03-02'
+  url: https://thetrustgraph.substack.com/p/first-person-credentials
+  packageKind: profile
+  packagePath: profiles/first-person-credentials
+  signalTier: A
+- slug: layers-of-the-self
+  title: Contextual Identity Projection
+  publishedDate: '2026-01-12'
+  url: pending-external-link
+  packageKind: profile
+  packagePath: profiles/layers-of-the-self
+  signalTier: A
+- slug: portable-eligibility
+  title: Portable Eligibility Credential Profile
+  publishedDate: '2026-01-23'
+  url: https://thetrustgraph.substack.com/p/portable-eligibility
+  packageKind: profile
+  packagePath: profiles/portable-eligibility
+  signalTier: B
+- slug: trust-registry-governance-model
+  title: Trust Registry Governance Profile
+  publishedDate: '2025-12-05'
+  url: https://thetrustgraph.substack.com/p/the-political-economy-of-trust-registries
+  packageKind: profile
+  packagePath: profiles/trust-registry-governance-model
+  signalTier: A
+- slug: wallet-to-agent-identity
+  title: Wallet-Agent Binding Contract
+  publishedDate: '2026-02-11'
+  url: https://thetrustgraph.substack.com/p/wallet-to-agent-identity
+  packageKind: system
+  packagePath: systems/wallet-to-agent-identity
+  signalTier: B

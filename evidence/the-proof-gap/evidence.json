@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.evidence-model.the-proof-gap",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.proof.requirement.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Proof Requirement Profile.",
+      "supportsRefs": [
+        "policy.the.proof.gap",
+        "decision.proof.requirement",
+        "control.evidence-sufficiency",
+        "control.method-binding",
+        "control.receipt-traceability"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.the.proof.gap",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.the.proof.gap",
+        "evidence.proof.requirement.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.proof.requirement",
+      "policyRef": "policy.the.proof.gap",
+      "verificationRefs": [
+        "verification.the.proof.gap"
+      ],
+      "effectRefs": [
+        "effect.accept-supported-claim",
+        "effect.degrade-insufficient-claim",
+        "effect.deny-unsupported-claim"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.profile.digital-credential-verification-policy-playbook",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.verification.policy.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Verification Policy Profile.",
+      "supportsRefs": [
+        "policy.digital.credential.verification.policy.playbook",
+        "decision.verification.policy",
+        "control.policy-based-verification",
+        "control.exception-routing",
+        "control.status-freshness"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.digital.credential.verification.policy.playbook",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.digital.credential.verification.policy.playbook",
+        "evidence.verification.policy.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.verification.policy",
+      "policyRef": "policy.digital.credential.verification.policy.playbook",
+      "verificationRefs": [
+        "verification.digital.credential.verification.policy.playbook"
+      ],
+      "effectRefs": [
+        "effect.accept-credential",
+        "effect.degrade-credential",
+        "effect.route-verification-review"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

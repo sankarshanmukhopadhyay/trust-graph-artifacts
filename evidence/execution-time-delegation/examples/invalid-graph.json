@@ -1,0 +1,235 @@
+{
+  "graphId": "ttg.evidence-model.execution-time-delegation",
+  "label": "Execution Delegation Control Receipt",
+  "description": "TSMM-native evidence model for runtime delegation receipts, legitimacy checks, and contestability signals.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.execution-time-delegation"
+  ],
+  "nodes": [
+    {
+      "id": "context.execution-time-delegation",
+      "type": "TrustDomain",
+      "label": "Execution-time delegation legitimacy and decision receipts",
+      "description": "Trust Graph operationalization of Execution-Time Delegation: Legitimacy After Transparency as executable governance."
+    },
+    {
+      "id": "profile.execution.delegation",
+      "type": "AssuranceProfile",
+      "label": "Execution Delegation Control Receipt",
+      "attributes": {
+        "constraintSetRef": "artifacts/execution-time-delegation/schemas/execution-delegation-control-receipt.yaml"
+      }
+    },
+    {
+      "id": "policy.execution.time.delegation",
+      "type": "Policy",
+      "label": "Execution Delegation Control Receipt",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.principal",
+      "type": "Subject",
+      "label": "Principal",
+      "description": "Originating principal for delegated execution",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.agent",
+      "type": "Agent",
+      "label": "Agent",
+      "description": "Agent executing live delegated authority",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.runtime-enforcer",
+      "type": "Verifier",
+      "label": "Runtime Enforcer",
+      "description": "Runtime authority and policy enforcer",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-service",
+      "type": "RegistryService",
+      "label": "Relying Service",
+      "description": "Downstream service consuming execution result",
+      "attributes": {
+        "originalType": "RegistryService",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.execution.delegation.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Execution.Delegation.Receipt",
+      "description": "Structured evidence bundle for Execution Delegation Control Receipt.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.execution.time.delegation",
+      "type": "Assessment",
+      "label": "verification.execution.time.delegation",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.execution.delegation",
+      "type": "TrustDecision",
+      "label": "decision.execution.delegation",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-live-execution",
+      "type": "Effect",
+      "label": "Permit execution under live validated authority",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.block-live-execution",
+      "type": "Effect",
+      "label": "Block execution on stale or invalid authority",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.invalidate-downstream-action",
+      "type": "Effect",
+      "label": "Invalidate downstream use when live authority fails",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "execution-time-delegation.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.execution-time-delegation",
+      "to": "profile.execution.delegation",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "execution-time-delegation.edge.profile-policy.delegation",
+      "type": "defines",
+      "from": "profile.execution.delegation",
+      "to": "policy.execution.time.delegation",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "execution-time-delegation.edge.context-policy.delegation",
+      "type": "governs",
+      "from": "context.execution-time-delegation",
+      "to": "policy.execution.time.delegation",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "execution-time-delegation.rel.1",
+      "type": "delegates",
+      "from": "entity.principal",
+      "to": "entity.agent",
+      "description": "Principal grants live delegated authority under runtime constraints"
+    },
+    {
+      "id": "execution-time-delegation.rel.2",
+      "type": "assesses",
+      "from": "entity.runtime-enforcer",
+      "to": "profile.execution.delegation",
+      "description": "Enforcer validates authority at execution time"
+    },
+    {
+      "id": "execution-time-delegation.rel.3",
+      "type": "reliesOn",
+      "from": "entity.agent",
+      "to": "entity.relying-service",
+      "description": "Agent invokes relying service under validated authority"
+    },
+    {
+      "id": "execution-time-delegation.rel.4",
+      "type": "reliesOn",
+      "from": "profile.execution.delegation",
+      "to": "decision.execution.delegation",
+      "description": "Receipt substantiates live decision"
+    },
+    {
+      "id": "execution-time-delegation.edge.assessment-decision.delegation.delegation",
+      "type": "informs",
+      "from": "verification.execution.time.delegation",
+      "to": "decision.execution.delegation",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "execution-time-delegation.edge.decision-effect.delegation.allow-live-execution",
+      "type": "produces",
+      "from": "decision.execution.delegation",
+      "to": "effect.allow-live-execution",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "execution-time-delegation.edge.decision-effect.delegation.block-live-execution",
+      "type": "produces",
+      "from": "decision.execution.delegation",
+      "to": "effect.block-live-execution",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "execution-time-delegation.edge.decision-effect.delegation.invalidate-downstream-action",
+      "type": "produces",
+      "from": "decision.execution.delegation",
+      "to": "effect.invalidate-downstream-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "execution-time-delegation.edge.policy-decision.delegation",
+      "type": "informs",
+      "from": "policy.execution.time.delegation",
+      "to": "decision.execution.delegation",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "execution-time-delegation.edge.policy-entity.delegation",
+      "type": "constrains",
+      "from": "policy.execution.time.delegation",
+      "to": "entity.principal",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Execution-Time Delegation: Legitimacy After Transparency",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/execution-time-delegation-legitimacy",
+    "publishedDate": "2026-03-05",
+    "signalTier": "C",
+    "engagementRate": 2.44,
+    "packageKind": "evidence-model"
+  }
+}

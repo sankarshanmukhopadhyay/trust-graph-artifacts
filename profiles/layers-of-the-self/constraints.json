@@ -1,0 +1,83 @@
+{
+  "packageId": "ttg.profile.layers-of-the-self",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.projection-minimization",
+      "type": "data-minimization",
+      "description": "Restrict identity projections to the minimum necessary attribute set"
+    },
+    {
+      "id": "control.linkage-constraint",
+      "type": "correlation-control",
+      "description": "Constrain when the projection may be linked back to the base identity"
+    },
+    {
+      "id": "control.invalidation-endpoint",
+      "type": "projection-invalidation",
+      "description": "Require explicit invalidation path for withdrawn projections"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.identity.projection",
+      "rules": [
+        "Require the minimum attribute subset needed for the declared context",
+        "Deny presentation outside permitted audience or use",
+        "Constrain correlation to declared linkage authorities and rules"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.over-disclosure",
+      "label": "Over-Disclosure",
+      "description": "The presentation reveals more identity attributes than the context justifies"
+    },
+    {
+      "id": "threat.unauthorized-correlation",
+      "label": "Unauthorized Correlation",
+      "description": "A relying party or service correlates the projection back to the base identity without authority"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "from": "issued",
+        "to": "active",
+        "trigger": "projection-published"
+      },
+      {
+        "from": "active",
+        "to": "suspended",
+        "trigger": "projection-under-review"
+      },
+      {
+        "from": "active",
+        "to": "revoked",
+        "trigger": "holder-withdraws-or-invalidates-projection"
+      },
+      {
+        "from": "active",
+        "to": "expired",
+        "trigger": "valid-until-reached"
+      },
+      {
+        "from": "suspended",
+        "to": "active",
+        "trigger": "review-complete-and-bounds-confirmed"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

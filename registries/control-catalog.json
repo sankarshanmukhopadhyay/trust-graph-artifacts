@@ -1,0 +1,189 @@
+{
+  "version": "0.1.0",
+  "controls": [
+    {
+      "id": "control.appeal-route",
+      "description": ""
+    },
+    {
+      "id": "control.assertion-binding",
+      "description": ""
+    },
+    {
+      "id": "control.audit-reference-required",
+      "description": ""
+    },
+    {
+      "id": "control.binding-integrity",
+      "description": ""
+    },
+    {
+      "id": "control.cascading-revocation",
+      "description": ""
+    },
+    {
+      "id": "control.cascading-stop",
+      "description": ""
+    },
+    {
+      "id": "control.chain-depth-limit",
+      "description": ""
+    },
+    {
+      "id": "control.controller-disclosure",
+      "description": ""
+    },
+    {
+      "id": "control.counterparty-policy-check",
+      "description": ""
+    },
+    {
+      "id": "control.decision-receipt",
+      "description": ""
+    },
+    {
+      "id": "control.dependency-disclosure",
+      "description": ""
+    },
+    {
+      "id": "control.dependency-mapping",
+      "description": ""
+    },
+    {
+      "id": "control.detach-on-revoke",
+      "description": ""
+    },
+    {
+      "id": "control.dispute-endpoint-required",
+      "description": ""
+    },
+    {
+      "id": "control.downstream-inheritance",
+      "description": ""
+    },
+    {
+      "id": "control.effect-traceability",
+      "description": ""
+    },
+    {
+      "id": "control.eligibility-freshness",
+      "description": ""
+    },
+    {
+      "id": "control.evidence-link-integrity",
+      "description": ""
+    },
+    {
+      "id": "control.evidence-sufficiency",
+      "description": ""
+    },
+    {
+      "id": "control.exception-routing",
+      "description": ""
+    },
+    {
+      "id": "control.invalidation-endpoint",
+      "description": ""
+    },
+    {
+      "id": "control.linkage-constraint",
+      "description": ""
+    },
+    {
+      "id": "control.live-authority-check",
+      "description": ""
+    },
+    {
+      "id": "control.mandate-completeness",
+      "description": ""
+    },
+    {
+      "id": "control.method-binding",
+      "description": ""
+    },
+    {
+      "id": "control.onward-transfer-check",
+      "description": ""
+    },
+    {
+      "id": "control.operator-scope",
+      "description": ""
+    },
+    {
+      "id": "control.override-accountability",
+      "description": ""
+    },
+    {
+      "id": "control.parent-chain-check",
+      "description": ""
+    },
+    {
+      "id": "control.policy-based-verification",
+      "description": ""
+    },
+    {
+      "id": "control.portability-bounds",
+      "description": ""
+    },
+    {
+      "id": "control.projection-minimization",
+      "description": ""
+    },
+    {
+      "id": "control.purpose-binding",
+      "description": ""
+    },
+    {
+      "id": "control.purpose-limitation",
+      "description": ""
+    },
+    {
+      "id": "control.reason-code-required",
+      "description": ""
+    },
+    {
+      "id": "control.receipt-generation",
+      "description": ""
+    },
+    {
+      "id": "control.receipt-traceability",
+      "description": ""
+    },
+    {
+      "id": "control.registry-status-freshness",
+      "description": ""
+    },
+    {
+      "id": "control.retention-expiry",
+      "description": ""
+    },
+    {
+      "id": "control.revocation-cascade",
+      "description": ""
+    },
+    {
+      "id": "control.revocation-endpoint",
+      "description": ""
+    },
+    {
+      "id": "control.scope-boundary",
+      "description": ""
+    },
+    {
+      "id": "control.session-scope",
+      "description": ""
+    },
+    {
+      "id": "control.status-freshness",
+      "description": ""
+    },
+    {
+      "id": "control.tool-use-constraint",
+      "description": ""
+    },
+    {
+      "id": "control.withdrawal-enforcement",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.profile.trust-registry-governance-model",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.registry.governance.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Trust Registry Governance Profile.",
+      "supportsRefs": [
+        "policy.trust.registry.governance.model",
+        "decision.registry.governance",
+        "control.operator-scope",
+        "control.registry-status-freshness",
+        "control.revocation-cascade"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.trust.registry.governance.model",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.trust.registry.governance.model",
+        "evidence.registry.governance.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.registry.governance",
+      "policyRef": "policy.trust.registry.governance.model",
+      "verificationRefs": [
+        "verification.trust.registry.governance.model"
+      ],
+      "effectRefs": [
+        "effect.allow-registry-reliance",
+        "effect.block-revoked-listing",
+        "effect.revoke-operator-mandate"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

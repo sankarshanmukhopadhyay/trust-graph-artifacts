@@ -1,0 +1,98 @@
+{
+  "packageId": "ttg.pattern.your-agents-are-not-failing-your",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.mandate-completeness",
+      "type": "admissibility-check",
+      "description": "Require explicit task, scope, constraints, and review path"
+    },
+    {
+      "id": "control.tool-use-constraint",
+      "type": "tool-binding",
+      "description": "Bind tool invocation to declared mandate fields"
+    },
+    {
+      "id": "control.receipt-generation",
+      "type": "evidence-capture",
+      "description": "Generate decision receipt for each material action"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.your.agents.are.not.failing.your",
+      "rules": [
+        "Require explicit task, scope, constraints, and review path",
+        "Bind tool invocation to declared mandate fields",
+        "Generate decision receipt for each material action"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.mandate-ambiguity",
+      "type": "admissibility-gap",
+      "description": "Agent receives vague instructions that cannot bound authority"
+    },
+    {
+      "id": "threat.untracked-tool-use",
+      "type": "oversight-gap",
+      "description": "Material tool actions occur without mandate-linked evidence"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.resume",
+        "from": "state.suspended",
+        "to": "state.active",
+        "trigger": "issue resolved",
+        "actor": "policy authority or maintainer",
+        "evidenceRequirement": "updated evidence or corrected policy"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.active",
+        "to": "state.expired",
+        "trigger": "time bound or freshness window elapsed",
+        "actor": "system",
+        "evidenceRequirement": "timestamp comparison or expiry check"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

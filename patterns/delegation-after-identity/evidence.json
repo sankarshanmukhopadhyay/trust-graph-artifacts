@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.pattern.delegation-after-identity",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.delegation.chain.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Delegation Chain Policy.",
+      "supportsRefs": [
+        "policy.delegation.after.identity",
+        "decision.delegation.chain",
+        "control.scope-boundary",
+        "control.parent-chain-check",
+        "control.cascading-revocation"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.delegation.after.identity",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.delegation.after.identity",
+        "evidence.delegation.chain.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.delegation.chain",
+      "policyRef": "policy.delegation.after.identity",
+      "verificationRefs": [
+        "verification.delegation.after.identity"
+      ],
+      "effectRefs": [
+        "effect.allow-bounded-execution",
+        "effect.deny-excess-scope",
+        "effect.revoke-chain"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.pattern.your-agents-are-not-failing-your",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.agent.mandate.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Agent Mandate Envelope.",
+      "supportsRefs": [
+        "policy.your.agents.are.not.failing.your",
+        "decision.agent.mandate",
+        "control.mandate-completeness",
+        "control.tool-use-constraint",
+        "control.receipt-generation"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.your.agents.are.not.failing.your",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.your.agents.are.not.failing.your",
+        "evidence.agent.mandate.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.agent.mandate",
+      "policyRef": "policy.your.agents.are.not.failing.your",
+      "verificationRefs": [
+        "verification.your.agents.are.not.failing.your"
+      ],
+      "effectRefs": [
+        "effect.allow-mandated-action",
+        "effect.route-for-review",
+        "effect.block-unbounded-action"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "lifecycleStates": [
+    {
+      "id": "active"
+    },
+    {
+      "id": "expired"
+    },
+    {
+      "id": "issued"
+    },
+    {
+      "id": "revoked"
+    },
+    {
+      "id": "suspended"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "packageId": "ttg.pattern.delegation-after-identity",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.scope-boundary",
+      "type": "delegation-scope",
+      "description": "Ensure child scope is narrower than parent"
+    },
+    {
+      "id": "control.parent-chain-check",
+      "type": "chain-validation",
+      "description": "Verify parent chain continuity and status"
+    },
+    {
+      "id": "control.cascading-revocation",
+      "type": "revocation-propagation",
+      "description": "Invalidate derived authority when parent authority changes"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.delegation.after.identity",
+      "rules": [
+        "Ensure child scope is narrower than parent",
+        "Verify parent chain continuity and status",
+        "Invalidate derived authority when parent authority changes"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.permission-laundering",
+      "type": "privilege-escalation",
+      "description": "Downstream action exceeds original delegated mandate"
+    },
+    {
+      "id": "threat.broken-cascade",
+      "type": "revocation-failure",
+      "description": "Parent revocation does not reach active delegations"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.resume",
+        "from": "state.suspended",
+        "to": "state.active",
+        "trigger": "issue resolved",
+        "actor": "policy authority or maintainer",
+        "evidenceRequirement": "updated evidence or corrected policy"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.active",
+        "to": "state.expired",
+        "trigger": "time bound or freshness window elapsed",
+        "actor": "system",
+        "evidenceRequirement": "timestamp comparison or expiry check"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.overlay.machine-readable-privacy-terms",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.privacy.term.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Privacy Term Enforcement Profile.",
+      "supportsRefs": [
+        "policy.machine.readable.privacy.terms",
+        "decision.privacy.term",
+        "control.purpose-limitation",
+        "control.retention-expiry",
+        "control.onward-transfer-check"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.machine.readable.privacy.terms",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.machine.readable.privacy.terms",
+        "evidence.privacy.term.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.privacy.term",
+      "policyRef": "policy.machine.readable.privacy.terms",
+      "verificationRefs": [
+        "verification.machine.readable.privacy.terms"
+      ],
+      "effectRefs": [
+        "effect.allow-compliant-processing",
+        "effect.deny-noncompliant-processing",
+        "effect.route-privacy-appeal"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

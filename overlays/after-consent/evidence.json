@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.overlay.after-consent",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.after-consent.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Delegated Consent Protection Policy.",
+      "supportsRefs": [
+        "policy.after.consent",
+        "decision.after-consent.enforcement",
+        "control.purpose-binding",
+        "control.chain-depth-limit",
+        "control.withdrawal-enforcement"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.after.consent",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.after.consent",
+        "evidence.after-consent.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.after-consent.enforcement",
+      "policyRef": "policy.after.consent",
+      "verificationRefs": [
+        "verification.after.consent"
+      ],
+      "effectRefs": [
+        "effect.allow-delegated-action",
+        "effect.pause-action",
+        "effect.route-redress"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

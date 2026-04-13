@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.profile.digital-credential-verification-policy-playbook",
+  "label": "Verification Policy Profile",
+  "description": "TSMM-native verification policy profile for admissibility, reliance, and challengeable verification outcomes.",
+  "profile": "profile",
+  "contexts": [
+    "context.digital-credential-verification-policy-playbook"
+  ],
+  "nodes": [
+    {
+      "id": "context.digital-credential-verification-policy-playbook",
+      "type": "TrustDomain",
+      "label": "Credential verification policy and admissibility governance",
+      "description": "Trust Graph operationalization of Why Digital Credential Verification Needs a New Policy Playbook as executable governance."
+    },
+    {
+      "id": "profile.verification.playbook",
+      "type": "AssuranceProfile",
+      "label": "Verification Policy Profile",
+      "attributes": {
+        "constraintSetRef": "artifacts/digital-credential-verification-policy-playbook/schemas/verification-policy-profile.yaml"
+      }
+    },
+    {
+      "id": "policy.digital.credential.verification.policy.playbook",
+      "type": "Policy",
+      "label": "Verification Policy Profile",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.issuer",
+      "type": "Issuer",
+      "label": "Issuer",
+      "description": "Issuer of credential and status signals",
+      "attributes": {
+        "originalType": "Issuer",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Verifier",
+      "description": "Verifier applying policy to credential acceptance",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Credential subject",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-authority",
+      "type": "GovernanceAuthority",
+      "label": "Policy Authority",
+      "description": "Authority defining verification policy profile",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.verification.policy.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Verification.Policy.Receipt",
+      "description": "Structured evidence bundle for Verification Policy Profile.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.digital.credential.verification.policy.playbook",
+      "type": "Assessment",
+      "label": "verification.digital.credential.verification.policy.playbook",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.verification.policy",
+      "type": "TrustDecision",
+      "label": "decision.verification.policy",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.accept-credential",
+      "type": "Effect",
+      "label": "Accept credential for bounded use",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.degrade-credential",
+      "type": "Effect",
+      "label": "Downgrade or warn under policy concerns",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.route-verification-review",
+      "type": "Effect",
+      "label": "Escalate for manual or secondary review",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.digital-credential-verification-policy-playbook",
+      "to": "profile.verification.playbook",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.profile-policy.playbook",
+      "type": "defines",
+      "from": "profile.verification.playbook",
+      "to": "policy.digital.credential.verification.policy.playbook",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.context-policy.playbook",
+      "type": "governs",
+      "from": "context.digital-credential-verification-policy-playbook",
+      "to": "policy.digital.credential.verification.policy.playbook",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.rel.2",
+      "type": "issues",
+      "from": "entity.issuer",
+      "to": "profile.verification.playbook",
+      "description": "Issuer-related assertions are consumed under policy profile"
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.rel.3",
+      "type": "assesses",
+      "from": "entity.verifier",
+      "to": "profile.verification.playbook",
+      "description": "Verifier applies policy to claims, evidence, and context"
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.rel.4",
+      "type": "reliesOn",
+      "from": "entity.verifier",
+      "to": "entity.policy-authority",
+      "description": "Verifier relies on profile for acceptance logic"
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.assessment-decision.policy.playbook",
+      "type": "informs",
+      "from": "verification.digital.credential.verification.policy.playbook",
+      "to": "decision.verification.policy",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.decision-effect.policy.accept-credential",
+      "type": "produces",
+      "from": "decision.verification.policy",
+      "to": "effect.accept-credential",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.decision-effect.policy.degrade-credential",
+      "type": "produces",
+      "from": "decision.verification.policy",
+      "to": "effect.degrade-credential",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.decision-effect.policy.route-verification-review",
+      "type": "produces",
+      "from": "decision.verification.policy",
+      "to": "effect.route-verification-review",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.policy-decision.policy",
+      "type": "informs",
+      "from": "policy.digital.credential.verification.policy.playbook",
+      "to": "decision.verification.policy",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "digital-credential-verification-policy-playbook.edge.policy-entity.playbook",
+      "type": "constrains",
+      "from": "policy.digital.credential.verification.policy.playbook",
+      "to": "entity.issuer",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Why Digital Credential Verification Needs a New Policy Playbook",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/why-digital-credential-verification",
+    "publishedDate": "2025-12-19",
+    "signalTier": "A",
+    "engagementRate": 23.81,
+    "packageKind": "profile"
+  }
+}

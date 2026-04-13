@@ -1,0 +1,29 @@
+{
+  "id": "ttg.overlay.consent-not-data-structure",
+  "title": "Consent Enforcement Schema",
+  "kind": "overlay",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Consent Is Not a Data Structure",
+    "url": "https://thetrustgraph.substack.com/p/consent-is-not-a-data-structure",
+    "publishedDate": "2026-01-09"
+  },
+  "signal": {
+    "tier": "A",
+    "engagementRate": 20.0
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "overlay",
+    "consent",
+    "privacy",
+    "governance"
+  ],
+  "notes": [
+    "TSMM-native overlay for consent execution, propagation, and revocation across actors and systems."
+  ]
+}

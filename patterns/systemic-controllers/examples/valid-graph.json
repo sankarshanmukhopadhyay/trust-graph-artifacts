@@ -1,0 +1,235 @@
+{
+  "graphId": "ttg.pattern.systemic-controllers",
+  "label": "Systemic Controller Registry Entry",
+  "description": "TSMM-native pattern for identifying hidden control surfaces, institutional leverage, and downstream risk effects.",
+  "profile": "pattern",
+  "contexts": [
+    "context.systemic-controllers"
+  ],
+  "nodes": [
+    {
+      "id": "context.systemic-controllers",
+      "type": "TrustDomain",
+      "label": "Hidden control-surface identification and accountability",
+      "description": "Trust Graph operationalization of Systemic Controllers: How Hidden Levers in Digital Infrastructure Create Real-World Risk as executable governance."
+    },
+    {
+      "id": "profile.systemic.controller",
+      "type": "AssuranceProfile",
+      "label": "Systemic Controller Registry Entry",
+      "attributes": {
+        "constraintSetRef": "artifacts/systemic-controllers/schemas/systemic-controller-registry-entry.yaml"
+      }
+    },
+    {
+      "id": "policy.systemic.controllers",
+      "type": "Policy",
+      "label": "Systemic Controller Registry Entry",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.platform-operator",
+      "type": "GovernanceAuthority",
+      "label": "Platform Operator",
+      "description": "Operator holding hidden or concentrated control leverage",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.control-registry",
+      "type": "TrustRegistry",
+      "label": "Control Registry",
+      "description": "Registry documenting systemic control surfaces",
+      "attributes": {
+        "originalType": "TrustRegistry",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Party affected by controller action",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.assessor",
+      "type": "Assessment",
+      "label": "Assessor",
+      "description": "Assessor reviewing hidden leverage and control implications",
+      "attributes": {
+        "originalType": "Assessment",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.systemic.controller.record",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Systemic.Controller.Record",
+      "description": "Structured evidence bundle for Systemic Controller Registry Entry.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.systemic.controllers",
+      "type": "Assessment",
+      "label": "verification.systemic.controllers",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.systemic.controller",
+      "type": "TrustDecision",
+      "label": "decision.systemic.controller",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.record-controller",
+      "type": "Effect",
+      "label": "Record controller in governed registry",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.flag-concentrated-risk",
+      "type": "Effect",
+      "label": "Flag governance concentration for review or mitigation",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.require-compensating-control",
+      "type": "Effect",
+      "label": "Require additional safeguards before reliance",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "systemic-controllers.edge.context-profile",
+      "type": "anchors",
+      "from": "context.systemic-controllers",
+      "to": "profile.systemic.controller",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "systemic-controllers.edge.profile-policy.controllers",
+      "type": "defines",
+      "from": "profile.systemic.controller",
+      "to": "policy.systemic.controllers",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "systemic-controllers.edge.context-policy.controllers",
+      "type": "governs",
+      "from": "context.systemic-controllers",
+      "to": "policy.systemic.controllers",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "systemic-controllers.rel.2",
+      "type": "publishes",
+      "from": "entity.control-registry",
+      "to": "profile.systemic.controller",
+      "description": "Registry records controller, scope, and evidence"
+    },
+    {
+      "id": "systemic-controllers.rel.3",
+      "type": "assesses",
+      "from": "entity.assessor",
+      "to": "profile.systemic.controller",
+      "description": "Assessment examines concentration and dependency risk"
+    },
+    {
+      "id": "systemic-controllers.rel.4",
+      "type": "reliesOn",
+      "from": "entity.platform-operator",
+      "to": "entity.affected-party",
+      "description": "Controller action changes downstream operational reality"
+    },
+    {
+      "id": "systemic-controllers.rel.5",
+      "type": "reliesOn",
+      "from": "profile.systemic.controller",
+      "to": "decision.systemic.controller",
+      "description": "Registry entry supports governance decision"
+    },
+    {
+      "id": "systemic-controllers.edge.assessment-decision.controller.controllers",
+      "type": "informs",
+      "from": "verification.systemic.controllers",
+      "to": "decision.systemic.controller",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "systemic-controllers.edge.decision-effect.controller.record-controller",
+      "type": "produces",
+      "from": "decision.systemic.controller",
+      "to": "effect.record-controller",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "systemic-controllers.edge.decision-effect.controller.flag-concentrated-risk",
+      "type": "produces",
+      "from": "decision.systemic.controller",
+      "to": "effect.flag-concentrated-risk",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "systemic-controllers.edge.decision-effect.controller.require-compensating-control",
+      "type": "produces",
+      "from": "decision.systemic.controller",
+      "to": "effect.require-compensating-control",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "systemic-controllers.edge.policy-decision.controller",
+      "type": "informs",
+      "from": "policy.systemic.controllers",
+      "to": "decision.systemic.controller",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "systemic-controllers.edge.policy-entity.controllers",
+      "type": "constrains",
+      "from": "policy.systemic.controllers",
+      "to": "entity.platform-operator",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Systemic Controllers: How Hidden Levers in Digital Infrastructure Create Real-World Risk",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/systemic-controllers-how-hidden-levers",
+    "publishedDate": "2025-12-09",
+    "signalTier": "C",
+    "engagementRate": 8.33,
+    "packageKind": "pattern"
+  }
+}

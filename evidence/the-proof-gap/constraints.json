@@ -1,0 +1,98 @@
+{
+  "packageId": "ttg.evidence-model.the-proof-gap",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.evidence-sufficiency",
+      "type": "evidence-threshold",
+      "description": "Require enough evidence to support each asserted claim"
+    },
+    {
+      "id": "control.method-binding",
+      "type": "method-disclosure",
+      "description": "Bind proof to assessment and verification method"
+    },
+    {
+      "id": "control.receipt-traceability",
+      "type": "traceability",
+      "description": "Produce traceable record of evidence and outcome"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.the.proof.gap",
+      "rules": [
+        "Require enough evidence to support each asserted claim",
+        "Bind proof to assessment and verification method",
+        "Produce traceable record of evidence and outcome"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.claim-without-proof",
+      "type": "unsupported-claim",
+      "description": "Claim is relied on without sufficient supporting evidence"
+    },
+    {
+      "id": "threat.evidence-opacity",
+      "type": "audit-failure",
+      "description": "Proof basis cannot be reconstructed or contested"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.resume",
+        "from": "state.suspended",
+        "to": "state.active",
+        "trigger": "issue resolved",
+        "actor": "policy authority or maintainer",
+        "evidenceRequirement": "updated evidence or corrected policy"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.active",
+        "to": "state.expired",
+        "trigger": "time bound or freshness window elapsed",
+        "actor": "system",
+        "evidenceRequirement": "timestamp comparison or expiry check"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

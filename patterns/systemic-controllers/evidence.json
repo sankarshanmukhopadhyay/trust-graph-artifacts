@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.pattern.systemic-controllers",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.systemic.controller.record",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Systemic Controller Registry Entry.",
+      "supportsRefs": [
+        "policy.systemic.controllers",
+        "decision.systemic.controller",
+        "control.controller-disclosure",
+        "control.override-accountability",
+        "control.dependency-mapping"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.systemic.controllers",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.systemic.controllers",
+        "evidence.systemic.controller.record"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.systemic.controller",
+      "policyRef": "policy.systemic.controllers",
+      "verificationRefs": [
+        "verification.systemic.controllers"
+      ],
+      "effectRefs": [
+        "effect.record-controller",
+        "effect.flag-concentrated-risk",
+        "effect.require-compensating-control"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

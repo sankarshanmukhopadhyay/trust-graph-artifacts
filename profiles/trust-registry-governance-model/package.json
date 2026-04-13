@@ -1,0 +1,29 @@
+{
+  "id": "ttg.profile.trust-registry-governance-model",
+  "title": "Trust Registry Governance Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "The Political Economy of Trust Registries",
+    "url": "https://thetrustgraph.substack.com/p/the-political-economy-of-trust-registries",
+    "publishedDate": "2025-12-05"
+  },
+  "signal": {
+    "tier": "A",
+    "engagementRate": 25.0
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "profile",
+    "trust-registries",
+    "governance",
+    "markets"
+  ],
+  "notes": [
+    "TSMM-native profile for trust registry governance, operator authority, plurality, and forking rights."
+  ]
+}

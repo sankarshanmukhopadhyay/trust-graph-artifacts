@@ -1,0 +1,51 @@
+{
+  "packageId": "ttg.profile.layers-of-the-self",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.identity-projection",
+      "artifactType": "projection-record",
+      "description": "Contextual projection containing role, context, attribute subset, and disclosure policy",
+      "supportsRefs": []
+    },
+    {
+      "id": "evidence.presentation-record",
+      "artifactType": "presentation-receipt",
+      "description": "Record of audience, permitted use, and verification outcome for each projection presentation",
+      "supportsRefs": []
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.identity-projection",
+      "method": "schema-validation",
+      "performedBy": "entity.presentation-verifier",
+      "controlRefs": [
+        "control.projection-minimization",
+        "control.linkage-constraint",
+        "control.invalidation-endpoint"
+      ],
+      "inputRefs": []
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.identity-projection",
+      "policyRef": "policy.identity.projection",
+      "verificationRefs": [
+        "verification.identity-projection"
+      ],
+      "effectRefs": [
+        "effect.accept-projection",
+        "effect.limit-projection",
+        "effect.reject-projection"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

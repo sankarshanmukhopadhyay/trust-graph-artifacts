@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.pattern.delegation-after-identity",
+  "label": "Delegation Chain Policy",
+  "description": "TSMM-native delegation pattern for bounded authority, scope inheritance, and revocation-aware chains.",
+  "profile": "pattern",
+  "contexts": [
+    "context.delegation-after-identity"
+  ],
+  "nodes": [
+    {
+      "id": "context.delegation-after-identity",
+      "type": "TrustDomain",
+      "label": "Delegated authority governance for agent and service chains",
+      "description": "Trust Graph operationalization of Delegation After Identity as executable governance."
+    },
+    {
+      "id": "profile.delegation.chain",
+      "type": "AssuranceProfile",
+      "label": "Delegation Chain Policy",
+      "attributes": {
+        "constraintSetRef": "artifacts/delegation-after-identity/schemas/delegation-chain-policy.yaml"
+      }
+    },
+    {
+      "id": "policy.delegation.after.identity",
+      "type": "Policy",
+      "label": "Delegation Chain Policy",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.principal",
+      "type": "Subject",
+      "label": "Principal",
+      "description": "Originating principal that delegates bounded authority",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.delegate-agent",
+      "type": "Agent",
+      "label": "Delegate Agent",
+      "description": "Delegate receiving bounded authority",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.downstream-service",
+      "type": "RegistryService",
+      "label": "Downstream Service",
+      "description": "Downstream service consuming delegated authority",
+      "attributes": {
+        "originalType": "RegistryService",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.scope-verifier",
+      "type": "Verifier",
+      "label": "Scope Verifier",
+      "description": "Service validating delegation chain, scope, and status",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.delegation.chain.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Delegation.Chain.Receipt",
+      "description": "Structured evidence bundle for Delegation Chain Policy.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.delegation.after.identity",
+      "type": "Assessment",
+      "label": "verification.delegation.after.identity",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.delegation.chain",
+      "type": "TrustDecision",
+      "label": "decision.delegation.chain",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-bounded-execution",
+      "type": "Effect",
+      "label": "Permit action within validated scope",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.deny-excess-scope",
+      "type": "Effect",
+      "label": "Deny action beyond inherited authority",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.revoke-chain",
+      "type": "Effect",
+      "label": "Invalidate active delegation chain",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "delegation-after-identity.edge.context-profile",
+      "type": "anchors",
+      "from": "context.delegation-after-identity",
+      "to": "profile.delegation.chain",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "delegation-after-identity.edge.profile-policy.identity",
+      "type": "defines",
+      "from": "profile.delegation.chain",
+      "to": "policy.delegation.after.identity",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "delegation-after-identity.edge.context-policy.identity",
+      "type": "governs",
+      "from": "context.delegation-after-identity",
+      "to": "policy.delegation.after.identity",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "delegation-after-identity.rel.3",
+      "type": "delegates",
+      "from": "entity.principal",
+      "to": "entity.delegate-agent",
+      "description": "Delegation creates chain with max depth and scope rules"
+    },
+    {
+      "id": "delegation-after-identity.rel.4",
+      "type": "reliesOn",
+      "from": "entity.delegate-agent",
+      "to": "entity.downstream-service",
+      "description": "Delegate invokes downstream service under mandate"
+    },
+    {
+      "id": "delegation-after-identity.rel.5",
+      "type": "verifies",
+      "from": "entity.scope-verifier",
+      "to": "profile.delegation.chain",
+      "description": "Verifier checks chain before effect"
+    },
+    {
+      "id": "delegation-after-identity.edge.assessment-decision.chain.identity",
+      "type": "informs",
+      "from": "verification.delegation.after.identity",
+      "to": "decision.delegation.chain",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "delegation-after-identity.edge.decision-effect.chain.allow-bounded-execution",
+      "type": "produces",
+      "from": "decision.delegation.chain",
+      "to": "effect.allow-bounded-execution",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "delegation-after-identity.edge.decision-effect.chain.deny-excess-scope",
+      "type": "produces",
+      "from": "decision.delegation.chain",
+      "to": "effect.deny-excess-scope",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "delegation-after-identity.edge.decision-effect.chain.revoke-chain",
+      "type": "produces",
+      "from": "decision.delegation.chain",
+      "to": "effect.revoke-chain",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "delegation-after-identity.edge.policy-decision.chain",
+      "type": "informs",
+      "from": "policy.delegation.after.identity",
+      "to": "decision.delegation.chain",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "delegation-after-identity.edge.policy-entity.identity",
+      "type": "constrains",
+      "from": "policy.delegation.after.identity",
+      "to": "entity.principal",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Delegation After Identity",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/delegation-after-identity",
+    "publishedDate": "2026-02-18",
+    "signalTier": "B",
+    "engagementRate": 18.18,
+    "packageKind": "pattern"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "packageId": "ttg.evidence-model.execution-time-delegation",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.execution.delegation.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Structured evidence bundle for Execution Delegation Control Receipt.",
+      "supportsRefs": [
+        "policy.execution.time.delegation",
+        "decision.execution.delegation",
+        "control.live-authority-check",
+        "control.decision-receipt",
+        "control.cascading-stop"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.execution.time.delegation",
+      "method": "tsmm-binding-conformance-check",
+      "performedBy": "",
+      "controlRefs": [],
+      "inputRefs": [
+        "artifact.execution.time.delegation",
+        "evidence.execution.delegation.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.execution.delegation",
+      "policyRef": "policy.execution.time.delegation",
+      "verificationRefs": [
+        "verification.execution.time.delegation"
+      ],
+      "effectRefs": [
+        "effect.allow-live-execution",
+        "effect.block-live-execution",
+        "effect.invalidate-downstream-action"
+      ],
+      "requiredFields": [
+        "authority_used",
+        "policy_evaluated",
+        "facts_input",
+        "outcome",
+        "timestamp"
+      ]
+    }
+  ]
+}

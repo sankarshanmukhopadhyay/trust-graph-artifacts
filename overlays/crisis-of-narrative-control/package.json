@@ -1,0 +1,29 @@
+{
+  "id": "ttg.overlay.crisis-of-narrative-control",
+  "title": "Narrative Contestability Record",
+  "kind": "overlay",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Crisis of Narrative Control",
+    "url": "https://thetrustgraph.substack.com/p/crisis-of-narrative-control",
+    "publishedDate": "2026-02-09"
+  },
+  "signal": {
+    "tier": "B",
+    "engagementRate": 17.07
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "overlay",
+    "narrative",
+    "contestability",
+    "identity"
+  ],
+  "notes": [
+    "TSMM-native overlay for narrative contestability, provenance, and governance of interpretation surfaces."
+  ]
+}

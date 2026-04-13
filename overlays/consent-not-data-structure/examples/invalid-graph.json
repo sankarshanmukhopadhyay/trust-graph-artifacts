@@ -1,0 +1,249 @@
+{
+  "graphId": "ttg.overlay.consent-not-data-structure",
+  "label": "Consent Enforcement Schema",
+  "description": "TSMM-native overlay for consent execution, propagation, and revocation across actors and systems.",
+  "profile": "overlay",
+  "contexts": [
+    "context.consent-not-data-structure"
+  ],
+  "nodes": [
+    {
+      "id": "context.consent-not-data-structure",
+      "type": "TrustDomain",
+      "label": "Runtime consent enforcement context",
+      "description": "Trust Graph operationalization of consent as an execution-time authorization constraint rather than a static record."
+    },
+    {
+      "id": "profile.consent.enforcement",
+      "type": "AssuranceProfile",
+      "label": "Consent Enforcement Schema",
+      "attributes": {
+        "constraintSetRef": "artifacts/consent-not-data-structure/schemas/consent-enforcement-schema.yaml"
+      }
+    },
+    {
+      "id": "policy.consent.runtime",
+      "type": "Policy",
+      "label": "Runtime Consent Policy",
+      "attributes": {
+        "decisionMode": "deterministic"
+      }
+    },
+    {
+      "id": "entity.data-subject",
+      "type": "Subject",
+      "label": "Data Subject",
+      "description": "Subject whose permission and withdrawal rights are at stake",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.controller",
+      "type": "GovernanceAuthority",
+      "label": "Controller",
+      "description": "Controller requesting or exercising permission under the consent object",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.downstream-processor",
+      "type": "Agent",
+      "label": "Downstream Processor",
+      "description": "Delegated processor inheriting consent constraints",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.audit-service",
+      "type": "Verifier",
+      "label": "Audit Service",
+      "description": "Service recording consent use, checks, and challenge events",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.consent-object",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Consent Object",
+      "description": "Governed consent object with purpose, actions, constraints, and endpoints",
+      "attributes": {
+        "artifactType": "consent-record"
+      }
+    },
+    {
+      "id": "evidence.audit-log",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Audit Log",
+      "description": "Trace of execution-time checks, use events, and revocation outcomes",
+      "attributes": {
+        "artifactType": "audit-record"
+      }
+    },
+    {
+      "id": "verification.consent-runtime",
+      "type": "Assessment",
+      "label": "Verify runtime consent validity",
+      "attributes": {
+        "method": ""
+      }
+    },
+    {
+      "id": "decision.consent.execution",
+      "type": "TrustDecision",
+      "label": "Determine whether the requested action remains consent-authorized",
+      "attributes": {
+        "outcomeModes": []
+      }
+    },
+    {
+      "id": "effect.permit-action",
+      "type": "Effect",
+      "label": "Permit Action",
+      "description": "Allow execution within purpose and constraint bounds",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "permit"
+      }
+    },
+    {
+      "id": "effect.pause-action",
+      "type": "Effect",
+      "label": "Pause Action",
+      "description": "Pause execution pending review or updated consent state",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "suspend"
+      }
+    },
+    {
+      "id": "effect.deny-action",
+      "type": "Effect",
+      "label": "Deny Action",
+      "description": "Block execution because consent is invalid, expired, or revoked",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "deny"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "consent-not-data-structure.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.consent-not-data-structure",
+      "to": "profile.consent.enforcement",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "consent-not-data-structure.edge.profile-policy.runtime",
+      "type": "defines",
+      "from": "profile.consent.enforcement",
+      "to": "policy.consent.runtime",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "consent-not-data-structure.edge.context-policy.runtime",
+      "type": "governs",
+      "from": "context.consent-not-data-structure",
+      "to": "policy.consent.runtime",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "consent-not-data-structure.rel.1",
+      "type": "authorizes",
+      "from": "entity.data-subject",
+      "to": "profile.consent.enforcement",
+      "description": "Subject grants bounded consent through the governed consent object"
+    },
+    {
+      "id": "consent-not-data-structure.rel.2",
+      "type": "reliesOn",
+      "from": "entity.controller",
+      "to": "profile.consent.enforcement",
+      "description": "Controller acts under declared purpose and action constraints"
+    },
+    {
+      "id": "consent-not-data-structure.rel.3",
+      "type": "delegates",
+      "from": "entity.controller",
+      "to": "entity.downstream-processor",
+      "description": "Controller delegates processing only where allowed by the consent object"
+    },
+    {
+      "id": "consent-not-data-structure.rel.4",
+      "type": "reliesOn",
+      "from": "entity.audit-service",
+      "to": "profile.consent.enforcement",
+      "description": "Audit service records use and withdrawal events"
+    },
+    {
+      "id": "consent-not-data-structure.edge.evidence-assessment.consent-runtime",
+      "type": "substantiates",
+      "from": "evidence.consent-object",
+      "to": "verification.consent-runtime",
+      "description": "Evidence substantiates the assessment."
+    },
+    {
+      "id": "consent-not-data-structure.edge.assessment-decision.execution.consent-runtime",
+      "type": "informs",
+      "from": "verification.consent-runtime",
+      "to": "decision.consent.execution",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "consent-not-data-structure.edge.decision-effect.execution.permit-action",
+      "type": "produces",
+      "from": "decision.consent.execution",
+      "to": "effect.permit-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "consent-not-data-structure.edge.decision-effect.execution.pause-action",
+      "type": "produces",
+      "from": "decision.consent.execution",
+      "to": "effect.pause-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "consent-not-data-structure.edge.decision-effect.execution.deny-action",
+      "type": "produces",
+      "from": "decision.consent.execution",
+      "to": "effect.deny-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "consent-not-data-structure.edge.policy-decision.execution",
+      "type": "informs",
+      "from": "policy.consent.runtime",
+      "to": "decision.consent.execution",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "consent-not-data-structure.edge.policy-entity.runtime",
+      "type": "constrains",
+      "from": "policy.consent.runtime",
+      "to": "entity.data-subject",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Consent Is Not a Data Structure",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/consent-is-not-a-data-structure",
+    "publishedDate": "2026-01-09",
+    "signalTier": "A",
+    "engagementRate": 20.0,
+    "packageKind": "overlay"
+  }
+}

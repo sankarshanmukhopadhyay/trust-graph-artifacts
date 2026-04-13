@@ -1,0 +1,12 @@
+{
+  "packageId": "ttg.pattern.delegation-after-identity",
+  "expectedValidation": {
+    "package": "pass",
+    "graph": "pass",
+    "invalidExample": "fail"
+  },
+  "evidenceChecks": [
+    "decisionReceipts present when trustDecisions exist",
+    "control set is non-empty for policy-bearing packages"
+  ]
+}

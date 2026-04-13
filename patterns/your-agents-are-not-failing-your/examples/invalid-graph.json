@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.pattern.your-agents-are-not-failing-your",
+  "label": "Agent Mandate Envelope",
+  "description": "TSMM-native mandate pattern for translating human intent into executable and contestable agent authority.",
+  "profile": "pattern",
+  "contexts": [
+    "context.your-agents-are-not-failing-your"
+  ],
+  "nodes": [
+    {
+      "id": "context.your-agents-are-not-failing-your",
+      "type": "TrustDomain",
+      "label": "Agent mandate quality and admissibility governance",
+      "description": "Trust Graph operationalization of Your Agents Are Not Failing. Your Mandates Are as executable governance."
+    },
+    {
+      "id": "profile.agent.mandate",
+      "type": "AssuranceProfile",
+      "label": "Agent Mandate Envelope",
+      "attributes": {
+        "constraintSetRef": "artifacts/your-agents-are-not-failing-your/schemas/agent-mandate-envelope.yaml"
+      }
+    },
+    {
+      "id": "policy.your.agents.are.not.failing.your",
+      "type": "Policy",
+      "label": "Agent Mandate Envelope",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.operator",
+      "type": "GovernanceAuthority",
+      "label": "Operator",
+      "description": "Operator or principal issuing the mandate",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.agent",
+      "type": "Agent",
+      "label": "Agent",
+      "description": "Agent executing the mandate",
+      "attributes": {
+        "originalType": "Agent",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-engine",
+      "type": "Verifier",
+      "label": "Policy Engine",
+      "description": "Policy engine testing mandate sufficiency",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.reviewer",
+      "type": "RelyingParty",
+      "label": "Reviewer",
+      "description": "Human or automated reviewer examining contested mandate use",
+      "attributes": {
+        "originalType": "RelyingParty",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.agent.mandate.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Agent.Mandate.Receipt",
+      "description": "Structured evidence bundle for Agent Mandate Envelope.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.your.agents.are.not.failing.your",
+      "type": "Assessment",
+      "label": "verification.your.agents.are.not.failing.your",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.agent.mandate",
+      "type": "TrustDecision",
+      "label": "decision.agent.mandate",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.allow-mandated-action",
+      "type": "Effect",
+      "label": "Permit action under sufficient mandate",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.route-for-review",
+      "type": "Effect",
+      "label": "Route incomplete mandate to human review",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.block-unbounded-action",
+      "type": "Effect",
+      "label": "Deny action where mandate is insufficient",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "your-agents-are-not-failing-your.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.your-agents-are-not-failing-your",
+      "to": "profile.agent.mandate",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.profile-policy.your",
+      "type": "defines",
+      "from": "profile.agent.mandate",
+      "to": "policy.your.agents.are.not.failing.your",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.context-policy.your",
+      "type": "governs",
+      "from": "context.your-agents-are-not-failing-your",
+      "to": "policy.your.agents.are.not.failing.your",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.rel.3",
+      "type": "issues",
+      "from": "entity.operator",
+      "to": "profile.agent.mandate",
+      "description": "Mandate artifact expresses scope, constraints, and receipts"
+    },
+    {
+      "id": "your-agents-are-not-failing-your.rel.4",
+      "type": "assesses",
+      "from": "entity.policy-engine",
+      "to": "profile.agent.mandate",
+      "description": "Engine checks sufficiency before effect"
+    },
+    {
+      "id": "your-agents-are-not-failing-your.rel.5",
+      "type": "informs",
+      "from": "entity.policy-engine",
+      "to": "entity.reviewer",
+      "description": "Ambiguous or weak mandates route to review"
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.assessment-decision.mandate.your",
+      "type": "informs",
+      "from": "verification.your.agents.are.not.failing.your",
+      "to": "decision.agent.mandate",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.decision-effect.mandate.allow-mandated-action",
+      "type": "produces",
+      "from": "decision.agent.mandate",
+      "to": "effect.allow-mandated-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.decision-effect.mandate.route-for-review",
+      "type": "produces",
+      "from": "decision.agent.mandate",
+      "to": "effect.route-for-review",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.decision-effect.mandate.block-unbounded-action",
+      "type": "produces",
+      "from": "decision.agent.mandate",
+      "to": "effect.block-unbounded-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.policy-decision.mandate",
+      "type": "informs",
+      "from": "policy.your.agents.are.not.failing.your",
+      "to": "decision.agent.mandate",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "your-agents-are-not-failing-your.edge.policy-entity.your",
+      "type": "constrains",
+      "from": "policy.your.agents.are.not.failing.your",
+      "to": "entity.operator",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Your Agents Are Not Failing. Your Mandates Are",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your",
+    "publishedDate": "2026-02-26",
+    "signalTier": "B",
+    "engagementRate": 13.64,
+    "packageKind": "pattern"
+  }
+}

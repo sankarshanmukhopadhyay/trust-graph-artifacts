@@ -1,0 +1,228 @@
+{
+  "graphId": "ttg.evidence-model.the-proof-gap",
+  "label": "Proof Requirement Profile",
+  "description": "TSMM-native evidence model for proof sufficiency, subject-held proof, and evidence production requirements.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.the-proof-gap"
+  ],
+  "nodes": [
+    {
+      "id": "context.the-proof-gap",
+      "type": "TrustDomain",
+      "label": "Evidence sufficiency and proof requirement governance",
+      "description": "Trust Graph operationalization of The Proof Gap as executable governance."
+    },
+    {
+      "id": "profile.proof.requirement",
+      "type": "AssuranceProfile",
+      "label": "Proof Requirement Profile",
+      "attributes": {
+        "constraintSetRef": "artifacts/the-proof-gap/schemas/proof-requirement-profile.yaml"
+      }
+    },
+    {
+      "id": "policy.the.proof.gap",
+      "type": "Policy",
+      "label": "Proof Requirement Profile",
+      "attributes": {
+        "decisionMode": "mixed"
+      }
+    },
+    {
+      "id": "entity.claimant",
+      "type": "Subject",
+      "label": "Claimant",
+      "description": "Party asserting a trust-relevant claim",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Verifier",
+      "description": "Verifier evaluating sufficiency of proof",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.assessor",
+      "type": "Assessment",
+      "label": "Assessor",
+      "description": "Assessment process reviewing evidence adequacy",
+      "attributes": {
+        "originalType": "Assessment",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-authority",
+      "type": "GovernanceAuthority",
+      "label": "Policy Authority",
+      "description": "Authority defining acceptable proof standard",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.proof.requirement.receipt",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Proof.Requirement.Receipt",
+      "description": "Structured evidence bundle for Proof Requirement Profile.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.the.proof.gap",
+      "type": "Assessment",
+      "label": "verification.the.proof.gap",
+      "attributes": {
+        "method": "tsmm-binding-conformance-check"
+      }
+    },
+    {
+      "id": "decision.proof.requirement",
+      "type": "TrustDecision",
+      "label": "decision.proof.requirement",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "degrade",
+          "review"
+        ]
+      }
+    },
+    {
+      "id": "effect.accept-supported-claim",
+      "type": "Effect",
+      "label": "Accept claim with sufficient proof",
+      "attributes": {
+        "effectClass": "operational",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.degrade-insufficient-claim",
+      "type": "Effect",
+      "label": "Warn or degrade when evidence is thin",
+      "attributes": {
+        "effectClass": "protective",
+        "effectType": ""
+      }
+    },
+    {
+      "id": "effect.deny-unsupported-claim",
+      "type": "Effect",
+      "label": "Deny claim lacking sufficient proof",
+      "attributes": {
+        "effectClass": "governance",
+        "effectType": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "the-proof-gap.edge.context-profile",
+      "type": "anchors",
+      "from": "context.the-proof-gap",
+      "to": "profile.proof.requirement",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "the-proof-gap.edge.profile-policy.gap",
+      "type": "defines",
+      "from": "profile.proof.requirement",
+      "to": "policy.the.proof.gap",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "the-proof-gap.edge.context-policy.gap",
+      "type": "governs",
+      "from": "context.the-proof-gap",
+      "to": "policy.the.proof.gap",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "the-proof-gap.rel.2",
+      "type": "assesses",
+      "from": "entity.verifier",
+      "to": "profile.proof.requirement",
+      "description": "Verifier checks claim against proof thresholds"
+    },
+    {
+      "id": "the-proof-gap.rel.3",
+      "type": "assesses",
+      "from": "entity.assessor",
+      "to": "profile.proof.requirement",
+      "description": "Assessment reviews evidence quality and completeness"
+    },
+    {
+      "id": "the-proof-gap.rel.4",
+      "type": "reliesOn",
+      "from": "entity.verifier",
+      "to": "entity.policy-authority",
+      "description": "Verifier uses declared proof standard"
+    },
+    {
+      "id": "the-proof-gap.edge.assessment-decision.requirement.gap",
+      "type": "informs",
+      "from": "verification.the.proof.gap",
+      "to": "decision.proof.requirement",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "the-proof-gap.edge.decision-effect.requirement.accept-supported-claim",
+      "type": "produces",
+      "from": "decision.proof.requirement",
+      "to": "effect.accept-supported-claim",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "the-proof-gap.edge.decision-effect.requirement.degrade-insufficient-claim",
+      "type": "produces",
+      "from": "decision.proof.requirement",
+      "to": "effect.degrade-insufficient-claim",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "the-proof-gap.edge.decision-effect.requirement.deny-unsupported-claim",
+      "type": "produces",
+      "from": "decision.proof.requirement",
+      "to": "effect.deny-unsupported-claim",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "the-proof-gap.edge.policy-decision.requirement",
+      "type": "informs",
+      "from": "policy.the.proof.gap",
+      "to": "decision.proof.requirement",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "the-proof-gap.edge.policy-entity.gap",
+      "type": "constrains",
+      "from": "policy.the.proof.gap",
+      "to": "entity.claimant",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Proof Gap",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/the-proof-gap",
+    "publishedDate": "2026-03-16",
+    "signalTier": "B",
+    "engagementRate": 11.11,
+    "packageKind": "evidence-model"
+  }
+}

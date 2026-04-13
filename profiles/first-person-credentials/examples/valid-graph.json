@@ -1,0 +1,249 @@
+{
+  "graphId": "ttg.profile.first-person-credentials",
+  "label": "First-Person Assertion Envelope",
+  "description": "TSMM-native profile for first-person assertion admissibility, challenge handling, and evidence-linked self-claims.",
+  "profile": "profile",
+  "contexts": [
+    "context.first-person-credentials"
+  ],
+  "nodes": [
+    {
+      "id": "context.first-person-credentials",
+      "type": "TrustDomain",
+      "label": "First-person admissibility and challenge context",
+      "description": "Trust Graph operationalization of first-person assertions as governed identity inputs rather than informal explanation."
+    },
+    {
+      "id": "profile.first-person.assertion",
+      "type": "AssuranceProfile",
+      "label": "First-Person Assertion Envelope",
+      "attributes": {
+        "constraintSetRef": "artifacts/first-person-credentials/schemas/first-person-assertion-envelope.yaml"
+      }
+    },
+    {
+      "id": "policy.first-person.admissibility",
+      "type": "Policy",
+      "label": "First-Person Admissibility Policy",
+      "attributes": {
+        "decisionMode": "assisted"
+      }
+    },
+    {
+      "id": "entity.asserting-subject",
+      "type": "Subject",
+      "label": "Asserting Subject",
+      "description": "Subject originating the first-person claim",
+      "attributes": {
+        "originalType": "Subject",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.counterparty",
+      "type": "RelyingParty",
+      "label": "Counterparty",
+      "description": "Relying counterparty evaluating the assertion",
+      "attributes": {
+        "originalType": "RelyingParty",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Assertion Verifier",
+      "description": "Verifier checking evidence integrity and attestation conditions",
+      "attributes": {
+        "originalType": "Verifier",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.dispute-resolver",
+      "type": "GovernanceAuthority",
+      "label": "Dispute Resolver",
+      "description": "Resolver handling challenges, corrections, and supersession",
+      "attributes": {
+        "originalType": "GovernanceAuthority",
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.assertion-envelope",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Assertion Envelope",
+      "description": "Structured first-person assertion with subject binding, claim, and evidence links",
+      "attributes": {
+        "artifactType": "assertion-envelope"
+      }
+    },
+    {
+      "id": "evidence.admissibility-record",
+      "type": "EvidenceBundle",
+      "label": "Evidence.Admissibility Record",
+      "description": "Record of counterparty admissibility decision and verification outcome",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.assertion-envelope",
+      "type": "Assessment",
+      "label": "Verify assertion envelope completeness",
+      "attributes": {
+        "method": ""
+      }
+    },
+    {
+      "id": "decision.first-person.admissibility",
+      "type": "TrustDecision",
+      "label": "Determine whether the first-person assertion is admissible",
+      "attributes": {
+        "outcomeModes": []
+      }
+    },
+    {
+      "id": "effect.accept-assertion",
+      "type": "Effect",
+      "label": "Accept Assertion",
+      "description": "Counterparty accepts the assertion for the declared scope",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "permit"
+      }
+    },
+    {
+      "id": "effect.challenge-assertion",
+      "type": "Effect",
+      "label": "Challenge Assertion",
+      "description": "Counterparty routes the assertion to dispute handling or additional review",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "review"
+      }
+    },
+    {
+      "id": "effect.reject-assertion",
+      "type": "Effect",
+      "label": "Reject Assertion",
+      "description": "Counterparty rejects the assertion for insufficient evidence or policy mismatch",
+      "attributes": {
+        "effectClass": "",
+        "effectType": "deny"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "first-person-credentials.edge.context-profile",
+      "type": "anchors",
+      "from": "context.first-person-credentials",
+      "to": "profile.first-person.assertion",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "first-person-credentials.edge.profile-policy.admissibility",
+      "type": "defines",
+      "from": "profile.first-person.assertion",
+      "to": "policy.first-person.admissibility",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "first-person-credentials.edge.context-policy.admissibility",
+      "type": "governs",
+      "from": "context.first-person-credentials",
+      "to": "policy.first-person.admissibility",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "first-person-credentials.rel.1",
+      "type": "asserts",
+      "from": "entity.asserting-subject",
+      "to": "profile.first-person.assertion",
+      "description": "Subject originates the first-person assertion envelope"
+    },
+    {
+      "id": "first-person-credentials.rel.2",
+      "type": "assesses",
+      "from": "entity.counterparty",
+      "to": "profile.first-person.assertion",
+      "description": "Counterparty evaluates the claim against acceptance requirements"
+    },
+    {
+      "id": "first-person-credentials.rel.3",
+      "type": "verifies",
+      "from": "entity.verifier",
+      "to": "profile.first-person.assertion",
+      "description": "Verifier checks evidence links and attestation method"
+    },
+    {
+      "id": "first-person-credentials.rel.4",
+      "type": "assesses",
+      "from": "entity.dispute-resolver",
+      "to": "profile.first-person.assertion",
+      "description": "Dispute resolver handles contested claim outcomes"
+    },
+    {
+      "id": "first-person-credentials.edge.evidence-assessment.assertion-envelope",
+      "type": "substantiates",
+      "from": "evidence.assertion-envelope",
+      "to": "verification.assertion-envelope",
+      "description": "Evidence substantiates the assessment."
+    },
+    {
+      "id": "first-person-credentials.edge.assessment-decision.admissibility.assertion-envelope",
+      "type": "informs",
+      "from": "verification.assertion-envelope",
+      "to": "decision.first-person.admissibility",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "first-person-credentials.edge.decision-effect.admissibility.accept-assertion",
+      "type": "produces",
+      "from": "decision.first-person.admissibility",
+      "to": "effect.accept-assertion",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "first-person-credentials.edge.decision-effect.admissibility.challenge-assertion",
+      "type": "produces",
+      "from": "decision.first-person.admissibility",
+      "to": "effect.challenge-assertion",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "first-person-credentials.edge.decision-effect.admissibility.reject-assertion",
+      "type": "produces",
+      "from": "decision.first-person.admissibility",
+      "to": "effect.reject-assertion",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "first-person-credentials.edge.policy-decision.admissibility",
+      "type": "informs",
+      "from": "policy.first-person.admissibility",
+      "to": "decision.first-person.admissibility",
+      "description": "Policy informs the trust decision."
+    },
+    {
+      "id": "first-person-credentials.edge.policy-entity.admissibility",
+      "type": "constrains",
+      "from": "policy.first-person.admissibility",
+      "to": "entity.asserting-subject",
+      "description": "Policy constrains primary operational actor or subject."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "First-Person Credentials",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/first-person-credentials",
+    "publishedDate": "2026-03-02",
+    "signalTier": "A",
+    "engagementRate": 20.93,
+    "packageKind": "profile"
+  }
+}
