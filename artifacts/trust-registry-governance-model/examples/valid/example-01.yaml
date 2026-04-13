@@ -1,0 +1,25 @@
+registry_id: trg-001
+operator: Trust Registry Foundation
+governance_model: foundation
+recognition_policy:
+  eligibility_criteria:
+  - licensed-issuer
+  decision_authority: membership-committee
+  published_sla: 30-days
+pricing_disclosure:
+  has_fees: true
+  fee_url: https://example.org/fees
+  subsidy_model: public-interest-waiver
+suspension_policy:
+  grounds:
+  - fraud
+  - licence-expiry
+  effective_latency: under-1-hour
+  public_notice_required: true
+interoperability_policy:
+  accepts_external_registries: true
+  cross_registry_query_mode: meta-registry
+appeals:
+  endpoint: https://example.org/registry/appeals
+  review_body: independent-panel
+  publication_required: true

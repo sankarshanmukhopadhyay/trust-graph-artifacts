@@ -1,0 +1,42 @@
+id: ttg-artifact-013
+title: Proof Requirement Profile
+status: draft
+source:
+  essay_title: The Proof Gap
+  essay_url: https://thetrustgraph.substack.com/p/the-proof-gap
+  published_date: '2026-03-16'
+signal:
+  engagement_rate: 11.11
+  tier: B
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  - mapping
+  domain:
+  - proof
+  - verification
+  - admissibility
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - enforcement
+  - revocation
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-001
+  - ttg-artifact-008
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'

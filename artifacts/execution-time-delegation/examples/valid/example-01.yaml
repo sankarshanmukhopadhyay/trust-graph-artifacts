@@ -1,0 +1,14 @@
+receipt_id: edcr-001
+action_id: payment-req-12
+delegate: urn:agent:procurement-1
+principal: did:example:company-1
+authority_basis: delegation-chain-policy/v1
+policy_version: '2026-03-01'
+control_checks:
+- check: scope-check
+  result: pass
+- check: revocation-check
+  result: pass
+outcome: escalated
+reversibility_class: reversible
+challenge_reference: https://example.org/challenges/payment-req-12

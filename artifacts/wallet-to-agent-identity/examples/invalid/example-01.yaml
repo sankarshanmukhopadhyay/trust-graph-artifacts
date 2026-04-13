@@ -1,0 +1,8 @@
+binding_id: wab-002
+wallet_principal: did:example:person-99
+agent_instance: urn:agent:travel-bot-2
+allowed_presentations: []
+allowed_requests: []
+session_controls:
+  expires_at: not-a-date
+  revocable: false

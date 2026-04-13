@@ -1,0 +1,53 @@
+id: narrative-contestability-record
+version: 0.1.0
+type: object
+required:
+- record_id
+- subject_id
+- contested_output
+- decision_context
+- correction_statement
+- requested_remedy
+properties:
+  record_id:
+    type: string
+  subject_id:
+    type: string
+  contested_output:
+    type: object
+    required:
+    - system
+    - classification
+    properties:
+      system:
+        type: string
+      classification:
+        type: string
+      generated_at:
+        type: string
+        format: date-time
+  decision_context:
+    type: string
+  correction_statement:
+    type: string
+  evidence_links:
+    type: array
+    items:
+      type: string
+  requested_remedy:
+    type: string
+    enum:
+    - reclassify
+    - remove-output
+    - human-review
+    - freeze-use
+  review_status:
+    type: string
+    enum:
+    - submitted
+    - under-review
+    - accepted
+    - rejected
+    - partially-accepted
+  review_body:
+    type: string

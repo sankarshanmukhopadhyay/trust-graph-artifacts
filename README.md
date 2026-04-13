@@ -173,19 +173,36 @@ It is designed to make:
 
 ## Next steps
 
-- Formalize initial artifact set
-- Introduce validation harness
-- Integrate with TRQP and TSMM where relevant
-
+- expand artifact depth with richer examples and challenge flows
+- introduce validation harness
+- integrate with TRQP and TSMM where relevant
+- verify and harden provisional source metadata
 
 ---
 
-## Initial artifact set
+## Current artifact set
 
-The repository now includes an initial Tier A set derived from the current dataset:
+The repository now includes the initial Tier A set and a next-wave expansion derived from the current dataset.
+
+### Foundational set
 
 - `first-person-credentials`
 - `consent-not-data-structure`
 - `layers-of-the-self`
+
+### Expansion set
+
+- `after-consent`
+- `delegation-after-identity`
+- `your-agents-are-not-failing-your`
+- `wallet-to-agent-identity`
+- `digital-credential-verification-policy-playbook`
+- `systemic-controllers`
+- `trust-registry-governance-model`
+- `machine-readable-privacy-terms`
+- `portable-eligibility`
+- `the-proof-gap`
+- `execution-time-delegation`
+- `crisis-of-narrative-control`
 
 These are first-cut formalizations and should be treated as draft operational models rather than finished specifications.

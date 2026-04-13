@@ -11,26 +11,34 @@ This file tracks governed artifacts that have been admitted into the repository.
 | `ttg-artifact-001` | `first-person-credentials` | Draft | *First-Person Credentials* | 20.93% | schema + control model |
 | `ttg-artifact-002` | `consent-not-data-structure` | Draft | *Consent Is Not a Data Structure* | 20.00% | schema + control model |
 | `ttg-artifact-003` | `layers-of-the-self` | Draft | *Layers of the Self* | 20.00% | schema + projection model |
+| `ttg-artifact-004` | `after-consent` | Draft | *After Consent: Rebuilding Choice, Delegation, and Protection for an AI-Mediated World* | 17.65% | schema + control-model |
+| `ttg-artifact-005` | `delegation-after-identity` | Draft | *Delegation After Identity* | 18.18% | schema + control-model |
+| `ttg-artifact-006` | `your-agents-are-not-failing-your` | Draft | *Your Agents Are Not Failing. Your Mandates Are* | 13.64% | schema + control-model |
+| `ttg-artifact-007` | `wallet-to-agent-identity` | Draft | *Wallet-to-Agent Identity: When Identity Becomes an Execution Interface* | 13.33% | schema + control-model |
+| `ttg-artifact-008` | `digital-credential-verification-policy-playbook` | Draft | *Why Digital Credential Verification Needs a New Policy Playbook* | 23.81% | schema + control-model |
+| `ttg-artifact-009` | `systemic-controllers` | Draft | *Systemic Controllers: How Hidden Levers in Digital Infrastructure Create Real-World Risk* | 8.33% | schema + mapping |
+| `ttg-artifact-010` | `trust-registry-governance-model` | Draft | *The Political Economy of Trust Registries* | 25.00% | schema + control-model |
+| `ttg-artifact-011` | `machine-readable-privacy-terms` | Draft | *Machine-Readable Privacy Terms and the Infrastructure of Control* | 18.42% | schema + control-model |
+| `ttg-artifact-012` | `portable-eligibility` | Draft | *Portable Eligibility: Turning Credentials into Composable Market Access* | 12.50% | schema + control-model |
+| `ttg-artifact-013` | `the-proof-gap` | Draft | *The Proof Gap* | 11.11% | schema + control-model |
+| `ttg-artifact-014` | `execution-time-delegation` | Draft | *Execution-Time Delegation: Legitimacy After Transparency* | 2.44% | schema + control-model |
+| `ttg-artifact-015` | `crisis-of-narrative-control` | Draft | *Crisis of Narrative Control* | 17.07% | schema + control-model |
 
 ---
 
 ## Admission Basis
 
-These three artifacts were selected from the current dataset because they sit at the top of the engagement distribution and can be expressed as governed structures that affect execution semantics.
+Artifacts are admitted when they clear both signal and formalization thresholds. This repository now includes the original three artifacts plus a next-wave set focused on delegation, verification policy, registry governance, privacy terms, portability, and contestability.
 
-They are not merely popular essays. Each one introduces a model that can be made machine-legible:
-
-- **First-Person Credentials** reframes admissibility around accountable, self-presented assertions rather than issuer-centric credential flow.
-- **Consent Is Not a Data Structure** requires consent to be bound to runtime context, permitted action, revocation, and audit.
-- **Layers of the Self** treats identity as contextual projection rather than monolithic disclosure.
+The newer additions were selected because they can be made machine-legible in ways that affect execution semantics rather than merely extending narrative commentary.
 
 ---
 
-## Expected next additions
+## Next candidate backlog
 
-The next candidate set, subject to completed evaluation records, is:
+Future admissions should prioritize essays that introduce:
 
-1. `machine-readable-privacy-terms`
-2. `delegation-after-identity`
-3. `crisis-of-narrative-control`
-
+- reusable control surfaces
+- stable policy profiles
+- explicit dispute and correction mechanisms
+- portable evidence and registry dependencies

@@ -1,0 +1,25 @@
+profile_id: vpp-001
+covered_claims:
+- degree
+- professional-license
+issuer_requirements:
+  must_be_registry_listed: true
+  accepted_frameworks:
+  - edu-trust-framework
+  minimum_assurance_level: AL2
+freshness:
+  max_credential_age: P5Y
+  max_status_staleness: PT5M
+revocation_policy:
+  must_check: true
+  fail_mode: fail-closed
+  status_sources:
+  - registry
+  - status-list
+fallback_rules:
+- condition: registry-unavailable
+  response: route-to-manual-review
+dispute_handling:
+  appeal_endpoint: https://example.org/verification/appeals
+  evidence_retention: P1Y
+  notify_subject: true

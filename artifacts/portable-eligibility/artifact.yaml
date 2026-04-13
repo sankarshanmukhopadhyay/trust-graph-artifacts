@@ -1,0 +1,42 @@
+id: ttg-artifact-012
+title: Portable Eligibility Credential Profile
+status: draft
+source:
+  essay_title: 'Portable Eligibility: Turning Credentials into Composable Market Access'
+  essay_url: https://thetrustgraph.substack.com/p/portable-eligibility
+  published_date: '2026-01-23'
+signal:
+  engagement_rate: 12.5
+  tier: B
+classification:
+  artifact_type:
+  - schema
+  - control-model
+  domain:
+  - eligibility
+  - credentials
+  - market-access
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - enforcement
+  - revocation
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+  - ttg-artifact-008
+  - ttg-artifact-010
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-13'
+  last_updated: '2026-04-13'

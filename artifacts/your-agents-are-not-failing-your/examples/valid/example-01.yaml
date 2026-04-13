@@ -1,0 +1,17 @@
+mandate_id: mandate-001
+issuer: did:example:lender
+operator: did:example:loan-agent
+permitted_actions:
+- collect-documents
+- prepare-draft-offer
+prohibited_actions:
+- issue-final-approval
+escalation_rules:
+- trigger: confidence-below-threshold
+  required_response: human-approval
+evidence_requirements:
+- policy-version
+- facts-used
+- reason-codes
+sunset: '2026-12-31T23:59:59Z'
+rollback_reference: playbook://rollback/loan-agent
