@@ -1,0 +1,17 @@
+projection_id: cip-001
+base_identity_reference: did:example:maya
+active_role: licensed-clinician
+context: telehealth-consultation
+attribute_subset:
+  - professional-license-status
+  - jurisdiction
+  - specialty
+disclosure_policy:
+  audience:
+    - did:example:patient-app
+  permitted_use: provider-verification-for-care-delivery
+  retention_limit: session-plus-30-days
+linkage_rules:
+  correlatable: false
+valid_until: 2026-07-01T00:00:00Z
+invalidation_endpoint: https://example.org/projections/cip-001/invalidate

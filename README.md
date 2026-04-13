@@ -176,3 +176,16 @@ It is designed to make:
 - Formalize initial artifact set
 - Introduce validation harness
 - Integrate with TRQP and TSMM where relevant
+
+
+---
+
+## Initial artifact set
+
+The repository now includes an initial Tier A set derived from the current dataset:
+
+- `first-person-credentials`
+- `consent-not-data-structure`
+- `layers-of-the-self`
+
+These are first-cut formalizations and should be treated as draft operational models rather than finished specifications.

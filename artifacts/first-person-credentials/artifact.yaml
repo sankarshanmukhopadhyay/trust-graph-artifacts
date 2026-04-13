@@ -1,0 +1,48 @@
+id: ttg-artifact-001
+title: First-Person Assertion Envelope
+status: draft
+
+source:
+  essay_title: First-Person Credentials
+  essay_url: pending-external-link
+  published_date: 2026-03-02
+
+signal:
+  engagement_rate: 20.93
+  tier: A
+
+classification:
+  artifact_type:
+    - schema
+    - control-model
+  domain:
+    - identity
+    - credentials
+    - admissibility
+
+governance:
+  authority: The Trust Graph
+  maintainers:
+    - Sankarshan Mukhopadhyay
+  maturity: experimental
+
+semantics:
+  affects:
+    - authority
+    - enforcement
+    - redress
+
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts:
+    - ttg-artifact-003
+
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+
+lifecycle:
+  created: 2026-04-13
+  last_updated: 2026-04-13
