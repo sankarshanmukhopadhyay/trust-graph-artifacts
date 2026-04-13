@@ -1,0 +1,43 @@
+id: ttg-artifact-template
+title: Template Artifact
+status: draft
+
+source:
+  essay_title: ""
+  essay_url: ""
+  published_date: 2026-04-13
+
+signal:
+  engagement_rate: 0.0
+  tier: C
+
+classification:
+  artifact_type:
+    - schema
+  domain:
+    - placeholder
+
+governance:
+  authority: The Trust Graph
+  maintainers:
+    - maintainer-name
+  maturity: experimental
+
+semantics:
+  affects:
+    - authority
+    - enforcement
+
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+
+validation:
+  has_examples: false
+  has_tests: false
+  conformance_level: draft
+
+lifecycle:
+  created: 2026-04-13
+  last_updated: 2026-04-13
