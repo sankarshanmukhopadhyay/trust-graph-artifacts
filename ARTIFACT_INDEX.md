@@ -8,9 +8,9 @@ This file tracks governed artifacts that have been admitted into the repository.
 
 | Artifact ID | Slug | Status | Source Essay | Engagement | Primary Form | TSMM Binding |
 |---|---|---|---|---:|---|---|
-| `ttg-artifact-001` | `first-person-credentials` | Draft | *First-Person Credentials* | 20.93% | schema + control-model | `pending` |
-| `ttg-artifact-002` | `consent-not-data-structure` | Draft | *Consent Is Not a Data Structure* | 20.00% | schema + control-model | `pending` |
-| `ttg-artifact-003` | `layers-of-the-self` | Draft | *Layers of the Self* | 20.00% | schema + control-model | `pending` |
+| `ttg-artifact-001` | `first-person-credentials` | Draft | *First-Person Credentials* | 20.93% | schema + control-model | `bindings/tsmm/projections/first-person-credentials.yaml` |
+| `ttg-artifact-002` | `consent-not-data-structure` | Draft | *Consent Is Not a Data Structure* | 20.00% | schema + control-model | `bindings/tsmm/projections/consent-not-data-structure.yaml` |
+| `ttg-artifact-003` | `layers-of-the-self` | Draft | *Layers of the Self* | 20.00% | schema + control-model | `bindings/tsmm/projections/layers-of-the-self.yaml` |
 | `ttg-artifact-004` | `after-consent` | Draft | *After Consent: Rebuilding Choice, Delegation, and Protection for an AI-Mediated World* | 17.65% | schema + control-model | `bindings/tsmm/projections/after-consent.yaml` |
 | `ttg-artifact-005` | `delegation-after-identity` | Draft | *Delegation After Identity* | 18.18% | schema + control-model | `bindings/tsmm/projections/delegation-after-identity.yaml` |
 | `ttg-artifact-006` | `your-agents-are-not-failing-your` | Draft | *Your Agents Are Not Failing. Your Mandates Are* | 13.64% | schema + control-model | `bindings/tsmm/projections/your-agents-are-not-failing-your.yaml` |
@@ -30,7 +30,7 @@ This file tracks governed artifacts that have been admitted into the repository.
 
 Artifacts are admitted when they clear both signal and formalization thresholds. This repository now includes the original three artifacts plus a next-wave set focused on delegation, verification policy, registry governance, privacy terms, portability, and contestability.
 
-The current increment adds a TSMM binding layer for the 12-artifact expansion set so those newer artifacts can be compared as trust-system structures rather than treated only as local schemas.
+The current increment completes the TSMM binding layer across all 15 governed artifacts so the repository can be compared as a coherent trust-system corpus rather than a split set of local schemas and partially bound projections.
 
 ---
 

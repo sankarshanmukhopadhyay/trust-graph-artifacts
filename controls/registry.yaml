@@ -8,6 +8,17 @@ entries:
   description: Provide bounded path for challenge and review
   artifacts:
   - crisis-of-narrative-control
+- id: control.assertion-binding
+  type: assertion-binding
+  description: Bind a first-person assertion cryptographically to the originating
+    subject
+  artifacts:
+  - first-person-credentials
+- id: control.audit-reference-required
+  type: audit-linkage
+  description: Require each governed consent object to expose an audit reference
+  artifacts:
+  - consent-not-data-structure
 - id: control.binding-integrity
   type: binding-validation
   description: Ensure wallet-agent binding is intact and current
@@ -33,6 +44,12 @@ entries:
   description: Require declaration of hidden control surfaces and dependencies
   artifacts:
   - systemic-controllers
+- id: control.counterparty-policy-check
+  type: admissibility-check
+  description: Require the counterparty to evaluate a first-person claim against declared
+    acceptance requirements
+  artifacts:
+  - first-person-credentials
 - id: control.decision-receipt
   type: receipt-generation
   description: Generate structured receipt for material delegated action
@@ -53,6 +70,16 @@ entries:
   description: Terminate binding when wallet authorization is withdrawn
   artifacts:
   - wallet-to-agent-identity
+- id: control.dispute-endpoint-required
+  type: contestability
+  description: Require a challenge path for first-person claims and corrections
+  artifacts:
+  - first-person-credentials
+- id: control.downstream-inheritance
+  type: constraint-inheritance
+  description: Require downstream processors to inherit and enforce consent constraints
+  artifacts:
+  - consent-not-data-structure
 - id: control.effect-traceability
   type: effect-trace
   description: Trace what downstream effect a control action caused
@@ -63,6 +90,11 @@ entries:
   description: Require live or bounded-fresh status before access
   artifacts:
   - portable-eligibility
+- id: control.evidence-link-integrity
+  type: evidence-integrity
+  description: Require supporting evidence references for material first-person claims
+  artifacts:
+  - first-person-credentials
 - id: control.evidence-sufficiency
   type: evidence-threshold
   description: Require enough evidence to support each asserted claim
@@ -73,6 +105,17 @@ entries:
   description: Route ambiguous or degraded results to defined review path
   artifacts:
   - digital-credential-verification-policy-playbook
+- id: control.invalidation-endpoint
+  type: projection-invalidation
+  description: Require explicit invalidation or withdrawal path for contextual identity
+    projections
+  artifacts:
+  - layers-of-the-self
+- id: control.linkage-constraint
+  type: correlation-control
+  description: Constrain when a projection may be linked back to the base identity
+  artifacts:
+  - layers-of-the-self
 - id: control.live-authority-check
   type: runtime-check
   description: Verify scope, freshness, and revocation at execution time
@@ -119,6 +162,12 @@ entries:
   description: Define where and how eligibility can be reused
   artifacts:
   - portable-eligibility
+- id: control.projection-minimization
+  type: data-minimization
+  description: Restrict contextual identity projections to the minimum necessary attribute
+    set
+  artifacts:
+  - layers-of-the-self
 - id: control.purpose-binding
   type: purpose-binding
   description: Restrict delegated action to declared purpose and action class
@@ -159,6 +208,11 @@ entries:
   description: Cascade charter or listing revocation to downstream reliance
   artifacts:
   - trust-registry-governance-model
+- id: control.revocation-endpoint
+  type: revocation-endpoint
+  description: Require an explicit endpoint or mechanism for consent withdrawal
+  artifacts:
+  - consent-not-data-structure
 - id: control.scope-boundary
   type: delegation-scope
   description: Ensure child scope is narrower than parent

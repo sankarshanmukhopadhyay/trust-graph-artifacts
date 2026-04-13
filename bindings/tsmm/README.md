@@ -5,7 +5,7 @@ This directory binds selected Trust Graph artifacts to the Trust Systems Meta Mo
 
 ## What the binding layer does
 
-For each artifact in the current 12-artifact expansion set, the binding layer adds a machine-readable projection covering:
+For each artifact in the current full 15-artifact repository set, the binding layer adds a machine-readable projection covering:
 
 - governance context
 - profile
@@ -31,7 +31,7 @@ bindings/tsmm/
 
 ## Binding status
 
-- Scope: the 12-artifact expansion set in this repository
+- Scope: the full 15-artifact repository set in this repository
 - Status: draft but fully implemented
 - Validation: `scripts/validate_tsmm_bindings.py`
 

@@ -12,7 +12,7 @@ The core claim is that some high-value decisions require subjects to present evi
 
 - Essay: *First-Person Credentials*
 - Published: 2026-03-02
-- Canonical link: pending external link
+- Canonical link: https://thetrustgraph.substack.com/p/first-person-credentials
 
 ---
 
@@ -80,3 +80,8 @@ Draft
 - refine field cardinality and evidence typing
 - add JSON Schema or equivalent validation form
 - add test cases for conflicting evidence and supersession
+
+
+## TSMM Binding
+
+This artifact now includes a TSMM projection at `bindings/tsmm/projections/first-person-credentials.yaml`. The binding externalizes entities, relationships, controls, evidence, trust decisions, effects, and lifecycle semantics so the artifact can be compared as part of a wider trust-system model.

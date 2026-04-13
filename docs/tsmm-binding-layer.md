@@ -12,7 +12,7 @@ This document explains how the Trust Graph Artifacts repository binds selected a
 
 ## What this increment implements
 
-The current increment adds a full TSMM binding layer for the 12-artifact expansion set. Each included artifact now has:
+The current increment completes a full TSMM binding layer for the entire 15-artifact repository set. Each included artifact now has:
 
 - a machine-readable projection in `bindings/tsmm/projections/`
 - manifest-level binding references
@@ -34,8 +34,11 @@ The binding layer treats each artifact as a TSMM-relevant profile or policy surf
 
 ## Current scope
 
-This increment covers the 12-artifact expansion set:
+This increment covers the full repository set:
 
+- first-person-credentials
+- consent-not-data-structure
+- layers-of-the-self
 - after-consent
 - delegation-after-identity
 - your-agents-are-not-failing-your

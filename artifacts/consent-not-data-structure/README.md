@@ -75,3 +75,8 @@ Draft
 - add downstream processor inheritance semantics
 - define revocation propagation behavior
 - add invalid examples for purpose drift and expired consent
+
+
+## TSMM Binding
+
+This artifact now includes a TSMM projection at `bindings/tsmm/projections/consent-not-data-structure.yaml`. The binding externalizes entities, relationships, controls, evidence, trust decisions, effects, and lifecycle semantics so the artifact can be compared as part of a wider trust-system model.

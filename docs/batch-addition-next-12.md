@@ -19,4 +19,4 @@ This document records the expansion from the initial 3 artifacts to a governed s
 
 ## TSMM binding completion
 
-This batch now includes a fully implemented TSMM binding layer for the 12-artifact expansion set. Each included artifact has a machine-readable projection, manifest-level binding reference, shared entity and control registry linkage, and validation coverage.
+This repository now includes a fully implemented TSMM binding layer for all 15 governed artifacts. Each included artifact has a machine-readable projection, manifest-level binding reference, shared entity and control registry linkage, and validation coverage.

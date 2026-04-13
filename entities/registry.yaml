@@ -20,12 +20,27 @@ entries:
   - your-agents-are-not-failing-your
   - wallet-to-agent-identity
   - execution-time-delegation
+- id: entity.asserting-subject
+  type: Subject
+  description: Subject originating a first-person claim or assertion
+  artifacts:
+  - first-person-credentials
 - id: entity.assessor
   type: Assessment
   description: Assessor reviewing hidden leverage and control implications
   artifacts:
   - systemic-controllers
   - the-proof-gap
+- id: entity.audit-service
+  type: Verifier
+  description: Audit and trace service recording consent use and challenge events
+  artifacts:
+  - consent-not-data-structure
+- id: entity.base-identity-holder
+  type: Subject
+  description: Holder of the base identity from which contextual projections are derived
+  artifacts:
+  - layers-of-the-self
 - id: entity.binding-verifier
   type: Verifier
   description: Verifier of wallet-agent binding and status
@@ -46,11 +61,22 @@ entries:
   description: Registry documenting systemic control surfaces
   artifacts:
   - systemic-controllers
+- id: entity.controller
+  type: GovernanceAuthority
+  description: Controller requesting or exercising consent-bound permission
+  artifacts:
+  - consent-not-data-structure
 - id: entity.controller-authority
   type: GovernanceAuthority
   description: Authority defining applicable privacy profile or overrides
   artifacts:
   - machine-readable-privacy-terms
+- id: entity.counterparty
+  type: RelyingParty
+  description: Counterparty evaluating a first-person assertion against acceptance
+    policy
+  artifacts:
+  - first-person-credentials
 - id: entity.data-subject
   type: Subject
   description: Person whose privacy terms govern use
@@ -62,6 +88,16 @@ entries:
   artifacts:
   - after-consent
   - delegation-after-identity
+- id: entity.dispute-resolver
+  type: GovernanceAuthority
+  description: Authority or service handling challenge, correction, or dispute outcomes
+  artifacts:
+  - first-person-credentials
+- id: entity.downstream-processor
+  type: Agent
+  description: Downstream processor inheriting or violating consent-bound constraints
+  artifacts:
+  - consent-not-data-structure
 - id: entity.downstream-service
   type: RegistryService
   description: Downstream service consuming delegated authority
@@ -77,6 +113,11 @@ entries:
   description: Issuer of credential and status signals
   artifacts:
   - digital-credential-verification-policy-playbook
+- id: entity.linkage-authority
+  type: GovernanceAuthority
+  description: Authority permitted to correlate a projection back to a base identity
+  artifacts:
+  - layers-of-the-self
 - id: entity.market-service
   type: RegistryService
   description: Service or marketplace consuming eligibility
@@ -110,6 +151,11 @@ entries:
   artifacts:
   - your-agents-are-not-failing-your
   - machine-readable-privacy-terms
+- id: entity.presentation-verifier
+  type: Verifier
+  description: Verifier checking projection validity, audience, and disclosure bounds
+  artifacts:
+  - layers-of-the-self
 - id: entity.principal
   type: Subject
   description: Originating principal that delegates bounded authority

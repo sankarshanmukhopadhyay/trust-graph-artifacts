@@ -4,7 +4,7 @@ This directory records validation logic and harness notes for the repository.
 
 ## Active validator
 
-- `scripts/validate_tsmm_bindings.py` validates the TSMM binding layer for the 12-artifact expansion set.
+- `scripts/validate_tsmm_bindings.py` validates the TSMM binding layer for all 15 governed artifacts.
 
 Current checks:
 

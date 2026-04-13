@@ -174,7 +174,7 @@ It is designed to make:
 ## Next steps
 
 - expand artifact depth with richer examples and challenge flows
-- extend TSMM projection coverage beyond the current 12-artifact set
+- extend TSMM projection coverage beyond the current 15-artifact set
 - emit native TSMM graph JSON instances where useful
 - verify and harden provisional source metadata
 
@@ -183,7 +183,7 @@ It is designed to make:
 
 ## TSMM binding layer
 
-The repository now includes a concrete TSMM binding layer for the 12-artifact expansion set. This makes the artifact layer structurally legible in terms of:
+The repository now includes a concrete TSMM binding layer for all 15 governed artifacts. This makes the artifact layer structurally legible in terms of:
 
 - entities and roles
 - bounded authority

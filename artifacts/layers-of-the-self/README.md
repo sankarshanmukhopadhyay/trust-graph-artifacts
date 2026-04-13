@@ -73,3 +73,8 @@ Draft
 - define correlation resistance levels
 - add projection composition rules for multi-role interactions
 - add invalid examples for over-disclosure and wrong-context use
+
+
+## TSMM Binding
+
+This artifact now includes a TSMM projection at `bindings/tsmm/projections/layers-of-the-self.yaml`. The binding externalizes entities, relationships, controls, evidence, trust decisions, effects, and lifecycle semantics so the artifact can be compared as part of a wider trust-system model.
