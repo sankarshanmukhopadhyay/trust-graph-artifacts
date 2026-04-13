@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Delegated Consent Protection Policy",
       "attributes": {
-        "constraintSetRef": "artifacts/after-consent/schemas/delegated-consent-protection-policy.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {
@@ -87,7 +87,7 @@
       "type": "Assessment",
       "label": "verification.after.consent",
       "attributes": {
-        "method": "tsmm-binding-conformance-check"
+        "method": "tsmm-native-conformance-check"
       }
     },
     {

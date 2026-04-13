@@ -1,196 +1,80 @@
 # Trust Graph TSMM Patterns
 
-Most systems claim governance.
+## TSMM-native trust system profiles, patterns, overlays, systems, and evidence models derived from The Trust Graph
 
-Very few can prove it.
+This repository operationalizes concepts from **The Trust Graph** as **TSMM-native packages**.
 
-This repository exists for the systems that need to.
+The governing idea is simple:
 
----
+- **TSMM** supplies the meta-model and system grammar
+- **The essays** supply the problem framing, conceptual pressure, and package selection logic
+- **This repository** turns those essay-derived concepts into native TSMM profiles, patterns, overlays, systems, and evidence models
 
-## The problem
+There is no secondary structural model in this repository. TSMM is the only grammar used to design, describe, and validate the corpus.
 
-Across identity, trust registries, and AI systems, governance is still mostly performative.
+## Why this repo exists
 
-- Policies exist, but are not enforced  
-- Delegation exists, but is not bounded  
-- Revocation exists, but does not propagate  
-- Decisions are made, but not evidenced  
+The essays argue that governance becomes real only when it is executable at the layer where systems decide, constrain, permit, deny, propagate, and record effects. A narrative claim is not yet infrastructure. It becomes infrastructure when it can be represented as policy, authority, evidence, decision, effect, and lifecycle semantics.
 
-At small scale, this is tolerable.
+This repository exists to make that conversion explicit.
 
-At system scale, it becomes dangerous.
+## Repository structure
 
-> If a system cannot explain, constrain, and revoke authority at execution time, it is not governed. It is merely configured.
+```text
+.
+├── profiles/      # TSMM-native profiles
+├── patterns/      # TSMM-native patterns
+├── overlays/      # TSMM-native overlays
+├── systems/       # TSMM-native system models
+├── evidence/      # TSMM-native evidence models
+├── essays/        # source essay catalog
+├── provenance/    # essay-to-package provenance records
+├── registries/    # shared machine-readable registries
+├── schemas/       # validation schemas
+├── scripts/       # validation and maintenance scripts
+├── validation/    # validation matrix and notes
+└── docs/          # methodology, taxonomy, and governance docs
+```
 
----
+## Package taxonomy
 
-## What this repository does
+Every package in this repository is one of:
 
-This repository takes concepts from **The Trust Graph** and forces them into a harder form:
+- **profile** — a bounded, reusable trust-system profile
+- **pattern** — a recurring trust-system structure or control arrangement
+- **overlay** — a policy or governance layer applied across other structures
+- **system** — a worked trust-system model with named actors and effects
+- **evidence-model** — an explicit model of proof, receipt, and verification expectations
 
-**TSMM-native structures that can be tested, validated, and challenged.**
+## Validation
 
-There is no secondary abstraction layer.
+Validation is native.
 
-There are no narrative-only artifacts.
+The repository validates:
 
-Everything here is expressed using the **Trust Systems Meta Model (TSMM)** as the only grammar.
+- `package.json` against `schemas/tsmm-native-package.schema.json`
+- `graph.json` against `schemas/tsmm-graph.schema.json`
+- valid examples must pass
+- invalid examples must fail
+- package references must resolve to local TSMM-native files
 
----
+Run:
 
-## What you will find here
+```bash
+python3 scripts/validate_tsmm_native.py
+```
 
-This is not a collection of ideas.
+## Start here
 
-It is a collection of **enforceable shapes of systems**.
+- `docs/methodology.md`
+- `docs/essay-to-tsmm-method.md`
+- `docs/profile-taxonomy.md`
+- `docs/authoring-model.md`
+- `provenance/essay-source-map.yaml`
+- `essays/source-catalog.yaml`
 
-- **Profiles** — what a bounded trust system must look like  
-- **Patterns** — how authority, delegation, and control actually behave  
-- **Overlays** — constraints that systems cannot ignore  
-- **Systems** — composed, end-to-end representations  
-- **Evidence models** — what must be produced when a system acts  
+## Strategic position
 
-Every entry is:
+This repository is a **standalone TSMM-native pattern and profile library**.
 
-- structured  
-- constrained  
-- testable  
-- falsifiable  
-
----
-
-## Why this matters
-
-Most failures in digital systems are not failures of intelligence.
-
-They are failures of control.
-
-- Who was allowed to act?
-- Under what authority?
-- Was that authority still valid?
-- What rules were applied?
-- What evidence exists for the decision?
-
-If those questions cannot be answered deterministically, the system is not trustworthy.
-
-It is opaque.
-
-And opacity does not scale.
-
----
-
-## The position
-
-This repository takes a clear stance:
-
-> Governance that cannot be executed is not governance.
-
-> Safety without revocation is theater.
-
-> Transparency without control is storytelling.
-
-> Logs are not evidence.
-
-The goal is not to describe better systems.
-
-The goal is to make systems **legible, enforceable, and accountable under pressure**.
-
----
-
-## Relationship to TSMM
-
-TSMM is not a reference here.
-
-It is the foundation.
-
-Every construct in this repository is a TSMM-native object:
-
-- entities and roles  
-- authority and delegation  
-- controls and constraints  
-- decisions and effects  
-- evidence and auditability  
-- lifecycle and revocation  
-
-This makes every entry:
-
-- comparable  
-- composable  
-- testable across contexts  
-
----
-
-## How to use this repository
-
-If you are building systems:
-
-Start with:
-
-- `profiles/`
-- `patterns/`
-- `overlays/`
-
-Look for what constrains authority, not what enables functionality.
-
-If you are evaluating systems:
-
-Start with:
-
-- `evidence/`
-- `validation/`
-
-Ask what the system produces when it acts.
-
-If the answer is “logs”, you are not looking at governance.
-
----
-
-## Method
-
-Each entry follows a disciplined path:
-
-1. Extract a concept from an essay  
-2. Identify authority, control, and lifecycle  
-3. Classify into a TSMM-native type  
-4. Formalize as a graph  
-5. Add constraints  
-6. Define evidence  
-7. Validate with examples and tests  
-
-If it cannot pass this process, it does not belong here.
-
----
-
-## What this is not
-
-- Not a standards document  
-- Not a policy library  
-- Not a compliance checklist  
-- Not a theoretical framework  
-
-This is a **working surface for systems that must hold under real conditions**.
-
----
-
-## Provenance
-
-All concepts originate from:
-
-https://thetrustgraph.substack.com
-
-The essays ask the questions.
-
-This repository forces the answers into executable form.
-
----
-
-## Final note
-
-Most systems today optimize for capability.
-
-This repository optimizes for **accountability**.
-
-That is a harder problem.
-
-That is the point.
+It is not a fork of TSMM and not a translation repository. It is a distinct implementation corpus that uses TSMM as its only design grammar while remaining explicitly sourced from The Trust Graph essays.

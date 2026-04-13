@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Consent Enforcement Schema",
       "attributes": {
-        "constraintSetRef": "artifacts/consent-not-data-structure/schemas/consent-enforcement-schema.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {

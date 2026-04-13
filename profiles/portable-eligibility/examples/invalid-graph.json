@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Portable Eligibility Credential Profile",
       "attributes": {
-        "constraintSetRef": "artifacts/portable-eligibility/schemas/portable-eligibility-credential-profile.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {
@@ -87,7 +87,7 @@
       "type": "Assessment",
       "label": "verification.portable.eligibility",
       "attributes": {
-        "method": "tsmm-binding-conformance-check"
+        "method": "tsmm-native-conformance-check"
       }
     },
     {

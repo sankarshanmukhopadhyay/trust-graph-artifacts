@@ -17,7 +17,7 @@
   "verificationExpectations": [
     {
       "id": "verification.wallet.to.agent.identity",
-      "method": "tsmm-binding-conformance-check",
+      "method": "tsmm-native-conformance-check",
       "performedBy": "",
       "controlRefs": [],
       "inputRefs": [

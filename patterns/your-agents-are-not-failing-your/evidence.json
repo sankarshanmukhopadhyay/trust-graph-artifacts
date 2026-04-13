@@ -17,7 +17,7 @@
   "verificationExpectations": [
     {
       "id": "verification.your.agents.are.not.failing.your",
-      "method": "tsmm-binding-conformance-check",
+      "method": "tsmm-native-conformance-check",
       "performedBy": "",
       "controlRefs": [],
       "inputRefs": [

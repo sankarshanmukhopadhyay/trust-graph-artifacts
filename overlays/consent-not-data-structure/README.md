@@ -17,7 +17,7 @@ This package is authored directly in TSMM-native form. The essay provides the co
 - `package.json` — package metadata and source essay provenance
 - `graph.json` — TSMM graph instance
 - `constraints.json` — package-local controls, policy rules, threats, and lifecycle
-- `evidence.json` — required evidence artifacts, verification expectations, and decision receipts
+- `evidence.json` — required evidence outputs, verification expectations, and decision receipts
 - `examples/` — valid and invalid TSMM graph examples
 - `tests/test-vector.json` — expected validation outcomes
 

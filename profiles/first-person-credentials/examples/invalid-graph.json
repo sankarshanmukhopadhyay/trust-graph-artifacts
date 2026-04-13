@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "First-Person Assertion Envelope",
       "attributes": {
-        "constraintSetRef": "artifacts/first-person-credentials/schemas/first-person-assertion-envelope.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {

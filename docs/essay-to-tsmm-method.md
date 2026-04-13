@@ -46,7 +46,7 @@ Create `constraints.json` containing:
 
 Create `evidence.json` containing:
 
-- evidence artifacts
+- evidence outputs
 - verification expectations
 - decision receipt requirements
 

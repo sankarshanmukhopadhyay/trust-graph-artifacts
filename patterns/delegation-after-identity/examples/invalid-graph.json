@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Delegation Chain Policy",
       "attributes": {
-        "constraintSetRef": "artifacts/delegation-after-identity/schemas/delegation-chain-policy.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {
@@ -87,7 +87,7 @@
       "type": "Assessment",
       "label": "verification.delegation.after.identity",
       "attributes": {
-        "method": "tsmm-binding-conformance-check"
+        "method": "tsmm-native-conformance-check"
       }
     },
     {

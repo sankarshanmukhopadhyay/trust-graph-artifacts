@@ -77,7 +77,7 @@
     ]
   },
   "notes": [
-    "This package is authored as TSMM-native source, not as an external artifact with a TSMM mapping.",
+    "This package is authored as TSMM-native source, not as an legacy secondary representation.",
     "Controls and lifecycle semantics are extracted from the package-local TSMM model."
   ]
 }

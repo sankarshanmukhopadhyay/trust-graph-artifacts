@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Proof Requirement Profile",
       "attributes": {
-        "constraintSetRef": "artifacts/the-proof-gap/schemas/proof-requirement-profile.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {
@@ -87,7 +87,7 @@
       "type": "Assessment",
       "label": "verification.the.proof.gap",
       "attributes": {
-        "method": "tsmm-binding-conformance-check"
+        "method": "tsmm-native-conformance-check"
       }
     },
     {

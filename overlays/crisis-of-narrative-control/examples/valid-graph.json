@@ -18,7 +18,7 @@
       "type": "AssuranceProfile",
       "label": "Narrative Contestability Record",
       "attributes": {
-        "constraintSetRef": "artifacts/crisis-of-narrative-control/schemas/narrative-contestability-record.yaml"
+        "constraintSetRef": "constraints.json"
       }
     },
     {
@@ -87,7 +87,7 @@
       "type": "Assessment",
       "label": "verification.crisis.of.narrative.control",
       "attributes": {
-        "method": "tsmm-binding-conformance-check"
+        "method": "tsmm-native-conformance-check"
       }
     },
     {
