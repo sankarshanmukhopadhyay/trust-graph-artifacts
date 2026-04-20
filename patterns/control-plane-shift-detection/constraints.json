@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.pattern.control-plane-shift-detection",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.authority-relocation-record",
+      "type": "authority-relocation",
+      "description": "Material shifts in effective authority must be recorded."
+    },
+    {
+      "id": "control.enforcement-surface-inventory",
+      "type": "surface-disclosure",
+      "description": "All executable surfaces affecting decisions must be declared."
+    },
+    {
+      "id": "control.contestability-path-required",
+      "type": "redress-routing",
+      "description": "A challenge path must exist for shifted control surfaces."
+    }
+  ],
+  "failureModes": [
+    "Authority migrated into infrastructure but remained undocumented",
+    "Execution surface governs outcomes without appeal or oversight",
+    "Shift detected but no remediation path exists"
+  ],
+  "decisionPolicy": "A material shift MUST trigger review when execution infrastructure gains authority previously exercised through institutional process."
+}

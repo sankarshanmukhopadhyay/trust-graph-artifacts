@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.profile.knowledge-substrate-integrity",
+  "label": "Knowledge Substrate Integrity Profile",
+  "description": "TSMM-native profile for preserving provenance and policy binding across transformed knowledge outputs.",
+  "profile": "profile",
+  "contexts": [
+    "context.knowledge-substrate-integrity"
+  ],
+  "nodes": [
+    {
+      "id": "context.knowledge-substrate-integrity",
+      "type": "TrustDomain",
+      "label": "Knowledge substrate integrity domain",
+      "description": "Domain for preserving the governable substrate of transformed knowledge."
+    },
+    {
+      "id": "authority.substrate",
+      "type": "GovernanceAuthority",
+      "label": "Substrate governance authority",
+      "description": "Authority defining integrity requirements."
+    },
+    {
+      "id": "credential.source",
+      "type": "Credential",
+      "label": "Source integrity credential",
+      "description": "Credential or attestation about the source substrate."
+    },
+    {
+      "id": "policy.integrity",
+      "type": "Policy",
+      "label": "Substrate integrity policy",
+      "description": "Defines what must be preserved through transformation."
+    },
+    {
+      "id": "assessment.integrity",
+      "type": "Assessment",
+      "label": "Integrity assessment",
+      "description": "Assesses whether the transformed output remains governable."
+    },
+    {
+      "id": "evidence.integrity",
+      "type": "EvidenceBundle",
+      "label": "Integrity evidence bundle",
+      "description": "Records provenance, attribution, and policy binding."
+    },
+    {
+      "id": "decision.integrity",
+      "type": "TrustDecision",
+      "label": "Integrity reliance decision",
+      "description": "Determines whether the transformed output may be relied on."
+    },
+    {
+      "id": "effect.reliance",
+      "type": "Effect",
+      "label": "Reliance effect",
+      "description": "Allows, labels, or blocks downstream reliance."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.substrate",
+      "to": "policy.integrity",
+      "description": "Authority defines integrity requirements."
+    },
+    {
+      "id": "edge.credential.substantiates.assessment",
+      "type": "substantiates",
+      "from": "credential.source",
+      "to": "assessment.integrity",
+      "description": "Source credential substantiates the assessment."
+    },
+    {
+      "id": "edge.policy.constrains.assessment",
+      "type": "constrains",
+      "from": "policy.integrity",
+      "to": "assessment.integrity",
+      "description": "Policy constrains integrity assessment."
+    },
+    {
+      "id": "edge.assessment.produces.evidence",
+      "type": "produces",
+      "from": "assessment.integrity",
+      "to": "evidence.integrity",
+      "description": "Assessment produces integrity evidence."
+    },
+    {
+      "id": "edge.assessment.informs.decision",
+      "type": "informs",
+      "from": "assessment.integrity",
+      "to": "decision.integrity",
+      "description": "Assessment informs reliance decision."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.integrity",
+      "to": "effect.reliance",
+      "description": "Decision determines reliance boundary."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+    "focus": "substrate-integrity"
+  }
+}

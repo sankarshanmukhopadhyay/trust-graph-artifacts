@@ -1,0 +1,30 @@
+{
+  "id": "ttg.profile.knowledge-substrate-integrity",
+  "title": "Knowledge Substrate Integrity Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "The Commons After the Control Plane Shifts",
+    "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+    "publishedDate": "2026-04-17"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from direct methodology-driven evaluation of the essay set."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "knowledge-integrity",
+    "provenance",
+    "commons",
+    "profiles"
+  ],
+  "notes": [
+    "Turns substrate loss into a testable profile boundary."
+  ]
+}

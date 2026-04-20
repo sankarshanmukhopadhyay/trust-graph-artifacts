@@ -7,3 +7,11 @@ checks:
   description: examples/valid-graph.json passes graph validation
 - id: invalid-example
   description: examples/invalid-graph.json fails graph validation
+- id: legitimacy-gap-detection
+  description: Legitimacy gap packages fail when revocation or contestability controls
+    are absent.
+- id: intermediary-traceability
+  description: Intermediary governance packages fail when source traceability is absent.
+- id: coalition-capture-risk
+  description: Coalition legitimacy packages fail when capture risk or appealability
+    is missing.

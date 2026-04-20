@@ -1,0 +1,62 @@
+id: legitimacy-gap-assessment
+version: 0.1.0
+type: object
+required:
+- assessment_id
+- authority_source
+- decision_binding
+- contestability
+- revocation_mechanism
+- gap_score
+properties:
+  assessment_id:
+    type: string
+  authority_source:
+    type: string
+    enum:
+    - registry
+    - policy
+    - system
+    - coalition
+  delegation_chain_present:
+    type: boolean
+  decision_binding:
+    type: boolean
+  contestability:
+    type: object
+    required:
+    - available
+    properties:
+      available:
+        type: boolean
+      path:
+        type: string
+  revocation_mechanism:
+    type: object
+    required:
+    - present
+    - propagation_guarantee
+    properties:
+      present:
+        type: boolean
+      propagation_guarantee:
+        type: string
+        enum:
+        - strong
+        - weak
+        - none
+      latency_budget:
+        type: string
+  audit_reference:
+    type: string
+  gap_score:
+    type: integer
+    minimum: 0
+    maximum: 100
+  recommended_action:
+    type: string
+    enum:
+    - accept
+    - monitor
+    - escalate
+    - block

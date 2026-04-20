@@ -1,0 +1,21 @@
+{
+  "packageId": "ttg.profile.governed-license-authority",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.governed-license-legitimacy",
+      "artifactType": "legitimacy-proof",
+      "description": "Evidence bundle proving why the authority may issue governed licenses.",
+      "supportsRefs": [
+        "control.legitimacy-proof-required",
+        "control.issuance-scope-bound",
+        "control.license-revocation-path"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "governance process reference",
+    "stakeholder inclusion record",
+    "published scope and constraints",
+    "revocation endpoint"
+  ]
+}

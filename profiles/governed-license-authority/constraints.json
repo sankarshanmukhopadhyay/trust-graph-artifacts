@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.profile.governed-license-authority",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.legitimacy-proof-required",
+      "type": "legitimacy-validation",
+      "description": "Issuers of governed licenses must publish legitimacy evidence."
+    },
+    {
+      "id": "control.issuance-scope-bound",
+      "type": "scope-validation",
+      "description": "Issuance rights must be constrained to explicit scope."
+    },
+    {
+      "id": "control.license-revocation-path",
+      "type": "revocation-propagation",
+      "description": "License revocation must be operational and published."
+    }
+  ],
+  "failureModes": [
+    "License authority is asserted but not evidenced",
+    "Issuance scope is unbounded",
+    "Revocation path is undefined for issued licenses"
+  ],
+  "decisionPolicy": "Governed licenses MUST NOT be treated as authoritative unless the issuing authority can prove its legitimacy and revocation path."
+}

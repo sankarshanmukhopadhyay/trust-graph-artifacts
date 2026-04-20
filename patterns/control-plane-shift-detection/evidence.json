@@ -1,0 +1,21 @@
+{
+  "packageId": "ttg.pattern.control-plane-shift-detection",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.control-plane-shift-record",
+      "artifactType": "control-plane-shift-record",
+      "description": "Record of detected authority relocation and affected control surfaces.",
+      "supportsRefs": [
+        "control.authority-relocation-record",
+        "control.enforcement-surface-inventory",
+        "control.contestability-path-required"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "pre-shift authority basis",
+    "post-shift enforcement surface inventory",
+    "appeal or remediation endpoint",
+    "timestamp and reviewer identity"
+  ]
+}

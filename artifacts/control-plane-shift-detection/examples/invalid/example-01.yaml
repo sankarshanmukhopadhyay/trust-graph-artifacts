@@ -1,0 +1,8 @@
+record_id: cpsr-002
+subject_system: commons-ranking-service
+previous_authority_model: unknown
+new_authority_model: platform-mediated
+shift_trigger: automation
+enforcement_surface: []
+legitimacy_gap_detected: 'yes'
+timestamp: not-a-date

@@ -1,0 +1,30 @@
+{
+  "id": "ttg.profile.coalition-legitimacy-model",
+  "title": "Coalition Legitimacy Model",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Who Holds the License",
+    "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+    "publishedDate": "2026-04-18"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from direct methodology-driven evaluation of the essay set."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "coalitions",
+    "legitimacy",
+    "capture-risk",
+    "governance"
+  ],
+  "notes": [
+    "Designed to keep coalition governance from reproducing the failure modes it is meant to remedy."
+  ]
+}

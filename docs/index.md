@@ -17,6 +17,7 @@
 
 ## Governance and release
 
+- `control-plane-legitimacy.md` — design note for authority relocation, legitimacy gaps, intermediary governance, and governed licensing
 - `release-process.md` — release discipline and expectations
 
 ## Historical material

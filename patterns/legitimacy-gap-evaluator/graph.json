@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.pattern.legitimacy-gap-evaluator",
+  "label": "Legitimacy Gap Evaluator Pattern",
+  "description": "TSMM-native pattern for evaluating whether binding authority lacks adequate legitimacy controls.",
+  "profile": "pattern",
+  "contexts": [
+    "context.legitimacy-gap"
+  ],
+  "nodes": [
+    {
+      "id": "context.legitimacy-gap",
+      "type": "TrustDomain",
+      "label": "Legitimacy gap domain",
+      "description": "Domain where enforceable authority may exceed legitimate control."
+    },
+    {
+      "id": "authority.system",
+      "type": "GovernanceAuthority",
+      "label": "Operating authority",
+      "description": "Authority source for the binding decision path."
+    },
+    {
+      "id": "policy.legitimacy-gap",
+      "type": "Policy",
+      "label": "Legitimacy gap policy",
+      "description": "Policy defining minimum legitimacy controls."
+    },
+    {
+      "id": "assessment.legitimacy-gap",
+      "type": "Assessment",
+      "label": "Legitimacy gap assessment",
+      "description": "Assesses contestability, revocation, and audit sufficiency."
+    },
+    {
+      "id": "decision.legitimacy-gap",
+      "type": "TrustDecision",
+      "label": "Gap severity decision",
+      "description": "Determines whether operation is acceptable, escalated, or blocked."
+    },
+    {
+      "id": "evidence.legitimacy-gap",
+      "type": "EvidenceBundle",
+      "label": "Gap assessment evidence",
+      "description": "Evidence bundle for the assessment outcome."
+    },
+    {
+      "id": "effect.operational-status",
+      "type": "Effect",
+      "label": "Operational status effect",
+      "description": "Accepts, monitors, escalates, or blocks operation."
+    },
+    {
+      "id": "service.relying",
+      "type": "RelyingParty",
+      "label": "Relying service",
+      "description": "Service that enforces the final status."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.system",
+      "to": "policy.legitimacy-gap",
+      "description": "Authority defines the control threshold."
+    },
+    {
+      "id": "edge.policy.constrains.assessment",
+      "type": "constrains",
+      "from": "policy.legitimacy-gap",
+      "to": "assessment.legitimacy-gap",
+      "description": "Policy constrains the assessment logic."
+    },
+    {
+      "id": "edge.assessment.informs.decision",
+      "type": "informs",
+      "from": "assessment.legitimacy-gap",
+      "to": "decision.legitimacy-gap",
+      "description": "Assessment outcome informs the decision."
+    },
+    {
+      "id": "edge.decision.produces.evidence",
+      "type": "produces",
+      "from": "decision.legitimacy-gap",
+      "to": "evidence.legitimacy-gap",
+      "description": "Decision emits structured evidence."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.legitimacy-gap",
+      "to": "effect.operational-status",
+      "description": "Decision determines operational status."
+    },
+    {
+      "id": "edge.service.relies.on.effect",
+      "type": "reliesOn",
+      "from": "service.relying",
+      "to": "effect.operational-status",
+      "description": "Service enforces the outcome."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+    "focus": "legitimacy-gap"
+  }
+}

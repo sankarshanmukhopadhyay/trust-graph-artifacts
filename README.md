@@ -110,6 +110,17 @@ Then browse:
 
 The newest addition is a three-package set derived from *Enforceable Authority Without Legitimate Control*:
 
+A second major addition is a six-package control-plane legitimacy cluster derived from *The Control Plane Has Already Shifted*, *The Commons After the Control Plane Shifts*, and *Who Holds the License*:
+
+- `patterns/control-plane-shift-detection`
+- `patterns/legitimacy-gap-evaluator`
+- `overlays/intermediary-governance-overlay`
+- `profiles/knowledge-substrate-integrity-profile`
+- `profiles/governed-license-authority`
+- `profiles/coalition-legitimacy-model`
+
+
+
 - `patterns/authority-legitimacy-validation`
 - `overlays/legitimate-control-enforcement`
 - `evidence/legitimate-control-decision-receipt`

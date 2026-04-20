@@ -6,16 +6,36 @@
       "description": ""
     },
     {
+      "id": "control.appealability-required",
+      "description": "Coalitions must maintain an appeal path."
+    },
+    {
       "id": "control.assertion-binding",
       "description": ""
+    },
+    {
+      "id": "control.attribution-preservation",
+      "description": "Outputs must preserve attribution."
     },
     {
       "id": "control.audit-reference-required",
       "description": ""
     },
     {
+      "id": "control.authority-relocation-record",
+      "description": "Record of material authority relocation into execution surfaces."
+    },
+    {
+      "id": "control.binding-authority-check",
+      "description": "Binding decisions require stronger legitimacy controls than advisory outputs."
+    },
+    {
       "id": "control.binding-integrity",
       "description": ""
+    },
+    {
+      "id": "control.capture-risk-assessed",
+      "description": "Coalitions must assess concentration and capture risk."
     },
     {
       "id": "control.cascading-revocation",
@@ -28,6 +48,18 @@
     {
       "id": "control.chain-depth-limit",
       "description": ""
+    },
+    {
+      "id": "control.challenge-route",
+      "description": "A challenge route must exist for intermediary outputs."
+    },
+    {
+      "id": "control.contestability-minimum",
+      "description": "Consequential systems must expose a minimum challenge path."
+    },
+    {
+      "id": "control.contestability-path-required",
+      "description": "A contestability path must be available for consequential automated surfaces."
     },
     {
       "id": "control.controller-disclosure",
@@ -70,6 +102,10 @@
       "description": ""
     },
     {
+      "id": "control.enforcement-surface-inventory",
+      "description": "Inventory of executable surfaces that materially govern outcomes."
+    },
+    {
       "id": "control.evidence-link-integrity",
       "description": ""
     },
@@ -84,6 +120,18 @@
     {
       "id": "control.invalidation-endpoint",
       "description": ""
+    },
+    {
+      "id": "control.issuance-scope-bound",
+      "description": "License issuance rights must be scope-bounded."
+    },
+    {
+      "id": "control.legitimacy-proof-required",
+      "description": "License authorities must publish legitimacy evidence."
+    },
+    {
+      "id": "control.license-revocation-path",
+      "description": "Governed licenses require an operational revocation path."
     },
     {
       "id": "control.linkage-constraint",
@@ -122,12 +170,24 @@
       "description": ""
     },
     {
+      "id": "control.policy-binding-preservation",
+      "description": "Outputs must preserve relevant policy bindings."
+    },
+    {
       "id": "control.portability-bounds",
       "description": ""
     },
     {
       "id": "control.projection-minimization",
       "description": ""
+    },
+    {
+      "id": "control.provenance-required",
+      "description": "Intermediary outputs must preserve provenance."
+    },
+    {
+      "id": "control.publication-required",
+      "description": "Coalition composition and process must be published."
     },
     {
       "id": "control.purpose-binding",
@@ -166,6 +226,10 @@
       "description": ""
     },
     {
+      "id": "control.revocation-sufficiency",
+      "description": "Revocation must be available with execution-relevant guarantees."
+    },
+    {
       "id": "control.scope-boundary",
       "description": ""
     },
@@ -178,8 +242,16 @@
       "description": ""
     },
     {
+      "id": "control.substrate-provenance",
+      "description": "Outputs must preserve linkage to the knowledge substrate."
+    },
+    {
       "id": "control.tool-use-constraint",
       "description": ""
+    },
+    {
+      "id": "control.transformation-disclosure",
+      "description": "Intermediary transformations must be disclosed."
     },
     {
       "id": "control.withdrawal-enforcement",

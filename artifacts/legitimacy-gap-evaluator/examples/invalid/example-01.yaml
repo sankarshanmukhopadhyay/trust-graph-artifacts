@@ -1,0 +1,8 @@
+assessment_id: lga-002
+authority_source: mystery
+decision_binding: 'yes'
+contestability: {}
+revocation_mechanism:
+  present: sometimes
+  propagation_guarantee: maybe
+gap_score: 120

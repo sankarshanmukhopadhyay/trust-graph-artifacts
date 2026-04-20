@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.pattern.legitimacy-gap-evaluator",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.binding-authority-check",
+      "type": "authority-severity",
+      "description": "Binding decisions require stronger legitimacy controls than advisory outputs."
+    },
+    {
+      "id": "control.revocation-sufficiency",
+      "type": "revocation-propagation",
+      "description": "Revocation must be available at execution-relevant speed."
+    },
+    {
+      "id": "control.contestability-minimum",
+      "type": "appeal-availability",
+      "description": "A consequential system must expose a contestability path."
+    }
+  ],
+  "failureModes": [
+    "Binding decisions proceed without effective revocation",
+    "Contestability is absent for consequential actions",
+    "Audit references are unavailable for high-risk operation"
+  ],
+  "decisionPolicy": "Systems with high legitimacy gap scores SHOULD be blocked or escalated before consequential action."
+}

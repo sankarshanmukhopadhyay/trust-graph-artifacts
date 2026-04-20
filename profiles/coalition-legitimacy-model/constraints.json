@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.profile.coalition-legitimacy-model",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.capture-risk-assessed",
+      "type": "capture-mitigation",
+      "description": "Coalitions must assess concentration and capture risk."
+    },
+    {
+      "id": "control.appealability-required",
+      "type": "redress-routing",
+      "description": "Coalitions must maintain an appeal path."
+    },
+    {
+      "id": "control.publication-required",
+      "type": "publication",
+      "description": "Coalition composition and process must be published."
+    }
+  ],
+  "failureModes": [
+    "Single actor dominates coalition decision path",
+    "Coalition decisions are opaque",
+    "No appeal route exists against coalition decisions"
+  ],
+  "decisionPolicy": "Coalitions SHOULD lose binding authority when capture risk is unassessed or appealability collapses."
+}

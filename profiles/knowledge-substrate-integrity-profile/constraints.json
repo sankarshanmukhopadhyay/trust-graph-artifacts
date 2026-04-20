@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.profile.knowledge-substrate-integrity",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.substrate-provenance",
+      "type": "provenance-binding",
+      "description": "Outputs must preserve provenance to the underlying substrate."
+    },
+    {
+      "id": "control.attribution-preservation",
+      "type": "attribution",
+      "description": "Outputs must preserve source attribution where applicable."
+    },
+    {
+      "id": "control.policy-binding-preservation",
+      "type": "policy-binding",
+      "description": "Outputs must preserve relevant policy constraints from the source substrate."
+    }
+  ],
+  "failureModes": [
+    "Output detaches from source substrate",
+    "Attribution is lost during transformation",
+    "Policy constraints do not survive synthesis"
+  ],
+  "decisionPolicy": "Reliance SHOULD be restricted when provenance, attribution, or policy binding cannot be preserved."
+}

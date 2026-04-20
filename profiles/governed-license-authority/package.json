@@ -1,0 +1,30 @@
+{
+  "id": "ttg.profile.governed-license-authority",
+  "title": "Governed License Authority Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Who Holds the License",
+    "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+    "publishedDate": "2026-04-18"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from direct methodology-driven evaluation of the essay set."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "licenses",
+    "authority",
+    "coalitions",
+    "revocation"
+  ],
+  "notes": [
+    "Encodes the essay claim that licensing power must be legitimate in structure, not merely asserted by institution."
+  ]
+}

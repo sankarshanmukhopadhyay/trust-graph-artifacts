@@ -1,0 +1,27 @@
+{
+  "packageId": "ttg.overlay.intermediary-governance-overlay",
+  "kind": "overlay",
+  "controlSet": [
+    {
+      "id": "control.provenance-required",
+      "type": "provenance-binding",
+      "description": "Intermediary outputs must retain source provenance."
+    },
+    {
+      "id": "control.transformation-disclosure",
+      "type": "disclosure",
+      "description": "Transformation class and method must be disclosed."
+    },
+    {
+      "id": "control.challenge-route",
+      "type": "redress-routing",
+      "description": "A challenge route must exist for intermediary outputs."
+    }
+  ],
+  "failureModes": [
+    "Output is served without source traceability",
+    "Intermediary transformation is undisclosed",
+    "No path exists to challenge mediated output"
+  ],
+  "decisionPolicy": "Intermediated outputs SHOULD NOT be treated as authoritative unless provenance and challengeability are preserved."
+}

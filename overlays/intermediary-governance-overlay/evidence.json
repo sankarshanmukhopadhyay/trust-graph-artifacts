@@ -1,0 +1,21 @@
+{
+  "packageId": "ttg.overlay.intermediary-governance-overlay",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.intermediary.transformation-trace",
+      "artifactType": "transformation-trace",
+      "description": "Trace evidence linking sources, transformation class, and output constraints.",
+      "supportsRefs": [
+        "control.provenance-required",
+        "control.transformation-disclosure",
+        "control.challenge-route"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "source references",
+    "transformation type",
+    "output binding",
+    "review endpoint"
+  ]
+}

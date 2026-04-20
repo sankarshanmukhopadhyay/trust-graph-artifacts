@@ -1,0 +1,21 @@
+{
+  "packageId": "ttg.profile.knowledge-substrate-integrity",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.substrate.integrity-bundle",
+      "artifactType": "integrity-bundle",
+      "description": "Evidence bundle preserving substrate linkages for transformed output.",
+      "supportsRefs": [
+        "control.substrate-provenance",
+        "control.attribution-preservation",
+        "control.policy-binding-preservation"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "source attestation",
+    "transformation method reference",
+    "preserved policy references",
+    "downstream reliance decision"
+  ]
+}

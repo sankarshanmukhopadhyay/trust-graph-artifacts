@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.profile.coalition-legitimacy-model",
+  "label": "Coalition Legitimacy Model",
+  "description": "TSMM-native profile for legitimacy conditions in multi-actor governance coalitions.",
+  "profile": "profile",
+  "contexts": [
+    "context.coalition-legitimacy"
+  ],
+  "nodes": [
+    {
+      "id": "context.coalition-legitimacy",
+      "type": "TrustDomain",
+      "label": "Coalition legitimacy domain",
+      "description": "Domain for multi-actor governance legitimacy."
+    },
+    {
+      "id": "authority.coalition",
+      "type": "GovernanceAuthority",
+      "label": "Coalition authority",
+      "description": "Collective authority formed by multiple actors."
+    },
+    {
+      "id": "subject.participant",
+      "type": "Subject",
+      "label": "Coalition participant set",
+      "description": "Participants represented as a governed coalition subject."
+    },
+    {
+      "id": "policy.coalition",
+      "type": "Policy",
+      "label": "Coalition legitimacy policy",
+      "description": "Policy defining membership, voting, and appeal requirements."
+    },
+    {
+      "id": "assessment.capture",
+      "type": "Assessment",
+      "label": "Capture risk assessment",
+      "description": "Assessment of concentration, opacity, and contestability risks."
+    },
+    {
+      "id": "evidence.coalition",
+      "type": "EvidenceBundle",
+      "label": "Coalition governance evidence",
+      "description": "Evidence of composition, process, and publication."
+    },
+    {
+      "id": "decision.coalition",
+      "type": "TrustDecision",
+      "label": "Coalition legitimacy decision",
+      "description": "Decision on whether coalition governance remains legitimate."
+    },
+    {
+      "id": "effect.authority",
+      "type": "Effect",
+      "label": "Coalition authority effect",
+      "description": "Allows coalition decisions to bind, be restricted, or be suspended."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.coalition",
+      "to": "policy.coalition",
+      "description": "Coalition authority governs the legitimacy policy."
+    },
+    {
+      "id": "edge.policy.constrains.subject",
+      "type": "constrains",
+      "from": "policy.coalition",
+      "to": "subject.participant",
+      "description": "Policy constrains coalition membership and operation."
+    },
+    {
+      "id": "edge.assessment.assesses.subject",
+      "type": "assesses",
+      "from": "assessment.capture",
+      "to": "subject.participant",
+      "description": "Assessment evaluates capture risk and legitimacy conditions."
+    },
+    {
+      "id": "edge.assessment.produces.evidence",
+      "type": "produces",
+      "from": "assessment.capture",
+      "to": "evidence.coalition",
+      "description": "Assessment produces governance evidence."
+    },
+    {
+      "id": "edge.assessment.informs.decision",
+      "type": "informs",
+      "from": "assessment.capture",
+      "to": "decision.coalition",
+      "description": "Assessment informs legitimacy decision."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.coalition",
+      "to": "effect.authority",
+      "description": "Decision determines whether coalition authority remains binding."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+    "focus": "coalition-legitimacy"
+  }
+}

@@ -1,0 +1,19 @@
+authority_id: gla-001
+authority_basis: coalition
+issuance_rights:
+  scope: training-license-issuance
+  constraints:
+  - public-policy-reference
+  - appeal-before-exclusion
+delegation_allowed: false
+revocation:
+  supported: true
+  propagation_model: synchronous
+  endpoint: https://example.org/licenses/revoke
+legitimacy_proof:
+  required: true
+  evidence:
+  - governance_process
+  - stakeholder_inclusion
+  - publication
+  - appeal_body

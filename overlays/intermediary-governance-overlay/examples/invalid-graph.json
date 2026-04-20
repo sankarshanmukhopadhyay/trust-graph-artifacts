@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.overlay.intermediary-governance-overlay",
+  "label": "Intermediary Governance Overlay",
+  "description": "TSMM-native overlay for governing AI intermediaries that transform or mediate commons material.",
+  "profile": "overlay",
+  "contexts": [
+    "context.intermediary-governance"
+  ],
+  "nodes": [
+    {
+      "id": "context.intermediary-governance",
+      "type": "BadType",
+      "label": "Intermediary governance domain",
+      "description": "Domain where intermediaries shape access to commons material."
+    },
+    {
+      "id": "authority.commons",
+      "type": "GovernanceAuthority",
+      "label": "Commons governance authority",
+      "description": "Defines the governance conditions for mediation."
+    },
+    {
+      "id": "service.intermediary",
+      "type": "RegistryService",
+      "label": "Intermediary service",
+      "description": "Service that ranks, summarizes, or synthesizes source material."
+    },
+    {
+      "id": "policy.intermediary",
+      "type": "Policy",
+      "label": "Intermediary governance policy",
+      "description": "Requires provenance, attribution, fidelity, and redress."
+    },
+    {
+      "id": "evidence.trace",
+      "type": "EvidenceBundle",
+      "label": "Transformation trace evidence",
+      "description": "Records source, transformation, and output binding."
+    },
+    {
+      "id": "decision.admissibility",
+      "type": "TrustDecision",
+      "label": "Transformation admissibility decision",
+      "description": "Determines whether the mediated output is admissible."
+    },
+    {
+      "id": "effect.visibility",
+      "type": "Effect",
+      "label": "Visibility and use effect",
+      "description": "Allows, labels, restricts, or routes for review."
+    },
+    {
+      "id": "party.relying",
+      "type": "RelyingParty",
+      "label": "Downstream consumer",
+      "description": "Consumes the mediated output."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.commons",
+      "to": "policy.intermediary",
+      "description": "Commons authority defines the governance policy."
+    },
+    {
+      "id": "edge.policy.constrains.service",
+      "type": "constrains",
+      "from": "policy.intermediary",
+      "to": "service.intermediary",
+      "description": "Policy constrains intermediary operation."
+    },
+    {
+      "id": "edge.service.produces.evidence",
+      "type": "produces",
+      "from": "service.intermediary",
+      "to": "evidence.trace",
+      "description": "Service produces transformation trace evidence."
+    },
+    {
+      "id": "edge.evidence.informs.decision",
+      "type": "informs",
+      "from": "evidence.trace",
+      "to": "decision.admissibility",
+      "description": "Trace evidence informs admissibility."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.admissibility",
+      "to": "effect.visibility",
+      "description": "Decision governs whether mediated output may be used."
+    },
+    {
+      "id": "edge.party.relies.on.effect",
+      "type": "reliesOn",
+      "from": "party.relying",
+      "to": "effect.visibility",
+      "description": "Downstream consumer relies on the enforced outcome."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+    "focus": "intermediary-governance"
+  }
+}

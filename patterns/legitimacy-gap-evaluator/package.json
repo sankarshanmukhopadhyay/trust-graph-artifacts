@@ -1,0 +1,30 @@
+{
+  "id": "ttg.pattern.legitimacy-gap-evaluator",
+  "title": "Legitimacy Gap Evaluator Pattern",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "The Control Plane Has Already Shifted",
+    "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+    "publishedDate": "2026-04-13"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from direct methodology-driven evaluation of the essay set."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "legitimacy",
+    "assessment",
+    "revocation",
+    "contestability"
+  ],
+  "notes": [
+    "Transforms the essay pressure into a repeatable evaluation surface."
+  ]
+}

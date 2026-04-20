@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.profile.governed-license-authority",
+  "label": "Governed License Authority Profile",
+  "description": "TSMM-native profile for authorities that issue governed licenses into an ecosystem.",
+  "profile": "profile",
+  "contexts": [
+    "context.governed-license-authority"
+  ],
+  "nodes": [
+    {
+      "id": "context.governed-license-authority",
+      "type": "BadType",
+      "label": "Governed license authority domain",
+      "description": "Domain for legitimate issuance of operating or participation licenses."
+    },
+    {
+      "id": "authority.license",
+      "type": "GovernanceAuthority",
+      "label": "License authority",
+      "description": "Authority that claims the right to issue governed licenses."
+    },
+    {
+      "id": "registry.license",
+      "type": "TrustRegistry",
+      "label": "License registry",
+      "description": "Registry where license status and scope are published."
+    },
+    {
+      "id": "policy.issuance",
+      "type": "Policy",
+      "label": "License issuance policy",
+      "description": "Policy defining scope, legitimacy proof, and appeal conditions."
+    },
+    {
+      "id": "credential.license",
+      "type": "Credential",
+      "label": "Governed license credential",
+      "description": "Credential issued to an ecosystem participant."
+    },
+    {
+      "id": "evidence.legitimacy",
+      "type": "EvidenceBundle",
+      "label": "Legitimacy proof bundle",
+      "description": "Evidence that the authority is entitled to issue licenses."
+    },
+    {
+      "id": "decision.issuance",
+      "type": "TrustDecision",
+      "label": "Issuance decision",
+      "description": "Decision to issue, deny, or revoke a governed license."
+    },
+    {
+      "id": "effect.participation",
+      "type": "Effect",
+      "label": "Participation effect",
+      "description": "Allows or withdraws participation based on the license state."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.license",
+      "to": "policy.issuance",
+      "description": "Authority governs the issuance policy."
+    },
+    {
+      "id": "edge.authority.operates.registry",
+      "type": "operates",
+      "from": "authority.license",
+      "to": "registry.license",
+      "description": "Authority operates or anchors the registry surface."
+    },
+    {
+      "id": "edge.policy.constrains.credential",
+      "type": "constrains",
+      "from": "policy.issuance",
+      "to": "credential.license",
+      "description": "Issuance policy constrains the license credential."
+    },
+    {
+      "id": "edge.evidence.informs.decision",
+      "type": "informs",
+      "from": "evidence.legitimacy",
+      "to": "decision.issuance",
+      "description": "Legitimacy proof informs issuance decisions."
+    },
+    {
+      "id": "edge.decision.issues.credential",
+      "type": "issues",
+      "from": "decision.issuance",
+      "to": "credential.license",
+      "description": "Decision issues or withholds the governed license."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.issuance",
+      "to": "effect.participation",
+      "description": "Decision determines participation effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+    "focus": "license-authority"
+  }
+}

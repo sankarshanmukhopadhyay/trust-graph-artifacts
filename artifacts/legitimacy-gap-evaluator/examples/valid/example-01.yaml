@@ -1,0 +1,12 @@
+assessment_id: lga-001
+authority_source: system
+delegation_chain_present: true
+decision_binding: true
+contestability:
+  available: false
+revocation_mechanism:
+  present: false
+  propagation_guarantee: none
+audit_reference: audit-2026-04-20-01
+gap_score: 92
+recommended_action: block

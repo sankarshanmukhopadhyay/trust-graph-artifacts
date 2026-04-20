@@ -1,3 +1,12 @@
+## Newly added from the control-plane legitimacy essay set
+
+- `patterns/control-plane-shift-detection` — identifies when authority relocates from institutional process into executable infrastructure
+- `patterns/legitimacy-gap-evaluator` — scores whether binding authority lacks adequate legitimacy controls
+- `overlays/intermediary-governance-overlay` — governs AI intermediaries that reshape commons access and legibility
+- `profiles/knowledge-substrate-integrity-profile` — preserves provenance, attribution, and policy binding across transformed knowledge outputs
+- `profiles/governed-license-authority` — bounds who may issue ecosystem licenses and under what legitimacy proof
+- `profiles/coalition-legitimacy-model` — models capture risk, publication, and appealability inside governance coalitions
+
 ## Newly added from *Enforceable Authority Without Legitimate Control*
 
 - `patterns/authority-legitimacy-validation` — validation pattern that distinguishes authority presence from authority legitimacy

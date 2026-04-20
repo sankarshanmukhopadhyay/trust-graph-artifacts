@@ -1,0 +1,27 @@
+model_id: clm-001
+participants:
+- entity_id: foundation-a
+  role: steward
+- entity_id: civil-society-b
+  role: observer
+- entity_id: operator-c
+  role: issuer
+- entity_id: appeals-d
+  role: appeal-body
+decision_model: consensus
+capture_risk:
+  assessed: true
+  mitigation:
+  - rotation
+  - audit
+  - transparency
+  - diversity-threshold
+legitimacy_conditions:
+- inclusivity
+- contestability
+- auditability
+- publication
+- bounded_scope
+failure_condition:
+- concentration_of_power
+- no_appeal

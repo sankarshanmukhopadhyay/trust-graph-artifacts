@@ -1,0 +1,9 @@
+profile_id: ksi-002
+source_integrity:
+  verified: 'yes'
+transformation_integrity:
+  deterministic: sometimes
+output_constraints:
+  must_preserve: []
+failure_modes:
+- anything-goes

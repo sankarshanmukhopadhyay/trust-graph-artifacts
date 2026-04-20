@@ -1,0 +1,107 @@
+{
+  "graphId": "ttg.pattern.control-plane-shift-detection",
+  "label": "Control Plane Shift Detection Pattern",
+  "description": "TSMM-native pattern for identifying when authority moves from institutional process into infrastructural execution surfaces.",
+  "profile": "pattern",
+  "contexts": [
+    "context.control-plane-shift"
+  ],
+  "nodes": [
+    {
+      "id": "context.control-plane-shift",
+      "type": "BadType",
+      "label": "Control plane shift domain",
+      "description": "Domain where effective authority migrates into infrastructure."
+    },
+    {
+      "id": "authority.community",
+      "type": "GovernanceAuthority",
+      "label": "Community or institutional authority",
+      "description": "Pre-shift authority source."
+    },
+    {
+      "id": "service.platform",
+      "type": "RegistryService",
+      "label": "Platform or control service",
+      "description": "Operational surface where authority becomes executable."
+    },
+    {
+      "id": "policy.shift",
+      "type": "Policy",
+      "label": "Shift detection policy",
+      "description": "Policy for identifying and recording authority relocation."
+    },
+    {
+      "id": "assessment.shift",
+      "type": "Assessment",
+      "label": "Authority relocation assessment",
+      "description": "Evaluates whether a material shift has occurred."
+    },
+    {
+      "id": "decision.shift",
+      "type": "TrustDecision",
+      "label": "Shift recognition decision",
+      "description": "Determines whether the relocation requires governance intervention."
+    },
+    {
+      "id": "evidence.shift.record",
+      "type": "EvidenceBundle",
+      "label": "Control plane shift record",
+      "description": "Structured evidence of the relocation event."
+    },
+    {
+      "id": "effect.governance.review",
+      "type": "Effect",
+      "label": "Governance review effect",
+      "description": "Triggers review, control hardening, or remediation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.governs.policy",
+      "type": "governs",
+      "from": "authority.community",
+      "to": "policy.shift",
+      "description": "Existing authority defines what counts as a material shift."
+    },
+    {
+      "id": "edge.policy.constrains.service",
+      "type": "constrains",
+      "from": "policy.shift",
+      "to": "service.platform",
+      "description": "Detection policy constrains how execution surfaces are assessed."
+    },
+    {
+      "id": "edge.assessment.assesses.service",
+      "type": "assesses",
+      "from": "assessment.shift",
+      "to": "service.platform",
+      "description": "Assessment evaluates the operational surface."
+    },
+    {
+      "id": "edge.assessment.informs.decision",
+      "type": "informs",
+      "from": "assessment.shift",
+      "to": "decision.shift",
+      "description": "Assessment informs the recognition decision."
+    },
+    {
+      "id": "edge.decision.produces.evidence",
+      "type": "produces",
+      "from": "decision.shift",
+      "to": "evidence.shift.record",
+      "description": "Decision produces a structured shift record."
+    },
+    {
+      "id": "edge.decision.produces.effect",
+      "type": "produces",
+      "from": "decision.shift",
+      "to": "effect.governance.review",
+      "description": "Decision triggers governance review or remediation."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+    "focus": "authority-relocation"
+  }
+}

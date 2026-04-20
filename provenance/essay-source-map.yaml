@@ -1,4 +1,46 @@
 provenance:
+- slug: coalition-legitimacy-model
+  title: Coalition Legitimacy Model
+  publishedDate: '2026-04-18'
+  url: https://thetrustgraph.substack.com/p/who-holds-the-license
+  packageKind: profile
+  packagePath: profiles/coalition-legitimacy-model
+  signalTier: priority
+- slug: governed-license-authority
+  title: Governed License Authority Profile
+  publishedDate: '2026-04-18'
+  url: https://thetrustgraph.substack.com/p/who-holds-the-license
+  packageKind: profile
+  packagePath: profiles/governed-license-authority
+  signalTier: priority
+- slug: knowledge-substrate-integrity-profile
+  title: Knowledge Substrate Integrity Profile
+  publishedDate: '2026-04-17'
+  url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
+  packageKind: profile
+  packagePath: profiles/knowledge-substrate-integrity-profile
+  signalTier: priority
+- slug: intermediary-governance-overlay
+  title: Intermediary Governance Overlay
+  publishedDate: '2026-04-17'
+  url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
+  packageKind: overlay
+  packagePath: overlays/intermediary-governance-overlay
+  signalTier: priority
+- slug: legitimacy-gap-evaluator
+  title: Legitimacy Gap Evaluator Pattern
+  publishedDate: '2026-04-13'
+  url: https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted
+  packageKind: pattern
+  packagePath: patterns/legitimacy-gap-evaluator
+  signalTier: priority
+- slug: control-plane-shift-detection
+  title: Control Plane Shift Detection Pattern
+  publishedDate: '2026-04-13'
+  url: https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted
+  packageKind: pattern
+  packagePath: patterns/control-plane-shift-detection
+  signalTier: priority
 - slug: authority-legitimacy-validation
   title: Authority Legitimacy Validation Pattern
   publishedDate: '2026-04-08'

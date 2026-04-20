@@ -1,0 +1,9 @@
+overlay_id: igo-002
+intermediary_id: ai-commons-summary-service
+input_source:
+  provenance_required: sometimes
+transformation: magic
+traceability:
+  input_trace: partial
+  output_binding: false
+governance_constraints: []

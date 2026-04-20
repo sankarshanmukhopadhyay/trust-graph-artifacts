@@ -1,0 +1,22 @@
+{
+  "packageId": "ttg.profile.coalition-legitimacy-model",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.coalition.legitimacy-record",
+      "artifactType": "coalition-governance-record",
+      "description": "Evidence of coalition composition, decision process, and capture mitigation.",
+      "supportsRefs": [
+        "control.capture-risk-assessed",
+        "control.appealability-required",
+        "control.publication-required"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "participant roster",
+    "decision mode",
+    "capture risk mitigation",
+    "appeal body",
+    "publication reference"
+  ]
+}

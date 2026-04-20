@@ -1,0 +1,22 @@
+{
+  "packageId": "ttg.pattern.legitimacy-gap-evaluator",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.legitimacy-gap-assessment",
+      "artifactType": "legitimacy-gap-assessment",
+      "description": "Structured assessment of legitimacy sufficiency.",
+      "supportsRefs": [
+        "control.binding-authority-check",
+        "control.revocation-sufficiency",
+        "control.contestability-minimum"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "binding decision class",
+    "revocation path and latency",
+    "appeal endpoint",
+    "audit reference",
+    "final score and recommended action"
+  ]
+}

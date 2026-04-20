@@ -1,0 +1,12 @@
+authority_id: gla-002
+authority_basis: institution
+issuance_rights:
+  scope: all
+  constraints: []
+delegation_allowed: sometimes
+revocation:
+  supported: 'yes'
+  propagation_model: fast
+legitimacy_proof:
+  required: true
+  evidence: []

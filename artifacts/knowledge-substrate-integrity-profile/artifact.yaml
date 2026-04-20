@@ -1,0 +1,47 @@
+id: ttg-artifact-019
+title: Knowledge Substrate Integrity Profile
+status: draft
+source:
+  essay_title: The Commons After the Control Plane Shifts
+  essay_url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
+  published_date: '2026-04-17'
+signal:
+  engagement_rate: 0.0
+  tier: priority
+classification:
+  artifact_type:
+  - schema
+  - profile
+  - mapping
+  domain:
+  - knowledge-integrity
+  - commons
+  - provenance
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - enforcement
+  - redress
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-04-20'
+  last_updated: '2026-04-20'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  projection: profiles/knowledge-substrate-integrity-profile/graph.json
+  entity_registry: registries/entity-types.json
+  control_registry: registries/control-catalog.json
+  tsmm_version: v0.17.0

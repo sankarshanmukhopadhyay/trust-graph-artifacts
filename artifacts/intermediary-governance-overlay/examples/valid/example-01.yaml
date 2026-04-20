@@ -1,0 +1,20 @@
+overlay_id: igo-001
+intermediary_id: ai-commons-summary-service
+input_source:
+  provenance_required: true
+  source_classes:
+  - commons-archive
+  - public-record
+transformation: synthesis
+traceability:
+  input_trace: true
+  output_binding: true
+  transformation_log: true
+governance_constraints:
+- attribution
+- fidelity
+- disclosure
+- appealability
+violation_detection:
+  enabled: true
+  route: https://example.org/review/intermediary

@@ -1,0 +1,15 @@
+record_id: cpsr-001
+subject_system: commons-ranking-service
+previous_authority_model: community-governed
+new_authority_model: platform-mediated
+shift_trigger: automation
+enforcement_surface:
+- component: ranking-engine
+  control_type: ranking
+  notes: Ranking output governs visibility.
+- component: policy-gateway
+  control_type: gating
+contestability_path: https://example.org/appeals/commons-ranking
+revocation_path: https://example.org/controls/revoke-ranking-policy
+legitimacy_gap_detected: true
+timestamp: '2026-04-20T09:00:00Z'

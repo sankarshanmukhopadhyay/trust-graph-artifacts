@@ -1,0 +1,9 @@
+model_id: clm-002
+participants:
+- entity_id: foundation-a
+  role: king
+decision_model: secret
+capture_risk:
+  assessed: kind-of
+  mitigation: []
+legitimacy_conditions: []

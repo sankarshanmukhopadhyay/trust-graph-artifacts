@@ -1,0 +1,18 @@
+profile_id: ksi-001
+source_integrity:
+  verified: true
+  source_registry: commons-registry-v1
+transformation_integrity:
+  deterministic: false
+  auditable: true
+  method_reference: method://llm-summarization-v3
+output_constraints:
+  must_preserve:
+  - provenance
+  - attribution
+  - policy_binding
+  - appealability
+failure_modes:
+- hallucination
+- attribution_loss
+- policy_violation
