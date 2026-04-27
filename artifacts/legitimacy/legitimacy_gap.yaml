@@ -1,0 +1,33 @@
+id: tga.legitimacy.gap.v1
+kind: legitimacy-gap
+title: Commons Legitimacy Gap Artifact
+status: active
+tsmmAlignment:
+  - authority
+  - delegation
+  - scope
+  - control
+  - decision
+  - evidence
+sourceEssays:
+  -
+    title: The Control Plane Has Already Shifted
+    url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
+    publishedDate: 2026-04-13
+  -
+    title: The Commons After the Control Plane Shifts
+    url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+    publishedDate: 2026-04-17
+  -
+    title: Who Holds the License
+    url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
+    publishedDate: 2026-04-18
+purpose: Detect mismatch between declared governance narratives and actual decision authority inside execution systems.
+requiredReceipts:
+  - decision-receipt
+  - authority-receipt
+  - enforcement-receipt
+tests:
+  - decision-has-contestability-path
+  - review-authority-is-declared
+  - redress-path-resolves-to-operator

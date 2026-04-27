@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "decision_id",
+    "actor",
+    "decision_type",
+    "authority_basis",
+    "policy_evaluation",
+    "execution_trace",
+    "revocation_state"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "decision-receipt"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "source_essays": {
+      "type": "array"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "decision_id": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string"
+    },
+    "decision_type": {
+      "enum": [
+        "accept",
+        "reject",
+        "transform",
+        "propagate",
+        "license",
+        "revoke"
+      ]
+    },
+    "authority_basis": {
+      "type": "object"
+    },
+    "policy_evaluation": {
+      "type": "object"
+    },
+    "execution_trace": {
+      "type": "object"
+    },
+    "revocation_state": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

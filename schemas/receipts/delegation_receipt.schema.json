@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "delegator",
+    "delegatee",
+    "scope",
+    "constraints",
+    "chain_integrity"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "delegation-receipt"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "source_essays": {
+      "type": "array"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "delegator": {
+      "type": "string"
+    },
+    "delegatee": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array"
+    },
+    "constraints": {
+      "type": "array"
+    },
+    "chain_integrity": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

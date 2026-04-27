@@ -1,0 +1,52 @@
+{
+  "receipt_id": "urn:tga:receipt:decision:example",
+  "receipt_type": "decision-receipt",
+  "timestamp": "2026-04-27T09:00:00Z",
+  "source_essays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    },
+    {
+      "title": "The Commons After the Control Plane Shifts",
+      "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+      "publishedDate": "2026-04-17"
+    },
+    {
+      "title": "Who Holds the License",
+      "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+      "publishedDate": "2026-04-18"
+    }
+  ],
+  "signature": "example-signature-placeholder",
+  "decision_id": "urn:tga:decision:commons-moderation-001",
+  "actor": "commons-ingestion-agent",
+  "decision_type": "reject",
+  "authority_basis": {
+    "authority_receipt": "urn:tga:receipt:authority:example",
+    "delegation_chain": [
+      "urn:tga:receipt:delegation:example"
+    ],
+    "license_reference": "urn:tga:receipt:licensing:example"
+  },
+  "policy_evaluation": {
+    "policies_applied": [
+      "commons-input-policy"
+    ],
+    "constraints_checked": [
+      "declared-authority",
+      "revocation-status",
+      "contestability"
+    ],
+    "result": "fail"
+  },
+  "execution_trace": {
+    "control_plane_step": "input_admission",
+    "transformation_applied": "none"
+  },
+  "revocation_state": {
+    "checked_at": "2026-04-27T08:59:58Z",
+    "status": "valid"
+  }
+}

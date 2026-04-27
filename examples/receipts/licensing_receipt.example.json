@@ -1,0 +1,32 @@
+{
+  "receipt_id": "urn:tga:receipt:licensing:example",
+  "receipt_type": "licensing-receipt",
+  "timestamp": "2026-04-27T09:00:00Z",
+  "source_essays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    },
+    {
+      "title": "The Commons After the Control Plane Shifts",
+      "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+      "publishedDate": "2026-04-17"
+    },
+    {
+      "title": "Who Holds the License",
+      "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+      "publishedDate": "2026-04-18"
+    }
+  ],
+  "signature": "example-signature-placeholder",
+  "license_id": "urn:tga:license:commons-training-use-001",
+  "issuer": "governed-license-authority",
+  "subject": "licensed-ai-crawler",
+  "eligibility_result": "conditional",
+  "scope": {
+    "corpus": "commons-knowledge-substrate",
+    "use": "training-ingestion",
+    "expires": "2026-07-01T00:00:00Z"
+  }
+}

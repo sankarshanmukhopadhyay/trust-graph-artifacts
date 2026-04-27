@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "revoked_subject",
+    "effective_at",
+    "propagation_status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "revocation-receipt"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "source_essays": {
+      "type": "array"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "revoked_subject": {
+      "type": "string"
+    },
+    "effective_at": {
+      "type": "string"
+    },
+    "propagation_status": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

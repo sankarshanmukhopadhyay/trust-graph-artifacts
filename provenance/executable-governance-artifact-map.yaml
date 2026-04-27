@@ -1,0 +1,36 @@
+provenance:
+  sourceEssays:
+    -
+      title: The Control Plane Has Already Shifted
+      url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
+      publishedDate: 2026-04-13
+    -
+      title: The Commons After the Control Plane Shifts
+      url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+      publishedDate: 2026-04-17
+    -
+      title: Who Holds the License
+      url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
+      publishedDate: 2026-04-18
+  artifactLayers:
+    -
+      layer: authority
+      path: artifacts/authority/authority_topology.yaml
+    -
+      layer: control-plane
+      path: artifacts/control-plane/execution_flow.yaml
+    -
+      layer: legitimacy
+      path: artifacts/legitimacy/legitimacy_gap.yaml
+    -
+      layer: delegation
+      path: artifacts/delegation/delegation_chain.yaml
+    -
+      layer: licensing
+      path: artifacts/licensing/license_authority_model.yaml
+    -
+      layer: verification
+      path: artifacts/verification/verification_profile.yaml
+    -
+      layer: receipts
+      path: artifacts/receipts/README.md

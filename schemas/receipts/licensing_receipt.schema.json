@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "license_id",
+    "issuer",
+    "subject",
+    "eligibility_result",
+    "scope"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "licensing-receipt"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "source_essays": {
+      "type": "array"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "license_id": {
+      "type": "string"
+    },
+    "issuer": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "eligibility_result": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

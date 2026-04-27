@@ -1,0 +1,29 @@
+id: tga.licensing.authority-model.v1
+kind: license-authority-model
+title: Governed License Authority Model
+status: active
+tsmmAlignment:
+  - authority
+  - delegation
+  - scope
+  - control
+  - decision
+  - evidence
+sourceEssays:
+  -
+    title: Who Holds the License
+    url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
+    publishedDate: 2026-04-18
+  -
+    title: The Commons After the Control Plane Shifts
+    url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+    publishedDate: 2026-04-17
+purpose: Model the authority that determines who may participate in a governed training, data, or knowledge-use regime.
+requiredReceipts:
+  - licensing-receipt
+  - authority-receipt
+  - decision-receipt
+tests:
+  - issuer-legitimacy-valid
+  - eligibility-criteria-satisfied
+  - license-scope-not-exceeded

@@ -1,0 +1,36 @@
+id: tga.verification.profile.v1
+kind: verification-profile
+title: TRQP-Aligned Verification Profile
+status: active
+tsmmAlignment:
+  - authority
+  - delegation
+  - scope
+  - control
+  - decision
+  - evidence
+sourceEssays:
+  -
+    title: The Control Plane Has Already Shifted
+    url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
+    publishedDate: 2026-04-13
+  -
+    title: The Commons After the Control Plane Shifts
+    url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+    publishedDate: 2026-04-17
+  -
+    title: Who Holds the License
+    url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
+    publishedDate: 2026-04-18
+purpose: Validate authority, delegation, revocation, licensing, enforcement, and decision evidence produced by the artifact suite.
+requiredReceipts:
+  - decision-receipt
+  - authority-receipt
+  - delegation-receipt
+  - revocation-receipt
+  - licensing-receipt
+  - enforcement-receipt
+tests:
+  - all-receipts-schema-valid
+  - receipt-chain-complete
+  - decision-replay-deterministic

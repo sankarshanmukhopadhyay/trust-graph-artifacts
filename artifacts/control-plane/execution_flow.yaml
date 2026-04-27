@@ -1,0 +1,29 @@
+id: tga.control-plane.execution-flow.v1
+kind: control-plane-execution-flow
+title: Control Plane Execution Flow
+status: active
+tsmmAlignment:
+  - authority
+  - delegation
+  - scope
+  - control
+  - decision
+  - evidence
+sourceEssays:
+  -
+    title: The Control Plane Has Already Shifted
+    url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
+    publishedDate: 2026-04-13
+  -
+    title: The Commons After the Control Plane Shifts
+    url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+    publishedDate: 2026-04-17
+purpose: Represent how inputs are accepted, transformed, rejected, propagated, or licensed by the operating layer of a trust system.
+requiredReceipts:
+  - decision-receipt
+  - authority-receipt
+  - enforcement-receipt
+tests:
+  - deterministic-decision-replay
+  - complete-execution-trace
+  - policy-result-linked-to-output

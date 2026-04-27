@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "authority_holder",
+    "authority_source",
+    "scope",
+    "validity_window",
+    "revocation_status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "authority-receipt"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "source_essays": {
+      "type": "array"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "authority_holder": {
+      "type": "string"
+    },
+    "authority_source": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array"
+    },
+    "validity_window": {
+      "type": "object"
+    },
+    "revocation_status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

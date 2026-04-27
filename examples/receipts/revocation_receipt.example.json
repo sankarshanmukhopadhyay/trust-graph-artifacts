@@ -1,0 +1,35 @@
+{
+  "receipt_id": "urn:tga:receipt:revocation:example",
+  "receipt_type": "revocation-receipt",
+  "timestamp": "2026-04-27T09:00:00Z",
+  "source_essays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    },
+    {
+      "title": "The Commons After the Control Plane Shifts",
+      "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+      "publishedDate": "2026-04-17"
+    },
+    {
+      "title": "Who Holds the License",
+      "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+      "publishedDate": "2026-04-18"
+    }
+  ],
+  "signature": "example-signature-placeholder",
+  "revoked_subject": "legacy-ranking-bot",
+  "effective_at": "2026-04-27T08:30:00Z",
+  "propagation_status": [
+    {
+      "node": "policy-registry",
+      "status": "updated"
+    },
+    {
+      "node": "execution-plane",
+      "status": "updated"
+    }
+  ]
+}

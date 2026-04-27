@@ -1,0 +1,33 @@
+id: tga.delegation.chain.v1
+kind: delegation-chain
+title: Delegation Chain and Revocation Artifact
+status: active
+tsmmAlignment:
+  - authority
+  - delegation
+  - scope
+  - control
+  - decision
+  - evidence
+sourceEssays:
+  -
+    title: The Control Plane Has Already Shifted
+    url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
+    publishedDate: 2026-04-13
+  -
+    title: The Commons After the Control Plane Shifts
+    url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
+    publishedDate: 2026-04-17
+  -
+    title: Who Holds the License
+    url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
+    publishedDate: 2026-04-18
+purpose: Track how authority propagates from an originating governance body to execution actors and where stale authority can persist.
+requiredReceipts:
+  - delegation-receipt
+  - revocation-receipt
+  - decision-receipt
+tests:
+  - delegation-chain-complete
+  - scope-not-expanded
+  - revoked-authority-not-used

@@ -1,0 +1,31 @@
+riskControlTestMap:
+  -
+    risk: Invisible authority execution
+    control: Authority must resolve to a declared source before execution.
+    test: authority-valid-at-execution-time
+    evidence: authority-receipt
+  -
+    risk: Non-contestable decisions
+    control: Every decision must identify redress and review path.
+    test: decision-has-contestability-path
+    evidence: decision-receipt
+  -
+    risk: Broken delegation chain
+    control: Delegation path must be complete and scoped.
+    test: delegation-chain-complete
+    evidence: delegation-receipt
+  -
+    risk: Revocation lag exploitation
+    control: Execution must check current revocation state before action.
+    test: revoked-authority-not-used
+    evidence: revocation-receipt
+  -
+    risk: Illegitimate licensing authority
+    control: License issuer must satisfy governance and auditability constraints.
+    test: issuer-legitimacy-valid
+    evidence: licensing-receipt
+  -
+    risk: Policy theater without enforcement
+    control: Policy result must link to actual allow/block/transform/escalate action.
+    test: policy-result-linked-to-output
+    evidence: enforcement-receipt

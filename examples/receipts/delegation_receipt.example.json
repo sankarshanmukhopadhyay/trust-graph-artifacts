@@ -1,0 +1,36 @@
+{
+  "receipt_id": "urn:tga:receipt:delegation:example",
+  "receipt_type": "delegation-receipt",
+  "timestamp": "2026-04-27T09:00:00Z",
+  "source_essays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    },
+    {
+      "title": "The Commons After the Control Plane Shifts",
+      "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+      "publishedDate": "2026-04-17"
+    },
+    {
+      "title": "Who Holds the License",
+      "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+      "publishedDate": "2026-04-18"
+    }
+  ],
+  "signature": "example-signature-placeholder",
+  "delegator": "commons-governance-board",
+  "delegatee": "commons-ingestion-agent",
+  "scope": [
+    "input-admission"
+  ],
+  "constraints": [
+    "no-subdelegation",
+    "revocation-check-required"
+  ],
+  "chain_integrity": {
+    "complete": true,
+    "missing_links": []
+  }
+}

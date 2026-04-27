@@ -125,6 +125,17 @@ A second major addition is a six-package control-plane legitimacy cluster derive
 - `overlays/legitimate-control-enforcement`
 - `evidence/legitimate-control-decision-receipt`
 
+
+## Executable governance artifact layer
+
+This update adds a first-class artifact and receipt layer derived from three source essays in The Trust Graph:
+
+- [The Control Plane Has Already Shifted](https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted)
+- [The Commons After the Control Plane Shifts](https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane)
+- [Who Holds the License](https://thetrustgraph.substack.com/p/who-holds-the-license)
+
+The layer turns essay-derived claims into TSMM-aligned artifacts that can be validated, replayed, and evidenced. The core addition is the receipt taxonomy under `artifacts/receipts`, `schemas/receipts`, and `examples/receipts`. Decision receipts are the primary evidence object; authority, delegation, revocation, licensing, and enforcement receipts provide the supporting proof chain.
+
 ## Repository structure
 
 ```text

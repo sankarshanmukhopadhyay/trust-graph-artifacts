@@ -23,3 +23,12 @@
 ## Historical material
 
 - `../archive/README.md` — what was archived and why it is no longer active
+
+## Executable governance artifact expansion
+
+- [Artifact methodology](artifact-methodology.md)
+- [Execution model](execution-model.md)
+- [Governance model](governance-model.md)
+- [Receipts](receipts.md)
+- [Decision provenance](decision-provenance.md)
+- [Walkthrough](walkthrough.md)
