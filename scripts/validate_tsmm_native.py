@@ -167,12 +167,32 @@ def validate_artifacts() -> None:
         errors.append(f"{crosswalk_path.relative_to(ROOT)}: could not validate crosswalk references: {exc}")
 
 
+
+def validate_receipts() -> None:
+    """Validate receipt examples against their matching JSON Schemas."""
+    schema_dir = ROOT / "schemas" / "receipts"
+    example_dir = ROOT / "examples" / "receipts"
+    if not schema_dir.exists() or not example_dir.exists():
+        return
+    for example_path in sorted(example_dir.glob("*.example.json")):
+        schema_name = example_path.name.replace(".example.json", ".schema.json")
+        schema_path = schema_dir / schema_name
+        if not schema_path.exists():
+            errors.append(f"{example_path.relative_to(ROOT)}: missing schema {schema_path.relative_to(ROOT)}")
+            continue
+        try:
+            schema = json.loads(schema_path.read_text())
+            validate_json(example_path, schema)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{example_path.relative_to(ROOT)}: receipt schema validation failed: {exc}")
+
 for package in package_paths():
     validate_package(package)
     validate_semantic_gate(package)
 
 validate_provenance_coverage()
 validate_artifacts()
+validate_receipts()
 
 if errors:
     print("TSMM-native validation failed:")
