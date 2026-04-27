@@ -17,7 +17,7 @@
 
 | Essay | Kind | Package path |
 |---|---|---|
-| Agent Mandate Envelope | pattern | `patterns/your-agents-are-not-failing-your` |
+| Agent Mandate Envelope | pattern | `patterns/agent-mandate-envelope` |
 | Consent Enforcement Schema | overlay | `overlays/consent-not-data-structure` |
 | Contextual Identity Projection | profile | `profiles/layers-of-the-self` |
 | Delegated Consent Protection Policy | overlay | `overlays/after-consent` |

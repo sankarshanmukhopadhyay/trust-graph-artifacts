@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/tga-tsmm-native/schemas/tsmm-native-package.schema.json",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/main/schemas/tsmm-native-package.schema.json",
   "title": "TGA TSMM Native Package",
   "type": "object",
   "required": [

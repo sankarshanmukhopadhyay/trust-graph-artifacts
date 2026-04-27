@@ -1,45 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/main/schemas/control-plane/artifact.schema.json",
+  "title": "TGA control-plane artifact schema",
   "type": "object",
-  "required": [
-    "id",
-    "kind",
-    "title",
-    "status",
-    "tsmmAlignment",
-    "sourceEssays",
-    "purpose",
-    "requiredReceipts",
-    "tests"
-  ],
+  "required": ["id", "kind", "title", "status", "tsmmAlignment", "sourceEssays", "purpose", "requiredReceipts", "tests", "controlPlaneScope"],
   "properties": {
-    "id": {
-      "type": "string"
-    },
-    "kind": {
-      "type": "string"
-    },
-    "title": {
-      "type": "string"
-    },
-    "status": {
-      "type": "string"
-    },
-    "tsmmAlignment": {
-      "type": "array"
-    },
-    "sourceEssays": {
-      "type": "array"
-    },
-    "purpose": {
-      "type": "string"
-    },
-    "requiredReceipts": {
-      "type": "array"
-    },
-    "tests": {
-      "type": "array"
-    }
+    "id": {"type": "string"},
+    "kind": {"type": "string", "pattern": "execution|control"},
+    "title": {"type": "string"},
+    "status": {"type": "string"},
+    "tsmmAlignment": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "sourceEssays": {"type": "array", "minItems": 1},
+    "purpose": {"type": "string"},
+    "requiredReceipts": {"type": "array", "items": {"type": "string"}},
+    "tests": {"type": "array", "items": {"type": "string"}},
+    "controlPlaneScope": {"type":"array","items":{"type":"string"}}
   },
   "additionalProperties": true
 }

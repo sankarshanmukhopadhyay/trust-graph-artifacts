@@ -153,12 +153,12 @@ essays:
   packageKind: pattern
   packagePath: patterns/systemic-controllers
   signalTier: C
-- slug: your-agents-are-not-failing-your
+- slug: agent-mandate-envelope
   title: Agent Mandate Envelope
   publishedDate: '2026-02-26'
   url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
   packageKind: pattern
-  packagePath: patterns/your-agents-are-not-failing-your
+  packagePath: patterns/agent-mandate-envelope
   signalTier: B
 - slug: digital-credential-verification-policy-playbook
   title: Verification Policy Profile

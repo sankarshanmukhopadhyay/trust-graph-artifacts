@@ -1,6 +1,6 @@
 # Quickstart
 
-This repository is easiest to understand if you treat it as a developer-facing library of trust-system packages.
+This repository is easiest to understand as a developer-facing library of TSMM-native trust-system packages.
 
 ## 1. Validate the repository
 
@@ -8,17 +8,29 @@ This repository is easiest to understand if you treat it as a developer-facing l
 python3 scripts/validate_tsmm_native.py
 ```
 
-This confirms that the package metadata, graph structures, and example files are internally consistent.
+This checks package schemas, graph schemas, valid/invalid examples, selected semantic gates, provenance coverage, and canonical artifact crosswalk integrity.
 
-## 2. Open one package from each class
+## 2. Choose the right first tour
 
-Recommended tour:
+### Authority modeling tour
+
+Use this when your goal is to understand executable authority, legitimate control, and decision evidence:
+
+- `patterns/authority-legitimacy-validation/`
+- `overlays/legitimate-control-enforcement/`
+- `evidence/legitimate-control-decision-receipt/`
+
+### Cross-type structural tour
+
+Use this when your goal is to see one example from each package class:
 
 - `profiles/first-person-credentials/`
 - `patterns/delegation-after-identity/`
 - `overlays/consent-not-data-structure/`
 - `systems/wallet-to-agent-identity/`
 - `evidence/the-proof-gap/`
+
+These two tours are intentionally different. The first is the canonical onboarding path for authority modeling. The second is a taxonomy tour across package types.
 
 ## 3. Read package files in this order
 
@@ -29,24 +41,13 @@ Recommended tour:
 5. `evidence.json`
 6. `tests/test-vector.json`
 
-That order helps separate **intent**, **classification**, **structure**, **control**, **evidence**, and **validation expectations**.
+That order separates intent, classification, structure, control, evidence, and validation expectations.
 
 ## 4. Keep the line clear
 
-When reading the repository, use this mental model:
-
 - **Essay** = why the problem matters
 - **TSMM** = how the system is structurally expressed
-- **Package** = the reusable implementation unit in this repo
+- **Package** = the reusable implementation unit in this repository
+- **Receipt** = the evidence object emitted when authority, delegation, enforcement, revocation, or decision state must be audited
 
-If you maintain that distinction, the repository becomes much easier to navigate.
-
-## Recommended first package set
-
-A good starting cluster is the set derived from *Enforceable Authority Without Legitimate Control*:
-
-- `patterns/authority-legitimacy-validation`
-- `overlays/legitimate-control-enforcement`
-- `evidence/legitimate-control-decision-receipt`
-
-Together they show the difference between modeling authority, modeling control, and modeling the evidence needed to prove that control actually held.
+This is the core adoption rule: do not flatten concept, model, package, and evidence into one narrative layer.

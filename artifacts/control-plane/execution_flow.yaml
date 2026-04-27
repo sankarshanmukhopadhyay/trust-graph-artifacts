@@ -27,3 +27,7 @@ tests:
   - deterministic-decision-replay
   - complete-execution-trace
   - policy-result-linked-to-output
+controlPlaneScope:
+- admission
+- transformation
+- propagation

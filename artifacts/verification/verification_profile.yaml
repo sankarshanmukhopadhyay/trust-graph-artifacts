@@ -34,3 +34,8 @@ tests:
   - all-receipts-schema-valid
   - receipt-chain-complete
   - decision-replay-deterministic
+verificationScope:
+- schema
+- issuer
+- policy
+- receipt

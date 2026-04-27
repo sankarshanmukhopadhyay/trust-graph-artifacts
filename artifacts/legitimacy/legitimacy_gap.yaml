@@ -31,3 +31,7 @@ tests:
   - decision-has-contestability-path
   - review-authority-is-declared
   - redress-path-resolves-to-operator
+legitimacyBasis:
+- authority
+- contestability
+- redress

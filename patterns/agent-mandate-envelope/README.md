@@ -1,7 +1,7 @@
 # Agent Mandate Envelope
 
 **Kind:** pattern  
-**Path:** `patterns/your-agents-are-not-failing-your`  
+**Path:** `patterns/agent-mandate-envelope`  
 **Source essay:** Your Agents Are Not Failing. Your Mandates Are  
 **Published:** 2026-02-26  
 **Signal tier:** B (13.64% engagement)
@@ -52,7 +52,7 @@ Start with:
 ## Package snapshot
 
 - **Primary TSMM object kind:** pattern
-- **Graph identifier:** `ttg.pattern.your-agents-are-not-failing-your`
+- **Graph identifier:** `ttg.pattern.agent-mandate-envelope`
 - **Node count:** 13
 - **Edge count:** 12
 

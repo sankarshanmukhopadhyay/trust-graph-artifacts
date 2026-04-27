@@ -1,9 +1,6 @@
 # Validation
 
-Validation in this repository serves two goals:
-
-- keep TSMM-native package surfaces structurally consistent
-- give developers confidence that examples and tests reflect the package contract
+Validation keeps the repository honest as an executable governance corpus. It distinguishes what is machine-enforced today from what remains a planned control requirement.
 
 ## What validation currently checks
 
@@ -11,17 +8,18 @@ Validation in this repository serves two goals:
 - `graph.json` matches the TSMM graph schema
 - `examples/valid-graph.json` passes schema validation
 - `examples/invalid-graph.json` fails schema validation
+- `patterns/authority-legitimacy-validation` includes revocation and contestability signals
+- `overlays/intermediary-governance-overlay` includes provenance/traceability signals
+- `profiles/coalition-legitimacy-model` includes capture-risk and appealability signals
+- every active package directory is represented in `provenance/essay-source-map.yaml`
+- canonical artifact YAML files validate against their domain schemas
+- `crosswalks/essay_to_artifact.yaml` references resolve to existing package or artifact paths
 
-## What validation does not yet do
+## Declared but not yet machine-evaluated
 
-The current validator is intentionally lightweight. It does not yet perform deep semantic checks such as:
+Some checks in `validation/test-matrix.yaml` are marked `planned`. They are requirements backlog, not present validator coverage.
 
-- registry reference completeness
-- control-to-decision coverage
-- lifecycle transition integrity
-- evidence-field conformance to decision surfaces
-
-Those would be strong future increments.
+The `evidenceChecks` arrays in package test vectors are also declared but not yet machine-evaluated. They document evidence expectations for maintainers and future validator extensions. They should not be read as executable test results until a matching validator check is added and marked `implemented` in the matrix.
 
 ## Run locally
 

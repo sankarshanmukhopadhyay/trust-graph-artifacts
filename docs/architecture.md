@@ -43,3 +43,22 @@ The repository intentionally separates:
 - **reusable package implementation**
 
 That separation is what keeps The Trust Graph from collapsing into theory and TSMM from being treated as abstract decoration.
+
+
+## Canonical schema URIs
+
+JSON Schema `$id` values use the repository's GitHub raw URL namespace rather than placeholder domains. Downstream tools may use these URIs as stable schema registry keys until a dedicated project domain is introduced.
+
+Current canonical schema examples:
+
+- `https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/main/schemas/tsmm-graph.schema.json`
+- `https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/main/schemas/tsmm-native-package.schema.json`
+
+## Provenance records
+
+The repository intentionally keeps two related provenance surfaces:
+
+- `essays/source-catalog.yaml` is the source essay and package catalog. It is optimized for discovery.
+- `provenance/essay-source-map.yaml` is the validator-enforced package provenance record. Every active package directory must appear there.
+
+When adding a new package, update both files. The validator enforces the package provenance map; the catalog remains the browsing index.

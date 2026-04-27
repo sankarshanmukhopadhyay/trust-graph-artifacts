@@ -118,12 +118,12 @@ provenance:
   packageKind: pattern
   packagePath: patterns/systemic-controllers
   signalTier: C
-- slug: your-agents-are-not-failing-your
+- slug: agent-mandate-envelope
   title: Agent Mandate Envelope
   publishedDate: '2026-02-26'
   url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
   packageKind: pattern
-  packagePath: patterns/your-agents-are-not-failing-your
+  packagePath: patterns/agent-mandate-envelope
   signalTier: B
 - slug: digital-credential-verification-policy-playbook
   title: Verification Policy Profile
@@ -167,3 +167,38 @@ provenance:
   packageKind: system
   packagePath: systems/wallet-to-agent-identity
   signalTier: B
+- slug: execution-bound-revocation
+  title: Execution-Bound Revocation Overlay
+  publishedDate: '2026-04-14'
+  url: https://thetrustgraph.substack.com/p/the-persistence-trap
+  packageKind: overlay
+  packagePath: overlays/execution-bound-revocation
+  signalTier: priority
+- slug: compositional-revocation-profile
+  title: Compositional Revocation Profile
+  publishedDate: '2026-04-17'
+  url: https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient
+  packageKind: profile
+  packagePath: profiles/compositional-revocation-profile
+  signalTier: priority
+- slug: gradient-exploitation-surface
+  title: Gradient Exploitation Surface Pattern
+  publishedDate: '2026-04-21'
+  url: https://thetrustgraph.substack.com/p/when-the-gradient-is-the-attack-surface
+  packageKind: pattern
+  packagePath: patterns/gradient-exploitation-surface
+  signalTier: priority
+- slug: revocation-lag-analyzer
+  title: Revocation Lag Analyzer Pattern
+  publishedDate: '2026-04-17'
+  url: https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient
+  packageKind: pattern
+  packagePath: patterns/revocation-lag-analyzer
+  signalTier: priority
+- slug: persistence-trap-detector
+  title: Persistence Trap Detector Pattern
+  publishedDate: '2026-04-14'
+  url: https://thetrustgraph.substack.com/p/the-persistence-trap
+  packageKind: pattern
+  packagePath: patterns/persistence-trap-detector
+  signalTier: priority

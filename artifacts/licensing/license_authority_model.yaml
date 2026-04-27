@@ -27,3 +27,4 @@ tests:
   - issuer-legitimacy-valid
   - eligibility-criteria-satisfied
   - license-scope-not-exceeded
+licenseType: governed-training-license

@@ -43,7 +43,7 @@ lifecycle:
 tsmm_binding:
   enabled: true
   binding_status: draft
-  projection: bindings/tsmm/projections/your-agents-are-not-failing-your.yaml
+  projection: bindings/tsmm/projections/agent-mandate-envelope.yaml
   entity_registry: entities/registry.yaml
   control_registry: controls/registry.yaml
   tsmm_version: v0.16.0

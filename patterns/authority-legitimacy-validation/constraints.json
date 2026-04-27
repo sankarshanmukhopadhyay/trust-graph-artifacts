@@ -21,13 +21,19 @@
       "id": "control.contextual-admissibility",
       "type": "context-binding",
       "description": "Require policy and context to remain admissible at the moment of execution."
+    },
+    {
+      "id": "control.contestability-route",
+      "type": "redress-routing",
+      "description": "Require an explicit contestability or escalation route when authority legitimacy cannot be established automatically."
     }
   ],
   "failureModes": [
     "Authority exists but issuer is no longer trusted",
     "Authority exists but presented scope exceeds allowed action class",
     "Revocation state is stale relative to action criticality",
-    "Context changed after issuance and legitimacy is no longer satisfied"
+    "Context changed after issuance and legitimacy is no longer satisfied",
+    "Authority fails automatic legitimacy checks and no contestability route exists"
   ],
   "decisionPolicy": "Execution MUST NOT proceed unless legitimacy is verified at execution time."
 }

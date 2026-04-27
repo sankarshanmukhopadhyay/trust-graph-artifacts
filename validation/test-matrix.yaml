@@ -1,37 +1,52 @@
 checks:
 - id: pkg-schema
+  status: implemented
   description: package.json validates against package schema
 - id: graph-schema
+  status: implemented
   description: graph.json validates against TSMM graph schema
 - id: valid-example
+  status: implemented
   description: examples/valid-graph.json passes graph validation
 - id: invalid-example
+  status: implemented
   description: examples/invalid-graph.json fails graph validation
 - id: legitimacy-gap-detection
-  description: Legitimacy gap packages fail when revocation or contestability controls
-    are absent.
+  status: implemented
+  description: Legitimacy gap packages fail when revocation or contestability controls are absent.
 - id: intermediary-traceability
+  status: implemented
   description: Intermediary governance packages fail when source traceability is absent.
 - id: coalition-capture-risk
-  description: Coalition legitimacy packages fail when capture risk or appealability
-    is missing.
+  status: implemented
+  description: Coalition legitimacy packages fail when capture risk or appealability is missing.
+- id: artifact-schema
+  status: implemented
+  description: Canonical artifact YAML validates against its domain artifact schema.
+- id: artifact-crosswalk-reference
+  status: implemented
+  description: Essay-to-artifact crosswalk references resolve to existing artifact or package paths.
+- id: provenance-coverage
+  status: implemented
+  description: Every active package directory has an entry in provenance/essay-source-map.yaml.
 - id: PAD-001
-  description: Artifact persistence is flagged when authority has expired, been revoked,
-    or diverged from current legitimacy conditions.
+  status: planned
+  description: Artifact persistence is flagged when authority has expired, been revoked, or diverged from current legitimacy conditions.
 - id: PAD-002
-  description: Execution is blocked when preserved artifacts cannot prove current
-    authority state.
+  status: planned
+  description: Execution is blocked when preserved artifacts cannot prove current authority state.
 - id: RLG-001
-  description: Revocation propagation lag is measured across execution nodes and maximum
-    lag is recorded.
+  status: planned
+  description: Revocation propagation lag is measured across execution nodes and maximum lag is recorded.
 - id: RLG-002
+  status: planned
   description: Fail-open execution during revocation propagation is flagged.
 - id: CRP-001
-  description: Upstream revocation invalidates or quarantines downstream delegations
-    and derived authority.
+  status: planned
+  description: Upstream revocation invalidates or quarantines downstream delegations and derived authority.
 - id: GES-001
-  description: Timing, routing, replay, and delegation signals are detected inside
-    a revocation lag window.
+  status: planned
+  description: Timing, routing, replay, and delegation signals are detected inside a revocation lag window.
 - id: GES-002
-  description: Gradient exploitation signal receipts do not overclaim actor intent
-    without independent evidence.
+  status: planned
+  description: Gradient exploitation signal receipts do not overclaim actor intent without independent evidence.

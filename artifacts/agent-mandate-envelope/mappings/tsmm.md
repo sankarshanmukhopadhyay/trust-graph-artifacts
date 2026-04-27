@@ -1,10 +1,10 @@
-# TSMM Mapping: your-agents-are-not-failing-your
+# TSMM Mapping: agent-mandate-envelope
 
 ## Binding summary
 
 This artifact now has a machine-readable TSMM projection at:
 
-- `bindings/tsmm/projections/your-agents-are-not-failing-your.yaml`
+- `bindings/tsmm/projections/agent-mandate-envelope.yaml`
 
 ## Mapped TSMM surfaces
 
@@ -25,6 +25,6 @@ This artifact now has a machine-readable TSMM projection at:
 
 ## Local schema linkage
 
-- Manifest: `artifacts/your-agents-are-not-failing-your/artifact.yaml`
-- Artifact schema: `artifacts/your-agents-are-not-failing-your/schemas/agent-mandate-envelope.yaml`
-- TSMM projection: `bindings/tsmm/projections/your-agents-are-not-failing-your.yaml`
+- Manifest: `artifacts/agent-mandate-envelope/artifact.yaml`
+- Artifact schema: `artifacts/agent-mandate-envelope/schemas/agent-mandate-envelope.yaml`
+- TSMM projection: `bindings/tsmm/projections/agent-mandate-envelope.yaml`

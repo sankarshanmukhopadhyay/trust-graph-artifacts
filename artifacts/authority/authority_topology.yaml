@@ -27,3 +27,7 @@ tests:
   - authority-valid-at-execution-time
   - scope-boundary-not-exceeded
   - revocation-state-checked-before-decision
+authorityScope:
+- delegation
+- scope
+- revocation

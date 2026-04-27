@@ -1,5 +1,5 @@
 {
-  "packageId": "ttg.pattern.your-agents-are-not-failing-your",
+  "packageId": "ttg.pattern.agent-mandate-envelope",
   "expectedValidation": {
     "package": "pass",
     "graph": "pass",
