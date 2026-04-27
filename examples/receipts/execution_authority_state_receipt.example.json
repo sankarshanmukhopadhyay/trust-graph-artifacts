@@ -1,0 +1,34 @@
+{
+  "receipt_id": "easr-2026-04-27-001",
+  "receipt_type": "execution-authority-state-receipt",
+  "timestamp": "2026-04-27T09:32:00Z",
+  "source_essays": [
+    "https://thetrustgraph.substack.com/p/the-persistence-trap",
+    "https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient",
+    "https://thetrustgraph.substack.com/p/when-the-gradient-is-the-attack-surface"
+  ],
+  "artifact_id": "artifact://example/training-license/abc",
+  "authority_chain": [
+    {
+      "authority_id": "authority://coalition/license-board",
+      "status": "current",
+      "checked_at": "2026-04-27T09:31:59Z"
+    },
+    {
+      "authority_id": "authority://registry/delegated-node",
+      "status": "revoked",
+      "checked_at": "2026-04-27T09:31:59Z"
+    }
+  ],
+  "revocation_sources_checked": [
+    "registry.primary",
+    "revocation.feed.global"
+  ],
+  "cache_state": {
+    "source_timestamp": "2026-04-27T09:30:00Z",
+    "cache_age_ms": 120000,
+    "freshness_bound_ms": 30000,
+    "policy": "fail-closed"
+  },
+  "decision": "deny"
+}

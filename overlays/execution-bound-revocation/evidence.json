@@ -1,0 +1,38 @@
+{
+  "packageId": "ttg.overlay.execution-bound-revocation",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.revocation.propagation.receipt",
+      "artifactType": "revocation-propagation-receipt",
+      "description": "Shows when each relevant execution node observed and enforced revocation state.",
+      "supportsRefs": [
+        "control.propagation-evidence",
+        "control.revocation-freshness-bound"
+      ]
+    },
+    {
+      "id": "evidence.execution.authority.state.receipt",
+      "artifactType": "execution-authority-state-receipt",
+      "description": "Shows the authority chain and revocation sources checked immediately before execution.",
+      "supportsRefs": [
+        "control.execution-time-authority-check"
+      ]
+    },
+    {
+      "id": "evidence.gradient.exploitation.signal.receipt",
+      "artifactType": "gradient-exploitation-signal-receipt",
+      "description": "Captures timing, routing, replay, or delegation signals that may indicate exploitation of lag.",
+      "supportsRefs": [
+        "control.intent-neutral-signal"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "authority chain and scope",
+    "revocation event and effective time",
+    "node observation timestamps",
+    "cache freshness and source timestamp",
+    "decision outcome and enforcement target",
+    "downstream delegation dependency map"
+  ]
+}

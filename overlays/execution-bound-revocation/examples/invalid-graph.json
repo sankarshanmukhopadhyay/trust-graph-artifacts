@@ -1,0 +1,13 @@
+{
+  "graphId": "ttg.overlay.execution-bound-revocation.invalid",
+  "label": "Invalid example missing edges",
+  "nodes": [
+    {
+      "id": "context.execution-bound-revocation",
+      "type": "TrustDomain",
+      "label": "Execution-Bound Revocation Overlay domain",
+      "description": "Domain where temporal authority, revocation state, and enforcement evidence are evaluated."
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,31 @@
+{
+  "id": "ttg.profile.compositional-revocation-profile",
+  "title": "Compositional Revocation Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Exploiting the Revocation Lag Gradient",
+    "url": "https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient",
+    "publishedDate": "2026-04-17"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from the temporal governance and revocation dynamics essay series."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "delegation",
+    "composition",
+    "revocation",
+    "dependency"
+  ],
+  "notes": [
+    "Requires upstream revocation to invalidate or quarantine downstream delegations and derived authority.",
+    "Designed as a machine-verifiable artifact for execution-time governance assurance."
+  ]
+}

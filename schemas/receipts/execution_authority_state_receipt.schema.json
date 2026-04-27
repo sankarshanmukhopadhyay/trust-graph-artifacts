@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "artifact_id",
+    "authority_chain",
+    "revocation_sources_checked",
+    "cache_state",
+    "decision"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "execution-authority-state-receipt"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_essays": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "authority_chain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "authority_id",
+          "status"
+        ],
+        "properties": {
+          "authority_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "current",
+              "expired",
+              "revoked",
+              "suspended",
+              "unknown"
+            ]
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "revocation_sources_checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cache_state": {
+      "type": "object",
+      "required": [
+        "source_timestamp",
+        "cache_age_ms",
+        "freshness_bound_ms"
+      ],
+      "properties": {
+        "source_timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cache_age_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "freshness_bound_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "policy": {
+          "enum": [
+            "fail-open",
+            "fail-closed",
+            "escalate"
+          ]
+        }
+      }
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "deny",
+        "quarantine",
+        "escalate"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

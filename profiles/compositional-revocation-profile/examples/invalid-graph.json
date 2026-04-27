@@ -1,0 +1,13 @@
+{
+  "graphId": "ttg.profile.compositional-revocation-profile.invalid",
+  "label": "Invalid example missing edges",
+  "nodes": [
+    {
+      "id": "context.compositional-revocation-profile",
+      "type": "TrustDomain",
+      "label": "Compositional Revocation Profile domain",
+      "description": "Domain where temporal authority, revocation state, and enforcement evidence are evaluated."
+    }
+  ],
+  "edges": []
+}

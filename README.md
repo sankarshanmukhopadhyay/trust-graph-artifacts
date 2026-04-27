@@ -234,3 +234,17 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/authoring-model.md`](docs/au
 ## In one sentence
 
 **TSMM provides the modeling discipline. The Trust Graph provides the reason to model these problems at all. This repository turns that relationship into reusable, testable packages.**
+
+## Temporal governance and revocation dynamics
+
+This repository now includes a temporal assurance layer derived from the Persistence Trap / Revocation Lag Gradient essay series. The layer models a critical governance distinction: an artifact can persist, parse, and verify while no longer carrying legitimate executable authority.
+
+New packages include:
+
+- `patterns/persistence-trap-detector`
+- `patterns/revocation-lag-analyzer`
+- `patterns/gradient-exploitation-surface`
+- `profiles/compositional-revocation-profile`
+- `overlays/execution-bound-revocation`
+
+New receipt schemas make revocation propagation, execution-time authority state, and gradient exploitation signals auditable. See `docs/temporal-governance.md` and `docs/revocation-dynamics.md`.

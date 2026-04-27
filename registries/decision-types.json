@@ -45,6 +45,21 @@
     },
     {
       "id": "decision.wallet.agent.binding"
+    },
+    {
+      "id": "decision.execute-with-current-authority"
+    },
+    {
+      "id": "decision.block-on-stale-authority"
+    },
+    {
+      "id": "decision.quarantine-derived-delegation"
+    },
+    {
+      "id": "decision.flag-gradient-exploitation-risk"
+    },
+    {
+      "id": "decision.require-upstream-revalidation"
     }
   ]
 }

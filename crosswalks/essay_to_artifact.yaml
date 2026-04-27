@@ -1,44 +1,79 @@
 crosswalk:
-  -
-    essay:
-      title: The Control Plane Has Already Shifted
-      url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
-      publishedDate: 2026-04-13
-    claim: Authority has migrated from institutional narrative into execution infrastructure.
-    artifacts:
-      - artifacts/authority/authority_topology.yaml
-      - artifacts/control-plane/execution_flow.yaml
-      - artifacts/legitimacy/legitimacy_gap.yaml
-    receipts:
-      - decision
-      - authority
-      - enforcement
-  -
-    essay:
-      title: The Commons After the Control Plane Shifts
-      url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
-      publishedDate: 2026-04-17
-    claim: Commons governance fails when AI intermediaries change knowledge admission and propagation without contestable control.
-    artifacts:
-      - artifacts/control-plane/execution_flow.yaml
-      - artifacts/legitimacy/legitimacy_gap.yaml
-      - artifacts/delegation/delegation_chain.yaml
-    receipts:
-      - decision
-      - delegation
-      - revocation
-      - enforcement
-  -
-    essay:
-      title: Who Holds the License
-      url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
-      publishedDate: 2026-04-18
-    claim: A licensing coalition must prove its authority rather than reproduce the legitimacy failures it seeks to correct.
-    artifacts:
-      - artifacts/licensing/license_authority_model.yaml
-      - artifacts/legitimacy/legitimacy_gap.yaml
-      - artifacts/verification/verification_profile.yaml
-    receipts:
-      - licensing
-      - authority
-      - decision
+- essay:
+    title: The Control Plane Has Already Shifted
+    url: https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted
+    publishedDate: 2026-04-13
+  claim: Authority has migrated from institutional narrative into execution infrastructure.
+  artifacts:
+  - artifacts/authority/authority_topology.yaml
+  - artifacts/control-plane/execution_flow.yaml
+  - artifacts/legitimacy/legitimacy_gap.yaml
+  receipts:
+  - decision
+  - authority
+  - enforcement
+- essay:
+    title: The Commons After the Control Plane Shifts
+    url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
+    publishedDate: 2026-04-17
+  claim: Commons governance fails when AI intermediaries change knowledge admission
+    and propagation without contestable control.
+  artifacts:
+  - artifacts/control-plane/execution_flow.yaml
+  - artifacts/legitimacy/legitimacy_gap.yaml
+  - artifacts/delegation/delegation_chain.yaml
+  receipts:
+  - decision
+  - delegation
+  - revocation
+  - enforcement
+- essay:
+    title: Who Holds the License
+    url: https://thetrustgraph.substack.com/p/who-holds-the-license
+    publishedDate: 2026-04-18
+  claim: A licensing coalition must prove its authority rather than reproduce the
+    legitimacy failures it seeks to correct.
+  artifacts:
+  - artifacts/licensing/license_authority_model.yaml
+  - artifacts/legitimacy/legitimacy_gap.yaml
+  - artifacts/verification/verification_profile.yaml
+  receipts:
+  - licensing
+  - authority
+  - decision
+- essay:
+    title: The Persistence Trap
+    url: https://thetrustgraph.substack.com/p/the-persistence-trap
+    publishedDate: '2026-04-14'
+  claim: Preserved artifacts can outlive the authority conditions that made them legitimate.
+  artifacts:
+  - patterns/persistence-trap-detector
+  - overlays/execution-bound-revocation
+  receipts:
+  - execution_authority_state
+  - revocation_propagation
+- essay:
+    title: Exploiting the Revocation Lag Gradient
+    url: https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient
+    publishedDate: '2026-04-17'
+  claim: Revocation becomes effective only when execution environments stop accepting
+    revoked authority within a measurable propagation window.
+  artifacts:
+  - patterns/revocation-lag-analyzer
+  - profiles/compositional-revocation-profile
+  - overlays/execution-bound-revocation
+  receipts:
+  - revocation_propagation
+  - execution_authority_state
+- essay:
+    title: When the Gradient Is the Attack Surface
+    url: https://thetrustgraph.substack.com/p/when-the-gradient-is-the-attack-surface
+    publishedDate: '2026-04-21'
+  claim: Revocation lag can be deliberately exploited through timing, routing, and
+    delegation before evidence can prove intent.
+  artifacts:
+  - patterns/gradient-exploitation-surface
+  - profiles/compositional-revocation-profile
+  receipts:
+  - gradient_exploitation_signal
+  - execution_authority_state

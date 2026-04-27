@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "source_essays",
+    "revocation_id",
+    "origin_node",
+    "observed_nodes",
+    "max_lag_ms",
+    "consistency_state",
+    "enforcement_state"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "receipt_type": {
+      "const": "revocation-propagation-receipt"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_essays": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "revocation_id": {
+      "type": "string"
+    },
+    "origin_node": {
+      "type": "string"
+    },
+    "observed_nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "observed_at",
+          "enforcement_state"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "enforced_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "enforcement_state": {
+            "enum": [
+              "not-observed",
+              "observed-not-enforced",
+              "enforced",
+              "failed-open",
+              "failed-closed"
+            ]
+          },
+          "lag_ms": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "max_lag_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "consistency_state": {
+      "enum": [
+        "consistent",
+        "partially-consistent",
+        "inconsistent",
+        "unknown"
+      ]
+    },
+    "enforcement_state": {
+      "enum": [
+        "pending-propagation",
+        "partially-enforced",
+        "fully-enforced",
+        "failed-open",
+        "failed-closed"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

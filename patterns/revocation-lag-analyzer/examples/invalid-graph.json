@@ -1,0 +1,13 @@
+{
+  "graphId": "ttg.pattern.revocation-lag-analyzer.invalid",
+  "label": "Invalid example missing edges",
+  "nodes": [
+    {
+      "id": "context.revocation-lag-analyzer",
+      "type": "TrustDomain",
+      "label": "Revocation Lag Analyzer Pattern domain",
+      "description": "Domain where temporal authority, revocation state, and enforcement evidence are evaluated."
+    }
+  ],
+  "edges": []
+}

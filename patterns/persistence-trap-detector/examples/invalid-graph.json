@@ -1,0 +1,13 @@
+{
+  "graphId": "ttg.pattern.persistence-trap-detector.invalid",
+  "label": "Invalid example missing edges",
+  "nodes": [
+    {
+      "id": "context.persistence-trap-detector",
+      "type": "TrustDomain",
+      "label": "Persistence Trap Detector Pattern domain",
+      "description": "Domain where temporal authority, revocation state, and enforcement evidence are evaluated."
+    }
+  ],
+  "edges": []
+}

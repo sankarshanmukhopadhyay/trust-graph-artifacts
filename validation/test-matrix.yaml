@@ -15,3 +15,23 @@ checks:
 - id: coalition-capture-risk
   description: Coalition legitimacy packages fail when capture risk or appealability
     is missing.
+- id: PAD-001
+  description: Artifact persistence is flagged when authority has expired, been revoked,
+    or diverged from current legitimacy conditions.
+- id: PAD-002
+  description: Execution is blocked when preserved artifacts cannot prove current
+    authority state.
+- id: RLG-001
+  description: Revocation propagation lag is measured across execution nodes and maximum
+    lag is recorded.
+- id: RLG-002
+  description: Fail-open execution during revocation propagation is flagged.
+- id: CRP-001
+  description: Upstream revocation invalidates or quarantines downstream delegations
+    and derived authority.
+- id: GES-001
+  description: Timing, routing, replay, and delegation signals are detected inside
+    a revocation lag window.
+- id: GES-002
+  description: Gradient exploitation signal receipts do not overclaim actor intent
+    without independent evidence.

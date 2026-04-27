@@ -18,6 +18,21 @@
     },
     {
       "id": "projection-record"
+    },
+    {
+      "id": "revocation-propagation-receipt"
+    },
+    {
+      "id": "execution-authority-state-receipt"
+    },
+    {
+      "id": "gradient-exploitation-signal-receipt"
+    },
+    {
+      "id": "revocation-topology-map"
+    },
+    {
+      "id": "delegation-contamination-map"
     }
   ]
 }

@@ -1,0 +1,136 @@
+{
+  "graphId": "ttg.overlay.execution-bound-revocation",
+  "label": "Execution-Bound Revocation Overlay",
+  "description": "Binds revocation evaluation to the moment of action, not merely issuance, resolution, or archival preservation.",
+  "profile": "overlay",
+  "contexts": [
+    "context.execution-bound-revocation"
+  ],
+  "nodes": [
+    {
+      "id": "context.execution-bound-revocation",
+      "type": "TrustDomain",
+      "label": "Execution-Bound Revocation Overlay domain",
+      "description": "Domain where temporal authority, revocation state, and enforcement evidence are evaluated."
+    },
+    {
+      "id": "authority.source",
+      "type": "GovernanceAuthority",
+      "label": "Source authority",
+      "description": "Authority that issued, delegated, revoked, or preserved the governing claim."
+    },
+    {
+      "id": "artifact.subject",
+      "type": "Credential",
+      "label": "Subject artifact",
+      "description": "Artifact, delegation, license, credential, or decision record being evaluated."
+    },
+    {
+      "id": "policy.temporal",
+      "type": "Policy",
+      "label": "Temporal governance policy",
+      "description": "Defines validity windows, cache bounds, propagation expectations, and execution preconditions."
+    },
+    {
+      "id": "revocation.event",
+      "type": "Effect",
+      "label": "Revocation event",
+      "description": "Revocation or authority-change event whose effect must propagate to execution environments."
+    },
+    {
+      "id": "verifier.temporal",
+      "type": "Verifier",
+      "label": "Temporal verifier",
+      "description": "Verifier that checks current authority state at action time."
+    },
+    {
+      "id": "decision.execution",
+      "type": "TrustDecision",
+      "label": "Execution decision",
+      "description": "Allow, deny, quarantine, or escalate decision based on current authority state."
+    },
+    {
+      "id": "evidence.receipt",
+      "type": "EvidenceBundle",
+      "label": "Temporal governance receipt",
+      "description": "Receipt capturing authority state, revocation freshness, propagation evidence, and decision outcome."
+    },
+    {
+      "id": "effect.enforcement",
+      "type": "Effect",
+      "label": "Enforcement effect",
+      "description": "Runtime enforcement outcome applied to the artifact or action."
+    },
+    {
+      "id": "node.execution",
+      "type": "RelyingParty",
+      "label": "Execution node",
+      "description": "Local relying environment where stale or current authority is accepted or rejected."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.authority.issues.artifact",
+      "type": "authorizes",
+      "from": "authority.source",
+      "to": "artifact.subject",
+      "description": "Authority binds the artifact to an admissible scope and lifecycle."
+    },
+    {
+      "id": "edge.policy.constrains.artifact",
+      "type": "constrains",
+      "from": "policy.temporal",
+      "to": "artifact.subject",
+      "description": "Temporal policy constrains whether the artifact can still be used."
+    },
+    {
+      "id": "edge.revocation.changes.state",
+      "type": "informs",
+      "from": "revocation.event",
+      "to": "artifact.subject",
+      "description": "Revocation changes the executable state of the artifact."
+    },
+    {
+      "id": "edge.verifier.checks.state",
+      "type": "verifies",
+      "from": "verifier.temporal",
+      "to": "artifact.subject",
+      "description": "Verifier checks current authority and revocation state at execution time.",
+      "evidenceRefs": [
+        "evidence.receipt"
+      ]
+    },
+    {
+      "id": "edge.node.supplies.state",
+      "type": "informs",
+      "from": "node.execution",
+      "to": "verifier.temporal",
+      "description": "Execution node supplies observed local enforcement and cache state."
+    },
+    {
+      "id": "edge.verifier.informs.decision",
+      "type": "informs",
+      "from": "verifier.temporal",
+      "to": "decision.execution",
+      "description": "Temporal verifier informs the decision outcome."
+    },
+    {
+      "id": "edge.decision.produces.receipt",
+      "type": "produces",
+      "from": "decision.execution",
+      "to": "evidence.receipt",
+      "description": "Decision produces audit-ready evidence."
+    },
+    {
+      "id": "edge.decision.enforces.effect",
+      "type": "produces",
+      "from": "decision.execution",
+      "to": "effect.enforcement",
+      "description": "Decision produces an enforcement or quarantine effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "https://thetrustgraph.substack.com/p/the-persistence-trap",
+    "focus": "temporal-governance-revocation-dynamics"
+  }
+}

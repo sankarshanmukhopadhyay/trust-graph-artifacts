@@ -32,3 +32,10 @@
 - [Receipts](receipts.md)
 - [Decision provenance](decision-provenance.md)
 - [Walkthrough](walkthrough.md)
+
+## Temporal governance and revocation dynamics
+
+- [Temporal governance](temporal-governance.md)
+- [Revocation dynamics](revocation-dynamics.md)
+- [Preservation–authority divergence](preservation-authority-divergence.md)
+- [Gradient exploitation model](gradient-exploitation-model.md)

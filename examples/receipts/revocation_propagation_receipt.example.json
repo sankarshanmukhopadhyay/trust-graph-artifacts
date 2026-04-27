@@ -1,0 +1,30 @@
+{
+  "receipt_id": "rpr-2026-04-27-001",
+  "receipt_type": "revocation-propagation-receipt",
+  "timestamp": "2026-04-27T09:30:00Z",
+  "source_essays": [
+    "https://thetrustgraph.substack.com/p/the-persistence-trap",
+    "https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient",
+    "https://thetrustgraph.substack.com/p/when-the-gradient-is-the-attack-surface"
+  ],
+  "revocation_id": "revocation://example/license-authority/42",
+  "origin_node": "registry.primary",
+  "observed_nodes": [
+    {
+      "node_id": "verifier.ap-south-1",
+      "observed_at": "2026-04-27T09:30:02Z",
+      "enforced_at": "2026-04-27T09:30:04Z",
+      "enforcement_state": "enforced",
+      "lag_ms": 4000
+    },
+    {
+      "node_id": "verifier.eu-west-1",
+      "observed_at": "2026-04-27T09:31:45Z",
+      "enforcement_state": "observed-not-enforced",
+      "lag_ms": 105000
+    }
+  ],
+  "max_lag_ms": 105000,
+  "consistency_state": "partially-consistent",
+  "enforcement_state": "partially-enforced"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "ttg.pattern.revocation-lag-analyzer",
+  "title": "Revocation Lag Analyzer Pattern",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Exploiting the Revocation Lag Gradient",
+    "url": "https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient",
+    "publishedDate": "2026-04-17"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "editorial-admission",
+    "note": "Added from the temporal governance and revocation dynamics essay series."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "revocation",
+    "propagation",
+    "distributed-governance",
+    "temporal-governance"
+  ],
+  "notes": [
+    "Measures whether revocation becomes enforceable across execution nodes inside the required propagation window.",
+    "Designed as a machine-verifiable artifact for execution-time governance assurance."
+  ]
+}
