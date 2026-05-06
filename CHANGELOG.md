@@ -4,6 +4,28 @@ All notable repository changes are documented here. The repository treats change
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-06
+
+### Added
+
+- Added `patterns/runtime-authority-envelope` as a runtime admissibility wrapper for consequential agent action.
+- Added `profiles/machine-commitment-governance-profile`, `evidence/proof-carrying-commitment-receipt`, and `overlays/commitment-lifecycle-mediation` for machine-generated commitments, reliance, reconciliation, and lifecycle mediation.
+- Added `profiles/fraud-externality-verification-profile` to model fraud as an infrastructure externality created by weak verification, issuer accountability, registry governance, and anti-capture controls.
+- Added `patterns/inference-substitution-gap` and `patterns/legibility-trap-detector` for identifying inference-based governance failure and proxy-intensification traps.
+- Added `profiles/high-risk-digital-infrastructure-governance-profile`, `overlays/constitutional-digital-infrastructure-controls`, and `evidence/high-risk-governance-assurance-record`.
+- Added receipt schemas and examples for commitment receipts and high-risk governance assurance records.
+- Added documentation for authority envelopes, machine commitments, fraud externalities, inference-to-verification migration, high-risk infrastructure, and constitutional controls.
+
+### Changed
+
+- Updated source catalog, essay-to-artifact crosswalk, provenance maps, active registries, validation matrix, README, and documentation index for the v0.3.0 artifact families.
+- Updated repository version to `0.3.0`.
+
+### Validation
+
+- `python3 scripts/validate_tsmm_native.py` passes for 39 active packages and artifact crosswalks.
+
+
 ## [0.2.0] - 2026-05-06
 
 ### Added

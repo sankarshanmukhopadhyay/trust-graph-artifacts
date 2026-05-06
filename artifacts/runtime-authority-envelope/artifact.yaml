@@ -1,0 +1,48 @@
+id: ttg-artifact-v030-01
+title: Runtime Authority Envelope
+status: draft
+source:
+  essay_title: The Authority Gap
+  essay_url: https://thetrustgraph.substack.com/p/the-authority-gap
+  published_date: '2026-05-06'
+signal:
+  tier: priority
+classification:
+  artifact_type:
+  - tsmm-native-package
+  - control-model
+  domain:
+  - pattern
+  - agents
+  - authority
+  - mandates
+  - execution-time-governance
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+  - auditability
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-05-06'
+  last_updated: '2026-05-06'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  package_path: patterns/runtime-authority-envelope
+  tsmm_version: v0.20.0

@@ -1,0 +1,239 @@
+{
+  "graphId": "ttg.profile.fraud.externality.verification.profile",
+  "label": "Fraud Externality Verification Profile",
+  "description": "Profile that treats fraud as a cost externality produced by missing verification infrastructure, weak issuer accountability, registry weakness, and governance capture.",
+  "profile": "profile",
+  "contexts": [
+    "context.fraud.externality.verification.profile"
+  ],
+  "nodes": [
+    {
+      "id": "context.fraud.externality.verification.profile",
+      "type": "TrustDomain",
+      "label": "Fraud Externality Verification Profile",
+      "description": "Profile that treats fraud as a cost externality produced by missing verification infrastructure, weak issuer accountability, registry weakness, and governance capture."
+    },
+    {
+      "id": "profile.fraud.externality.verification.profile",
+      "type": "AssuranceProfile",
+      "label": "Fraud Externality Verification Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "profile"
+      }
+    },
+    {
+      "id": "policy.fraud.externality.verification.profile",
+      "type": "Policy",
+      "label": "Fraud Externality Verification Profile Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Fraud as an Externality of Missing Infrastructure"
+      }
+    },
+    {
+      "id": "entity.issuer",
+      "type": "Issuer",
+      "label": "Issuer",
+      "description": "Party issuing claims or credentials",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.registry",
+      "type": "TrustRegistry",
+      "label": "Registry",
+      "description": "Admission and removal authority for issuers or trusted claims",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Verifier",
+      "description": "Party evaluating identity, claim, provenance, and authority evidence",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.victim-or-relying-party",
+      "type": "RelyingParty",
+      "label": "Affected Relying Party",
+      "description": "Party that absorbs the cost of unverifiable claims or forged authority",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.governance-authority",
+      "type": "GovernanceAuthority",
+      "label": "Governance Authority",
+      "description": "Institution responsible for anti-capture and remediation controls",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.fraud.externality.assessment",
+      "type": "EvidenceBundle",
+      "label": "Fraud Externality Verification Profile Evidence",
+      "description": "Profile that treats fraud as a cost externality produced by missing verification infrastructure, weak issuer accountability, registry weakness, and governance capture.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.fraud.externality.verification.profile",
+      "type": "Assessment",
+      "label": "Fraud Externality Verification Profile Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.fraud.externality.verification",
+      "type": "TrustDecision",
+      "label": "Fraud Externality Verification Profile Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.fraud.externality.verification.profile.allow",
+      "type": "Effect",
+      "label": "Accept verified claim path",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.fraud.externality.verification.profile.review",
+      "type": "Effect",
+      "label": "Escalate externality risk",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.fraud.externality.verification.profile.deny",
+      "type": "Effect",
+      "label": "Reject unverifiable or ungoverned claim",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "fraud-externality-verification-profile.edge.context-profile",
+      "type": "anchors",
+      "from": "context.fraud.externality.verification.profile",
+      "to": "profile.fraud.externality.verification.profile",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.fraud.externality.verification.profile",
+      "to": "policy.fraud.externality.verification.profile",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.context-policy",
+      "type": "governs",
+      "from": "context.fraud.externality.verification.profile",
+      "to": "policy.fraud.externality.verification.profile",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.fraud.externality.verification.profile",
+      "to": "verification.fraud.externality.verification.profile",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.fraud.externality.verification.profile",
+      "to": "decision.fraud.externality.verification",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.fraud.externality.assessment"
+      ]
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.fraud.externality.verification",
+      "to": "evidence.fraud.externality.assessment",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.fraud.externality.verification",
+      "to": "effect.fraud.externality.verification.profile.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.decision-review",
+      "type": "produces",
+      "from": "decision.fraud.externality.verification",
+      "to": "effect.fraud.externality.verification.profile.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.fraud.externality.verification",
+      "to": "effect.fraud.externality.verification.profile.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.actor-profile",
+      "type": "authorizes",
+      "from": "entity.issuer",
+      "to": "profile.fraud.externality.verification.profile",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.verifier-assesses",
+      "type": "assesses",
+      "from": "entity.verifier",
+      "to": "profile.fraud.externality.verification.profile",
+      "description": "Verifier assesses package conformance."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.victim-or-relying-party-relies",
+      "type": "reliesOn",
+      "from": "entity.victim-or-relying-party",
+      "to": "evidence.fraud.externality.assessment",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "fraud-externality-verification-profile.edge.governance-authority-governs",
+      "type": "governs",
+      "from": "entity.governance-authority",
+      "to": "policy.fraud.externality.verification.profile",
+      "description": "Governance authority owns or constrains policy."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Fraud as an Externality of Missing Infrastructure",
+    "packageSlug": "fraud-externality-verification-profile"
+  }
+}

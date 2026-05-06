@@ -1,0 +1,101 @@
+{
+  "packageId": "ttg.pattern.legibility.trap.detector",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.proxy-expansion-detection",
+      "type": "signal-detection",
+      "description": "Detect growth in behavioral proxies used to compensate for weak verification."
+    },
+    {
+      "id": "control.user-burden-shift",
+      "type": "harm-control",
+      "description": "Flag systems that push verification cost or legibility burden onto subjects."
+    },
+    {
+      "id": "control.context-suppression-check",
+      "type": "context-control",
+      "description": "Flag loss of human context, ambiguity, and contestability in machine-readable processes."
+    },
+    {
+      "id": "control.verification-alternative-required",
+      "type": "remediation",
+      "description": "Require an available verification alternative before expanding inference demands."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.legibility.trap.detector",
+      "rules": [
+        "Detect growth in behavioral proxies used to compensate for weak verification.",
+        "Flag systems that push verification cost or legibility burden onto subjects.",
+        "Flag loss of human context, ambiguity, and contestability in machine-readable processes.",
+        "Require an available verification alternative before expanding inference demands."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.proxy-intensification",
+      "type": "extraction-risk",
+      "description": "Institution demands more proxy signals after inference failure."
+    },
+    {
+      "id": "threat.context-collapse",
+      "type": "semantic-risk",
+      "description": "Machine legibility strips the context needed for fair governance."
+    },
+    {
+      "id": "threat.false-risk-amplification",
+      "type": "harm-risk",
+      "description": "Weak proxies increase friction or exclusion for legitimate subjects."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "graphId": "ttg.pattern.runtime.authority.envelope",
+  "label": "Runtime Authority Envelope",
+  "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized.",
+  "profile": "pattern",
+  "contexts": [
+    "context.runtime.authority.envelope"
+  ],
+  "nodes": [
+    {
+      "id": "context.runtime.authority.envelope",
+      "type": "TrustDomain",
+      "label": "Runtime Authority Envelope",
+      "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized."
+    },
+    {
+      "id": "profile.runtime.authority.envelope",
+      "type": "AssuranceProfile",
+      "label": "Runtime Authority Envelope",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.runtime.authority.envelope",
+      "type": "Policy",
+      "label": "Runtime Authority Envelope Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Authority Gap"
+      }
+    },
+    {
+      "id": "entity.technical-agent",
+      "type": "Agent",
+      "label": "Technical Agent",
+      "description": "Agent or automated component requesting an operational effect",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.accountable-controller",
+      "type": "GovernanceAuthority",
+      "label": "Accountable Controller",
+      "description": "Legal, institutional, or operational controller responsible for the action",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.principal",
+      "type": "Subject",
+      "label": "Principal",
+      "description": "Person, organization, or domain on whose behalf the action is taken",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-engine",
+      "type": "Verifier",
+      "label": "Policy Engine",
+      "description": "Verifier that evaluates the authority envelope before execution",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-party",
+      "type": "RelyingParty",
+      "label": "Relying Party",
+      "description": "Downstream system or institution relying on the action",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.runtime.authority-envelope.receipt",
+      "type": "EvidenceBundle",
+      "label": "Runtime Authority Envelope Evidence",
+      "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.runtime.authority.envelope",
+      "type": "Assessment",
+      "label": "Runtime Authority Envelope Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.runtime.authority-envelope",
+      "type": "TrustDecision",
+      "label": "Runtime Authority Envelope Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.allow",
+      "type": "Effect",
+      "label": "Authorize scoped operational action",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.review",
+      "type": "Effect",
+      "label": "Route authority ambiguity for review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.deny",
+      "type": "Effect",
+      "label": "Deny action outside envelope",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "The Authority Gap",
+    "packageSlug": "runtime-authority-envelope"
+  }
+}

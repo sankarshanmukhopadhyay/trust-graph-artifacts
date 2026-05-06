@@ -1,0 +1,106 @@
+{
+  "packageId": "ttg.profile.fraud.externality.verification.profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.issuer-authorization",
+      "type": "authorization-check",
+      "description": "Verify issuer authorization, accountability, and removal route before accepting claims."
+    },
+    {
+      "id": "control.claim-provenance-verification",
+      "type": "provenance-check",
+      "description": "Require verifiable provenance for claims, credentials, documents, or representations."
+    },
+    {
+      "id": "control.registry-governance-accountability",
+      "type": "registry-governance",
+      "description": "Require admission, suspension, removal, appeal, and anti-capture evidence for registry authority."
+    },
+    {
+      "id": "control.externality-reduction-evidence",
+      "type": "assurance-evidence",
+      "description": "Record how verification controls reduce fraud cost transfer to relying parties and victims."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.fraud.externality.verification.profile",
+      "rules": [
+        "Verify issuer authorization, accountability, and removal route before accepting claims.",
+        "Require verifiable provenance for claims, credentials, documents, or representations.",
+        "Require admission, suspension, removal, appeal, and anti-capture evidence for registry authority.",
+        "Record how verification controls reduce fraud cost transfer to relying parties and victims."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.unverifiable-identity",
+      "type": "verification-gap",
+      "description": "Actor identity is inferred or asserted without authoritative anchor."
+    },
+    {
+      "id": "threat.forged-provenance",
+      "type": "provenance-gap",
+      "description": "Claim lineage cannot be reconstructed or verified."
+    },
+    {
+      "id": "threat.governance-capture",
+      "type": "capture-risk",
+      "description": "Registry or issuer governance is captured, weak, or non-contestable."
+    },
+    {
+      "id": "threat.cost-socialization",
+      "type": "externality-risk",
+      "description": "Verification failure pushes fraud costs to users, institutions, or the public."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

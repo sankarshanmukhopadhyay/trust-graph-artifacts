@@ -1,0 +1,104 @@
+{
+  "packageId": "ttg.evidence.model.proof.carrying.commitment.receipt",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.commitment-receipt-completeness",
+      "type": "evidence-capture",
+      "description": "Require all commitment, authority, terms, constraint, revocation, attestation, and contestability fields."
+    },
+    {
+      "id": "control.execution-attestation-present",
+      "type": "attestation-check",
+      "description": "Bind the commitment to execution evidence and the evaluated policy version."
+    },
+    {
+      "id": "control.reliance-record-required",
+      "type": "auditability",
+      "description": "Capture counterparty reliance and intended operational effect."
+    },
+    {
+      "id": "control.contestability-route-required",
+      "type": "redress",
+      "description": "Record the dispute, reconciliation, or remediation endpoint."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.proof.carrying.commitment.receipt",
+      "rules": [
+        "Require all commitment, authority, terms, constraint, revocation, attestation, and contestability fields.",
+        "Bind the commitment to execution evidence and the evaluated policy version.",
+        "Capture counterparty reliance and intended operational effect.",
+        "Record the dispute, reconciliation, or remediation endpoint."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.missing-commitment-proof",
+      "type": "evidence-gap",
+      "description": "Commitment exists without durable proof of authority and evaluated constraints."
+    },
+    {
+      "id": "threat.unbound-terms",
+      "type": "semantic-gap",
+      "description": "Terms are human-readable but not machine-checkable."
+    },
+    {
+      "id": "threat.no-reconciliation-route",
+      "type": "redress-gap",
+      "description": "Affected parties cannot resolve conflict or breach."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "issued",
+      "active",
+      "modified",
+      "suspended",
+      "revoked",
+      "retired",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

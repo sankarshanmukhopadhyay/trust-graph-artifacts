@@ -93,3 +93,13 @@ For vocabulary alignment, see:
 - `docs/crosswalks/outcome-vocabulary.md`
 - `docs/crosswalks/assurance-posture.md`
 - `docs/crosswalks/tsmm-decision-receipt-profile.md`
+
+
+## v0.3.0 receipt additions
+
+Two new receipt families are introduced in this release:
+
+- `schemas/receipts/commitment_receipt.schema.json` with `examples/receipts/commitment_receipt.example.json`
+- `schemas/receipts/high_risk_governance_assurance_record.schema.json` with `examples/receipts/high_risk_governance_assurance_record.example.json`
+
+The commitment receipt records authority, terms, activation conditions, constraint checks, execution attestation, reliance, reconciliation, and contestability. The high-risk assurance record captures risk classification, consequence analysis, systemic coupling, interpretive authority, dependency lock-in, delegation boundaries, reversibility proof, contestability proof, governance logs, oversight, audit reference, and remediation route.

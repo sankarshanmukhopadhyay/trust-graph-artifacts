@@ -71,3 +71,10 @@ As of v0.2.0, the active corpus is aligned with TSMM v0.20.0 and the TSMM/TIS sp
 The active binding declaration is `bindings/tsmm/tga-tsmm-binding.json`. The binding constraints are `bindings/tsmm/constraints.json`.
 
 This prevents TGA from becoming a competing model authority while preserving its real value: turning governance failure patterns into reusable TSMM-native packages.
+
+
+## v0.3.0 architecture extension
+
+The v0.3.0 increment adds a fourth operational cluster to the active architecture: **authority, commitment, and high-risk infrastructure governance**. This cluster sits across package classes rather than inside one folder. Runtime authority envelopes live under `patterns/`, commitment and high-risk infrastructure configurations live under `profiles/`, constitutional constraints live under `overlays/`, and proof-bearing records live under `evidence/`.
+
+The architectural rule is simple: when a digital system can create institutional effects, the repo must model the authority used, the evidence produced, the lifecycle state of the obligation or action, and the route for contestability or reversal.

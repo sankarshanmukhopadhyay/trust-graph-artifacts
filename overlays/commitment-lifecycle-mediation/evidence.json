@@ -1,0 +1,57 @@
+{
+  "packageId": "ttg.overlay.commitment.lifecycle.mediation",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.commitment.lifecycle.record",
+      "artifactType": "decision-receipt",
+      "description": "Cross-cutting overlay for commitment drift, conflict, breach, reconciliation, revocation, and retirement.",
+      "supportsRefs": [
+        "policy.commitment.lifecycle.mediation",
+        "decision.commitment.lifecycle-mediation",
+        "control.commitment-drift-detection",
+        "control.conflict-detection",
+        "control.lifecycle-reconciliation",
+        "control.human-steward-escalation"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.commitment.lifecycle.mediation",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.commitment-drift-detection",
+        "control.conflict-detection",
+        "control.lifecycle-reconciliation",
+        "control.human-steward-escalation"
+      ],
+      "inputRefs": [
+        "artifact.commitment.lifecycle.mediation",
+        "evidence.commitment.lifecycle.record"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.commitment.lifecycle-mediation",
+      "policyRef": "policy.commitment.lifecycle.mediation",
+      "verificationRefs": [
+        "verification.commitment.lifecycle.mediation"
+      ],
+      "effectRefs": [
+        "effect.commitment.lifecycle.mediation.allow",
+        "effect.commitment.lifecycle.mediation.review",
+        "effect.commitment.lifecycle.mediation.deny"
+      ],
+      "requiredFields": [
+        "commitment_state",
+        "drift_signal",
+        "conflict_check",
+        "reconciliation_record",
+        "escalation_owner",
+        "retirement_condition"
+      ]
+    }
+  ]
+}

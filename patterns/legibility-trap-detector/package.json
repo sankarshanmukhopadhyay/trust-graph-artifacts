@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.legibility.trap.detector",
+  "title": "Legibility Trap Detector Pattern",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Before the Graph",
+    "url": "https://thetrustgraph.substack.com/p/before-the-graph",
+    "publishedDate": "2026-04-13"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "legibility",
+    "verification",
+    "data-extraction",
+    "governance"
+  ],
+  "notes": [
+    "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ttg.evidence.model.proof.carrying.commitment.receipt",
+  "title": "Proof-Carrying Commitment Receipt",
+  "kind": "evidence-model",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "When Machines Make Commitments",
+    "url": "https://thetrustgraph.substack.com/p/when-machines-make-commitments",
+    "publishedDate": "2026-05-05"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "evidence-model",
+    "receipts",
+    "commitments",
+    "attestation",
+    "auditability"
+  ],
+  "notes": [
+    "Evidence model that records why a machine-generated commitment was authorized, what terms were bound, which constraints were evaluated, and how it can be challenged or reconciled."
+  ]
+}

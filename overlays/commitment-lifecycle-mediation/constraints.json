@@ -1,0 +1,104 @@
+{
+  "packageId": "ttg.overlay.commitment.lifecycle.mediation",
+  "kind": "overlay",
+  "controlSet": [
+    {
+      "id": "control.commitment-drift-detection",
+      "type": "lifecycle-monitoring",
+      "description": "Detect changes in conditions, policy, feasibility, or counterparties that alter commitment meaning."
+    },
+    {
+      "id": "control.conflict-detection",
+      "type": "consistency-check",
+      "description": "Detect conflicting commitments, derived commitment chains, and incompatible obligations."
+    },
+    {
+      "id": "control.lifecycle-reconciliation",
+      "type": "redress",
+      "description": "Require reconciliation records for modified, conflicted, breached, or revoked commitments."
+    },
+    {
+      "id": "control.human-steward-escalation",
+      "type": "oversight",
+      "description": "Escalate high-impact commitment conflicts to a named steward or trustee."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.commitment.lifecycle.mediation",
+      "rules": [
+        "Detect changes in conditions, policy, feasibility, or counterparties that alter commitment meaning.",
+        "Detect conflicting commitments, derived commitment chains, and incompatible obligations.",
+        "Require reconciliation records for modified, conflicted, breached, or revoked commitments.",
+        "Escalate high-impact commitment conflicts to a named steward or trustee."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.silent-commitment-drift",
+      "type": "lifecycle-gap",
+      "description": "Commitment meaning changes without notice or mediation."
+    },
+    {
+      "id": "threat.conflicting-obligations",
+      "type": "consistency-gap",
+      "description": "Multiple machine commitments create incompatible obligations."
+    },
+    {
+      "id": "threat.unretired-broken-commitment",
+      "type": "governance-gap",
+      "description": "Broken commitments remain active and continue to induce reliance."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "issued",
+      "active",
+      "modified",
+      "suspended",
+      "revoked",
+      "retired",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

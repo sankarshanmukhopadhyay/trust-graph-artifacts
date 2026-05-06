@@ -1,0 +1,107 @@
+{
+  "packageId": "ttg.overlay.constitutional.digital.infrastructure.controls",
+  "kind": "overlay",
+  "controlSet": [
+    {
+      "id": "control.non-derogable-rights-profile",
+      "type": "rights-control",
+      "description": "Declare protected rights to context, contestability, reversibility, explanation, and human authority."
+    },
+    {
+      "id": "control.prohibited-inference-category",
+      "type": "boundary-control",
+      "description": "Prohibit inference categories that exceed legitimate governance scope."
+    },
+    {
+      "id": "control.human-led-decision-class",
+      "type": "authority-boundary",
+      "description": "Require human authority for protected decision classes."
+    },
+    {
+      "id": "control.public-transparency-required",
+      "type": "oversight",
+      "description": "Require public-facing control descriptions and change notices for high-risk systems."
+    },
+    {
+      "id": "control.independent-audit-access",
+      "type": "auditability",
+      "description": "Require independent audit access to governance logs and boundary attestations."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.constitutional.digital.infrastructure.controls",
+      "rules": [
+        "Declare protected rights to context, contestability, reversibility, explanation, and human authority.",
+        "Prohibit inference categories that exceed legitimate governance scope.",
+        "Require human authority for protected decision classes.",
+        "Require public-facing control descriptions and change notices for high-risk systems.",
+        "Require independent audit access to governance logs and boundary attestations."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.rights-sensitive-automation",
+      "type": "rights-risk",
+      "description": "System automates decisions that require human authority or contextual judgement."
+    },
+    {
+      "id": "threat.prohibited-inference-use",
+      "type": "inference-risk",
+      "description": "System uses protected or inadmissible inference categories."
+    },
+    {
+      "id": "threat.unannounced-policy-shift",
+      "type": "transparency-gap",
+      "description": "Material control changes occur without notice or public accountability."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

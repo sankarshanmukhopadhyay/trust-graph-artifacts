@@ -1,0 +1,60 @@
+{
+  "packageId": "ttg.profile.high.risk.digital.infrastructure.governance.profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.high-risk.governance.assurance",
+      "artifactType": "decision-receipt",
+      "description": "Profile for digital infrastructure whose consequence intensity, systemic coupling, interpretive authority, or dependency lock-in requires governance inside the architecture.",
+      "supportsRefs": [
+        "policy.high.risk.digital.infrastructure.governance.profile",
+        "decision.high-risk.infrastructure.governance",
+        "control.high-risk-classification",
+        "control.traceability-required",
+        "control.reversibility-required",
+        "control.delegation-boundary-enforced",
+        "control.contestability-required"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.high.risk.digital.infrastructure.governance.profile",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.high-risk-classification",
+        "control.traceability-required",
+        "control.reversibility-required",
+        "control.delegation-boundary-enforced",
+        "control.contestability-required"
+      ],
+      "inputRefs": [
+        "artifact.high.risk.digital.infrastructure.governance.profile",
+        "evidence.high-risk.governance.assurance"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.high-risk.infrastructure.governance",
+      "policyRef": "policy.high.risk.digital.infrastructure.governance.profile",
+      "verificationRefs": [
+        "verification.high.risk.digital.infrastructure.governance.profile"
+      ],
+      "effectRefs": [
+        "effect.high.risk.digital.infrastructure.governance.profile.allow",
+        "effect.high.risk.digital.infrastructure.governance.profile.review",
+        "effect.high.risk.digital.infrastructure.governance.profile.deny"
+      ],
+      "requiredFields": [
+        "risk_classification",
+        "traceability_record",
+        "reversibility_proof",
+        "delegation_boundary",
+        "contestability_route",
+        "audit_record",
+        "public_oversight_record"
+      ]
+    }
+  ]
+}

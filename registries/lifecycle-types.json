@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "lifecycleStates": [
     {
       "id": "active"
@@ -33,6 +33,39 @@
     },
     {
       "id": "derived-authority-contaminated"
+    },
+    {
+      "id": "drafted"
+    },
+    {
+      "id": "authorized"
+    },
+    {
+      "id": "modified"
+    },
+    {
+      "id": "conflicted"
+    },
+    {
+      "id": "fulfilled"
+    },
+    {
+      "id": "breached"
+    },
+    {
+      "id": "reconciled"
+    },
+    {
+      "id": "retired"
+    },
+    {
+      "id": "authority-envelope-issued"
+    },
+    {
+      "id": "commitment-active"
+    },
+    {
+      "id": "high-risk-suspended"
     }
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "commitment_id": "example-commitment_id",
+  "technical_actor": "example-technical_actor",
+  "accountable_controller": "example-accountable_controller",
+  "principal": "example-principal",
+  "mandate_reference": "example-mandate_reference",
+  "policy_version": "example-policy_version",
+  "commitment_type": "example-commitment_type",
+  "commitment_terms": {
+    "status": "present"
+  },
+  "activation_conditions": {
+    "status": "present"
+  },
+  "constraint_checks": [
+    {
+      "id": "check.example",
+      "result": "pass"
+    }
+  ],
+  "authority_validation": {
+    "status": "present"
+  },
+  "revocation_state": {
+    "status": "present"
+  },
+  "execution_attestation": {
+    "status": "present"
+  },
+  "counterparty_reliance": {
+    "status": "present"
+  },
+  "reconciliation_route": "example-reconciliation_route",
+  "contestability_route": "example-contestability_route",
+  "timestamp": "example-timestamp"
+}

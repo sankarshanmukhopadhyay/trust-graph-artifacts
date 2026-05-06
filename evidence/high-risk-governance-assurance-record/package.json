@@ -1,0 +1,29 @@
+{
+  "id": "ttg.evidence.model.high.risk.governance.assurance.record",
+  "title": "High-Risk Governance Assurance Record",
+  "kind": "evidence-model",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Governance for High-Risk Digital Infrastructure",
+    "url": "https://thetrustgraph.substack.com/p/governance-for-high-risk-digital",
+    "publishedDate": "2026-04-08"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "evidence-model",
+    "high-risk-systems",
+    "assurance",
+    "auditability",
+    "redress"
+  ],
+  "notes": [
+    "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure."
+  ]
+}

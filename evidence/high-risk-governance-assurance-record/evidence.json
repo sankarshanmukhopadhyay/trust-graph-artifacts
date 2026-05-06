@@ -1,0 +1,63 @@
+{
+  "packageId": "ttg.evidence.model.high.risk.governance.assurance.record",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.high-risk.governance.record",
+      "artifactType": "decision-receipt",
+      "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure.",
+      "supportsRefs": [
+        "policy.high.risk.governance.assurance.record",
+        "decision.high-risk.assurance.record",
+        "control.assurance-record-completeness",
+        "control.boundary-condition-evidence",
+        "control.reversibility-proof-present",
+        "control.independent-audit-reference"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.high.risk.governance.assurance.record",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.assurance-record-completeness",
+        "control.boundary-condition-evidence",
+        "control.reversibility-proof-present",
+        "control.independent-audit-reference"
+      ],
+      "inputRefs": [
+        "artifact.high.risk.governance.assurance.record",
+        "evidence.high-risk.governance.record"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.high-risk.assurance.record",
+      "policyRef": "policy.high.risk.governance.assurance.record",
+      "verificationRefs": [
+        "verification.high.risk.governance.assurance.record"
+      ],
+      "effectRefs": [
+        "effect.high.risk.governance.assurance.record.allow",
+        "effect.high.risk.governance.assurance.record.review",
+        "effect.high.risk.governance.assurance.record.deny"
+      ],
+      "requiredFields": [
+        "system_risk_classification",
+        "consequence_analysis",
+        "coupling_analysis",
+        "interpretive_authority_analysis",
+        "dependency_lock_in_assessment",
+        "delegation_boundary_declaration",
+        "reversibility_proof",
+        "contestability_proof",
+        "governance_log_reference",
+        "public_oversight_record",
+        "independent_audit_reference",
+        "remediation_route"
+      ]
+    }
+  ]
+}

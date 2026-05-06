@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "evidenceTypes": [
     {
       "id": "assertion-envelope"
@@ -33,6 +33,39 @@
     },
     {
       "id": "delegation-contamination-map"
+    },
+    {
+      "id": "authority-envelope-evidence"
+    },
+    {
+      "id": "proof-carrying-commitment"
+    },
+    {
+      "id": "commitment-execution-attestation"
+    },
+    {
+      "id": "commitment-reconciliation-record"
+    },
+    {
+      "id": "fraud-externality-assessment"
+    },
+    {
+      "id": "issuer-accountability-record"
+    },
+    {
+      "id": "registry-governance-record"
+    },
+    {
+      "id": "inference-substitution-assessment"
+    },
+    {
+      "id": "legibility-trap-signal"
+    },
+    {
+      "id": "high-risk-governance-assurance-record"
+    },
+    {
+      "id": "constitutional-boundary-attestation"
     }
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "packageId": "ttg.overlay.constitutional.digital.infrastructure.controls",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.constitutional.boundary.attestation",
+      "artifactType": "decision-receipt",
+      "description": "Overlay for non-derogable constraints in high-risk digital infrastructure, including rights to context, contestability, reversibility, explanation, and human authority.",
+      "supportsRefs": [
+        "policy.constitutional.digital.infrastructure.controls",
+        "decision.constitutional.infrastructure.boundary",
+        "control.non-derogable-rights-profile",
+        "control.prohibited-inference-category",
+        "control.human-led-decision-class",
+        "control.public-transparency-required",
+        "control.independent-audit-access"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.constitutional.digital.infrastructure.controls",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.non-derogable-rights-profile",
+        "control.prohibited-inference-category",
+        "control.human-led-decision-class",
+        "control.public-transparency-required",
+        "control.independent-audit-access"
+      ],
+      "inputRefs": [
+        "artifact.constitutional.digital.infrastructure.controls",
+        "evidence.constitutional.boundary.attestation"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.constitutional.infrastructure.boundary",
+      "policyRef": "policy.constitutional.digital.infrastructure.controls",
+      "verificationRefs": [
+        "verification.constitutional.digital.infrastructure.controls"
+      ],
+      "effectRefs": [
+        "effect.constitutional.digital.infrastructure.controls.allow",
+        "effect.constitutional.digital.infrastructure.controls.review",
+        "effect.constitutional.digital.infrastructure.controls.deny"
+      ],
+      "requiredFields": [
+        "rights_profile",
+        "prohibited_inference_categories",
+        "human_led_decision_classes",
+        "public_transparency_record",
+        "audit_access_record",
+        "change_notice_policy"
+      ]
+    }
+  ]
+}

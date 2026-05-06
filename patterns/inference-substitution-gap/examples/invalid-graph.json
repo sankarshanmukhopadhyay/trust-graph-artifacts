@@ -1,0 +1,134 @@
+{
+  "graphId": "ttg.pattern.inference.substitution.gap",
+  "label": "Inference Substitution Gap Pattern",
+  "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance.",
+  "profile": "pattern",
+  "contexts": [
+    "context.inference.substitution.gap"
+  ],
+  "nodes": [
+    {
+      "id": "context.inference.substitution.gap",
+      "type": "TrustDomain",
+      "label": "Inference Substitution Gap Pattern",
+      "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance."
+    },
+    {
+      "id": "profile.inference.substitution.gap",
+      "type": "AssuranceProfile",
+      "label": "Inference Substitution Gap Pattern",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.inference.substitution.gap",
+      "type": "Policy",
+      "label": "Inference Substitution Gap Pattern Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Before the Graph"
+      }
+    },
+    {
+      "id": "entity.inference-engine",
+      "type": "Verifier",
+      "label": "Inference Engine",
+      "description": "System estimating identity, claims, intent, authority, or risk from behavior",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Person or organization being inferred about",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verification-authority",
+      "type": "GovernanceAuthority",
+      "label": "Verification Authority",
+      "description": "Authority capable of anchoring claims in evidence",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-party",
+      "type": "RelyingParty",
+      "label": "Relying Party",
+      "description": "Party that depends on the inferred result",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.inference.substitution.assessment",
+      "type": "EvidenceBundle",
+      "label": "Inference Substitution Gap Pattern Evidence",
+      "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.inference.substitution.gap",
+      "type": "Assessment",
+      "label": "Inference Substitution Gap Pattern Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.inference.substitution-gap",
+      "type": "TrustDecision",
+      "label": "Inference Substitution Gap Pattern Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.allow",
+      "type": "Effect",
+      "label": "Accept verified substitute path",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.review",
+      "type": "Effect",
+      "label": "Route inference gap for remediation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.deny",
+      "type": "Effect",
+      "label": "Deny inference as authority",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "Before the Graph",
+    "packageSlug": "inference-substitution-gap"
+  }
+}

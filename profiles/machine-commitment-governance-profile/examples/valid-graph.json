@@ -1,0 +1,246 @@
+{
+  "graphId": "ttg.profile.machine.commitment.governance.profile",
+  "label": "Machine Commitment Governance Profile",
+  "description": "Governance profile for machine-generated commitments that create institutional obligations, reliance, or future-state expectations.",
+  "profile": "profile",
+  "contexts": [
+    "context.machine.commitment.governance.profile"
+  ],
+  "nodes": [
+    {
+      "id": "context.machine.commitment.governance.profile",
+      "type": "TrustDomain",
+      "label": "Machine Commitment Governance Profile",
+      "description": "Governance profile for machine-generated commitments that create institutional obligations, reliance, or future-state expectations."
+    },
+    {
+      "id": "profile.machine.commitment.governance.profile",
+      "type": "AssuranceProfile",
+      "label": "Machine Commitment Governance Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "profile"
+      }
+    },
+    {
+      "id": "policy.machine.commitment.governance.profile",
+      "type": "Policy",
+      "label": "Machine Commitment Governance Profile Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "When Machines Make Commitments"
+      }
+    },
+    {
+      "id": "entity.commitment-agent",
+      "type": "Agent",
+      "label": "Commitment-Making Agent",
+      "description": "Agent or automated system proposing or issuing a commitment",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.commitment-controller",
+      "type": "GovernanceAuthority",
+      "label": "Commitment Controller",
+      "description": "Authority accountable for allowing the machine to bind future behavior",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.counterparty",
+      "type": "RelyingParty",
+      "label": "Counterparty",
+      "description": "Party that may rely on the commitment",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.commitment-verifier",
+      "type": "Verifier",
+      "label": "Commitment Verifier",
+      "description": "Evaluator of authority, terms, constraints, and lifecycle state",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.steward",
+      "type": "GovernanceAuthority",
+      "label": "Commitment Steward",
+      "description": "Escalation owner for conflicts, breach, or reconciliation",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.machine.commitment.receipt",
+      "type": "EvidenceBundle",
+      "label": "Machine Commitment Governance Profile Evidence",
+      "description": "Governance profile for machine-generated commitments that create institutional obligations, reliance, or future-state expectations.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.machine.commitment.governance.profile",
+      "type": "Assessment",
+      "label": "Machine Commitment Governance Profile Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.machine.commitment.admissibility",
+      "type": "TrustDecision",
+      "label": "Machine Commitment Governance Profile Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.machine.commitment.governance.profile.allow",
+      "type": "Effect",
+      "label": "Activate governed machine commitment",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.machine.commitment.governance.profile.review",
+      "type": "Effect",
+      "label": "Escalate commitment to steward review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.machine.commitment.governance.profile.deny",
+      "type": "Effect",
+      "label": "Reject unauthorized commitment",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "machine-commitment-governance-profile.edge.context-profile",
+      "type": "anchors",
+      "from": "context.machine.commitment.governance.profile",
+      "to": "profile.machine.commitment.governance.profile",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.machine.commitment.governance.profile",
+      "to": "policy.machine.commitment.governance.profile",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.context-policy",
+      "type": "governs",
+      "from": "context.machine.commitment.governance.profile",
+      "to": "policy.machine.commitment.governance.profile",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.machine.commitment.governance.profile",
+      "to": "verification.machine.commitment.governance.profile",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.machine.commitment.governance.profile",
+      "to": "decision.machine.commitment.admissibility",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.machine.commitment.receipt"
+      ]
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.machine.commitment.admissibility",
+      "to": "evidence.machine.commitment.receipt",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.machine.commitment.admissibility",
+      "to": "effect.machine.commitment.governance.profile.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.decision-review",
+      "type": "produces",
+      "from": "decision.machine.commitment.admissibility",
+      "to": "effect.machine.commitment.governance.profile.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.machine.commitment.admissibility",
+      "to": "effect.machine.commitment.governance.profile.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.actor-profile",
+      "type": "operates",
+      "from": "entity.commitment-agent",
+      "to": "profile.machine.commitment.governance.profile",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.commitment-controller-governs",
+      "type": "governs",
+      "from": "entity.commitment-controller",
+      "to": "policy.machine.commitment.governance.profile",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.counterparty-relies",
+      "type": "reliesOn",
+      "from": "entity.counterparty",
+      "to": "evidence.machine.commitment.receipt",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.commitment-verifier-assesses",
+      "type": "assesses",
+      "from": "entity.commitment-verifier",
+      "to": "profile.machine.commitment.governance.profile",
+      "description": "Verifier assesses package conformance."
+    },
+    {
+      "id": "machine-commitment-governance-profile.edge.steward-governs",
+      "type": "governs",
+      "from": "entity.steward",
+      "to": "policy.machine.commitment.governance.profile",
+      "description": "Governance authority owns or constrains policy."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "When Machines Make Commitments",
+    "packageSlug": "machine-commitment-governance-profile"
+  }
+}

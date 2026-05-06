@@ -1,0 +1,101 @@
+{
+  "packageId": "ttg.evidence.model.high.risk.governance.assurance.record",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.assurance-record-completeness",
+      "type": "evidence-capture",
+      "description": "Require classification, consequence, coupling, delegation, reversibility, contestability, audit, oversight, and remediation fields."
+    },
+    {
+      "id": "control.boundary-condition-evidence",
+      "type": "boundary-control",
+      "description": "Record boundary conditions and non-automatable decision classes."
+    },
+    {
+      "id": "control.reversibility-proof-present",
+      "type": "remediation",
+      "description": "Require evidence that material effects can be halted, corrected, or reversed."
+    },
+    {
+      "id": "control.independent-audit-reference",
+      "type": "auditability",
+      "description": "Record the audit or assessment reference used to substantiate governance posture."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.high.risk.governance.assurance.record",
+      "rules": [
+        "Require classification, consequence, coupling, delegation, reversibility, contestability, audit, oversight, and remediation fields.",
+        "Record boundary conditions and non-automatable decision classes.",
+        "Require evidence that material effects can be halted, corrected, or reversed.",
+        "Record the audit or assessment reference used to substantiate governance posture."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.assurance-by-prose",
+      "type": "evidence-gap",
+      "description": "High-risk governance is asserted in narrative without testable evidence."
+    },
+    {
+      "id": "threat.boundary-omission",
+      "type": "scope-gap",
+      "description": "Protected decision classes and boundary conditions are not declared."
+    },
+    {
+      "id": "threat.ineffective-contestability",
+      "type": "redress-gap",
+      "description": "Challenge rights exist procedurally but not operationally."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

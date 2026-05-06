@@ -1,0 +1,48 @@
+id: ttg-artifact-v030-09
+title: Constitutional Digital Infrastructure Controls Overlay
+status: draft
+source:
+  essay_title: Governance for High-Risk Digital Infrastructure
+  essay_url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+  published_date: '2026-04-08'
+signal:
+  tier: priority
+classification:
+  artifact_type:
+  - tsmm-native-package
+  - control-model
+  domain:
+  - overlay
+  - constitutional-controls
+  - rights
+  - high-risk-systems
+  - oversight
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+  - auditability
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-05-06'
+  last_updated: '2026-05-06'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  package_path: overlays/constitutional-digital-infrastructure-controls
+  tsmm_version: v0.20.0

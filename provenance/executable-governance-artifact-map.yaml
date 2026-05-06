@@ -1,36 +1,77 @@
 provenance:
   sourceEssays:
-    -
-      title: The Control Plane Has Already Shifted
-      url: "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted"
-      publishedDate: 2026-04-13
-    -
-      title: The Commons After the Control Plane Shifts
-      url: "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane"
-      publishedDate: 2026-04-17
-    -
-      title: Who Holds the License
-      url: "https://thetrustgraph.substack.com/p/who-holds-the-license"
-      publishedDate: 2026-04-18
+  - title: The Control Plane Has Already Shifted
+    url: https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted
+    publishedDate: 2026-04-13
+  - title: The Commons After the Control Plane Shifts
+    url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
+    publishedDate: 2026-04-17
+  - title: Who Holds the License
+    url: https://thetrustgraph.substack.com/p/who-holds-the-license
+    publishedDate: 2026-04-18
   artifactLayers:
-    -
-      layer: authority
-      path: artifacts/authority/authority_topology.yaml
-    -
-      layer: control-plane
-      path: artifacts/control-plane/execution_flow.yaml
-    -
-      layer: legitimacy
-      path: artifacts/legitimacy/legitimacy_gap.yaml
-    -
-      layer: delegation
-      path: artifacts/delegation/delegation_chain.yaml
-    -
-      layer: licensing
-      path: artifacts/licensing/license_authority_model.yaml
-    -
-      layer: verification
-      path: artifacts/verification/verification_profile.yaml
-    -
-      layer: receipts
-      path: artifacts/receipts/README.md
+  - layer: authority
+    path: artifacts/authority/authority_topology.yaml
+  - layer: control-plane
+    path: artifacts/control-plane/execution_flow.yaml
+  - layer: legitimacy
+    path: artifacts/legitimacy/legitimacy_gap.yaml
+  - layer: delegation
+    path: artifacts/delegation/delegation_chain.yaml
+  - layer: licensing
+    path: artifacts/licensing/license_authority_model.yaml
+  - layer: verification
+    path: artifacts/verification/verification_profile.yaml
+  - layer: receipts
+    path: artifacts/receipts/README.md
+mappings:
+- packagePath: patterns/runtime-authority-envelope
+  artifactPath: artifacts/runtime-authority-envelope/artifact.yaml
+  schemaPath: patterns/runtime-authority-envelope/graph.json
+  evidencePath: patterns/runtime-authority-envelope/evidence.json
+  validationPath: patterns/runtime-authority-envelope/tests/test-vector.json
+- packagePath: profiles/machine-commitment-governance-profile
+  artifactPath: artifacts/machine-commitment-governance-profile/artifact.yaml
+  schemaPath: profiles/machine-commitment-governance-profile/graph.json
+  evidencePath: profiles/machine-commitment-governance-profile/evidence.json
+  validationPath: profiles/machine-commitment-governance-profile/tests/test-vector.json
+- packagePath: evidence/proof-carrying-commitment-receipt
+  artifactPath: artifacts/proof-carrying-commitment-receipt/artifact.yaml
+  schemaPath: evidence/proof-carrying-commitment-receipt/graph.json
+  evidencePath: evidence/proof-carrying-commitment-receipt/evidence.json
+  validationPath: evidence/proof-carrying-commitment-receipt/tests/test-vector.json
+- packagePath: overlays/commitment-lifecycle-mediation
+  artifactPath: artifacts/commitment-lifecycle-mediation/artifact.yaml
+  schemaPath: overlays/commitment-lifecycle-mediation/graph.json
+  evidencePath: overlays/commitment-lifecycle-mediation/evidence.json
+  validationPath: overlays/commitment-lifecycle-mediation/tests/test-vector.json
+- packagePath: profiles/fraud-externality-verification-profile
+  artifactPath: artifacts/fraud-externality-verification-profile/artifact.yaml
+  schemaPath: profiles/fraud-externality-verification-profile/graph.json
+  evidencePath: profiles/fraud-externality-verification-profile/evidence.json
+  validationPath: profiles/fraud-externality-verification-profile/tests/test-vector.json
+- packagePath: patterns/inference-substitution-gap
+  artifactPath: artifacts/inference-substitution-gap/artifact.yaml
+  schemaPath: patterns/inference-substitution-gap/graph.json
+  evidencePath: patterns/inference-substitution-gap/evidence.json
+  validationPath: patterns/inference-substitution-gap/tests/test-vector.json
+- packagePath: patterns/legibility-trap-detector
+  artifactPath: artifacts/legibility-trap-detector/artifact.yaml
+  schemaPath: patterns/legibility-trap-detector/graph.json
+  evidencePath: patterns/legibility-trap-detector/evidence.json
+  validationPath: patterns/legibility-trap-detector/tests/test-vector.json
+- packagePath: profiles/high-risk-digital-infrastructure-governance-profile
+  artifactPath: artifacts/high-risk-digital-infrastructure-governance-profile/artifact.yaml
+  schemaPath: profiles/high-risk-digital-infrastructure-governance-profile/graph.json
+  evidencePath: profiles/high-risk-digital-infrastructure-governance-profile/evidence.json
+  validationPath: profiles/high-risk-digital-infrastructure-governance-profile/tests/test-vector.json
+- packagePath: overlays/constitutional-digital-infrastructure-controls
+  artifactPath: artifacts/constitutional-digital-infrastructure-controls/artifact.yaml
+  schemaPath: overlays/constitutional-digital-infrastructure-controls/graph.json
+  evidencePath: overlays/constitutional-digital-infrastructure-controls/evidence.json
+  validationPath: overlays/constitutional-digital-infrastructure-controls/tests/test-vector.json
+- packagePath: evidence/high-risk-governance-assurance-record
+  artifactPath: artifacts/high-risk-governance-assurance-record/artifact.yaml
+  schemaPath: evidence/high-risk-governance-assurance-record/graph.json
+  evidencePath: evidence/high-risk-governance-assurance-record/evidence.json
+  validationPath: evidence/high-risk-governance-assurance-record/tests/test-vector.json

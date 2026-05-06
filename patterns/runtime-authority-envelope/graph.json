@@ -1,0 +1,246 @@
+{
+  "graphId": "ttg.pattern.runtime.authority.envelope",
+  "label": "Runtime Authority Envelope",
+  "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized.",
+  "profile": "pattern",
+  "contexts": [
+    "context.runtime.authority.envelope"
+  ],
+  "nodes": [
+    {
+      "id": "context.runtime.authority.envelope",
+      "type": "TrustDomain",
+      "label": "Runtime Authority Envelope",
+      "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized."
+    },
+    {
+      "id": "profile.runtime.authority.envelope",
+      "type": "AssuranceProfile",
+      "label": "Runtime Authority Envelope",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.runtime.authority.envelope",
+      "type": "Policy",
+      "label": "Runtime Authority Envelope Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Authority Gap"
+      }
+    },
+    {
+      "id": "entity.technical-agent",
+      "type": "Agent",
+      "label": "Technical Agent",
+      "description": "Agent or automated component requesting an operational effect",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.accountable-controller",
+      "type": "GovernanceAuthority",
+      "label": "Accountable Controller",
+      "description": "Legal, institutional, or operational controller responsible for the action",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.principal",
+      "type": "Subject",
+      "label": "Principal",
+      "description": "Person, organization, or domain on whose behalf the action is taken",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.policy-engine",
+      "type": "Verifier",
+      "label": "Policy Engine",
+      "description": "Verifier that evaluates the authority envelope before execution",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-party",
+      "type": "RelyingParty",
+      "label": "Relying Party",
+      "description": "Downstream system or institution relying on the action",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.runtime.authority-envelope.receipt",
+      "type": "EvidenceBundle",
+      "label": "Runtime Authority Envelope Evidence",
+      "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.runtime.authority.envelope",
+      "type": "Assessment",
+      "label": "Runtime Authority Envelope Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.runtime.authority-envelope",
+      "type": "TrustDecision",
+      "label": "Runtime Authority Envelope Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.allow",
+      "type": "Effect",
+      "label": "Authorize scoped operational action",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.review",
+      "type": "Effect",
+      "label": "Route authority ambiguity for review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.runtime.authority.envelope.deny",
+      "type": "Effect",
+      "label": "Deny action outside envelope",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "runtime-authority-envelope.edge.context-profile",
+      "type": "anchors",
+      "from": "context.runtime.authority.envelope",
+      "to": "profile.runtime.authority.envelope",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.runtime.authority.envelope",
+      "to": "policy.runtime.authority.envelope",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.context-policy",
+      "type": "governs",
+      "from": "context.runtime.authority.envelope",
+      "to": "policy.runtime.authority.envelope",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.runtime.authority.envelope",
+      "to": "verification.runtime.authority.envelope",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.runtime.authority.envelope",
+      "to": "decision.runtime.authority-envelope",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.runtime.authority-envelope.receipt"
+      ]
+    },
+    {
+      "id": "runtime-authority-envelope.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.runtime.authority-envelope",
+      "to": "evidence.runtime.authority-envelope.receipt",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.runtime.authority-envelope",
+      "to": "effect.runtime.authority.envelope.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.decision-review",
+      "type": "produces",
+      "from": "decision.runtime.authority-envelope",
+      "to": "effect.runtime.authority.envelope.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.runtime.authority-envelope",
+      "to": "effect.runtime.authority.envelope.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.actor-profile",
+      "type": "operates",
+      "from": "entity.technical-agent",
+      "to": "profile.runtime.authority.envelope",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.accountable-controller-governs",
+      "type": "governs",
+      "from": "entity.accountable-controller",
+      "to": "policy.runtime.authority.envelope",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.principal-relies",
+      "type": "reliesOn",
+      "from": "entity.principal",
+      "to": "evidence.runtime.authority-envelope.receipt",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.policy-engine-assesses",
+      "type": "assesses",
+      "from": "entity.policy-engine",
+      "to": "profile.runtime.authority.envelope",
+      "description": "Verifier assesses package conformance."
+    },
+    {
+      "id": "runtime-authority-envelope.edge.relying-party-relies",
+      "type": "reliesOn",
+      "from": "entity.relying-party",
+      "to": "evidence.runtime.authority-envelope.receipt",
+      "description": "Affected or relying party depends on evidence and contestability."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Authority Gap",
+    "packageSlug": "runtime-authority-envelope"
+  }
+}

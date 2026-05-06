@@ -1,0 +1,29 @@
+{
+  "id": "ttg.profile.high.risk.digital.infrastructure.governance.profile",
+  "title": "High-Risk Digital Infrastructure Governance Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Governance for High-Risk Digital Infrastructure",
+    "url": "https://thetrustgraph.substack.com/p/governance-for-high-risk-digital",
+    "publishedDate": "2026-04-08"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "profile",
+    "high-risk-systems",
+    "digital-infrastructure",
+    "assurance",
+    "contestability"
+  ],
+  "notes": [
+    "Profile for digital infrastructure whose consequence intensity, systemic coupling, interpretive authority, or dependency lock-in requires governance inside the architecture."
+  ]
+}

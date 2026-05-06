@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.inference.substitution.gap",
+  "title": "Inference Substitution Gap Pattern",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Before the Graph",
+    "url": "https://thetrustgraph.substack.com/p/before-the-graph",
+    "publishedDate": "2026-04-13"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "inference",
+    "verification",
+    "identity",
+    "authority"
+  ],
+  "notes": [
+    "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance."
+  ]
+}

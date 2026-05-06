@@ -1,0 +1,57 @@
+{
+  "packageId": "ttg.pattern.inference.substitution.gap",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.inference.substitution.assessment",
+      "artifactType": "decision-receipt",
+      "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance.",
+      "supportsRefs": [
+        "policy.inference.substitution.gap",
+        "decision.inference.substitution-gap",
+        "control.inference-verification-classification",
+        "control.authority-inference-prohibition",
+        "control.accountability-dissolution-signal",
+        "control.verification-migration-path"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.inference.substitution.gap",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.inference-verification-classification",
+        "control.authority-inference-prohibition",
+        "control.accountability-dissolution-signal",
+        "control.verification-migration-path"
+      ],
+      "inputRefs": [
+        "artifact.inference.substitution.gap",
+        "evidence.inference.substitution.assessment"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.inference.substitution-gap",
+      "policyRef": "policy.inference.substitution.gap",
+      "verificationRefs": [
+        "verification.inference.substitution.gap"
+      ],
+      "effectRefs": [
+        "effect.inference.substitution.gap.allow",
+        "effect.inference.substitution.gap.review",
+        "effect.inference.substitution.gap.deny"
+      ],
+      "requiredFields": [
+        "input_classification",
+        "inference_basis",
+        "verification_alternative",
+        "authority_boundary",
+        "accountability_record",
+        "migration_path"
+      ]
+    }
+  ]
+}

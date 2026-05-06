@@ -1,0 +1,112 @@
+{
+  "packageId": "ttg.profile.high.risk.digital.infrastructure.governance.profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.high-risk-classification",
+      "type": "risk-classification",
+      "description": "Classify consequence intensity, systemic coupling, interpretive authority, and dependency lock-in."
+    },
+    {
+      "id": "control.traceability-required",
+      "type": "auditability",
+      "description": "Require reconstructable decision pathways from inputs to effects."
+    },
+    {
+      "id": "control.reversibility-required",
+      "type": "remediation",
+      "description": "Require halt, rollback, correction, or reversal mechanisms before cascading harm."
+    },
+    {
+      "id": "control.delegation-boundary-enforced",
+      "type": "authority-boundary",
+      "description": "Prevent automated components from expanding interpretive authority beyond declared scope."
+    },
+    {
+      "id": "control.contestability-required",
+      "type": "redress",
+      "description": "Provide effective challenge paths before or during consequential effects."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.high.risk.digital.infrastructure.governance.profile",
+      "rules": [
+        "Classify consequence intensity, systemic coupling, interpretive authority, and dependency lock-in.",
+        "Require reconstructable decision pathways from inputs to effects.",
+        "Require halt, rollback, correction, or reversal mechanisms before cascading harm.",
+        "Prevent automated components from expanding interpretive authority beyond declared scope.",
+        "Provide effective challenge paths before or during consequential effects."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.irreversible-cascade",
+      "type": "systemic-risk",
+      "description": "Automated effects cascade before institutional correction is possible."
+    },
+    {
+      "id": "threat.interpretive-authority-creep",
+      "type": "authority-risk",
+      "description": "System expands from classification to rights-sensitive interpretation."
+    },
+    {
+      "id": "threat.dependency-lock-in",
+      "type": "dependency-risk",
+      "description": "Users or institutions cannot exit without losing essential access."
+    },
+    {
+      "id": "threat.audit-fog",
+      "type": "evidence-gap",
+      "description": "Decision pathways cannot be reconstructed independently."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "graphId": "ttg.pattern.inference.substitution.gap",
+  "label": "Inference Substitution Gap Pattern",
+  "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance.",
+  "profile": "pattern",
+  "contexts": [
+    "context.inference.substitution.gap"
+  ],
+  "nodes": [
+    {
+      "id": "context.inference.substitution.gap",
+      "type": "TrustDomain",
+      "label": "Inference Substitution Gap Pattern",
+      "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance."
+    },
+    {
+      "id": "profile.inference.substitution.gap",
+      "type": "AssuranceProfile",
+      "label": "Inference Substitution Gap Pattern",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.inference.substitution.gap",
+      "type": "Policy",
+      "label": "Inference Substitution Gap Pattern Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Before the Graph"
+      }
+    },
+    {
+      "id": "entity.inference-engine",
+      "type": "Verifier",
+      "label": "Inference Engine",
+      "description": "System estimating identity, claims, intent, authority, or risk from behavior",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Person or organization being inferred about",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.verification-authority",
+      "type": "GovernanceAuthority",
+      "label": "Verification Authority",
+      "description": "Authority capable of anchoring claims in evidence",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.relying-party",
+      "type": "RelyingParty",
+      "label": "Relying Party",
+      "description": "Party that depends on the inferred result",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.inference.substitution.assessment",
+      "type": "EvidenceBundle",
+      "label": "Inference Substitution Gap Pattern Evidence",
+      "description": "Pattern for detecting when institutions substitute behavioral inference for verifiable identity, claims, authority, or provenance.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.inference.substitution.gap",
+      "type": "Assessment",
+      "label": "Inference Substitution Gap Pattern Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.inference.substitution-gap",
+      "type": "TrustDecision",
+      "label": "Inference Substitution Gap Pattern Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.allow",
+      "type": "Effect",
+      "label": "Accept verified substitute path",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.review",
+      "type": "Effect",
+      "label": "Route inference gap for remediation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.inference.substitution.gap.deny",
+      "type": "Effect",
+      "label": "Deny inference as authority",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "inference-substitution-gap.edge.context-profile",
+      "type": "anchors",
+      "from": "context.inference.substitution.gap",
+      "to": "profile.inference.substitution.gap",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "inference-substitution-gap.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.inference.substitution.gap",
+      "to": "policy.inference.substitution.gap",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "inference-substitution-gap.edge.context-policy",
+      "type": "governs",
+      "from": "context.inference.substitution.gap",
+      "to": "policy.inference.substitution.gap",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "inference-substitution-gap.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.inference.substitution.gap",
+      "to": "verification.inference.substitution.gap",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "inference-substitution-gap.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.inference.substitution.gap",
+      "to": "decision.inference.substitution-gap",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.inference.substitution.assessment"
+      ]
+    },
+    {
+      "id": "inference-substitution-gap.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.inference.substitution-gap",
+      "to": "evidence.inference.substitution.assessment",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "inference-substitution-gap.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.inference.substitution-gap",
+      "to": "effect.inference.substitution.gap.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "inference-substitution-gap.edge.decision-review",
+      "type": "produces",
+      "from": "decision.inference.substitution-gap",
+      "to": "effect.inference.substitution.gap.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "inference-substitution-gap.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.inference.substitution-gap",
+      "to": "effect.inference.substitution.gap.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "inference-substitution-gap.edge.actor-profile",
+      "type": "authorizes",
+      "from": "entity.inference-engine",
+      "to": "profile.inference.substitution.gap",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "inference-substitution-gap.edge.inference-engine-assesses",
+      "type": "assesses",
+      "from": "entity.inference-engine",
+      "to": "profile.inference.substitution.gap",
+      "description": "Verifier assesses package conformance."
+    },
+    {
+      "id": "inference-substitution-gap.edge.subject-relies",
+      "type": "reliesOn",
+      "from": "entity.subject",
+      "to": "evidence.inference.substitution.assessment",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "inference-substitution-gap.edge.verification-authority-governs",
+      "type": "governs",
+      "from": "entity.verification-authority",
+      "to": "policy.inference.substitution.gap",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "inference-substitution-gap.edge.relying-party-relies",
+      "type": "reliesOn",
+      "from": "entity.relying-party",
+      "to": "evidence.inference.substitution.assessment",
+      "description": "Affected or relying party depends on evidence and contestability."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Before the Graph",
+    "packageSlug": "inference-substitution-gap"
+  }
+}

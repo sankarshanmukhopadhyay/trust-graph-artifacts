@@ -1,0 +1,106 @@
+{
+  "packageId": "ttg.pattern.inference.substitution.gap",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.inference-verification-classification",
+      "type": "classification",
+      "description": "Classify each decision input as inferred, asserted, verified, or authoritative."
+    },
+    {
+      "id": "control.authority-inference-prohibition",
+      "type": "authority-boundary",
+      "description": "Prohibit inferred authority where delegated mandate or registry evidence is required."
+    },
+    {
+      "id": "control.accountability-dissolution-signal",
+      "type": "auditability",
+      "description": "Flag decisions where inferred signals prevent accountability reconstruction."
+    },
+    {
+      "id": "control.verification-migration-path",
+      "type": "remediation",
+      "description": "Declare a path from inference-based acceptance to verification-based acceptance."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.inference.substitution.gap",
+      "rules": [
+        "Classify each decision input as inferred, asserted, verified, or authoritative.",
+        "Prohibit inferred authority where delegated mandate or registry evidence is required.",
+        "Flag decisions where inferred signals prevent accountability reconstruction.",
+        "Declare a path from inference-based acceptance to verification-based acceptance."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.identity-by-behavior",
+      "type": "identity-gap",
+      "description": "Behavioral signals are used as a substitute for anchored identity."
+    },
+    {
+      "id": "threat.claim-by-correlation",
+      "type": "claim-gap",
+      "description": "Claims are inferred from proxies rather than provenance-backed evidence."
+    },
+    {
+      "id": "threat.authority-by-context",
+      "type": "authority-gap",
+      "description": "System context is treated as permission without mandate evidence."
+    },
+    {
+      "id": "threat.corrupted-feedback-loop",
+      "type": "evidence-corruption",
+      "description": "Inference outputs become future governance data without validation."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

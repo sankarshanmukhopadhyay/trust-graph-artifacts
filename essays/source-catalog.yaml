@@ -202,3 +202,73 @@ essays:
   packageKind: system
   packagePath: systems/wallet-to-agent-identity
   signalTier: B
+- slug: runtime-authority-envelope
+  title: Runtime Authority Envelope
+  publishedDate: '2026-05-06'
+  url: https://thetrustgraph.substack.com/p/the-authority-gap
+  packageKind: pattern
+  packagePath: patterns/runtime-authority-envelope
+  signalTier: priority
+- slug: machine-commitment-governance-profile
+  title: Machine Commitment Governance Profile
+  publishedDate: '2026-05-05'
+  url: https://thetrustgraph.substack.com/p/when-machines-make-commitments
+  packageKind: profile
+  packagePath: profiles/machine-commitment-governance-profile
+  signalTier: priority
+- slug: proof-carrying-commitment-receipt
+  title: Proof-Carrying Commitment Receipt
+  publishedDate: '2026-05-05'
+  url: https://thetrustgraph.substack.com/p/when-machines-make-commitments
+  packageKind: evidence-model
+  packagePath: evidence/proof-carrying-commitment-receipt
+  signalTier: priority
+- slug: commitment-lifecycle-mediation
+  title: Commitment Lifecycle Mediation Overlay
+  publishedDate: '2026-05-05'
+  url: https://thetrustgraph.substack.com/p/when-machines-make-commitments
+  packageKind: overlay
+  packagePath: overlays/commitment-lifecycle-mediation
+  signalTier: priority
+- slug: fraud-externality-verification-profile
+  title: Fraud Externality Verification Profile
+  publishedDate: '2026-05-05'
+  url: https://thetrustgraph.substack.com/p/fraud-as-an-externality-of-missing
+  packageKind: profile
+  packagePath: profiles/fraud-externality-verification-profile
+  signalTier: priority
+- slug: inference-substitution-gap
+  title: Inference Substitution Gap Pattern
+  publishedDate: '2026-04-13'
+  url: https://thetrustgraph.substack.com/p/before-the-graph
+  packageKind: pattern
+  packagePath: patterns/inference-substitution-gap
+  signalTier: priority
+- slug: legibility-trap-detector
+  title: Legibility Trap Detector Pattern
+  publishedDate: '2026-04-13'
+  url: https://thetrustgraph.substack.com/p/before-the-graph
+  packageKind: pattern
+  packagePath: patterns/legibility-trap-detector
+  signalTier: priority
+- slug: high-risk-digital-infrastructure-governance-profile
+  title: High-Risk Digital Infrastructure Governance Profile
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+  packageKind: profile
+  packagePath: profiles/high-risk-digital-infrastructure-governance-profile
+  signalTier: priority
+- slug: constitutional-digital-infrastructure-controls
+  title: Constitutional Digital Infrastructure Controls Overlay
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+  packageKind: overlay
+  packagePath: overlays/constitutional-digital-infrastructure-controls
+  signalTier: priority
+- slug: high-risk-governance-assurance-record
+  title: High-Risk Governance Assurance Record
+  publishedDate: '2026-04-08'
+  url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+  packageKind: evidence-model
+  packagePath: evidence/high-risk-governance-assurance-record
+  signalTier: priority

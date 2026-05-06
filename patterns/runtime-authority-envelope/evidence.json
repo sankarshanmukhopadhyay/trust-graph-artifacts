@@ -1,0 +1,60 @@
+{
+  "packageId": "ttg.pattern.runtime.authority.envelope",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.runtime.authority-envelope.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized.",
+      "supportsRefs": [
+        "policy.runtime.authority.envelope",
+        "decision.runtime.authority-envelope",
+        "control.authority-envelope-completeness",
+        "control.execution-time-revocation-check",
+        "control.scope-bound-effect",
+        "control.redress-route-required"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.runtime.authority.envelope",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.authority-envelope-completeness",
+        "control.execution-time-revocation-check",
+        "control.scope-bound-effect",
+        "control.redress-route-required"
+      ],
+      "inputRefs": [
+        "artifact.runtime.authority.envelope",
+        "evidence.runtime.authority-envelope.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.runtime.authority-envelope",
+      "policyRef": "policy.runtime.authority.envelope",
+      "verificationRefs": [
+        "verification.runtime.authority.envelope"
+      ],
+      "effectRefs": [
+        "effect.runtime.authority.envelope.allow",
+        "effect.runtime.authority.envelope.review",
+        "effect.runtime.authority.envelope.deny"
+      ],
+      "requiredFields": [
+        "technical_actor",
+        "accountable_controller",
+        "principal",
+        "mandate_reference",
+        "scope_boundary",
+        "policy_version",
+        "revocation_state",
+        "decision_receipt",
+        "redress_route"
+      ]
+    }
+  ]
+}

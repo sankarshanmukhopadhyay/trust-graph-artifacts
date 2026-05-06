@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/v0.3.0/schemas/receipts/commitment_receipt.schema.json",
+  "title": "Commitment Receipt",
+  "type": "object",
+  "required": [
+    "commitment_id",
+    "technical_actor",
+    "accountable_controller",
+    "principal",
+    "mandate_reference",
+    "policy_version",
+    "commitment_type",
+    "commitment_terms",
+    "activation_conditions",
+    "constraint_checks",
+    "authority_validation",
+    "revocation_state",
+    "execution_attestation",
+    "counterparty_reliance",
+    "reconciliation_route",
+    "contestability_route",
+    "timestamp"
+  ],
+  "properties": {
+    "commitment_id": {
+      "type": "string"
+    },
+    "technical_actor": {
+      "type": "string"
+    },
+    "accountable_controller": {
+      "type": "string"
+    },
+    "principal": {
+      "type": "string"
+    },
+    "mandate_reference": {
+      "type": "string"
+    },
+    "policy_version": {
+      "type": "string"
+    },
+    "commitment_type": {
+      "type": "string"
+    },
+    "commitment_terms": {
+      "type": "object"
+    },
+    "activation_conditions": {
+      "type": "object"
+    },
+    "constraint_checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "authority_validation": {
+      "type": "object"
+    },
+    "revocation_state": {
+      "type": "object"
+    },
+    "execution_attestation": {
+      "type": "object"
+    },
+    "counterparty_reliance": {
+      "type": "object"
+    },
+    "reconciliation_route": {
+      "type": "string"
+    },
+    "contestability_route": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

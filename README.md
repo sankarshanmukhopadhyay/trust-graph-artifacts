@@ -13,11 +13,12 @@ The result is a developer-facing library that moves from governance claims to co
 
 ## TSMM v0.20 alignment
 
-Version `0.2.0` makes the repository boundary explicit:
+Version `0.3.0` preserves the TSMM v0.20 boundary and adds authority envelopes, machine commitments, fraud externalities, inference-to-verification controls, and high-risk infrastructure governance:
 
 - **TSMM v0.20.0** is the semantic authority for trust-system modeling.
 - **Trust Infrastructure Schemas v0.8.0** is the executable artifact contract layer where cross-repo validation, registry publication, or assurance-level semantics are required.
 - **TGA** is the Trust Graph interpretation corpus: it turns essay-derived governance pressure into TSMM-native packages, receipts, examples, and provenance overlays.
+- **v0.3.0** adds runtime authority envelopes, proof-carrying machine commitments, fraud externality verification, inference substitution detection, legibility trap detection, high-risk infrastructure assurance, and constitutional infrastructure controls.
 
 Start with [`docs/tsmm-v0.20-alignment.md`](docs/tsmm-v0.20-alignment.md) and [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md) for the current alignment contract.
 
@@ -77,6 +78,22 @@ Use this cluster to study how commons governance, AI intermediaries, and licensi
 - `profiles/knowledge-substrate-integrity-profile`
 - `profiles/governed-license-authority`
 - `profiles/coalition-legitimacy-model`
+
+
+### Authority envelopes, commitments, and high-risk infrastructure tour
+
+Use this cluster to study the v0.3.0 governance increment:
+
+- `patterns/runtime-authority-envelope`
+- `profiles/machine-commitment-governance-profile`
+- `evidence/proof-carrying-commitment-receipt`
+- `overlays/commitment-lifecycle-mediation`
+- `profiles/fraud-externality-verification-profile`
+- `patterns/inference-substitution-gap`
+- `patterns/legibility-trap-detector`
+- `profiles/high-risk-digital-infrastructure-governance-profile`
+- `overlays/constitutional-digital-infrastructure-controls`
+- `evidence/high-risk-governance-assurance-record`
 
 ### Temporal governance tour
 

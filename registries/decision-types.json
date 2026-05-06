@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "decisionTypes": [
     {
       "id": "decision.after-consent.enforcement"
@@ -60,6 +60,42 @@
     },
     {
       "id": "decision.require-upstream-revalidation"
+    },
+    {
+      "id": "decision.runtime.authority-envelope"
+    },
+    {
+      "id": "decision.machine.commitment.admissibility"
+    },
+    {
+      "id": "decision.proof-carrying-commitment"
+    },
+    {
+      "id": "decision.commitment.lifecycle-mediation"
+    },
+    {
+      "id": "decision.fraud.externality.verification"
+    },
+    {
+      "id": "decision.inference.substitution-gap"
+    },
+    {
+      "id": "decision.legibility.trap"
+    },
+    {
+      "id": "decision.high-risk.infrastructure.governance"
+    },
+    {
+      "id": "decision.constitutional.infrastructure.boundary"
+    },
+    {
+      "id": "decision.high-risk.assurance.record"
+    },
+    {
+      "id": "decision.commitment.lifecycle.reconcile"
+    },
+    {
+      "id": "decision.constitutional.human-review-required"
     }
   ]
 }

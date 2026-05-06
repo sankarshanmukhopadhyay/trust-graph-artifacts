@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "controls": [
     {
       "id": "control.appeal-route",
@@ -256,6 +256,174 @@
     {
       "id": "control.withdrawal-enforcement",
       "description": ""
+    },
+    {
+      "id": "control.authority-envelope-completeness",
+      "description": "Require technical actor, accountable controller, principal, mandate, scope, policy version, evidence reference, revocation state, and redress route."
+    },
+    {
+      "id": "control.execution-time-revocation-check",
+      "description": "Check authority and mandate status at the moment the operational effect is requested."
+    },
+    {
+      "id": "control.scope-bound-effect",
+      "description": "Deny or route actions whose requested effect exceeds the temporal, jurisdictional, transactional, or risk scope in the envelope."
+    },
+    {
+      "id": "control.redress-route-required",
+      "description": "Require a challenge, reversal, or remediation route for consequential actions."
+    },
+    {
+      "id": "control.commitment-authority-binding",
+      "description": "Bind every commitment to an accountable controller, delegated mandate, policy version, and commitment class."
+    },
+    {
+      "id": "control.intent-binding-schema",
+      "description": "Represent terms, activation conditions, constraints, counterparties, and reliance assumptions in machine-verifiable form."
+    },
+    {
+      "id": "control.proof-carrying-commitment",
+      "description": "Require a proof-carrying commitment receipt before external reliance is permitted."
+    },
+    {
+      "id": "control.reconciliation-route-required",
+      "description": "Declare reconciliation, dispute, and retirement paths for commitments that conflict, drift, or fail."
+    },
+    {
+      "id": "control.commitment-receipt-completeness",
+      "description": "Require all commitment, authority, terms, constraint, revocation, attestation, and contestability fields."
+    },
+    {
+      "id": "control.execution-attestation-present",
+      "description": "Bind the commitment to execution evidence and the evaluated policy version."
+    },
+    {
+      "id": "control.reliance-record-required",
+      "description": "Capture counterparty reliance and intended operational effect."
+    },
+    {
+      "id": "control.contestability-route-required",
+      "description": "Record the dispute, reconciliation, or remediation endpoint."
+    },
+    {
+      "id": "control.commitment-drift-detection",
+      "description": "Detect changes in conditions, policy, feasibility, or counterparties that alter commitment meaning."
+    },
+    {
+      "id": "control.conflict-detection",
+      "description": "Detect conflicting commitments, derived commitment chains, and incompatible obligations."
+    },
+    {
+      "id": "control.lifecycle-reconciliation",
+      "description": "Require reconciliation records for modified, conflicted, breached, or revoked commitments."
+    },
+    {
+      "id": "control.human-steward-escalation",
+      "description": "Escalate high-impact commitment conflicts to a named steward or trustee."
+    },
+    {
+      "id": "control.issuer-authorization",
+      "description": "Verify issuer authorization, accountability, and removal route before accepting claims."
+    },
+    {
+      "id": "control.claim-provenance-verification",
+      "description": "Require verifiable provenance for claims, credentials, documents, or representations."
+    },
+    {
+      "id": "control.registry-governance-accountability",
+      "description": "Require admission, suspension, removal, appeal, and anti-capture evidence for registry authority."
+    },
+    {
+      "id": "control.externality-reduction-evidence",
+      "description": "Record how verification controls reduce fraud cost transfer to relying parties and victims."
+    },
+    {
+      "id": "control.inference-verification-classification",
+      "description": "Classify each decision input as inferred, asserted, verified, or authoritative."
+    },
+    {
+      "id": "control.authority-inference-prohibition",
+      "description": "Prohibit inferred authority where delegated mandate or registry evidence is required."
+    },
+    {
+      "id": "control.accountability-dissolution-signal",
+      "description": "Flag decisions where inferred signals prevent accountability reconstruction."
+    },
+    {
+      "id": "control.verification-migration-path",
+      "description": "Declare a path from inference-based acceptance to verification-based acceptance."
+    },
+    {
+      "id": "control.proxy-expansion-detection",
+      "description": "Detect growth in behavioral proxies used to compensate for weak verification."
+    },
+    {
+      "id": "control.user-burden-shift",
+      "description": "Flag systems that push verification cost or legibility burden onto subjects."
+    },
+    {
+      "id": "control.context-suppression-check",
+      "description": "Flag loss of human context, ambiguity, and contestability in machine-readable processes."
+    },
+    {
+      "id": "control.verification-alternative-required",
+      "description": "Require an available verification alternative before expanding inference demands."
+    },
+    {
+      "id": "control.high-risk-classification",
+      "description": "Classify consequence intensity, systemic coupling, interpretive authority, and dependency lock-in."
+    },
+    {
+      "id": "control.traceability-required",
+      "description": "Require reconstructable decision pathways from inputs to effects."
+    },
+    {
+      "id": "control.reversibility-required",
+      "description": "Require halt, rollback, correction, or reversal mechanisms before cascading harm."
+    },
+    {
+      "id": "control.delegation-boundary-enforced",
+      "description": "Prevent automated components from expanding interpretive authority beyond declared scope."
+    },
+    {
+      "id": "control.contestability-required",
+      "description": "Provide effective challenge paths before or during consequential effects."
+    },
+    {
+      "id": "control.non-derogable-rights-profile",
+      "description": "Declare protected rights to context, contestability, reversibility, explanation, and human authority."
+    },
+    {
+      "id": "control.prohibited-inference-category",
+      "description": "Prohibit inference categories that exceed legitimate governance scope."
+    },
+    {
+      "id": "control.human-led-decision-class",
+      "description": "Require human authority for protected decision classes."
+    },
+    {
+      "id": "control.public-transparency-required",
+      "description": "Require public-facing control descriptions and change notices for high-risk systems."
+    },
+    {
+      "id": "control.independent-audit-access",
+      "description": "Require independent audit access to governance logs and boundary attestations."
+    },
+    {
+      "id": "control.assurance-record-completeness",
+      "description": "Require classification, consequence, coupling, delegation, reversibility, contestability, audit, oversight, and remediation fields."
+    },
+    {
+      "id": "control.boundary-condition-evidence",
+      "description": "Record boundary conditions and non-automatable decision classes."
+    },
+    {
+      "id": "control.reversibility-proof-present",
+      "description": "Require evidence that material effects can be halted, corrected, or reversed."
+    },
+    {
+      "id": "control.independent-audit-reference",
+      "description": "Record the audit or assessment reference used to substantiate governance posture."
     }
   ]
 }

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/v0.3.0/schemas/receipts/high_risk_governance_assurance_record.schema.json",
+  "title": "High Risk Governance Assurance Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "system_id",
+    "system_risk_classification",
+    "consequence_analysis",
+    "coupling_analysis",
+    "interpretive_authority_analysis",
+    "dependency_lock_in_assessment",
+    "delegation_boundary_declaration",
+    "reversibility_proof",
+    "contestability_proof",
+    "governance_log_reference",
+    "public_oversight_record",
+    "independent_audit_reference",
+    "remediation_route",
+    "timestamp"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string"
+    },
+    "system_id": {
+      "type": "string"
+    },
+    "system_risk_classification": {
+      "type": "string"
+    },
+    "consequence_analysis": {
+      "type": "object"
+    },
+    "coupling_analysis": {
+      "type": "object"
+    },
+    "interpretive_authority_analysis": {
+      "type": "object"
+    },
+    "dependency_lock_in_assessment": {
+      "type": "object"
+    },
+    "delegation_boundary_declaration": {
+      "type": "object"
+    },
+    "reversibility_proof": {
+      "type": "object"
+    },
+    "contestability_proof": {
+      "type": "object"
+    },
+    "governance_log_reference": {
+      "type": "string"
+    },
+    "public_oversight_record": {
+      "type": "object"
+    },
+    "independent_audit_reference": {
+      "type": "object"
+    },
+    "remediation_route": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

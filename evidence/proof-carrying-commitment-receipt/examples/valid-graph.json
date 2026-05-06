@@ -1,0 +1,229 @@
+{
+  "graphId": "ttg.evidence.model.proof.carrying.commitment.receipt",
+  "label": "Proof-Carrying Commitment Receipt",
+  "description": "Evidence model that records why a machine-generated commitment was authorized, what terms were bound, which constraints were evaluated, and how it can be challenged or reconciled.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.proof.carrying.commitment.receipt"
+  ],
+  "nodes": [
+    {
+      "id": "context.proof.carrying.commitment.receipt",
+      "type": "TrustDomain",
+      "label": "Proof-Carrying Commitment Receipt",
+      "description": "Evidence model that records why a machine-generated commitment was authorized, what terms were bound, which constraints were evaluated, and how it can be challenged or reconciled."
+    },
+    {
+      "id": "profile.proof.carrying.commitment.receipt",
+      "type": "AssuranceProfile",
+      "label": "Proof-Carrying Commitment Receipt",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "evidence-model"
+      }
+    },
+    {
+      "id": "policy.proof.carrying.commitment.receipt",
+      "type": "Policy",
+      "label": "Proof-Carrying Commitment Receipt Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "When Machines Make Commitments"
+      }
+    },
+    {
+      "id": "entity.commitment-agent",
+      "type": "Agent",
+      "label": "Commitment Agent",
+      "description": "System that proposed or issued the commitment",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.controller",
+      "type": "GovernanceAuthority",
+      "label": "Accountable Controller",
+      "description": "Authority accountable for commitment issuance",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.counterparty",
+      "type": "RelyingParty",
+      "label": "Counterparty",
+      "description": "Recipient or relying party affected by the commitment",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.receipt-verifier",
+      "type": "Verifier",
+      "label": "Receipt Verifier",
+      "description": "Assessor of receipt completeness and proof integrity",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.proof-carrying-commitment.receipt",
+      "type": "EvidenceBundle",
+      "label": "Proof-Carrying Commitment Receipt Evidence",
+      "description": "Evidence model that records why a machine-generated commitment was authorized, what terms were bound, which constraints were evaluated, and how it can be challenged or reconciled.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.proof.carrying.commitment.receipt",
+      "type": "Assessment",
+      "label": "Proof-Carrying Commitment Receipt Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.proof-carrying-commitment",
+      "type": "TrustDecision",
+      "label": "Proof-Carrying Commitment Receipt Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.proof.carrying.commitment.receipt.allow",
+      "type": "Effect",
+      "label": "Accept commitment evidence",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.proof.carrying.commitment.receipt.review",
+      "type": "Effect",
+      "label": "Request receipt remediation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.proof.carrying.commitment.receipt.deny",
+      "type": "Effect",
+      "label": "Reject unverifiable commitment",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "proof-carrying-commitment-receipt.edge.context-profile",
+      "type": "anchors",
+      "from": "context.proof.carrying.commitment.receipt",
+      "to": "profile.proof.carrying.commitment.receipt",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.proof.carrying.commitment.receipt",
+      "to": "policy.proof.carrying.commitment.receipt",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.context-policy",
+      "type": "governs",
+      "from": "context.proof.carrying.commitment.receipt",
+      "to": "policy.proof.carrying.commitment.receipt",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.proof.carrying.commitment.receipt",
+      "to": "verification.proof.carrying.commitment.receipt",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.proof.carrying.commitment.receipt",
+      "to": "decision.proof-carrying-commitment",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.proof-carrying-commitment.receipt"
+      ]
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.proof-carrying-commitment",
+      "to": "evidence.proof-carrying-commitment.receipt",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.proof-carrying-commitment",
+      "to": "effect.proof.carrying.commitment.receipt.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.decision-review",
+      "type": "produces",
+      "from": "decision.proof-carrying-commitment",
+      "to": "effect.proof.carrying.commitment.receipt.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.proof-carrying-commitment",
+      "to": "effect.proof.carrying.commitment.receipt.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.actor-profile",
+      "type": "operates",
+      "from": "entity.commitment-agent",
+      "to": "profile.proof.carrying.commitment.receipt",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.controller-governs",
+      "type": "governs",
+      "from": "entity.controller",
+      "to": "policy.proof.carrying.commitment.receipt",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.counterparty-relies",
+      "type": "reliesOn",
+      "from": "entity.counterparty",
+      "to": "evidence.proof-carrying-commitment.receipt",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "proof-carrying-commitment-receipt.edge.receipt-verifier-assesses",
+      "type": "assesses",
+      "from": "entity.receipt-verifier",
+      "to": "profile.proof.carrying.commitment.receipt",
+      "description": "Verifier assesses package conformance."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "When Machines Make Commitments",
+    "packageSlug": "proof-carrying-commitment-receipt"
+  }
+}

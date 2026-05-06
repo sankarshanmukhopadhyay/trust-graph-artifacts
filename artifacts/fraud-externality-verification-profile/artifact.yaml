@@ -1,0 +1,48 @@
+id: ttg-artifact-v030-05
+title: Fraud Externality Verification Profile
+status: draft
+source:
+  essay_title: Fraud as an Externality of Missing Infrastructure
+  essay_url: https://thetrustgraph.substack.com/p/fraud-as-an-externality-of-missing
+  published_date: '2026-05-05'
+signal:
+  tier: priority
+classification:
+  artifact_type:
+  - tsmm-native-package
+  - control-model
+  domain:
+  - profile
+  - fraud
+  - verification
+  - registries
+  - issuer-accountability
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+  - auditability
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-05-06'
+  last_updated: '2026-05-06'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  package_path: profiles/fraud-externality-verification-profile
+  tsmm_version: v0.20.0

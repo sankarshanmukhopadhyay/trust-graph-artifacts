@@ -1,0 +1,101 @@
+{
+  "packageId": "ttg.pattern.runtime.authority.envelope",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.authority-envelope-completeness",
+      "type": "admissibility-check",
+      "description": "Require technical actor, accountable controller, principal, mandate, scope, policy version, evidence reference, revocation state, and redress route."
+    },
+    {
+      "id": "control.execution-time-revocation-check",
+      "type": "freshness-check",
+      "description": "Check authority and mandate status at the moment the operational effect is requested."
+    },
+    {
+      "id": "control.scope-bound-effect",
+      "type": "effect-constraint",
+      "description": "Deny or route actions whose requested effect exceeds the temporal, jurisdictional, transactional, or risk scope in the envelope."
+    },
+    {
+      "id": "control.redress-route-required",
+      "type": "contestability",
+      "description": "Require a challenge, reversal, or remediation route for consequential actions."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.runtime.authority.envelope",
+      "rules": [
+        "Require technical actor, accountable controller, principal, mandate, scope, policy version, evidence reference, revocation state, and redress route.",
+        "Check authority and mandate status at the moment the operational effect is requested.",
+        "Deny or route actions whose requested effect exceeds the temporal, jurisdictional, transactional, or risk scope in the envelope.",
+        "Require a challenge, reversal, or remediation route for consequential actions."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.identity-authority-substitution",
+      "type": "authority-gap",
+      "description": "A named or authenticated agent is treated as authorized without mandate validation."
+    },
+    {
+      "id": "threat.stale-runtime-authority",
+      "type": "revocation-gap",
+      "description": "The action executes after mandate expiry, suspension, or revocation."
+    },
+    {
+      "id": "threat.unbounded-operational-effect",
+      "type": "scope-gap",
+      "description": "The requested operation exceeds the envelope but is still executed."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

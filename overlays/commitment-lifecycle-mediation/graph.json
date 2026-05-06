@@ -1,0 +1,229 @@
+{
+  "graphId": "ttg.overlay.commitment.lifecycle.mediation",
+  "label": "Commitment Lifecycle Mediation Overlay",
+  "description": "Cross-cutting overlay for commitment drift, conflict, breach, reconciliation, revocation, and retirement.",
+  "profile": "overlay",
+  "contexts": [
+    "context.commitment.lifecycle.mediation"
+  ],
+  "nodes": [
+    {
+      "id": "context.commitment.lifecycle.mediation",
+      "type": "TrustDomain",
+      "label": "Commitment Lifecycle Mediation Overlay",
+      "description": "Cross-cutting overlay for commitment drift, conflict, breach, reconciliation, revocation, and retirement."
+    },
+    {
+      "id": "profile.commitment.lifecycle.mediation",
+      "type": "AssuranceProfile",
+      "label": "Commitment Lifecycle Mediation Overlay",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "overlay"
+      }
+    },
+    {
+      "id": "policy.commitment.lifecycle.mediation",
+      "type": "Policy",
+      "label": "Commitment Lifecycle Mediation Overlay Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "When Machines Make Commitments"
+      }
+    },
+    {
+      "id": "entity.commitment-steward",
+      "type": "GovernanceAuthority",
+      "label": "Commitment Steward",
+      "description": "Owner of lifecycle mediation and escalation",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.commitment-agent",
+      "type": "Agent",
+      "label": "Commitment Agent",
+      "description": "Machine actor operating under the commitment",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.counterparty",
+      "type": "RelyingParty",
+      "label": "Counterparty",
+      "description": "Affected or relying party",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.lifecycle-monitor",
+      "type": "Verifier",
+      "label": "Lifecycle Monitor",
+      "description": "System monitoring drift, conflict, and fulfillment state",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.commitment.lifecycle.record",
+      "type": "EvidenceBundle",
+      "label": "Commitment Lifecycle Mediation Overlay Evidence",
+      "description": "Cross-cutting overlay for commitment drift, conflict, breach, reconciliation, revocation, and retirement.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.commitment.lifecycle.mediation",
+      "type": "Assessment",
+      "label": "Commitment Lifecycle Mediation Overlay Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.commitment.lifecycle-mediation",
+      "type": "TrustDecision",
+      "label": "Commitment Lifecycle Mediation Overlay Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.commitment.lifecycle.mediation.allow",
+      "type": "Effect",
+      "label": "Continue mediated commitment",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.commitment.lifecycle.mediation.review",
+      "type": "Effect",
+      "label": "Escalate lifecycle conflict",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.commitment.lifecycle.mediation.deny",
+      "type": "Effect",
+      "label": "Suspend or retire commitment",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "commitment-lifecycle-mediation.edge.context-profile",
+      "type": "anchors",
+      "from": "context.commitment.lifecycle.mediation",
+      "to": "profile.commitment.lifecycle.mediation",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.commitment.lifecycle.mediation",
+      "to": "policy.commitment.lifecycle.mediation",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.context-policy",
+      "type": "governs",
+      "from": "context.commitment.lifecycle.mediation",
+      "to": "policy.commitment.lifecycle.mediation",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.commitment.lifecycle.mediation",
+      "to": "verification.commitment.lifecycle.mediation",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.commitment.lifecycle.mediation",
+      "to": "decision.commitment.lifecycle-mediation",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.commitment.lifecycle.record"
+      ]
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.commitment.lifecycle-mediation",
+      "to": "evidence.commitment.lifecycle.record",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.commitment.lifecycle-mediation",
+      "to": "effect.commitment.lifecycle.mediation.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.decision-review",
+      "type": "produces",
+      "from": "decision.commitment.lifecycle-mediation",
+      "to": "effect.commitment.lifecycle.mediation.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.commitment.lifecycle-mediation",
+      "to": "effect.commitment.lifecycle.mediation.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.actor-profile",
+      "type": "authorizes",
+      "from": "entity.commitment-steward",
+      "to": "profile.commitment.lifecycle.mediation",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.commitment-steward-governs",
+      "type": "governs",
+      "from": "entity.commitment-steward",
+      "to": "policy.commitment.lifecycle.mediation",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.counterparty-relies",
+      "type": "reliesOn",
+      "from": "entity.counterparty",
+      "to": "evidence.commitment.lifecycle.record",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "commitment-lifecycle-mediation.edge.lifecycle-monitor-assesses",
+      "type": "assesses",
+      "from": "entity.lifecycle-monitor",
+      "to": "profile.commitment.lifecycle.mediation",
+      "description": "Verifier assesses package conformance."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "When Machines Make Commitments",
+    "packageSlug": "commitment-lifecycle-mediation"
+  }
+}

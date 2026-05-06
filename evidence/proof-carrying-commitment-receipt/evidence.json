@@ -1,0 +1,66 @@
+{
+  "packageId": "ttg.evidence.model.proof.carrying.commitment.receipt",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.proof-carrying-commitment.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Evidence model that records why a machine-generated commitment was authorized, what terms were bound, which constraints were evaluated, and how it can be challenged or reconciled.",
+      "supportsRefs": [
+        "policy.proof.carrying.commitment.receipt",
+        "decision.proof-carrying-commitment",
+        "control.commitment-receipt-completeness",
+        "control.execution-attestation-present",
+        "control.reliance-record-required",
+        "control.contestability-route-required"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.proof.carrying.commitment.receipt",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.commitment-receipt-completeness",
+        "control.execution-attestation-present",
+        "control.reliance-record-required",
+        "control.contestability-route-required"
+      ],
+      "inputRefs": [
+        "artifact.proof.carrying.commitment.receipt",
+        "evidence.proof-carrying-commitment.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.proof-carrying-commitment",
+      "policyRef": "policy.proof.carrying.commitment.receipt",
+      "verificationRefs": [
+        "verification.proof.carrying.commitment.receipt"
+      ],
+      "effectRefs": [
+        "effect.proof.carrying.commitment.receipt.allow",
+        "effect.proof.carrying.commitment.receipt.review",
+        "effect.proof.carrying.commitment.receipt.deny"
+      ],
+      "requiredFields": [
+        "commitment_id",
+        "technical_actor",
+        "accountable_controller",
+        "principal",
+        "mandate_reference",
+        "policy_version",
+        "commitment_terms",
+        "activation_conditions",
+        "constraint_checks",
+        "authority_validation",
+        "revocation_state",
+        "execution_attestation",
+        "counterparty_reliance",
+        "reconciliation_route",
+        "contestability_route"
+      ]
+    }
+  ]
+}

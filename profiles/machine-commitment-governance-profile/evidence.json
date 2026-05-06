@@ -1,0 +1,60 @@
+{
+  "packageId": "ttg.profile.machine.commitment.governance.profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.machine.commitment.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Governance profile for machine-generated commitments that create institutional obligations, reliance, or future-state expectations.",
+      "supportsRefs": [
+        "policy.machine.commitment.governance.profile",
+        "decision.machine.commitment.admissibility",
+        "control.commitment-authority-binding",
+        "control.intent-binding-schema",
+        "control.proof-carrying-commitment",
+        "control.reconciliation-route-required"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.machine.commitment.governance.profile",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.commitment-authority-binding",
+        "control.intent-binding-schema",
+        "control.proof-carrying-commitment",
+        "control.reconciliation-route-required"
+      ],
+      "inputRefs": [
+        "artifact.machine.commitment.governance.profile",
+        "evidence.machine.commitment.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.machine.commitment.admissibility",
+      "policyRef": "policy.machine.commitment.governance.profile",
+      "verificationRefs": [
+        "verification.machine.commitment.governance.profile"
+      ],
+      "effectRefs": [
+        "effect.machine.commitment.governance.profile.allow",
+        "effect.machine.commitment.governance.profile.review",
+        "effect.machine.commitment.governance.profile.deny"
+      ],
+      "requiredFields": [
+        "commitment_id",
+        "delegated_authority",
+        "commitment_terms",
+        "activation_conditions",
+        "constraint_checks",
+        "execution_attestation",
+        "counterparty_reliance",
+        "reconciliation_route",
+        "contestability_route"
+      ]
+    }
+  ]
+}

@@ -77,3 +77,76 @@ crosswalk:
   receipts:
   - gradient_exploitation_signal
   - execution_authority_state
+- essay:
+    title: The Authority Gap
+    url: https://thetrustgraph.substack.com/p/the-authority-gap
+    publishedDate: '2026-05-06'
+  claim: Agentic systems become governable only when identity is wrapped by runtime
+    authority, mandate, scope, revocation state, evidence, and redress.
+  artifacts:
+  - patterns/runtime-authority-envelope
+  - patterns/agent-mandate-envelope
+  - evidence/execution-time-delegation
+  receipts:
+  - authority_envelope
+  - execution_authority_state
+  - decision
+- essay:
+    title: When Machines Make Commitments
+    url: https://thetrustgraph.substack.com/p/when-machines-make-commitments
+    publishedDate: '2026-05-05'
+  claim: Machine-generated commitments require proof-carrying authority, lifecycle
+    mediation, reconciliation, and contestability before they induce institutional
+    reliance.
+  artifacts:
+  - profiles/machine-commitment-governance-profile
+  - evidence/proof-carrying-commitment-receipt
+  - overlays/commitment-lifecycle-mediation
+  receipts:
+  - proof_carrying_commitment
+  - commitment_lifecycle
+  - decision
+- essay:
+    title: Fraud as an Externality of Missing Infrastructure
+    url: https://thetrustgraph.substack.com/p/fraud-as-an-externality-of-missing
+    publishedDate: '2026-05-05'
+  claim: Fraud cost is externalized when identity, claims, provenance, issuer authority,
+    registry governance, and anti-capture controls are not verifiable.
+  artifacts:
+  - profiles/fraud-externality-verification-profile
+  - profiles/trust-registry-governance-model
+  - profiles/digital-credential-verification-policy-playbook
+  receipts:
+  - fraud_externality_assessment
+  - issuer_accountability
+  - registry_governance
+- essay:
+    title: Before the Graph
+    url: https://thetrustgraph.substack.com/p/before-the-graph
+    publishedDate: '2026-04-13'
+  claim: Digital governance fails when inference substitutes for verifiable identity,
+    claims, authority, and provenance, then demands more legibility instead of better
+    verification.
+  artifacts:
+  - patterns/inference-substitution-gap
+  - patterns/legibility-trap-detector
+  - patterns/control-plane-shift-detection
+  receipts:
+  - inference_substitution_assessment
+  - legibility_trap_signal
+  - decision
+- essay:
+    title: Governance for High-Risk Digital Infrastructure
+    url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+    publishedDate: '2026-04-08'
+  claim: 'High-risk digital infrastructure requires architectural governance: traceability,
+    reversibility, delegation boundaries, contestability, auditability, and constitutional
+    controls embedded inside the system.'
+  artifacts:
+  - profiles/high-risk-digital-infrastructure-governance-profile
+  - overlays/constitutional-digital-infrastructure-controls
+  - evidence/high-risk-governance-assurance-record
+  receipts:
+  - high_risk_governance_assurance
+  - constitutional_boundary_attestation
+  - decision

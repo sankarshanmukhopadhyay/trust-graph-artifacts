@@ -1,0 +1,134 @@
+{
+  "graphId": "ttg.overlay.constitutional.digital.infrastructure.controls",
+  "label": "Constitutional Digital Infrastructure Controls Overlay",
+  "description": "Overlay for non-derogable constraints in high-risk digital infrastructure, including rights to context, contestability, reversibility, explanation, and human authority.",
+  "profile": "overlay",
+  "contexts": [
+    "context.constitutional.digital.infrastructure.controls"
+  ],
+  "nodes": [
+    {
+      "id": "context.constitutional.digital.infrastructure.controls",
+      "type": "TrustDomain",
+      "label": "Constitutional Digital Infrastructure Controls Overlay",
+      "description": "Overlay for non-derogable constraints in high-risk digital infrastructure, including rights to context, contestability, reversibility, explanation, and human authority."
+    },
+    {
+      "id": "profile.constitutional.digital.infrastructure.controls",
+      "type": "AssuranceProfile",
+      "label": "Constitutional Digital Infrastructure Controls Overlay",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "overlay"
+      }
+    },
+    {
+      "id": "policy.constitutional.digital.infrastructure.controls",
+      "type": "Policy",
+      "label": "Constitutional Digital Infrastructure Controls Overlay Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Governance for High-Risk Digital Infrastructure"
+      }
+    },
+    {
+      "id": "entity.constitutional-authority",
+      "type": "GovernanceAuthority",
+      "label": "Constitutional Authority",
+      "description": "Authority defining non-derogable governance constraints",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.system-operator",
+      "type": "GovernanceAuthority",
+      "label": "System Operator",
+      "description": "Operator required to enforce constraints inside the architecture",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Party protected by non-derogable controls",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.auditor",
+      "type": "Verifier",
+      "label": "Auditor",
+      "description": "Evaluator of constitutional boundary compliance",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.constitutional.boundary.attestation",
+      "type": "EvidenceBundle",
+      "label": "Constitutional Digital Infrastructure Controls Overlay Evidence",
+      "description": "Overlay for non-derogable constraints in high-risk digital infrastructure, including rights to context, contestability, reversibility, explanation, and human authority.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.constitutional.digital.infrastructure.controls",
+      "type": "Assessment",
+      "label": "Constitutional Digital Infrastructure Controls Overlay Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.constitutional.infrastructure.boundary",
+      "type": "TrustDecision",
+      "label": "Constitutional Digital Infrastructure Controls Overlay Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.constitutional.digital.infrastructure.controls.allow",
+      "type": "Effect",
+      "label": "Permit under constitutional controls",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.constitutional.digital.infrastructure.controls.review",
+      "type": "Effect",
+      "label": "Escalate rights-sensitive operation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.constitutional.digital.infrastructure.controls.deny",
+      "type": "Effect",
+      "label": "Block prohibited automation",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "Governance for High-Risk Digital Infrastructure",
+    "packageSlug": "constitutional-digital-infrastructure-controls"
+  }
+}

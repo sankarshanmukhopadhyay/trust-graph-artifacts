@@ -1,0 +1,35 @@
+{
+  "record_id": "example-record_id",
+  "system_id": "example-system_id",
+  "system_risk_classification": "example-system_risk_classification",
+  "consequence_analysis": {
+    "status": "present"
+  },
+  "coupling_analysis": {
+    "status": "present"
+  },
+  "interpretive_authority_analysis": {
+    "status": "present"
+  },
+  "dependency_lock_in_assessment": {
+    "status": "present"
+  },
+  "delegation_boundary_declaration": {
+    "status": "present"
+  },
+  "reversibility_proof": {
+    "status": "present"
+  },
+  "contestability_proof": {
+    "status": "present"
+  },
+  "governance_log_reference": "example-governance_log_reference",
+  "public_oversight_record": {
+    "status": "present"
+  },
+  "independent_audit_reference": {
+    "status": "present"
+  },
+  "remediation_route": "example-remediation_route",
+  "timestamp": "example-timestamp"
+}

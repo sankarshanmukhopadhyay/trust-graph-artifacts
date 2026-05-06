@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.runtime.authority.envelope",
+  "title": "Runtime Authority Envelope",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "The Authority Gap",
+    "url": "https://thetrustgraph.substack.com/p/the-authority-gap",
+    "publishedDate": "2026-05-06"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "agents",
+    "authority",
+    "mandates",
+    "execution-time-governance"
+  ],
+  "notes": [
+    "Runtime governance primitive that binds agent action to accountable authority, mandate, scope, policy, revocation state, evidence, and redress before operational effects are finalized."
+  ]
+}

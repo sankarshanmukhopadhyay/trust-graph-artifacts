@@ -1,0 +1,56 @@
+{
+  "packageId": "ttg.pattern.legibility.trap.detector",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.legibility.trap.signal",
+      "artifactType": "decision-receipt",
+      "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure.",
+      "supportsRefs": [
+        "policy.legibility.trap.detector",
+        "decision.legibility.trap",
+        "control.proxy-expansion-detection",
+        "control.user-burden-shift",
+        "control.context-suppression-check",
+        "control.verification-alternative-required"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.legibility.trap.detector",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.proxy-expansion-detection",
+        "control.user-burden-shift",
+        "control.context-suppression-check",
+        "control.verification-alternative-required"
+      ],
+      "inputRefs": [
+        "artifact.legibility.trap.detector",
+        "evidence.legibility.trap.signal"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.legibility.trap",
+      "policyRef": "policy.legibility.trap.detector",
+      "verificationRefs": [
+        "verification.legibility.trap.detector"
+      ],
+      "effectRefs": [
+        "effect.legibility.trap.detector.allow",
+        "effect.legibility.trap.detector.review",
+        "effect.legibility.trap.detector.deny"
+      ],
+      "requiredFields": [
+        "proxy_expansion_signal",
+        "user_burden_assessment",
+        "context_suppression_signal",
+        "verification_alternative",
+        "contestability_route"
+      ]
+    }
+  ]
+}

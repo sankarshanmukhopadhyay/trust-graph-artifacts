@@ -1,0 +1,236 @@
+{
+  "graphId": "ttg.evidence.model.high.risk.governance.assurance.record",
+  "label": "High-Risk Governance Assurance Record",
+  "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.high.risk.governance.assurance.record"
+  ],
+  "nodes": [
+    {
+      "id": "context.high.risk.governance.assurance.record",
+      "type": "TrustDomain",
+      "label": "High-Risk Governance Assurance Record",
+      "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure."
+    },
+    {
+      "id": "profile.high.risk.governance.assurance.record",
+      "type": "AssuranceProfile",
+      "label": "High-Risk Governance Assurance Record",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "evidence-model"
+      }
+    },
+    {
+      "id": "policy.high.risk.governance.assurance.record",
+      "type": "Policy",
+      "label": "High-Risk Governance Assurance Record Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Governance for High-Risk Digital Infrastructure"
+      }
+    },
+    {
+      "id": "entity.system-operator",
+      "type": "GovernanceAuthority",
+      "label": "System Operator",
+      "description": "Institution accountable for evidence production",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.auditor",
+      "type": "Verifier",
+      "label": "Assurance Verifier",
+      "description": "Independent or internal assessor",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Party protected by assurance requirements",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.oversight-body",
+      "type": "GovernanceAuthority",
+      "label": "Oversight Body",
+      "description": "Governance actor with review or enforcement authority",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.high-risk.governance.record",
+      "type": "EvidenceBundle",
+      "label": "High-Risk Governance Assurance Record Evidence",
+      "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.high.risk.governance.assurance.record",
+      "type": "Assessment",
+      "label": "High-Risk Governance Assurance Record Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.high-risk.assurance.record",
+      "type": "TrustDecision",
+      "label": "High-Risk Governance Assurance Record Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.allow",
+      "type": "Effect",
+      "label": "Accept high-risk assurance record",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.review",
+      "type": "Effect",
+      "label": "Request assurance remediation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.deny",
+      "type": "Effect",
+      "label": "Reject insufficient assurance",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "high-risk-governance-assurance-record.edge.context-profile",
+      "type": "anchors",
+      "from": "context.high.risk.governance.assurance.record",
+      "to": "profile.high.risk.governance.assurance.record",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.high.risk.governance.assurance.record",
+      "to": "policy.high.risk.governance.assurance.record",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.context-policy",
+      "type": "governs",
+      "from": "context.high.risk.governance.assurance.record",
+      "to": "policy.high.risk.governance.assurance.record",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.high.risk.governance.assurance.record",
+      "to": "verification.high.risk.governance.assurance.record",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.high.risk.governance.assurance.record",
+      "to": "decision.high-risk.assurance.record",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.high-risk.governance.record"
+      ]
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.high-risk.assurance.record",
+      "to": "evidence.high-risk.governance.record",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.high-risk.assurance.record",
+      "to": "effect.high.risk.governance.assurance.record.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.decision-review",
+      "type": "produces",
+      "from": "decision.high-risk.assurance.record",
+      "to": "effect.high.risk.governance.assurance.record.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.high-risk.assurance.record",
+      "to": "effect.high.risk.governance.assurance.record.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.actor-profile",
+      "type": "authorizes",
+      "from": "entity.system-operator",
+      "to": "profile.high.risk.governance.assurance.record",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.system-operator-governs",
+      "type": "governs",
+      "from": "entity.system-operator",
+      "to": "policy.high.risk.governance.assurance.record",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.auditor-assesses",
+      "type": "assesses",
+      "from": "entity.auditor",
+      "to": "profile.high.risk.governance.assurance.record",
+      "description": "Verifier assesses package conformance."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.affected-party-relies",
+      "type": "reliesOn",
+      "from": "entity.affected-party",
+      "to": "evidence.high-risk.governance.record",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "high-risk-governance-assurance-record.edge.oversight-body-governs",
+      "type": "governs",
+      "from": "entity.oversight-body",
+      "to": "policy.high.risk.governance.assurance.record",
+      "description": "Governance authority owns or constrains policy."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Governance for High-Risk Digital Infrastructure",
+    "packageSlug": "high-risk-governance-assurance-record"
+  }
+}

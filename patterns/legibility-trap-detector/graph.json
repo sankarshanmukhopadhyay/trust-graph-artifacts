@@ -1,0 +1,229 @@
+{
+  "graphId": "ttg.pattern.legibility.trap.detector",
+  "label": "Legibility Trap Detector Pattern",
+  "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure.",
+  "profile": "pattern",
+  "contexts": [
+    "context.legibility.trap.detector"
+  ],
+  "nodes": [
+    {
+      "id": "context.legibility.trap.detector",
+      "type": "TrustDomain",
+      "label": "Legibility Trap Detector Pattern",
+      "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure."
+    },
+    {
+      "id": "profile.legibility.trap.detector",
+      "type": "AssuranceProfile",
+      "label": "Legibility Trap Detector Pattern",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.legibility.trap.detector",
+      "type": "Policy",
+      "label": "Legibility Trap Detector Pattern Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Before the Graph"
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Person or organization whose behavior is made more legible to machines",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.platform",
+      "type": "RegistryService",
+      "label": "Platform",
+      "description": "Digital service expanding proxies or machine-readable burdens",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.governance-authority",
+      "type": "GovernanceAuthority",
+      "label": "Governance Authority",
+      "description": "Authority responsible for limiting extraction and requiring verification alternatives",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.assessor",
+      "type": "Verifier",
+      "label": "Assessor",
+      "description": "Evaluator of proxy expansion and verification alternatives",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.legibility.trap.signal",
+      "type": "EvidenceBundle",
+      "label": "Legibility Trap Detector Pattern Evidence",
+      "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.legibility.trap.detector",
+      "type": "Assessment",
+      "label": "Legibility Trap Detector Pattern Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.legibility.trap",
+      "type": "TrustDecision",
+      "label": "Legibility Trap Detector Pattern Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.allow",
+      "type": "Effect",
+      "label": "Approve verification replacement",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.review",
+      "type": "Effect",
+      "label": "Escalate legibility burden",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.deny",
+      "type": "Effect",
+      "label": "Block proxy expansion",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "legibility-trap-detector.edge.context-profile",
+      "type": "anchors",
+      "from": "context.legibility.trap.detector",
+      "to": "profile.legibility.trap.detector",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "legibility-trap-detector.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.legibility.trap.detector",
+      "to": "policy.legibility.trap.detector",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "legibility-trap-detector.edge.context-policy",
+      "type": "governs",
+      "from": "context.legibility.trap.detector",
+      "to": "policy.legibility.trap.detector",
+      "description": "Governance context governs the policy surface."
+    },
+    {
+      "id": "legibility-trap-detector.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.legibility.trap.detector",
+      "to": "verification.legibility.trap.detector",
+      "description": "Policy constrains the assessment surface."
+    },
+    {
+      "id": "legibility-trap-detector.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.legibility.trap.detector",
+      "to": "decision.legibility.trap",
+      "description": "Assessment informs the trust decision.",
+      "evidenceRefs": [
+        "evidence.legibility.trap.signal"
+      ]
+    },
+    {
+      "id": "legibility-trap-detector.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.legibility.trap",
+      "to": "evidence.legibility.trap.signal",
+      "description": "Decision produces or requires evidence."
+    },
+    {
+      "id": "legibility-trap-detector.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.legibility.trap",
+      "to": "effect.legibility.trap.detector.allow",
+      "description": "Trust decision produces a permitted operational effect."
+    },
+    {
+      "id": "legibility-trap-detector.edge.decision-review",
+      "type": "produces",
+      "from": "decision.legibility.trap",
+      "to": "effect.legibility.trap.detector.review",
+      "description": "Trust decision produces a review or escalation effect."
+    },
+    {
+      "id": "legibility-trap-detector.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.legibility.trap",
+      "to": "effect.legibility.trap.detector.deny",
+      "description": "Trust decision produces a denial or suspension effect."
+    },
+    {
+      "id": "legibility-trap-detector.edge.actor-profile",
+      "type": "authorizes",
+      "from": "entity.subject",
+      "to": "profile.legibility.trap.detector",
+      "description": "Primary actor participates in the governed package surface."
+    },
+    {
+      "id": "legibility-trap-detector.edge.subject-relies",
+      "type": "reliesOn",
+      "from": "entity.subject",
+      "to": "evidence.legibility.trap.signal",
+      "description": "Affected or relying party depends on evidence and contestability."
+    },
+    {
+      "id": "legibility-trap-detector.edge.governance-authority-governs",
+      "type": "governs",
+      "from": "entity.governance-authority",
+      "to": "policy.legibility.trap.detector",
+      "description": "Governance authority owns or constrains policy."
+    },
+    {
+      "id": "legibility-trap-detector.edge.assessor-assesses",
+      "type": "assesses",
+      "from": "entity.assessor",
+      "to": "profile.legibility.trap.detector",
+      "description": "Verifier assesses package conformance."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Before the Graph",
+    "packageSlug": "legibility-trap-detector"
+  }
+}

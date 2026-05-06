@@ -1,0 +1,48 @@
+id: ttg-artifact-v030-08
+title: High-Risk Digital Infrastructure Governance Profile
+status: draft
+source:
+  essay_title: Governance for High-Risk Digital Infrastructure
+  essay_url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
+  published_date: '2026-04-08'
+signal:
+  tier: priority
+classification:
+  artifact_type:
+  - tsmm-native-package
+  - control-model
+  domain:
+  - profile
+  - high-risk-systems
+  - digital-infrastructure
+  - assurance
+  - contestability
+governance:
+  authority: The Trust Graph
+  maintainers:
+  - Sankarshan Mukhopadhyay
+  maturity: experimental
+semantics:
+  affects:
+  - authority
+  - delegation
+  - enforcement
+  - revocation
+  - redress
+  - auditability
+relationships:
+  supersedes: null
+  superseded_by: null
+  related_artifacts: []
+validation:
+  has_examples: true
+  has_tests: true
+  conformance_level: draft
+lifecycle:
+  created: '2026-05-06'
+  last_updated: '2026-05-06'
+tsmm_binding:
+  enabled: true
+  binding_status: draft
+  package_path: profiles/high-risk-digital-infrastructure-governance-profile
+  tsmm_version: v0.20.0

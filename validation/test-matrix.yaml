@@ -13,40 +13,81 @@ checks:
   description: examples/invalid-graph.json fails graph validation
 - id: legitimacy-gap-detection
   status: implemented
-  description: Legitimacy gap packages fail when revocation or contestability controls are absent.
+  description: Legitimacy gap packages fail when revocation or contestability controls
+    are absent.
 - id: intermediary-traceability
   status: implemented
   description: Intermediary governance packages fail when source traceability is absent.
 - id: coalition-capture-risk
   status: implemented
-  description: Coalition legitimacy packages fail when capture risk or appealability is missing.
+  description: Coalition legitimacy packages fail when capture risk or appealability
+    is missing.
 - id: artifact-schema
   status: implemented
   description: Canonical artifact YAML validates against its domain artifact schema.
 - id: artifact-crosswalk-reference
   status: implemented
-  description: Essay-to-artifact crosswalk references resolve to existing artifact or package paths.
+  description: Essay-to-artifact crosswalk references resolve to existing artifact
+    or package paths.
 - id: provenance-coverage
   status: implemented
   description: Every active package directory has an entry in provenance/essay-source-map.yaml.
 - id: PAD-001
   status: planned
-  description: Artifact persistence is flagged when authority has expired, been revoked, or diverged from current legitimacy conditions.
+  description: Artifact persistence is flagged when authority has expired, been revoked,
+    or diverged from current legitimacy conditions.
 - id: PAD-002
   status: planned
-  description: Execution is blocked when preserved artifacts cannot prove current authority state.
+  description: Execution is blocked when preserved artifacts cannot prove current
+    authority state.
 - id: RLG-001
   status: planned
-  description: Revocation propagation lag is measured across execution nodes and maximum lag is recorded.
+  description: Revocation propagation lag is measured across execution nodes and maximum
+    lag is recorded.
 - id: RLG-002
   status: planned
   description: Fail-open execution during revocation propagation is flagged.
 - id: CRP-001
   status: planned
-  description: Upstream revocation invalidates or quarantines downstream delegations and derived authority.
+  description: Upstream revocation invalidates or quarantines downstream delegations
+    and derived authority.
 - id: GES-001
   status: planned
-  description: Timing, routing, replay, and delegation signals are detected inside a revocation lag window.
+  description: Timing, routing, replay, and delegation signals are detected inside
+    a revocation lag window.
 - id: GES-002
   status: planned
-  description: Gradient exploitation signal receipts do not overclaim actor intent without independent evidence.
+  description: Gradient exploitation signal receipts do not overclaim actor intent
+    without independent evidence.
+- id: authority-envelope-runtime-completeness
+  status: planned
+  description: Authority envelope checks require actor, controller, principal, mandate,
+    scope, revocation state, decision receipt, and redress route.
+- id: machine-commitment-proof-carrying
+  status: planned
+  description: Machine commitment checks require terms, delegated authority, activation
+    conditions, execution attestation, and reconciliation route.
+- id: commitment-lifecycle-mediation
+  status: planned
+  description: Commitment lifecycle checks detect drift, conflict, breach, reconciliation,
+    and retirement state.
+- id: fraud-externality-verification
+  status: planned
+  description: Fraud externality checks validate issuer authorization, claim provenance,
+    registry governance, dispute route, and anti-capture controls.
+- id: inference-substitution-gap
+  status: planned
+  description: Inference substitution checks classify inferred versus verified identity,
+    claim, authority, and provenance inputs.
+- id: legibility-trap-detection
+  status: planned
+  description: Legibility trap checks detect proxy expansion, user burden shift, context
+    suppression, and missing verification alternatives.
+- id: high-risk-governance-assurance
+  status: planned
+  description: High-risk infrastructure checks require classification, traceability,
+    reversibility, contestability, auditability, and boundary controls.
+- id: constitutional-boundary-controls
+  status: planned
+  description: Constitutional boundary checks validate non-derogable rights, prohibited
+    inference categories, human-led decision classes, and audit access.

@@ -45,6 +45,16 @@
 - [Decision provenance](decision-provenance.md)
 - [Walkthrough](walkthrough.md)
 
+
+## v0.3.0 authority, commitments, and high-risk infrastructure
+
+- [Runtime authority envelopes](authority-envelope.md)
+- [Machine commitments](machine-commitments.md)
+- [Fraud externalities](fraud-externalities.md)
+- [From inference to verification](inference-to-verification.md)
+- [High-risk digital infrastructure governance](high-risk-digital-infrastructure.md)
+- [Constitutional digital infrastructure controls](constitutional-controls.md)
+
 ## Temporal governance and revocation dynamics
 
 - [Temporal governance](temporal-governance.md)

@@ -1,0 +1,134 @@
+{
+  "graphId": "ttg.evidence.model.high.risk.governance.assurance.record",
+  "label": "High-Risk Governance Assurance Record",
+  "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.high.risk.governance.assurance.record"
+  ],
+  "nodes": [
+    {
+      "id": "context.high.risk.governance.assurance.record",
+      "type": "TrustDomain",
+      "label": "High-Risk Governance Assurance Record",
+      "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure."
+    },
+    {
+      "id": "profile.high.risk.governance.assurance.record",
+      "type": "AssuranceProfile",
+      "label": "High-Risk Governance Assurance Record",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "evidence-model"
+      }
+    },
+    {
+      "id": "policy.high.risk.governance.assurance.record",
+      "type": "Policy",
+      "label": "High-Risk Governance Assurance Record Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Governance for High-Risk Digital Infrastructure"
+      }
+    },
+    {
+      "id": "entity.system-operator",
+      "type": "GovernanceAuthority",
+      "label": "System Operator",
+      "description": "Institution accountable for evidence production",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.auditor",
+      "type": "Verifier",
+      "label": "Assurance Verifier",
+      "description": "Independent or internal assessor",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Party protected by assurance requirements",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.oversight-body",
+      "type": "GovernanceAuthority",
+      "label": "Oversight Body",
+      "description": "Governance actor with review or enforcement authority",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.high-risk.governance.record",
+      "type": "EvidenceBundle",
+      "label": "High-Risk Governance Assurance Record Evidence",
+      "description": "Evidence model for recording risk classification, boundary conditions, reversibility, contestability, auditability, oversight, and remediation for high-risk infrastructure.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.high.risk.governance.assurance.record",
+      "type": "Assessment",
+      "label": "High-Risk Governance Assurance Record Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.high-risk.assurance.record",
+      "type": "TrustDecision",
+      "label": "High-Risk Governance Assurance Record Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.allow",
+      "type": "Effect",
+      "label": "Accept high-risk assurance record",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.review",
+      "type": "Effect",
+      "label": "Request assurance remediation",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.high.risk.governance.assurance.record.deny",
+      "type": "Effect",
+      "label": "Reject insufficient assurance",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "Governance for High-Risk Digital Infrastructure",
+    "packageSlug": "high-risk-governance-assurance-record"
+  }
+}

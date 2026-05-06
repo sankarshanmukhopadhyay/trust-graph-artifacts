@@ -1,0 +1,13 @@
+{
+  "packageId": "ttg.profile.high.risk.digital.infrastructure.governance.profile",
+  "expectedValidation": {
+    "package": "pass",
+    "graph": "pass",
+    "invalidExample": "fail"
+  },
+  "evidenceChecks": [
+    "decisionReceipts present when trustDecisions exist",
+    "control set is non-empty for policy-bearing packages",
+    "required evidence fields are declared for assurance review"
+  ]
+}

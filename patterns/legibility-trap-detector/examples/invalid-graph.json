@@ -1,0 +1,134 @@
+{
+  "graphId": "ttg.pattern.legibility.trap.detector",
+  "label": "Legibility Trap Detector Pattern",
+  "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure.",
+  "profile": "pattern",
+  "contexts": [
+    "context.legibility.trap.detector"
+  ],
+  "nodes": [
+    {
+      "id": "context.legibility.trap.detector",
+      "type": "TrustDomain",
+      "label": "Legibility Trap Detector Pattern",
+      "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure."
+    },
+    {
+      "id": "profile.legibility.trap.detector",
+      "type": "AssuranceProfile",
+      "label": "Legibility Trap Detector Pattern",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.legibility.trap.detector",
+      "type": "Policy",
+      "label": "Legibility Trap Detector Pattern Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Before the Graph"
+      }
+    },
+    {
+      "id": "entity.subject",
+      "type": "Subject",
+      "label": "Subject",
+      "description": "Person or organization whose behavior is made more legible to machines",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.platform",
+      "type": "RegistryService",
+      "label": "Platform",
+      "description": "Digital service expanding proxies or machine-readable burdens",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.governance-authority",
+      "type": "GovernanceAuthority",
+      "label": "Governance Authority",
+      "description": "Authority responsible for limiting extraction and requiring verification alternatives",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.assessor",
+      "type": "Verifier",
+      "label": "Assessor",
+      "description": "Evaluator of proxy expansion and verification alternatives",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.legibility.trap.signal",
+      "type": "EvidenceBundle",
+      "label": "Legibility Trap Detector Pattern Evidence",
+      "description": "Pattern for detecting when institutions respond to inference failure by demanding more machine-readable behavior instead of replacing inference with verification infrastructure.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.legibility.trap.detector",
+      "type": "Assessment",
+      "label": "Legibility Trap Detector Pattern Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.legibility.trap",
+      "type": "TrustDecision",
+      "label": "Legibility Trap Detector Pattern Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.allow",
+      "type": "Effect",
+      "label": "Approve verification replacement",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.review",
+      "type": "Effect",
+      "label": "Escalate legibility burden",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.legibility.trap.detector.deny",
+      "type": "Effect",
+      "label": "Block proxy expansion",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "Before the Graph",
+    "packageSlug": "legibility-trap-detector"
+  }
+}

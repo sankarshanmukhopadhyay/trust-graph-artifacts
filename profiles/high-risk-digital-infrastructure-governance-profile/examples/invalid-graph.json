@@ -1,0 +1,144 @@
+{
+  "graphId": "ttg.profile.high.risk.digital.infrastructure.governance.profile",
+  "label": "High-Risk Digital Infrastructure Governance Profile",
+  "description": "Profile for digital infrastructure whose consequence intensity, systemic coupling, interpretive authority, or dependency lock-in requires governance inside the architecture.",
+  "profile": "profile",
+  "contexts": [
+    "context.high.risk.digital.infrastructure.governance.profile"
+  ],
+  "nodes": [
+    {
+      "id": "context.high.risk.digital.infrastructure.governance.profile",
+      "type": "TrustDomain",
+      "label": "High-Risk Digital Infrastructure Governance Profile",
+      "description": "Profile for digital infrastructure whose consequence intensity, systemic coupling, interpretive authority, or dependency lock-in requires governance inside the architecture."
+    },
+    {
+      "id": "profile.high.risk.digital.infrastructure.governance.profile",
+      "type": "AssuranceProfile",
+      "label": "High-Risk Digital Infrastructure Governance Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "profile"
+      }
+    },
+    {
+      "id": "policy.high.risk.digital.infrastructure.governance.profile",
+      "type": "Policy",
+      "label": "High-Risk Digital Infrastructure Governance Profile Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "Governance for High-Risk Digital Infrastructure"
+      }
+    },
+    {
+      "id": "entity.system-operator",
+      "type": "GovernanceAuthority",
+      "label": "System Operator",
+      "description": "Institution accountable for the high-risk infrastructure",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.automated-component",
+      "type": "Agent",
+      "label": "Automated Component",
+      "description": "System component exercising operational or interpretive authority",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Person or organization subject to consequential effects",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.auditor",
+      "type": "Verifier",
+      "label": "Independent Auditor",
+      "description": "Assessor of traceability, reversibility, contestability, and boundary controls",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.public-oversight-body",
+      "type": "GovernanceAuthority",
+      "label": "Public Oversight Body",
+      "description": "Oversight actor for civic or systemic accountability",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.high-risk.governance.assurance",
+      "type": "EvidenceBundle",
+      "label": "High-Risk Digital Infrastructure Governance Profile Evidence",
+      "description": "Profile for digital infrastructure whose consequence intensity, systemic coupling, interpretive authority, or dependency lock-in requires governance inside the architecture.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.high.risk.digital.infrastructure.governance.profile",
+      "type": "Assessment",
+      "label": "High-Risk Digital Infrastructure Governance Profile Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.high-risk.infrastructure.governance",
+      "type": "TrustDecision",
+      "label": "High-Risk Digital Infrastructure Governance Profile Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.high.risk.digital.infrastructure.governance.profile.allow",
+      "type": "Effect",
+      "label": "Operate under high-risk controls",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.high.risk.digital.infrastructure.governance.profile.review",
+      "type": "Effect",
+      "label": "Escalate to oversight",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.high.risk.digital.infrastructure.governance.profile.deny",
+      "type": "Effect",
+      "label": "Suspend high-risk operation",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "sourceEssay": "Governance for High-Risk Digital Infrastructure",
+    "packageSlug": "high-risk-digital-infrastructure-governance-profile"
+  }
+}

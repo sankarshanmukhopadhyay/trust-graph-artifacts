@@ -1,0 +1,29 @@
+{
+  "id": "ttg.profile.fraud.externality.verification.profile",
+  "title": "Fraud Externality Verification Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Fraud as an Externality of Missing Infrastructure",
+    "url": "https://thetrustgraph.substack.com/p/fraud-as-an-externality-of-missing",
+    "publishedDate": "2026-05-05"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "profile",
+    "fraud",
+    "verification",
+    "registries",
+    "issuer-accountability"
+  ],
+  "notes": [
+    "Profile that treats fraud as a cost externality produced by missing verification infrastructure, weak issuer accountability, registry weakness, and governance capture."
+  ]
+}

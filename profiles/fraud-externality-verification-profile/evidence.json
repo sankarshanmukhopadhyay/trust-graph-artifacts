@@ -1,0 +1,58 @@
+{
+  "packageId": "ttg.profile.fraud.externality.verification.profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.fraud.externality.assessment",
+      "artifactType": "decision-receipt",
+      "description": "Profile that treats fraud as a cost externality produced by missing verification infrastructure, weak issuer accountability, registry weakness, and governance capture.",
+      "supportsRefs": [
+        "policy.fraud.externality.verification.profile",
+        "decision.fraud.externality.verification",
+        "control.issuer-authorization",
+        "control.claim-provenance-verification",
+        "control.registry-governance-accountability",
+        "control.externality-reduction-evidence"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.fraud.externality.verification.profile",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "",
+      "controlRefs": [
+        "control.issuer-authorization",
+        "control.claim-provenance-verification",
+        "control.registry-governance-accountability",
+        "control.externality-reduction-evidence"
+      ],
+      "inputRefs": [
+        "artifact.fraud.externality.verification.profile",
+        "evidence.fraud.externality.assessment"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.fraud.externality.verification",
+      "policyRef": "policy.fraud.externality.verification.profile",
+      "verificationRefs": [
+        "verification.fraud.externality.verification.profile"
+      ],
+      "effectRefs": [
+        "effect.fraud.externality.verification.profile.allow",
+        "effect.fraud.externality.verification.profile.review",
+        "effect.fraud.externality.verification.profile.deny"
+      ],
+      "requiredFields": [
+        "issuer_authorization",
+        "claim_provenance",
+        "registry_admission_policy",
+        "removal_policy",
+        "dispute_route",
+        "anti_capture_controls",
+        "externality_reduction_evidence"
+      ]
+    }
+  ]
+}

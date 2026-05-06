@@ -1,20 +1,40 @@
-version: 0.2.0
+version: 0.3.0
 status: active
-purpose: Map Trust Graph expressive governance terms to TSMM v0.20 decision/effect vocabulary.
+purpose: Map Trust Graph expressive governance terms to TSMM v0.20 decision/effect
+  vocabulary.
 terms:
-  - local_term: degrade
-    canonical_tsmm_term: downgrade
-    status: legacy_alias
-    guidance: Use downgrade for machine-readable decision outcomes; retain degrade only in narrative labels or mapped legacy artifacts.
-  - local_term: escalate
-    canonical_tsmm_term: review
-    status: mapped_alias
-    guidance: Use review for decision outcome; use escalate for operational routing where a review path is invoked.
-  - local_term: quarantine
-    canonical_tsmm_term: suspend
-    status: contextual_alias
-    guidance: Use suspend for authority/effect state; use restricted where the effect remains partially admissible.
-  - local_term: block
-    canonical_tsmm_term: deny
-    status: contextual_alias
-    guidance: Use deny for the decision outcome and blocked for the effect admission state.
+- local_term: degrade
+  canonical_tsmm_term: downgrade
+  status: legacy_alias
+  guidance: Use downgrade for machine-readable decision outcomes; retain degrade only
+    in narrative labels or mapped legacy artifacts.
+- local_term: escalate
+  canonical_tsmm_term: review
+  status: mapped_alias
+  guidance: Use review for decision outcome; use escalate for operational routing
+    where a review path is invoked.
+- local_term: quarantine
+  canonical_tsmm_term: suspend
+  status: contextual_alias
+  guidance: Use suspend for authority/effect state; use restricted where the effect
+    remains partially admissible.
+- local_term: block
+  canonical_tsmm_term: deny
+  status: contextual_alias
+  guidance: Use deny for the decision outcome and blocked for the effect admission
+    state.
+- local_term: reconcile
+  canonical_tsmm_term: review
+  status: mapped_alias
+  guidance: Use review for the trust decision outcome; use reconcile for commitment
+    lifecycle repair after conflict, drift, or breach.
+- local_term: retire
+  canonical_tsmm_term: suspend
+  status: mapped_alias
+  guidance: Use suspend for machine-readable effect state; use retire where lifecycle
+    closure is final and non-operational.
+- local_term: constitutional_boundary
+  canonical_tsmm_term: deny
+  status: mapped_alias
+  guidance: Use deny when non-derogable infrastructure constraints prohibit an automated
+    operation.

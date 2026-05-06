@@ -1,0 +1,104 @@
+{
+  "packageId": "ttg.profile.machine.commitment.governance.profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.commitment-authority-binding",
+      "type": "authority-check",
+      "description": "Bind every commitment to an accountable controller, delegated mandate, policy version, and commitment class."
+    },
+    {
+      "id": "control.intent-binding-schema",
+      "type": "schema-check",
+      "description": "Represent terms, activation conditions, constraints, counterparties, and reliance assumptions in machine-verifiable form."
+    },
+    {
+      "id": "control.proof-carrying-commitment",
+      "type": "evidence-capture",
+      "description": "Require a proof-carrying commitment receipt before external reliance is permitted."
+    },
+    {
+      "id": "control.reconciliation-route-required",
+      "type": "lifecycle-control",
+      "description": "Declare reconciliation, dispute, and retirement paths for commitments that conflict, drift, or fail."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.machine.commitment.governance.profile",
+      "rules": [
+        "Bind every commitment to an accountable controller, delegated mandate, policy version, and commitment class.",
+        "Represent terms, activation conditions, constraints, counterparties, and reliance assumptions in machine-verifiable form.",
+        "Require a proof-carrying commitment receipt before external reliance is permitted.",
+        "Declare reconciliation, dispute, and retirement paths for commitments that conflict, drift, or fail."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.commitment-without-authority",
+      "type": "authority-gap",
+      "description": "A machine creates reliance without an accountable authority chain."
+    },
+    {
+      "id": "threat.commitment-drift",
+      "type": "lifecycle-gap",
+      "description": "The commitment changes meaning or feasibility without mediation."
+    },
+    {
+      "id": "threat.unreviewable-breach",
+      "type": "redress-gap",
+      "description": "A breached machine commitment lacks reconciliation or dispute handling."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "issued",
+      "active",
+      "modified",
+      "suspended",
+      "revoked",
+      "retired",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.issue",
+        "from": "state.issued",
+        "to": "state.active",
+        "trigger": "admission and publication",
+        "actor": "maintainer or policy authority",
+        "evidenceRequirement": "manifest plus schema present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "state.active",
+        "to": "state.suspended",
+        "trigger": "challenge, incident, or evidence gap",
+        "actor": "policy authority or assessor",
+        "evidenceRequirement": "issue or review record"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawn or non-conformance confirmed",
+        "actor": "policy authority",
+        "evidenceRequirement": "revocation record with rationale"
+      },
+      {
+        "id": "transition.retire",
+        "from": "state.active",
+        "to": "state.retired",
+        "trigger": "supersession or replacement by stronger artifact",
+        "actor": "maintainer",
+        "evidenceRequirement": "changelog and migration note"
+      }
+    ]
+  },
+  "notes": [
+    "This package is authored as TSMM-native source, not as a legacy secondary representation.",
+    "Controls and lifecycle semantics are extracted from the package-local TSMM model."
+  ]
+}

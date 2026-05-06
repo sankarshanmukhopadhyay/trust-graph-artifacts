@@ -16,3 +16,10 @@ This repository treats The Trust Graph essays as design pressure, not as executa
 4. Provide schema coverage and example instances.
 5. Require receipts for each execution path.
 6. Map risks to controls and tests.
+
+
+## v0.3.0 artifact admission rule
+
+A new artifact should be added when an essay introduces a control surface that can produce testable evidence. v0.3.0 applies that rule to authority envelopes, machine commitments, fraud externalities, inference substitution, legibility traps, high-risk infrastructure, and constitutional boundaries.
+
+The admission test is whether the artifact can answer at least one of the following in machine-verifiable form: who had authority, what scope applied, what evidence was evaluated, what lifecycle state controlled execution, what effect was produced, and what route exists for challenge, reversal, reconciliation, or remediation.
