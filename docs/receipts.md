@@ -1,7 +1,7 @@
 ---
 owner: maintainers
-last_reviewed: 2026-04-27
-applicable_version: v0.18.0
+last_reviewed: 2026-05-06
+applicable_version: v0.2.0
 ---
 
 # Receipts
@@ -80,3 +80,16 @@ A TGA decision receipt is conformant when it can answer five audit questions wit
 3. Which policies and evidence were evaluated?
 4. Was revocation checked against a named source at a specific time?
 5. What effect was admitted, blocked, restricted, or routed for review?
+
+
+## TSMM v0.20 profile hardening
+
+As of v0.2.0, TGA decision receipts are explicitly treated as TSMM-profiled receipts with Trust Graph provenance extensions. The schema `schemas/receipts/decision_receipt.schema.json` remains the active receipt contract. The schema `schemas/receipts/tsmm_profiled_decision_receipt.schema.json` makes the profile boundary visible for implementers and reviewers.
+
+A receipt should not use essay provenance as runtime evidence. `sourceEssays` explains why a governance pattern was modeled; `evidenceRefs` identifies what was actually evaluated at execution time.
+
+For vocabulary alignment, see:
+
+- `docs/crosswalks/outcome-vocabulary.md`
+- `docs/crosswalks/assurance-posture.md`
+- `docs/crosswalks/tsmm-decision-receipt-profile.md`

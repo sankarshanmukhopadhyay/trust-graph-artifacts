@@ -1,0 +1,35 @@
+{
+  "receipt_id": "urn:tis:receipt:decision:composition-001",
+  "decision_type": "defer",
+  "subject": "urn:tga:subject:agent-effect-request:001",
+  "decision_maker": "urn:tga:authority:commons-operator",
+  "policy_reference": "urn:tga:policy:effect-admission-review",
+  "evaluated_artifacts": [
+    "urn:tga:evidence:authority-status",
+    "urn:tga:evidence:revocation-check",
+    "urn:tga:evidence:review-path"
+  ],
+  "authority_boundary": "urn:tga:boundary:agent-to-control-plane",
+  "assurance": {
+    "profile": "TSMM posture mapped through TGA v0.2.0",
+    "level": "operational",
+    "external_assurance_level": "not-asserted"
+  },
+  "result": {
+    "status": "deferred",
+    "allowed_actions": [],
+    "prohibited_actions": [
+      "publish-governance-state-without-review"
+    ],
+    "conditions": [
+      "human-review-required"
+    ]
+  },
+  "timestamps": {
+    "decided_at": "2026-05-06T10:00:00Z"
+  },
+  "evidence": [
+    "urn:tga:evidence:authority-status",
+    "urn:tga:evidence:revocation-check"
+  ]
+}

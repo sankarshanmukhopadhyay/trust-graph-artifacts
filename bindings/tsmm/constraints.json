@@ -1,0 +1,31 @@
+{
+  "bindingId": "tga-tsmm-v0.20.0",
+  "version": "0.2.0",
+  "constraints": [
+    {
+      "id": "tga-tsmm-boundary-001",
+      "level": "MUST",
+      "statement": "TGA packages MUST preserve TSMM as the semantic authority for active trust-system modeling."
+    },
+    {
+      "id": "tga-tsmm-boundary-002",
+      "level": "MUST",
+      "statement": "TGA decision receipts MUST be treated as TSMM-profiled receipts with Trust Graph provenance extensions, not as a competing decision receipt model."
+    },
+    {
+      "id": "tga-tsmm-boundary-003",
+      "level": "SHOULD",
+      "statement": "Machine-readable decision outcomes SHOULD use TSMM canonical terms. Local Trust Graph vocabulary MAY be retained when mapped in registries/outcome-vocabulary.yaml."
+    },
+    {
+      "id": "tga-tsmm-boundary-004",
+      "level": "MUST",
+      "statement": "The assuranceLevel field in active TGA receipts represents TSMM profile posture. Executable assurance rigor MUST be represented by an explicit assurance profile such as TIS AL1-AL4 when required."
+    },
+    {
+      "id": "tga-tsmm-boundary-005",
+      "level": "MUST",
+      "statement": "Essay provenance MUST NOT be treated as runtime evidence. Runtime evidence belongs in evidenceRefs or TIS-compatible evidence artifacts."
+    }
+  ]
+}

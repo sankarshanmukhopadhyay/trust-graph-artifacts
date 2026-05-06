@@ -56,3 +56,10 @@ Without this distinction, governance repositories often become confusing mixes o
 - incomplete schemas
 
 This repository tries to avoid that. It gives developers a clean path from concept to model to validation.
+
+
+## v0.2.0 alignment note
+
+Trust Graph Artifacts now declares an explicit TSMM v0.20.0 binding. TSMM is the semantic authority for trust-system concepts. TGA is the interpretation and provenance corpus. TIS is the executable artifact contract layer when validated artifacts need to cross repository or organizational boundaries.
+
+This means a TGA package should be reviewed as a TSMM-native model with Trust Graph provenance, not as an independent trust-system meta-model.

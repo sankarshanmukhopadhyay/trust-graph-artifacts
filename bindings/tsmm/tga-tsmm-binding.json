@@ -1,0 +1,52 @@
+{
+  "bindingId": "tga-tsmm-v0.20.0",
+  "bindingType": "interpretation-corpus",
+  "sourceModel": "trust-systems-meta-model",
+  "sourceVersion": "v0.20.0",
+  "targetRepository": "trust-graph-artifacts",
+  "targetVersion": "v0.2.0",
+  "status": "experimental",
+  "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.20 semantics while preserving essay provenance as a repository-specific extension.",
+  "owns": [
+    "essay provenance",
+    "package interpretation",
+    "Trust Graph artifact corpus",
+    "governance failure pattern catalog",
+    "TGA-specific provenance extension fields"
+  ],
+  "doesNotOwn": [
+    "TSMM core semantics",
+    "generic decision receipt semantics",
+    "cross-repo executable artifact contracts",
+    "TIS AL1-AL4 assurance semantics"
+  ],
+  "maps": [
+    {
+      "tgaSurface": "package graph",
+      "tsmmConcept": "trust-system graph",
+      "notes": "TGA graph.json files are TSMM-native interpretations of essay-derived governance problems."
+    },
+    {
+      "tgaSurface": "decision receipt",
+      "tsmmConcept": "runtime trust decision receipt",
+      "notes": "TGA extends the TSMM receipt core with sourceEssays and optional signature material."
+    },
+    {
+      "tgaSurface": "sourceEssays",
+      "tsmmConcept": "provenance/evidence context",
+      "notes": "Essay provenance explains design motivation and must not be confused with runtime evidence."
+    },
+    {
+      "tgaSurface": "assuranceLevel",
+      "tsmmConcept": "profile posture",
+      "notes": "Values minimal, operational, assured, and agentic are posture labels, not TIS assurance levels."
+    }
+  ],
+  "compatibleWith": [
+    "trust-systems-meta-model v0.20.0",
+    "trust-infrastructure-schemas v0.8.0 via TSMM/TIS mapping"
+  ],
+  "validation": [
+    "python3 scripts/validate_tsmm_native.py"
+  ]
+}

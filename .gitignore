@@ -1,0 +1,13 @@
+# Operating system artifacts
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Build outputs
+dist/
+build/
+*.zip

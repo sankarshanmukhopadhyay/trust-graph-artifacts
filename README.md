@@ -11,6 +11,16 @@ The repository does not treat essays as executable truth. It treats them as a so
 
 The result is a developer-facing library that moves from governance claims to concrete system shapes, machine-readable constraints, valid/invalid examples, and evidence-bearing decisions.
 
+## TSMM v0.20 alignment
+
+Version `0.2.0` makes the repository boundary explicit:
+
+- **TSMM v0.20.0** is the semantic authority for trust-system modeling.
+- **Trust Infrastructure Schemas v0.8.0** is the executable artifact contract layer where cross-repo validation, registry publication, or assurance-level semantics are required.
+- **TGA** is the Trust Graph interpretation corpus: it turns essay-derived governance pressure into TSMM-native packages, receipts, examples, and provenance overlays.
+
+Start with [`docs/tsmm-v0.20-alignment.md`](docs/tsmm-v0.20-alignment.md) and [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md) for the current alignment contract.
+
 ## What is in this repository now
 
 The active repository surface has three coherent layers:

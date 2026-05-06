@@ -1,0 +1,51 @@
+{
+  "receiptId": "urn:tga:receipt:decision:composition-001",
+  "receiptType": "decision-receipt",
+  "timestamp": "2026-05-06T10:00:00Z",
+  "sourceEssays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    }
+  ],
+  "decisionId": "urn:tsmm:decision:composition-001",
+  "subjectRef": "urn:tga:subject:agent-effect-request:001",
+  "requestingActorRef": "urn:tga:actor:delegated-agent:001",
+  "authorityBasis": {
+    "authorityRef": "urn:tga:authority:commons-operator",
+    "status": "active",
+    "source": "urn:tga:registry:commons-governance-authority",
+    "scope": "effect_admission",
+    "delegationRefs": [
+      "urn:tga:delegation:agent-operator-001"
+    ]
+  },
+  "policyRefs": [
+    "urn:tga:policy:effect-admission-review"
+  ],
+  "evidenceRefs": [
+    "urn:tga:evidence:authority-status",
+    "urn:tga:evidence:revocation-check",
+    "urn:tga:evidence:review-path"
+  ],
+  "boundaryRef": "urn:tga:boundary:agent-to-control-plane",
+  "decision": {
+    "outcome": "review",
+    "reason": "The agent holds active delegated authority, but the requested effect crosses a control-plane boundary requiring escalation.",
+    "decisionType": "transform"
+  },
+  "effect": {
+    "effectRef": "urn:tga:effect:publish-governance-state",
+    "admission": "queued-for-review",
+    "controlPlaneStep": "effect_admission",
+    "transformationApplied": "route_to_human_review"
+  },
+  "revocationStateChecked": {
+    "status": "fresh-active",
+    "checkedAt": "2026-05-06T09:59:55Z",
+    "sourceRef": "urn:tga:revocation-source:commons-authority-registry"
+  },
+  "assuranceLevel": "operational",
+  "reviewPath": "https://review.trustgraph.example/composition-001"
+}

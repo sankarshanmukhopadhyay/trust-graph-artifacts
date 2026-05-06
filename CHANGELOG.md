@@ -4,6 +4,29 @@ All notable repository changes are documented here. The repository treats change
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-06
+
+### Added
+
+- Added formal TGA ↔ TSMM v0.20 binding metadata under `bindings/tsmm/`.
+- Added TSMM alignment, decision receipt profile, layering, outcome vocabulary, assurance posture, and TGA → TSMM → TIS composition documentation.
+- Added `registries/outcome-vocabulary.yaml` and `registries/assurance-vocabulary.yaml`.
+- Added TSMM-profiled decision receipt schema and example.
+- Added a TSMM/TIS-aligned TGA decision composition example.
+
+### Changed
+
+- Updated repository version to `0.2.0`.
+- Updated active registry and artifact schema version markers.
+- Updated decision receipt schema `$id` to a release-pinned repository URL.
+- Refreshed receipt and decision-provenance documentation metadata for v0.2.0.
+
+### Fixed
+
+- Removed local `.DS_Store` artifacts.
+- Added `.gitignore` coverage for operating-system files and build outputs.
+
+
 ### Added
 
 - Expanded `scripts/validate_tsmm_native.py` to validate provenance coverage, selected semantic gates, canonical artifact YAML files, and essay-to-artifact crosswalk references.

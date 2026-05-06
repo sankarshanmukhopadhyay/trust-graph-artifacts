@@ -1,0 +1,14 @@
+{
+  "packageId": "patterns/authority-legitimacy-validation",
+  "packageType": "pattern",
+  "tgaVersion": "0.2.0",
+  "tsmmTarget": "v0.20.0",
+  "purpose": "Model a runtime authority check where a delegated agent requests an operational effect that crosses a control-plane boundary.",
+  "sourceEssays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    }
+  ]
+}

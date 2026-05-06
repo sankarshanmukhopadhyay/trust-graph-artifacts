@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/tga/schemas/receipts/decision_receipt.schema.json",
-  "title": "TGA Decision Receipt Schema",
-  "description": "TSMM-aligned decision receipt for Trust Graph Artifacts. The core runtime assurance fields mirror the TSMM decision receipt model; TGA adds essay provenance and optional signature material as an evidence extension.",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/v0.2.0/schemas/receipts/decision_receipt.schema.json",
+  "title": "TGA TSMM-Profiled Decision Receipt Schema",
+  "description": "TSMM v0.20-aligned decision receipt profile for Trust Graph Artifacts. The core runtime assurance fields mirror the TSMM decision receipt model; TGA adds essay provenance, interpretation metadata, and optional signature material as a provenance extension.",
   "type": "object",
   "required": [
     "receiptId",
@@ -23,109 +23,214 @@
     "reviewPath"
   ],
   "properties": {
-    "receiptId": { "$ref": "#/$defs/idString" },
-    "receiptType": { "const": "decision-receipt" },
-    "timestamp": { "type": "string", "format": "date-time" },
+    "receiptId": {
+      "$ref": "#/$defs/idString"
+    },
+    "receiptType": {
+      "const": "decision-receipt"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
     "sourceEssays": {
       "type": "array",
       "description": "TGA provenance anchors that explain which Trust Graph essays motivated the receipt design or interpretation.",
-      "items": { "$ref": "#/$defs/sourceEssay" },
+      "items": {
+        "$ref": "#/$defs/sourceEssay"
+      },
       "minItems": 1
     },
     "signature": {
       "type": "object",
       "description": "Optional proof envelope for repository examples, signed receipts, or external verification pipelines.",
-      "required": ["type", "value"],
+      "required": [
+        "type",
+        "value"
+      ],
       "properties": {
-        "type": { "type": "string" },
-        "value": { "type": "string" },
-        "verificationMethod": { "type": "string" }
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     },
-    "decisionId": { "$ref": "#/$defs/idString" },
-    "subjectRef": { "$ref": "#/$defs/idString" },
-    "requestingActorRef": { "$ref": "#/$defs/idString" },
+    "decisionId": {
+      "$ref": "#/$defs/idString"
+    },
+    "subjectRef": {
+      "$ref": "#/$defs/idString"
+    },
+    "requestingActorRef": {
+      "$ref": "#/$defs/idString"
+    },
     "authorityBasis": {
       "type": "object",
-      "required": ["authorityRef", "status", "source"],
+      "required": [
+        "authorityRef",
+        "status",
+        "source"
+      ],
       "properties": {
-        "authorityRef": { "$ref": "#/$defs/idString" },
+        "authorityRef": {
+          "$ref": "#/$defs/idString"
+        },
         "status": {
           "type": "string",
-          "enum": ["active", "revoked", "suspended", "expired"]
+          "enum": [
+            "active",
+            "revoked",
+            "suspended",
+            "expired"
+          ]
         },
-        "source": { "type": "string" },
-        "scope": { "type": "string" },
+        "source": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
         "delegationRefs": {
           "type": "array",
-          "items": { "$ref": "#/$defs/idString" }
+          "items": {
+            "$ref": "#/$defs/idString"
+          }
         },
-        "licenseRef": { "$ref": "#/$defs/idString" }
+        "licenseRef": {
+          "$ref": "#/$defs/idString"
+        }
       },
       "additionalProperties": false
     },
     "policyRefs": {
       "type": "array",
-      "items": { "$ref": "#/$defs/idString" },
+      "items": {
+        "$ref": "#/$defs/idString"
+      },
       "minItems": 1
     },
     "evidenceRefs": {
       "type": "array",
-      "items": { "$ref": "#/$defs/idString" },
+      "items": {
+        "$ref": "#/$defs/idString"
+      },
       "minItems": 1
     },
-    "boundaryRef": { "$ref": "#/$defs/idString" },
+    "boundaryRef": {
+      "$ref": "#/$defs/idString"
+    },
     "decision": {
       "type": "object",
-      "required": ["outcome", "reason"],
+      "required": [
+        "outcome",
+        "reason"
+      ],
       "properties": {
         "outcome": {
           "type": "string",
-          "enum": ["allow", "deny", "warn", "review", "downgrade", "suspend"]
+          "enum": [
+            "allow",
+            "deny",
+            "warn",
+            "review",
+            "downgrade",
+            "suspend"
+          ]
         },
-        "reason": { "type": "string" },
+        "reason": {
+          "type": "string"
+        },
         "decisionType": {
           "type": "string",
           "description": "Optional TGA interpretation class for essay-derived artifact analysis.",
-          "enum": ["accept", "reject", "transform", "propagate", "license", "revoke"]
+          "enum": [
+            "accept",
+            "reject",
+            "transform",
+            "propagate",
+            "license",
+            "revoke"
+          ]
         }
       },
       "additionalProperties": false
     },
     "effect": {
       "type": "object",
-      "required": ["effectRef", "admission"],
+      "required": [
+        "effectRef",
+        "admission"
+      ],
       "properties": {
-        "effectRef": { "$ref": "#/$defs/idString" },
+        "effectRef": {
+          "$ref": "#/$defs/idString"
+        },
         "admission": {
           "type": "string",
-          "enum": ["permitted", "blocked", "queued-for-review", "restricted"]
+          "enum": [
+            "permitted",
+            "blocked",
+            "queued-for-review",
+            "restricted"
+          ]
         },
-        "controlPlaneStep": { "type": "string" },
-        "transformationApplied": { "type": "string" }
+        "controlPlaneStep": {
+          "type": "string"
+        },
+        "transformationApplied": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     },
     "revocationStateChecked": {
       "type": "object",
-      "required": ["status", "checkedAt", "sourceRef"],
+      "required": [
+        "status",
+        "checkedAt",
+        "sourceRef"
+      ],
       "properties": {
         "status": {
           "type": "string",
-          "enum": ["fresh-active", "fresh-revoked", "stale", "unavailable"]
+          "enum": [
+            "fresh-active",
+            "fresh-revoked",
+            "stale",
+            "unavailable"
+          ]
         },
-        "checkedAt": { "type": "string", "format": "date-time" },
-        "sourceRef": { "$ref": "#/$defs/idString" }
+        "checkedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/idString"
+        }
       },
       "additionalProperties": false
     },
     "assuranceLevel": {
       "type": "string",
-      "enum": ["minimal", "operational", "assured", "agentic"]
+      "enum": [
+        "minimal",
+        "operational",
+        "assured",
+        "agentic"
+      ]
     },
-    "reviewPath": { "type": "string" },
-    "relatedEnvelopeRef": { "$ref": "#/$defs/idString" }
+    "reviewPath": {
+      "type": "string"
+    },
+    "relatedEnvelopeRef": {
+      "$ref": "#/$defs/idString"
+    }
   },
   "$defs": {
     "idString": {
@@ -134,11 +239,23 @@
     },
     "sourceEssay": {
       "type": "object",
-      "required": ["title", "url", "publishedDate"],
+      "required": [
+        "title",
+        "url",
+        "publishedDate"
+      ],
       "properties": {
-        "title": { "type": "string" },
-        "url": { "type": "string", "format": "uri" },
-        "publishedDate": { "type": "string", "format": "date" }
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publishedDate": {
+          "type": "string",
+          "format": "date"
+        }
       },
       "additionalProperties": false
     }

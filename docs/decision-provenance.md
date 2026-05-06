@@ -1,7 +1,7 @@
 ---
 owner: maintainers
-last_reviewed: 2026-04-27
-applicable_version: v0.18.0
+last_reviewed: 2026-05-06
+applicable_version: v0.2.0
 ---
 
 # Decision Provenance
@@ -30,3 +30,10 @@ TGA decision provenance now uses the same runtime assurance core as TSMM decisio
 TGA adds `sourceEssays` to preserve the intellectual provenance of each receipt design. This is intentionally separate from runtime evidence. Essays explain why a control surface matters; receipts prove what happened at execution time.
 
 This distinction keeps TGA aligned with TSMM while preserving the repository's role as an operational interpretation layer for The Trust Graph.
+
+
+## TSMM v0.20 alignment rule
+
+A TGA decision provenance record is valid when it can be interpreted as a TSMM runtime trust decision without losing authority, policy, evidence, revocation, assurance, effect, or review-path context. TGA-specific fields may add provenance and interpretive force, but they should not redefine TSMM semantics.
+
+Where an external executable artifact contract is needed, the decision can be projected into a TIS-compatible receipt using the composition pattern in `docs/crosswalks/tga-tsmm-tis-composition.md`.

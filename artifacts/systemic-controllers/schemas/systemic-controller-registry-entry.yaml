@@ -1,5 +1,5 @@
 id: systemic-controller-registry-entry
-version: 0.1.0
+version: 0.2.0
 type: object
 required:
 - controller_id

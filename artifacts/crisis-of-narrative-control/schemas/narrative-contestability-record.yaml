@@ -1,5 +1,5 @@
 id: narrative-contestability-record
-version: 0.1.0
+version: 0.2.0
 type: object
 required:
 - record_id

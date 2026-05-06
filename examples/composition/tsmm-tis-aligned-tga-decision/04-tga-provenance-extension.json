@@ -1,0 +1,17 @@
+{
+  "extension_id": "urn:tga:provenance-extension:composition-001",
+  "extends": "urn:tsmm:decision:composition-001",
+  "extension_type": "trust-graph-provenance",
+  "sourceEssays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    }
+  ],
+  "interpretation": {
+    "control_plane_shift": "Authority is evaluated at the execution boundary rather than presumed from actor identity.",
+    "governance_risk": "A delegated agent can hold plausible authority while still requiring effect-level review.",
+    "audit_rule": "Essay provenance explains why the pattern exists; runtime evidence proves what was checked."
+  }
+}

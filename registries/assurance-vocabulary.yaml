@@ -1,0 +1,17 @@
+version: 0.2.0
+status: active
+purpose: Distinguish TSMM posture labels from executable assurance rigor levels.
+postures:
+  - value: minimal
+    meaning: Basic model integrity and provenance are available.
+    likely_tis_floor: AL1
+  - value: operational
+    meaning: Runtime evidence, authority checks, and review path are represented.
+    likely_tis_floor: AL2
+  - value: assured
+    meaning: Independent assessment or stronger audit evidence is expected.
+    likely_tis_floor: AL3
+  - value: agentic
+    meaning: Agent-mediated execution context; not itself an assurance level.
+    likely_tis_floor: risk_based
+rule: TGA assuranceLevel values are TSMM profile posture values. Where executable assurance rigor is asserted, reference TIS AL1-AL4 or another explicit assurance profile.

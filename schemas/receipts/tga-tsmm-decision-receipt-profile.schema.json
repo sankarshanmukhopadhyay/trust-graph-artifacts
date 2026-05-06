@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/sankarshanmukhopadhyay/trust-graph-artifacts/v0.2.0/schemas/receipts/tga-tsmm-decision-receipt-profile.schema.json",
+  "title": "TGA TSMM v0.20 Decision Receipt Profile",
+  "description": "A TSMM v0.20 decision receipt core with Trust Graph Artifact provenance extensions. This schema exists to make the profile explicit without creating a competing receipt semantics layer.",
+  "type": "object",
+  "required": [
+    "receiptId",
+    "receiptType",
+    "timestamp",
+    "sourceEssays",
+    "decisionId",
+    "subjectRef",
+    "requestingActorRef",
+    "authorityBasis",
+    "policyRefs",
+    "evidenceRefs",
+    "boundaryRef",
+    "decision",
+    "effect",
+    "revocationStateChecked",
+    "assuranceLevel",
+    "reviewPath"
+  ],
+  "properties": {
+    "receiptId": {
+      "$ref": "#/$defs/idString"
+    },
+    "receiptType": {
+      "const": "decision-receipt"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceEssays": {
+      "type": "array",
+      "description": "TGA provenance anchors that explain which Trust Graph essays motivated the receipt design or interpretation.",
+      "items": {
+        "$ref": "#/$defs/sourceEssay"
+      },
+      "minItems": 1
+    },
+    "signature": {
+      "type": "object",
+      "description": "Optional proof envelope for repository examples, signed receipts, or external verification pipelines.",
+      "required": [
+        "type",
+        "value"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "decisionId": {
+      "$ref": "#/$defs/idString"
+    },
+    "subjectRef": {
+      "$ref": "#/$defs/idString"
+    },
+    "requestingActorRef": {
+      "$ref": "#/$defs/idString"
+    },
+    "authorityBasis": {
+      "type": "object",
+      "required": [
+        "authorityRef",
+        "status",
+        "source"
+      ],
+      "properties": {
+        "authorityRef": {
+          "$ref": "#/$defs/idString"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "revoked",
+            "suspended",
+            "expired"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "delegationRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/idString"
+          }
+        },
+        "licenseRef": {
+          "$ref": "#/$defs/idString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "policyRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/idString"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/idString"
+      },
+      "minItems": 1
+    },
+    "boundaryRef": {
+      "$ref": "#/$defs/idString"
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "outcome",
+        "reason"
+      ],
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "deny",
+            "warn",
+            "review",
+            "downgrade",
+            "suspend"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "decisionType": {
+          "type": "string",
+          "description": "Optional TGA interpretation class for essay-derived artifact analysis.",
+          "enum": [
+            "accept",
+            "reject",
+            "transform",
+            "propagate",
+            "license",
+            "revoke"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "effect": {
+      "type": "object",
+      "required": [
+        "effectRef",
+        "admission"
+      ],
+      "properties": {
+        "effectRef": {
+          "$ref": "#/$defs/idString"
+        },
+        "admission": {
+          "type": "string",
+          "enum": [
+            "permitted",
+            "blocked",
+            "queued-for-review",
+            "restricted"
+          ]
+        },
+        "controlPlaneStep": {
+          "type": "string"
+        },
+        "transformationApplied": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "revocationStateChecked": {
+      "type": "object",
+      "required": [
+        "status",
+        "checkedAt",
+        "sourceRef"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "fresh-active",
+            "fresh-revoked",
+            "stale",
+            "unavailable"
+          ]
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/idString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "assuranceLevel": {
+      "type": "string",
+      "enum": [
+        "minimal",
+        "operational",
+        "assured",
+        "agentic"
+      ]
+    },
+    "reviewPath": {
+      "type": "string"
+    },
+    "relatedEnvelopeRef": {
+      "$ref": "#/$defs/idString"
+    }
+  },
+  "$defs": {
+    "idString": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "sourceEssay": {
+      "type": "object",
+      "required": [
+        "title",
+        "url",
+        "publishedDate"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publishedDate": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

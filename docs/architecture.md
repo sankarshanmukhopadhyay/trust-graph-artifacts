@@ -62,3 +62,12 @@ The repository intentionally keeps two related provenance surfaces:
 - `provenance/essay-source-map.yaml` is the validator-enforced package provenance record. Every active package directory must appear there.
 
 When adding a new package, update both files. The validator enforces the package provenance map; the catalog remains the browsing index.
+
+
+## Layer 5: Cross-repo executable governance alignment
+
+As of v0.2.0, the active corpus is aligned with TSMM v0.20.0 and the TSMM/TIS split. TSMM owns semantic trust-system modeling. Trust Infrastructure Schemas owns executable artifact contracts where cross-repo validation, registry publication, or assurance-level semantics are needed. TGA owns the Trust Graph interpretation corpus and provenance extension layer.
+
+The active binding declaration is `bindings/tsmm/tga-tsmm-binding.json`. The binding constraints are `bindings/tsmm/constraints.json`.
+
+This prevents TGA from becoming a competing model authority while preserving its real value: turning governance failure patterns into reusable TSMM-native packages.

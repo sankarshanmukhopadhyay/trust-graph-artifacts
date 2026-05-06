@@ -1,0 +1,68 @@
+{
+  "receiptId": "urn:tga:receipt:decision:tsmm-profiled-001",
+  "receiptType": "decision-receipt",
+  "timestamp": "2026-04-27T09:00:00Z",
+  "sourceEssays": [
+    {
+      "title": "The Control Plane Has Already Shifted",
+      "url": "https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted",
+      "publishedDate": "2026-04-13"
+    },
+    {
+      "title": "The Commons After the Control Plane Shifts",
+      "url": "https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane",
+      "publishedDate": "2026-04-17"
+    },
+    {
+      "title": "Who Holds the License",
+      "url": "https://thetrustgraph.substack.com/p/who-holds-the-license",
+      "publishedDate": "2026-04-18"
+    }
+  ],
+  "signature": {
+    "type": "example-placeholder",
+    "value": "example-signature-placeholder",
+    "verificationMethod": "urn:tga:key:example"
+  },
+  "decisionId": "urn:tga:decision:tsmm-profiled-001",
+  "subjectRef": "urn:tga:subject:execution-request:001",
+  "requestingActorRef": "urn:tga:actor:delegated-agent:001",
+  "authorityBasis": {
+    "authorityRef": "urn:tga:receipt:authority:example",
+    "status": "active",
+    "source": "urn:tga:registry:commons-governance-authority",
+    "scope": "input_admission",
+    "delegationRefs": [
+      "urn:tga:receipt:delegation:example"
+    ],
+    "licenseRef": "urn:tga:receipt:licensing:example"
+  },
+  "policyRefs": [
+    "urn:tga:policy:commons-input-policy"
+  ],
+  "evidenceRefs": [
+    "urn:tga:evidence:declared-authority",
+    "urn:tga:evidence:revocation-status",
+    "urn:tga:evidence:contestability-path"
+  ],
+  "boundaryRef": "urn:tga:boundary:commons-to-ai-ingestion",
+  "decision": {
+    "outcome": "review",
+    "reason": "The requesting actor has authority evidence, but the effect crosses a control-plane boundary requiring explicit human-review escalation under the TSMM v0.20 profile.",
+    "decisionType": "reject"
+  },
+  "effect": {
+    "effectRef": "urn:tga:effect:input-admission",
+    "admission": "queued-for-review",
+    "controlPlaneStep": "execution_time_authority_check",
+    "transformationApplied": "none"
+  },
+  "revocationStateChecked": {
+    "status": "fresh-active",
+    "checkedAt": "2026-04-27T08:59:58Z",
+    "sourceRef": "urn:tga:revocation-source:commons-authority-registry"
+  },
+  "assuranceLevel": "operational",
+  "reviewPath": "https://review.trustgraph.example/tga/tsmm-profiled-001",
+  "relatedEnvelopeRef": "urn:tga:envelope:commons-moderation-001"
+}

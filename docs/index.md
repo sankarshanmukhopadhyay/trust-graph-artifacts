@@ -15,6 +15,18 @@
 - `authoring-model.md` — how to add or revise packages
 - `developer-guide.md` — local workflow and design review questions
 
+
+## TSMM v0.20 harmonization
+
+- [TSMM v0.20 alignment](tsmm-v0.20-alignment.md)
+- [TSMM binding](bindings/tsmm-binding.md)
+- [TGA ↔ TSMM alignment crosswalk](crosswalks/tsmm-alignment-crosswalk.md)
+- [TSMM / TIS / TGA layering](crosswalks/tsmm-tis-tga-layering.md)
+- [TSMM decision receipt profile](crosswalks/tsmm-decision-receipt-profile.md)
+- [Outcome vocabulary](crosswalks/outcome-vocabulary.md)
+- [Assurance posture](crosswalks/assurance-posture.md)
+- [TGA → TSMM → TIS composition](crosswalks/tga-tsmm-tis-composition.md)
+
 ## Governance and release
 
 - `control-plane-legitimacy.md` — design note for authority relocation, legitimacy gaps, intermediary governance, and governed licensing
