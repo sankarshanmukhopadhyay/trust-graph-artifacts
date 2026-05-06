@@ -1,3 +1,10 @@
+---
+title: High-risk digital infrastructure governance
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 5
+---
+
 # High-risk digital infrastructure governance
 
 ## Purpose

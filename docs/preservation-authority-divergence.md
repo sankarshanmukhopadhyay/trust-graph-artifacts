@@ -1,3 +1,10 @@
+---
+title: Preservation–Authority Divergence
+layout: default
+parent: Temporal governance
+nav_order: 3
+---
+
 # Preservation–Authority Divergence
 
 Preservation is not legitimacy.

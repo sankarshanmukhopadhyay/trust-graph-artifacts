@@ -2,6 +2,10 @@
 owner: maintainers
 last_reviewed: 2026-05-06
 applicable_version: v0.2.0
+title: Assurance Posture Crosswalk
+layout: default
+parent: TSMM alignment
+nav_order: 7
 ---
 
 # Assurance Posture Crosswalk

@@ -1,3 +1,10 @@
+---
+title: Constitutional digital infrastructure controls
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 6
+---
+
 # Constitutional digital infrastructure controls
 
 ## Purpose

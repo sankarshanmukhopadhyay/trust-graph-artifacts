@@ -1,3 +1,10 @@
+---
+title: Artifact Methodology
+layout: default
+parent: Executable governance
+nav_order: 1
+---
+
 # Artifact Methodology
 
 This repository treats The Trust Graph essays as design pressure, not as executable truth. Each artifact translates an essay-derived governance claim into TSMM-aligned structure, schema validation, examples, tests, and evidence receipts.

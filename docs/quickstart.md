@@ -1,3 +1,9 @@
+---
+title: Quickstart
+layout: default
+nav_order: 2
+---
+
 # Quickstart
 
 This repository is easiest to understand as a developer-facing library of TSMM-native trust-system packages.

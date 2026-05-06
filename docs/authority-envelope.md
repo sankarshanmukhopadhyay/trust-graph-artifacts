@@ -1,3 +1,10 @@
+---
+title: Runtime authority envelopes
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 1
+---
+
 # Runtime authority envelopes
 
 ## Purpose

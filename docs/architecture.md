@@ -1,3 +1,9 @@
+---
+title: Architecture
+layout: default
+nav_order: 3
+---
+
 # Architecture
 
 This repository has a deliberately simple architecture.

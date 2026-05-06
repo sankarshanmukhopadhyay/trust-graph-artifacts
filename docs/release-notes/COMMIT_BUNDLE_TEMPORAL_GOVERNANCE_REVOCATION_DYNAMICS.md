@@ -1,3 +1,10 @@
+---
+title: 'Commit Bundle: Temporal Governance and Revocation Dynamics'
+layout: default
+parent: Release notes
+nav_order: 100
+---
+
 # Commit Bundle: Temporal Governance and Revocation Dynamics
 
 ## Commit title

@@ -32,6 +32,28 @@ The active repository surface has three coherent layers:
 
 Together these layers make authority, delegation, enforcement, revocation, evidence, and auditability visible as repository structure rather than narrative intent.
 
+
+## Documentation site
+
+This repository is now prepared for publication with **Jekyll** and the **Just the Docs** theme without changing the repository release version. The Jekyll source is the repository root, while `docs/` remains the canonical documentation navigation surface.
+
+Publication files added for GitHub Pages readiness:
+
+- `_config.yml` — Just the Docs site configuration, search, navigation, callouts, and page defaults.
+- `Gemfile` — local and CI dependency contract for Jekyll, Just the Docs, remote theme support, and SEO tags.
+- `.github/workflows/pages.yml` — GitHub Actions workflow for building and deploying the site to Pages.
+- `index.md` — Jekyll homepage that routes readers into the documentation corpus.
+- `docs/jekyll-publication.md` — maintainer guidance for local preview, navigation discipline, and publication assurance.
+
+To preview locally:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+To publish on GitHub Pages, use **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+
 ## Start here
 
 Read these in order:

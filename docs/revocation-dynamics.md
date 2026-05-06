@@ -1,3 +1,10 @@
+---
+title: Revocation Dynamics
+layout: default
+parent: Temporal governance
+nav_order: 2
+---
+
 # Revocation Dynamics
 
 Revocation is not a flag. It is a distributed governance process.

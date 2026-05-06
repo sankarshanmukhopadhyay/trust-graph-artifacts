@@ -1,3 +1,10 @@
+---
+title: Methodology
+layout: default
+parent: Method and authoring
+nav_order: 1
+---
+
 # Methodology
 
 This repository exists at the boundary between a conceptual corpus and a modeling discipline.

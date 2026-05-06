@@ -2,6 +2,9 @@
 owner: maintainers
 last_reviewed: 2026-05-06
 applicable_version: v0.2.0
+title: TSMM v0.20 Alignment
+layout: default
+nav_order: 6
 ---
 
 # TSMM v0.20 Alignment

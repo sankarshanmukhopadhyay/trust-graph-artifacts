@@ -1,3 +1,9 @@
+---
+title: Package anatomy
+layout: default
+nav_order: 4
+---
+
 # Package anatomy
 
 Every package in this repository follows the same core shape.

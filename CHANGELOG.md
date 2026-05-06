@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added Jekyll/Just the Docs publication support without changing the repository release version.
+- Added `_config.yml`, `Gemfile`, `index.md`, and `.github/workflows/pages.yml` for GitHub Pages publication through GitHub Actions.
+- Added `docs/jekyll-publication.md` with maintainer guidance for local preview, navigation discipline, and assurance expectations.
+- Added Just the Docs front matter and sidebar structure across the documentation corpus.
+
+### Validation
+
+- Confirmed existing TSMM-native package validation still passes after documentation publication changes.
 All notable repository changes are documented here. The repository treats changelog entries as part of the governance evidence surface: they explain what changed, why it changed, and which validation surface was affected.
 
 ## [Unreleased]

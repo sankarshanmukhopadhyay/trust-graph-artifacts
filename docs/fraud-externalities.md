@@ -1,3 +1,10 @@
+---
+title: Fraud externalities
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 3
+---
+
 # Fraud externalities
 
 ## Purpose

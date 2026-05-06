@@ -1,3 +1,10 @@
+---
+title: Documentation
+layout: default
+nav_order: 1
+permalink: /docs/
+---
+
 # Documentation index
 
 ## Start here

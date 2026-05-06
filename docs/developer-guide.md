@@ -1,3 +1,10 @@
+---
+title: Developer guide
+layout: default
+parent: Method and authoring
+nav_order: 5
+---
+
 # Developer guide
 
 ## Local setup

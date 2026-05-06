@@ -1,3 +1,10 @@
+---
+title: Machine commitments
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 2
+---
+
 # Machine commitments
 
 ## Purpose

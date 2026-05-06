@@ -1,3 +1,10 @@
+---
+title: 'Commit bundle: control-plane legitimacy artifact set'
+layout: default
+parent: Release notes
+nav_order: 100
+---
+
 # Commit bundle: control-plane legitimacy artifact set
 
 ## Commit title

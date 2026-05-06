@@ -2,6 +2,10 @@
 owner: maintainers
 last_reviewed: 2026-05-06
 applicable_version: v0.2.0
+title: TGA → TSMM → TIS Composition
+layout: default
+parent: TSMM alignment
+nav_order: 4
 ---
 
 # TGA → TSMM → TIS Composition

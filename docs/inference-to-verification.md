@@ -1,3 +1,10 @@
+---
+title: From inference to verification
+layout: default
+parent: Authority, commitments, and high-risk governance
+nav_order: 4
+---
+
 # From inference to verification
 
 ## Purpose

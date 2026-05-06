@@ -1,3 +1,9 @@
+---
+title: TSMM and The Trust Graph
+layout: default
+nav_order: 5
+---
+
 # TSMM and The Trust Graph
 
 This repository only makes sense if the distinction between TSMM and The Trust Graph stays sharp.

@@ -1,3 +1,10 @@
+---
+title: Authoring model
+layout: default
+parent: Method and authoring
+nav_order: 4
+---
+
 # Authoring model
 
 This repository uses a simple authoring rule:

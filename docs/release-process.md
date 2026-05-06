@@ -1,3 +1,10 @@
+---
+title: Release Process
+layout: default
+parent: Governance and release
+nav_order: 2
+---
+
 # Release Process
 
 A release should include:

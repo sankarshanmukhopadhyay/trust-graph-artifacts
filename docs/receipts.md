@@ -2,6 +2,10 @@
 owner: maintainers
 last_reviewed: 2026-05-06
 applicable_version: v0.2.0
+title: Receipts
+layout: default
+parent: Executable governance
+nav_order: 4
 ---
 
 # Receipts

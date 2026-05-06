@@ -1,3 +1,10 @@
+---
+title: Control-plane legitimacy
+layout: default
+parent: Governance and release
+nav_order: 1
+---
+
 # Control-plane legitimacy
 
 ## Why this document exists

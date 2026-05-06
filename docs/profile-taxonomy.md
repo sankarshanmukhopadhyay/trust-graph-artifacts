@@ -1,3 +1,10 @@
+---
+title: Package taxonomy
+layout: default
+parent: Method and authoring
+nav_order: 3
+---
+
 # Package taxonomy
 
 Choosing the right package type is an architectural decision.

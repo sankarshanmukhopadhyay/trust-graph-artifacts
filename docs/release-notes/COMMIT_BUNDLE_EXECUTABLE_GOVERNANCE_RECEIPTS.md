@@ -1,3 +1,10 @@
+---
+title: GitHub Commit Content
+layout: default
+parent: Release notes
+nav_order: 100
+---
+
 # GitHub Commit Content
 
 ## Commit title

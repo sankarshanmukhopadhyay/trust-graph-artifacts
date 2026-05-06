@@ -1,3 +1,10 @@
+---
+title: Essay-to-TSMM Method
+layout: default
+parent: Method and authoring
+nav_order: 2
+---
+
 # Essay-to-TSMM Method
 
 ## Purpose

@@ -1,3 +1,10 @@
+---
+title: Temporal Governance
+layout: default
+parent: Temporal governance
+nav_order: 1
+---
+
 # Temporal Governance
 
 Temporal governance treats authority as a time-sensitive execution condition rather than a static property of a credential, license, delegation, or archived artifact.
