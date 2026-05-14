@@ -1,0 +1,159 @@
+{
+  "graphId": "ttg.profile.public.agent.contestability",
+  "label": "Public Agent Contestability Profile",
+  "description": "Profile for agentic public-service actions that require accountable controller binding, administrative authority traceability, human review, redress, and contestable decision receipts.",
+  "profile": "profile",
+  "contexts": [
+    "context.public.agent.contestability"
+  ],
+  "nodes": [
+    {
+      "id": "context.public.agent.contestability",
+      "type": "TrustDomain",
+      "label": "Public Agent Contestability",
+      "description": "Domain for public or public-service agentic decisions with administrative consequences."
+    },
+    {
+      "id": "profile.public.agent.contestability",
+      "type": "AssuranceProfile",
+      "label": "Public Agent Contestability Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "profile"
+      }
+    },
+    {
+      "id": "authority.public-controller",
+      "type": "GovernanceAuthority",
+      "label": "Public Accountable Controller",
+      "description": "Public body or delegated public-service controller responsible for the agent action."
+    },
+    {
+      "id": "agent.public-service-agent",
+      "type": "Agent",
+      "label": "Public Service Agent",
+      "description": "Automated actor that routes, recommends, approves, denies, or modifies a public-service workflow."
+    },
+    {
+      "id": "subject.affected-person",
+      "type": "Subject",
+      "label": "Affected Person",
+      "description": "Person or organization affected by the agent-mediated public action."
+    },
+    {
+      "id": "policy.public-agent-contestability",
+      "type": "Policy",
+      "label": "Public Agent Contestability Policy",
+      "attributes": {
+        "decisionMode": "fail-closed-or-escalate",
+        "sourceEssay": "The Authority Gap"
+      }
+    },
+    {
+      "id": "verifier.authority-envelope-check",
+      "type": "Verifier",
+      "label": "Authority Envelope Verifier",
+      "description": "Verifier that checks mandate, authority state, scope, redress, and reviewability before public effect."
+    },
+    {
+      "id": "evidence.contestable-public-decision-receipt",
+      "type": "EvidenceBundle",
+      "label": "Contestable Public Decision Receipt",
+      "attributes": {
+        "artifactType": "authority-envelope-receipt"
+      }
+    },
+    {
+      "id": "decision.public-agent-action",
+      "type": "TrustDecision",
+      "label": "Public Agent Action Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "escalate",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.public-agent-action",
+      "type": "Effect",
+      "label": "Public-Service Operational Effect",
+      "attributes": {
+        "effectClass": "administrative"
+      }
+    },
+    {
+      "id": "effect.human-review",
+      "type": "Effect",
+      "label": "Human Review or Redress Route",
+      "attributes": {
+        "effectClass": "redress"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "public-agent.edge.context-profile",
+      "type": "anchors",
+      "from": "context.public.agent.contestability",
+      "to": "profile.public.agent.contestability"
+    },
+    {
+      "id": "public-agent.edge.controller-policy",
+      "type": "governs",
+      "from": "authority.public-controller",
+      "to": "policy.public-agent-contestability"
+    },
+    {
+      "id": "public-agent.edge.agent-profile",
+      "type": "operates",
+      "from": "agent.public-service-agent",
+      "to": "profile.public.agent.contestability"
+    },
+    {
+      "id": "public-agent.edge.policy-verifier",
+      "type": "constrains",
+      "from": "policy.public-agent-contestability",
+      "to": "verifier.authority-envelope-check"
+    },
+    {
+      "id": "public-agent.edge.verifier-decision",
+      "type": "informs",
+      "from": "verifier.authority-envelope-check",
+      "to": "decision.public-agent-action",
+      "evidenceRefs": [
+        "evidence.contestable-public-decision-receipt"
+      ]
+    },
+    {
+      "id": "public-agent.edge.decision-receipt",
+      "type": "produces",
+      "from": "decision.public-agent-action",
+      "to": "evidence.contestable-public-decision-receipt"
+    },
+    {
+      "id": "public-agent.edge.decision-effect",
+      "type": "produces",
+      "from": "decision.public-agent-action",
+      "to": "effect.public-agent-action"
+    },
+    {
+      "id": "public-agent.edge.subject-redress",
+      "type": "reliesOn",
+      "from": "subject.affected-person",
+      "to": "effect.human-review"
+    },
+    {
+      "id": "public-agent.edge.receipt-redress",
+      "type": "substantiates",
+      "from": "evidence.contestable-public-decision-receipt",
+      "to": "effect.human-review"
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Authority Gap",
+    "packageSlug": "public-agent-contestability-profile"
+  }
+}

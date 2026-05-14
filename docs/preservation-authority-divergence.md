@@ -23,3 +23,14 @@ A record can remain available, discoverable, and cryptographically intact while 
 ## Required control
 
 Execution MUST require an execution authority state receipt when artifact preservation and current authority may diverge.
+
+
+## v0.3.1 validation
+
+PAD is now represented as executable validation data in `validation/pad-test-cases.yaml`. The validation distinguishes current, stale, revoked, expired, orphaned, and unknown authority states. High-consequence execution is blocked when the preserved artifact cannot prove current authority state; lower-consequence unverifiable cases route to review.
+
+Run:
+
+```bash
+python3 scripts/validate_authority_envelopes.py
+```

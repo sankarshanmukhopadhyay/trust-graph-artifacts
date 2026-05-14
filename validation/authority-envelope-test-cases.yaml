@@ -1,0 +1,82 @@
+cases:
+- id: AE-VALID-001
+  description: High-consequence action has complete envelope, active authority, fresh
+    revocation state, receipt, and redress route.
+  expectedDecision: allow
+  envelope:
+    technicalActorRef: agent.procurement.outreach.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.rfq.2026-05
+    scopeBoundary:
+      purpose:
+      - vendor-shortlisting
+      riskTier: high
+    policyVersion: procurement-policy@2026.05.1
+    evidenceRefs:
+    - evidence.execution-time-delegation.example
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 12
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:procurement-outreach:2026-05-14
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: send-rfq-outreach
+      highConsequence: true
+- id: AE-DENY-STALE-001
+  description: Preserved delegation artifact is structurally valid but stale at execution
+    time.
+  expectedDecision: deny
+  envelope:
+    technicalActorRef: agent.procurement.outreach.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.rfq.old
+    scopeBoundary:
+      purpose:
+      - vendor-shortlisting
+      riskTier: high
+    policyVersion: procurement-policy@2026.05.1
+    evidenceRefs:
+    - evidence.old-delegation
+    revocationStateChecked:
+      checked: true
+      authorityState: stale
+      cacheAgeSeconds: 40
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:stale-block
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: send-rfq-outreach
+      highConsequence: true
+- id: AE-ESCALATE-MISSING-REDRESS-001
+  description: Consequential action lacks a redress route and cannot be accepted without
+    review.
+  expectedDecision: escalate
+  envelope:
+    technicalActorRef: agent.benefits.routing.v1
+    accountableControllerRef: agency.example.benefits
+    principalRef: resident.example
+    mandateRef: mandate.benefits.routing
+    scopeBoundary:
+      purpose:
+      - benefits-routing
+      riskTier: critical
+    policyVersion: benefits-routing-policy@2026.05
+    evidenceRefs:
+    - evidence.application
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 5
+      maxCacheAgeSeconds: 30
+    decisionReceiptRef: urn:tga:receipt:decision:benefits-routing
+    executionContext:
+      requestedEffect: route-benefits-application
+      highConsequence: true

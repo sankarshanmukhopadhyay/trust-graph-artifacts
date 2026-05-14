@@ -56,5 +56,26 @@
         "redress_route"
       ]
     }
+  ],
+  "receiptSchema": "schemas/receipts/authority_envelope_receipt.schema.json",
+  "requiredReceiptFields": [
+    "technicalActorRef",
+    "accountableControllerRef",
+    "principalRef",
+    "mandateRef",
+    "scopeBoundary",
+    "policyVersion",
+    "evidenceRefs",
+    "revocationStateChecked",
+    "decisionReceiptRef",
+    "redressRoute",
+    "executionContext",
+    "assurancePosture"
+  ],
+  "verificationEvidence": [
+    "authority registry lookup",
+    "revocation cache age",
+    "decision receipt binding",
+    "machine-readable redress route"
   ]
 }

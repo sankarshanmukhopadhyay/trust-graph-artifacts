@@ -1,0 +1,23 @@
+cases:
+- id: RLG-MEASURE-001
+  description: Revocation propagation lag is measured across execution nodes.
+  revokedAt: '2026-05-14T06:00:00Z'
+  nodeObservations:
+  - node: node-a
+    recognizedAt: '2026-05-14T06:00:10Z'
+  - node: node-b
+    recognizedAt: '2026-05-14T06:00:45Z'
+  - node: node-c
+    recognizedAt: '2026-05-14T06:01:20Z'
+  maxAllowedLagSeconds: 120
+  failOpenDuringLag: false
+  expectedOutcome: within-threshold
+- id: RLG-BLOCK-FAILOPEN-001
+  description: A node that executes fail-open during the lag window is flagged.
+  revokedAt: '2026-05-14T06:00:00Z'
+  nodeObservations:
+  - node: node-a
+    recognizedAt: '2026-05-14T06:05:00Z'
+  maxAllowedLagSeconds: 60
+  failOpenDuringLag: true
+  expectedOutcome: violation

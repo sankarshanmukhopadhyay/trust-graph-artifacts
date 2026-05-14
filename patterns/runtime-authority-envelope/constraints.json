@@ -21,6 +21,21 @@
       "id": "control.redress-route-required",
       "type": "contestability",
       "description": "Require a challenge, reversal, or remediation route for consequential actions."
+    },
+    {
+      "id": "control.authority-registry-resolution",
+      "type": "authority-registry-check",
+      "description": "Resolve the mandate, controller, policy version, and current authority state from a recognized authority registry before consequential execution."
+    },
+    {
+      "id": "control.revocation-cache-bound",
+      "type": "freshness-bound",
+      "description": "Reject or escalate execution when cached revocation or authority-state data exceeds the envelope freshness bound."
+    },
+    {
+      "id": "control.decision-receipt-binding",
+      "type": "receipt-binding",
+      "description": "Bind the decision receipt to the authority envelope, policy version, evidence basis, revocation state, and redress route."
     }
   ],
   "policyRules": [
@@ -57,7 +72,8 @@
       "active",
       "suspended",
       "revoked",
-      "expired"
+      "expired",
+      "retired"
     ],
     "transitions": [
       {

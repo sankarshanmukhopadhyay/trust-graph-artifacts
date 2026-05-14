@@ -24,3 +24,8 @@ Execution-time governance now includes runtime authority envelopes and machine c
 8. preserve contestability, reversal, or reconciliation evidence.
 
 This sequence is intentionally stronger than authentication. It treats execution as an institutional act that requires authority, evidence, and accountable effect control.
+
+
+## Authority envelope execution gate
+
+The v0.3.1 execution gate requires consequential agent actions to resolve actor, controller, principal, mandate, scope, policy version, evidence, authority registry state, revocation freshness, decision receipt, and redress route before producing an operational effect. Missing current authority state fails closed for high-consequence actions. Missing redress or human review escalates public-agent actions rather than allowing silent finality.

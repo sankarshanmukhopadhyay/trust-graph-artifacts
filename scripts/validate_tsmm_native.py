@@ -20,6 +20,7 @@ Declared-but-not-yet-evaluated scope:
 
 import json
 import sys
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -45,6 +46,16 @@ SEMANTIC_CHECKS = {
         "id": "coalition-capture-risk",
         "all_terms": ["capture"],
         "any_terms": ["appeal", "redress", "contest"],
+    },
+    "patterns/runtime-authority-envelope": {
+        "id": "authority-envelope-runtime-completeness",
+        "all_terms": ["technical", "controller", "principal", "mandate", "scope", "revocation", "receipt", "redress"],
+        "any_terms": ["authority registry", "registry", "cache"],
+    },
+    "profiles/public-agent-contestability-profile": {
+        "id": "public-agent-contestability",
+        "all_terms": ["human review", "redress", "contest"],
+        "any_terms": ["public", "administrative", "affected person"],
     },
 }
 
@@ -193,6 +204,16 @@ for package in package_paths():
 validate_provenance_coverage()
 validate_artifacts()
 validate_receipts()
+
+
+def validate_hardening_scripts() -> None:
+    for rel in ["scripts/validate_authority_envelopes.py", "scripts/validate_receipts.py"]:
+        result = subprocess.run([sys.executable, str(ROOT / rel)], cwd=ROOT, text=True, capture_output=True, check=False)
+        if result.returncode != 0:
+            errors.append(f"{rel}: failed\n{result.stdout}{result.stderr}")
+
+
+validate_hardening_scripts()
 
 if errors:
     print("TSMM-native validation failed:")

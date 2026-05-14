@@ -1,0 +1,28 @@
+{
+  "packageId": "ttg.profile.public-agent-contestability-profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.contestable-public-decision-receipt",
+      "artifactType": "authority-envelope-receipt",
+      "description": "Receipt proving that a public-agent action was bound to administrative authority, current mandate state, scope, human review, and redress.",
+      "supportsRefs": [
+        "control.public-agent-function-classification",
+        "control.human-review-escalation-required",
+        "control.contestable-preliminary-determination",
+        "control.redress-route-machine-readable",
+        "control.administrative-authority-traceability"
+      ]
+    }
+  ],
+  "verificationEvidence": [
+    "function classification",
+    "accountable public controller",
+    "legal or policy mandate",
+    "authority registry lookup",
+    "scope boundary",
+    "decision receipt",
+    "redress route",
+    "human review path"
+  ],
+  "receiptSchema": "schemas/receipts/authority_envelope_receipt.schema.json"
+}

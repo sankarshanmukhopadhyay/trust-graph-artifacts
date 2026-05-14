@@ -1,0 +1,84 @@
+{
+  "receiptId": "urn:tga:receipt:authority-envelope:example:procurement-outreach",
+  "receiptType": "authority-envelope-receipt",
+  "timestamp": "2026-05-14T06:30:00Z",
+  "sourceEssays": [
+    {
+      "title": "The Authority Gap",
+      "url": "https://thetrustgraph.substack.com/p/the-authority-gap",
+      "publishedDate": "2026-05-05"
+    },
+    {
+      "title": "The Authority Envelope",
+      "url": "https://thetrustgraph.substack.com/p/the-authority-envelope",
+      "publishedDate": "2026-05-05"
+    }
+  ],
+  "technicalActorRef": "agent.procurement.outreach.v1",
+  "accountableControllerRef": "org.example.procurement-office",
+  "principalRef": "org.example.buying-entity",
+  "mandateRef": "mandate.procurement.rfq.2026-05",
+  "scopeBoundary": {
+    "temporal": {
+      "notBefore": "2026-05-01T00:00:00Z",
+      "notAfter": "2026-06-01T00:00:00Z"
+    },
+    "purpose": [
+      "vendor-shortlisting",
+      "rfq-preparation"
+    ],
+    "jurisdiction": [
+      "IN"
+    ],
+    "transaction": [
+      "rfq-2026-05"
+    ],
+    "riskTier": "high"
+  },
+  "policyVersion": "procurement-policy@2026.05.1",
+  "evidenceRefs": [
+    "evidence.execution-time-delegation.example",
+    "evidence.policy-registry.lookup.2026-05-14"
+  ],
+  "revocationStateChecked": {
+    "checked": true,
+    "authorityState": "active",
+    "checkedAt": "2026-05-14T06:29:58Z",
+    "registryRef": "registry.authority.example.procurement",
+    "cacheAgeSeconds": 12,
+    "maxCacheAgeSeconds": 60
+  },
+  "decisionReceiptRef": "urn:tga:receipt:decision:procurement-outreach:2026-05-14",
+  "redressRoute": {
+    "routeRef": "redress.procurement.review-board",
+    "availableTo": [
+      "affected_vendor",
+      "principal",
+      "controller_auditor"
+    ],
+    "remedyClasses": [
+      "human-review",
+      "reversal",
+      "remediation"
+    ],
+    "humanReviewAvailable": true
+  },
+  "executionContext": {
+    "requestedEffect": "send-rfq-outreach",
+    "executionNode": "workflow.procurement.node-7",
+    "decisionMode": "allow",
+    "highConsequence": true
+  },
+  "assurancePosture": {
+    "level": "AL3",
+    "failMode": "fail-closed",
+    "conformanceChecks": [
+      "authority-envelope-runtime-completeness",
+      "PAD-001",
+      "PAD-002",
+      "RLG-001"
+    ]
+  },
+  "outcome": "allow",
+  "signature": "example-signature-placeholder"
+}

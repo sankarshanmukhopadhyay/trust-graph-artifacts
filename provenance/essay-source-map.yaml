@@ -204,7 +204,7 @@ provenance:
   signalTier: priority
 - slug: runtime-authority-envelope
   title: Runtime Authority Envelope
-  publishedDate: '2026-05-06'
+  publishedDate: '2026-05-05'
   url: https://thetrustgraph.substack.com/p/the-authority-gap
   packageKind: pattern
   packagePath: patterns/runtime-authority-envelope
@@ -271,4 +271,11 @@ provenance:
   url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
   packageKind: evidence-model
   packagePath: evidence/high-risk-governance-assurance-record
+  signalTier: priority
+- slug: public-agent-contestability-profile
+  title: Public Agent Contestability Profile
+  publishedDate: '2026-05-05'
+  url: https://thetrustgraph.substack.com/p/the-authority-gap
+  packageKind: profile
+  packagePath: profiles/public-agent-contestability-profile
   signalTier: priority

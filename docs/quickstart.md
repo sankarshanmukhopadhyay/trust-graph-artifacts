@@ -14,7 +14,7 @@ This repository is easiest to understand as a developer-facing library of TSMM-n
 python3 scripts/validate_tsmm_native.py
 ```
 
-This checks package schemas, graph schemas, valid/invalid examples, selected semantic gates, provenance coverage, and canonical artifact crosswalk integrity.
+This checks package schemas, graph schemas, valid/invalid examples, selected semantic gates, provenance coverage, canonical artifact crosswalk integrity, receipt examples, authority-envelope completeness, Preservation-Authority Divergence, and Revocation Lag Gradient cases.
 
 ## 2. Choose the right first tour
 
@@ -25,6 +25,18 @@ Use this when your goal is to understand executable authority, legitimate contro
 - `patterns/authority-legitimacy-validation/`
 - `overlays/legitimate-control-enforcement/`
 - `evidence/legitimate-control-decision-receipt/`
+
+### Runtime authority hardening tour
+
+Use this when your goal is to inspect the v0.3.1 executable checks for agent authority:
+
+- `patterns/runtime-authority-envelope/`
+- `schemas/receipts/authority_envelope_receipt.schema.json`
+- `examples/receipts/authority_envelope_receipt.example.json`
+- `validation/authority-envelope-test-cases.yaml`
+- `validation/pad-test-cases.yaml`
+- `validation/revocation-lag-test-cases.yaml`
+- `profiles/public-agent-contestability-profile/`
 
 ### Cross-type structural tour
 

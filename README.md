@@ -13,12 +13,12 @@ The result is a developer-facing library that moves from governance claims to co
 
 ## TSMM v0.20 alignment
 
-Version `0.3.0` preserves the TSMM v0.20 boundary and adds authority envelopes, machine commitments, fraud externalities, inference-to-verification controls, and high-risk infrastructure governance:
+Version `0.3.1` preserves the TSMM v0.20 boundary and hardens the runtime authority-envelope layer introduced in v0.3.0:
 
 - **TSMM v0.20.0** is the semantic authority for trust-system modeling.
 - **Trust Infrastructure Schemas v0.8.0** is the executable artifact contract layer where cross-repo validation, registry publication, or assurance-level semantics are required.
 - **TGA** is the Trust Graph interpretation corpus: it turns essay-derived governance pressure into TSMM-native packages, receipts, examples, and provenance overlays.
-- **v0.3.0** adds runtime authority envelopes, proof-carrying machine commitments, fraud externality verification, inference substitution detection, legibility trap detection, high-risk infrastructure assurance, and constitutional infrastructure controls.
+- **v0.3.1** adds authority-envelope receipt validation, PAD enforcement cases, revocation-lag measurement cases, and a public-agent contestability profile while retaining the v0.3.0 authority, commitments, fraud, inference, and high-risk infrastructure package families.
 
 Start with [`docs/tsmm-v0.20-alignment.md`](docs/tsmm-v0.20-alignment.md) and [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md) for the current alignment contract.
 
@@ -79,6 +79,7 @@ Start here when you want the cleanest view of executable authority, legitimate c
 - `patterns/authority-legitimacy-validation`
 - `overlays/legitimate-control-enforcement`
 - `evidence/legitimate-control-decision-receipt`
+- `profiles/public-agent-contestability-profile`
 
 ### Cross-type structural tour
 
@@ -116,6 +117,18 @@ Use this cluster to study the v0.3.0 governance increment:
 - `profiles/high-risk-digital-infrastructure-governance-profile`
 - `overlays/constitutional-digital-infrastructure-controls`
 - `evidence/high-risk-governance-assurance-record`
+
+### Runtime authority envelope hardening tour
+
+Use this cluster to inspect the v0.3.1 enforcement layer:
+
+- `schemas/receipts/authority_envelope_receipt.schema.json`
+- `examples/receipts/authority_envelope_receipt.example.json`
+- `validation/authority-envelope-test-cases.yaml`
+- `validation/pad-test-cases.yaml`
+- `validation/revocation-lag-test-cases.yaml`
+- `scripts/validate_authority_envelopes.py`
+- `profiles/public-agent-contestability-profile`
 
 ### Temporal governance tour
 
@@ -166,6 +179,7 @@ The validator now checks the active package corpus and the executable artifact l
 - graph surfaces and valid examples conform to `schemas/tsmm-graph.schema.json`
 - invalid examples fail as negative conformance tests
 - selected semantic gates from `validation/test-matrix.yaml` are enforced
+- authority-envelope, PAD, and revocation-lag hardening cases are executed
 - every active package has provenance coverage
 - canonical artifact YAML validates against domain artifact schemas
 - essay-to-artifact crosswalk references resolve locally

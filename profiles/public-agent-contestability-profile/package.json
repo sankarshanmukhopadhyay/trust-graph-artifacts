@@ -1,0 +1,31 @@
+{
+  "id": "ttg.profile.public-agent-contestability-profile",
+  "title": "Public Agent Contestability Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "The Authority Gap",
+    "url": "https://thetrustgraph.substack.com/p/the-authority-gap",
+    "publishedDate": "2026-05-05"
+  },
+  "signal": {
+    "tier": "priority",
+    "status": "v0.3.1-hardening",
+    "note": "Added to ensure public-sector agent actions preserve reviewability, redress, and accountable administrative authority."
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "public-agents",
+    "contestability",
+    "redress",
+    "authority-envelope",
+    "administrative-governance"
+  ],
+  "notes": [
+    "Applies the runtime authority envelope to public-sector or public-service agentic actions where state-mediated consequences require contestable records."
+  ]
+}

@@ -30,3 +30,20 @@ python3 scripts/validate_tsmm_native.py
 ## CI behavior
 
 GitHub Actions runs the same validator on pushes to `main` and on pull requests.
+
+
+## v0.3.1 authority hardening
+
+The validation layer now includes executable cases for runtime authority envelope completeness, Preservation-Authority Divergence, and Revocation Lag Gradient behavior:
+
+- `authority-envelope-test-cases.yaml`
+- `pad-test-cases.yaml`
+- `revocation-lag-test-cases.yaml`
+
+Run the focused gate with:
+
+```bash
+python3 scripts/validate_authority_envelopes.py
+```
+
+The repository-wide validator invokes this focused gate automatically.

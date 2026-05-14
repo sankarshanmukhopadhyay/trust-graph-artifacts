@@ -17,12 +17,14 @@ Requirements:
 Install:
 
 ```bash
-pip install jsonschema
+pip install jsonschema pyyaml
 ```
 
 ## Validate changes
 
 ```bash
+python3 scripts/validate_authority_envelopes.py
+python3 scripts/validate_receipts.py
 python3 scripts/validate_tsmm_native.py
 ```
 
@@ -58,3 +60,15 @@ Before merging a new or revised package, verify that:
 4. `assuranceLevel` is not treated as a TIS AL1-AL4 claim unless an explicit assurance artifact is referenced.
 5. Runtime evidence is represented separately from essay provenance.
 6. `python3 scripts/validate_tsmm_native.py` passes.
+
+
+## Authority-envelope hardening workflow
+
+When changing runtime authority behavior, update the executable cases before updating narrative documentation:
+
+1. Add or revise `validation/authority-envelope-test-cases.yaml`.
+2. Add or revise `validation/pad-test-cases.yaml`.
+3. Add or revise `validation/revocation-lag-test-cases.yaml`.
+4. Update `schemas/receipts/authority_envelope_receipt.schema.json` only when the evidence contract changes.
+5. Refresh `examples/receipts/authority_envelope_receipt.example.json`.
+6. Run the focused validator and then the repository-wide validator.

@@ -107,3 +107,9 @@ Two new receipt families are introduced in this release:
 - `schemas/receipts/high_risk_governance_assurance_record.schema.json` with `examples/receipts/high_risk_governance_assurance_record.example.json`
 
 The commitment receipt records authority, terms, activation conditions, constraint checks, execution attestation, reliance, reconciliation, and contestability. The high-risk assurance record captures risk classification, consequence analysis, systemic coupling, interpretive authority, dependency lock-in, delegation boundaries, reversibility proof, contestability proof, governance logs, oversight, audit reference, and remediation route.
+
+## Authority-envelope receipt
+
+`schemas/receipts/authority_envelope_receipt.schema.json` is the v0.3.1 receipt schema for consequential agent action. It records the technical actor, accountable controller, principal, mandate, scope boundary, policy version, evidence references, revocation-state check, decision receipt reference, redress route, execution context, assurance posture, and outcome.
+
+The example at `examples/receipts/authority_envelope_receipt.example.json` is used by the repository validation gate.

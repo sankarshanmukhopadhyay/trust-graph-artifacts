@@ -53,6 +53,14 @@ permalink: /docs/
 - [Walkthrough](walkthrough.md)
 
 
+## v0.3.1 runtime authority hardening
+
+- [Runtime authority envelopes](authority-envelope.md)
+- [Public agent contestability](public-agent-contestability.md)
+- [Preservation–authority divergence](preservation-authority-divergence.md)
+- [Revocation dynamics](revocation-dynamics.md)
+- [Receipts](receipts.md)
+
 ## v0.3.0 authority, commitments, and high-risk infrastructure
 
 - [Runtime authority envelopes](authority-envelope.md)

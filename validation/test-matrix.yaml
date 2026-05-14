@@ -33,20 +33,20 @@ checks:
   status: implemented
   description: Every active package directory has an entry in provenance/essay-source-map.yaml.
 - id: PAD-001
-  status: planned
+  status: implemented
   description: Artifact persistence is flagged when authority has expired, been revoked,
-    or diverged from current legitimacy conditions.
+    gone stale, become orphaned, or diverged from current legitimacy conditions.
 - id: PAD-002
-  status: planned
-  description: Execution is blocked when preserved artifacts cannot prove current
-    authority state.
+  status: implemented
+  description: Execution is blocked or routed to review when preserved artifacts cannot
+    prove current authority state.
 - id: RLG-001
-  status: planned
+  status: implemented
   description: Revocation propagation lag is measured across execution nodes and maximum
     lag is recorded.
 - id: RLG-002
-  status: planned
-  description: Fail-open execution during revocation propagation is flagged.
+  status: implemented
+  description: Fail-open execution during revocation propagation is flagged as a violation.
 - id: CRP-001
   status: planned
   description: Upstream revocation invalidates or quarantines downstream delegations
@@ -60,9 +60,10 @@ checks:
   description: Gradient exploitation signal receipts do not overclaim actor intent
     without independent evidence.
 - id: authority-envelope-runtime-completeness
-  status: planned
+  status: implemented
   description: Authority envelope checks require actor, controller, principal, mandate,
-    scope, revocation state, decision receipt, and redress route.
+    scope, policy version, evidence, revocation state, decision receipt, execution
+    context, assurance posture, and redress route.
 - id: machine-commitment-proof-carrying
   status: planned
   description: Machine commitment checks require terms, delegated authority, activation
@@ -91,3 +92,8 @@ checks:
   status: planned
   description: Constitutional boundary checks validate non-derogable rights, prohibited
     inference categories, human-led decision classes, and audit access.
+- id: public-agent-contestability
+  status: implemented
+  description: Public-agent actions require function classification, accountable controller
+    traceability, contestable preliminary determination, human review escalation,
+    and machine-readable redress route.

@@ -1,0 +1,39 @@
+{
+  "packageId": "ttg.profile.public-agent-contestability-profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.public-agent-function-classification",
+      "type": "risk-classification",
+      "description": "Classify whether an agent action creates advisory, routing, eligibility, denial, approval, enforcement, or commitment effects."
+    },
+    {
+      "id": "control.human-review-escalation-required",
+      "type": "review-escalation",
+      "description": "High-consequence or unverifiable public-agent actions MUST escalate to a human review path and MUST NOT finalize silently."
+    },
+    {
+      "id": "control.contestable-preliminary-determination",
+      "type": "contestability",
+      "description": "Affected parties MUST receive a contestable record before preliminary determinations become final operational effects."
+    },
+    {
+      "id": "control.redress-route-machine-readable",
+      "type": "redress-routing",
+      "description": "Receipts MUST include a machine-readable redress route, remedy class, responsible office, and review time bound."
+    },
+    {
+      "id": "control.administrative-authority-traceability",
+      "type": "authority-traceability",
+      "description": "The decision record MUST trace the technical actor to the public accountable controller, legal or policy mandate, scope, authority registry, and policy version."
+    }
+  ],
+  "failureModes": [
+    "Public agent acts as if identity is sufficient authority",
+    "Affected person cannot identify accountable public controller",
+    "Machine-generated preliminary decision becomes final without contestability",
+    "Redress route is absent, non-machine-readable, or not bound to a decision receipt",
+    "Authority is unverifiable but execution proceeds fail-open"
+  ],
+  "decisionPolicy": "Public-agent actions SHOULD fail closed or escalate when mandate, current authority state, scope, receipt, or redress evidence is absent. Consequential public effects MUST remain contestable."
+}

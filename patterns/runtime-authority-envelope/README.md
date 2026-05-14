@@ -8,7 +8,7 @@ Runtime governance primitive that binds agent action to accountable authority, m
 
 - Essay: *The Authority Gap*
 - URL: https://thetrustgraph.substack.com/p/the-authority-gap
-- Published: 2026-05-06
+- Published: 2026-05-05
 
 ## TSMM contribution
 

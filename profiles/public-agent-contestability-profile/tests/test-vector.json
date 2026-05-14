@@ -1,0 +1,15 @@
+{
+  "testId": "public-agent-contestability-profile-basic",
+  "packageId": "ttg.profile.public-agent-contestability-profile",
+  "expectedPass": [
+    "graph-schema",
+    "valid-example",
+    "provenance-coverage",
+    "public-agent-contestability"
+  ],
+  "expectedFail": [
+    "missing-redress-route",
+    "missing-human-review",
+    "unverifiable-authority-state"
+  ]
+}

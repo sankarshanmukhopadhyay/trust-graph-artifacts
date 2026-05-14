@@ -1,5 +1,5 @@
-id: ttg-artifact-v030-01
-title: Runtime Authority Envelope
+id: ttg-artifact-v031-01
+title: Public Agent Contestability Profile
 status: draft
 source:
   essay_title: The Authority Gap
@@ -10,13 +10,14 @@ signal:
 classification:
   artifact_type:
   - tsmm-native-package
-  - control-model
+  - assurance-profile
+  - contestability-profile
   domain:
-  - pattern
-  - agents
+  - profile
+  - public-agents
   - authority
-  - mandates
-  - execution-time-governance
+  - redress
+  - administrative-governance
 governance:
   authority: The Trust Graph
   maintainers:
@@ -27,22 +28,23 @@ semantics:
   - authority
   - delegation
   - enforcement
-  - revocation
   - redress
   - auditability
+  - contestability
 relationships:
   supersedes: null
   superseded_by: null
-  related_artifacts: []
+  related_artifacts:
+  - ttg-artifact-v030-01
 validation:
   has_examples: true
   has_tests: true
   conformance_level: draft
 lifecycle:
-  created: '2026-05-05'
-  last_updated: '2026-05-05'
+  created: '2026-05-14'
+  last_updated: '2026-05-14'
 tsmm_binding:
   enabled: true
   binding_status: draft
-  package_path: patterns/runtime-authority-envelope
+  package_path: profiles/public-agent-contestability-profile
   tsmm_version: v0.20.0

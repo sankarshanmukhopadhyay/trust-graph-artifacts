@@ -16,7 +16,31 @@ All notable repository changes are documented here. The repository treats change
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-05-06
+## [0.3.1] - 2026-05-14
+
+### Added
+
+- Added authority-envelope receipt schema and example for consequential agent action.
+- Added executable authority-envelope, PAD, and revocation-lag validation cases.
+- Added focused authority-envelope validator and standalone receipt validator.
+- Added public-agent contestability profile and artifact package.
+- Added public-agent contestability documentation.
+
+### Changed
+
+- Integrated authority-envelope hardening checks into the repository-wide TSMM-native validator.
+- Marked PAD, RLG, and authority-envelope completeness checks as implemented in the validation matrix.
+- Strengthened runtime authority envelope constraints with authority-registry resolution, revocation cache bounds, and decision-receipt binding.
+- Corrected *The Authority Gap* provenance to `2026-05-05`.
+- Updated public-facing docs and README for v0.3.1.
+
+### Validation
+
+- `python3 scripts/validate_authority_envelopes.py` passes.
+- `python3 scripts/validate_receipts.py` passes.
+- `python3 scripts/validate_tsmm_native.py` passes for 40 active packages and artifact crosswalks.
+
+## [0.3.0] - 2026-05-05
 
 ### Added
 

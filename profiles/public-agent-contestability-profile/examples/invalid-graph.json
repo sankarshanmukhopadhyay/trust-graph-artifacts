@@ -1,0 +1,80 @@
+{
+  "graphId": "ttg.profile.public.agent.contestability",
+  "label": "Public Agent Contestability Profile",
+  "description": "Profile for agentic public-service actions that require accountable controller binding, administrative authority traceability, human review, redress, and contestable decision receipts.",
+  "profile": "profile",
+  "contexts": [
+    "context.public.agent.contestability"
+  ],
+  "edges": [
+    {
+      "id": "public-agent.edge.context-profile",
+      "type": "anchors",
+      "from": "context.public.agent.contestability",
+      "to": "profile.public.agent.contestability"
+    },
+    {
+      "id": "public-agent.edge.controller-policy",
+      "type": "governs",
+      "from": "authority.public-controller",
+      "to": "policy.public-agent-contestability"
+    },
+    {
+      "id": "public-agent.edge.agent-profile",
+      "type": "operates",
+      "from": "agent.public-service-agent",
+      "to": "profile.public.agent.contestability"
+    },
+    {
+      "id": "public-agent.edge.policy-verifier",
+      "type": "constrains",
+      "from": "policy.public-agent-contestability",
+      "to": "verifier.authority-envelope-check"
+    },
+    {
+      "id": "public-agent.edge.verifier-decision",
+      "type": "informs",
+      "from": "verifier.authority-envelope-check",
+      "to": "decision.public-agent-action",
+      "evidenceRefs": [
+        "evidence.contestable-public-decision-receipt"
+      ]
+    },
+    {
+      "id": "public-agent.edge.decision-receipt",
+      "type": "produces",
+      "from": "decision.public-agent-action",
+      "to": "evidence.contestable-public-decision-receipt"
+    },
+    {
+      "id": "public-agent.edge.decision-effect",
+      "type": "produces",
+      "from": "decision.public-agent-action",
+      "to": "effect.public-agent-action"
+    },
+    {
+      "id": "public-agent.edge.subject-redress",
+      "type": "reliesOn",
+      "from": "subject.affected-person",
+      "to": "effect.human-review"
+    },
+    {
+      "id": "public-agent.edge.receipt-redress",
+      "type": "substantiates",
+      "from": "evidence.contestable-public-decision-receipt",
+      "to": "effect.human-review"
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Authority Gap",
+    "packageSlug": "public-agent-contestability-profile"
+  },
+  "nodes": [
+    {
+      "id": "context.public.agent.contestability",
+      "type": "TrustDomain",
+      "label": "Public Agent Contestability",
+      "description": "Domain for public or public-service agentic decisions with administrative consequences."
+    }
+  ]
+}
