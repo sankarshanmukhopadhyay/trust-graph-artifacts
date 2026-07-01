@@ -23,10 +23,11 @@ permalink: /docs/
 - `developer-guide.md` — local workflow and design review questions
 
 
-## TSMM v0.20 harmonization
+## TSMM v0.21 and TIS v0.10 runtime assurance
 
-- [TSMM v0.20 alignment](tsmm-v0.20-alignment.md)
 - [TSMM binding](bindings/tsmm-binding.md)
+- [TGA / TSMM / TIS runtime assurance](crosswalks/tga-tsmm-tis-runtime-assurance.md)
+- [Portfolio alignment](crosswalks/tga-portfolio-alignment.md)
 - [TGA ↔ TSMM alignment crosswalk](crosswalks/tsmm-alignment-crosswalk.md)
 - [TSMM / TIS / TGA layering](crosswalks/tsmm-tis-tga-layering.md)
 - [TSMM decision receipt profile](crosswalks/tsmm-decision-receipt-profile.md)
@@ -38,6 +39,8 @@ permalink: /docs/
 
 - `control-plane-legitimacy.md` — design note for authority relocation, legitimacy gaps, intermediary governance, and governed licensing
 - `release-process.md` — release discipline and expectations
+- [v0.4.0 release notes](release-notes/v0.4.0.md)
+- [v0.4.0 release impact](release-impact/v0.4.0.md)
 
 ## Historical material
 

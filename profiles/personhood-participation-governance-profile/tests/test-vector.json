@@ -1,0 +1,13 @@
+{
+  "packageId": "ttg.profile.personhood-participation-governance-profile",
+  "expectedValidation": {
+    "package": "pass",
+    "graph": "pass",
+    "invalidExample": "fail"
+  },
+  "evidenceChecks": [
+    "TIS runtime assurance projection present",
+    "decision receipt required when trust decision exists",
+    "redress route required for consequential effects"
+  ]
+}

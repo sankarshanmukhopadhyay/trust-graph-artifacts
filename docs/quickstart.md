@@ -12,9 +12,10 @@ This repository is easiest to understand as a developer-facing library of TSMM-n
 
 ```bash
 python3 scripts/validate_tsmm_native.py
+python3 scripts/validate_tis_alignment.py
 ```
 
-This checks package schemas, graph schemas, valid/invalid examples, selected semantic gates, provenance coverage, canonical artifact crosswalk integrity, receipt examples, authority-envelope completeness, Preservation-Authority Divergence, and Revocation Lag Gradient cases.
+This checks package schemas, graph schemas, valid/invalid examples, selected semantic gates, provenance coverage, canonical artifact crosswalk integrity, receipt examples, authority-envelope completeness, Preservation-Authority Divergence, Revocation Lag Gradient cases, and TIS runtime assurance projection coverage.
 
 ## 2. Choose the right first tour
 
@@ -37,6 +38,17 @@ Use this when your goal is to inspect the v0.3.1 executable checks for agent aut
 - `validation/pad-test-cases.yaml`
 - `validation/revocation-lag-test-cases.yaml`
 - `profiles/public-agent-contestability-profile/`
+
+### Runtime assurance alignment tour
+
+Use this when your goal is to understand the v0.4.0 TSMM v0.21 / TIS v0.10 alignment:
+
+- `bindings/tis/tga-tis-binding.json`
+- `docs/crosswalks/tga-tsmm-tis-runtime-assurance.md`
+- `examples/composition/runtime-assurance-v0.4/`
+- `systems/executable-trust-governance-stack/`
+- `patterns/agent-accountability-edge/`
+- `evidence/proof-first-market-decision-receipt/`
 
 ### Cross-type structural tour
 

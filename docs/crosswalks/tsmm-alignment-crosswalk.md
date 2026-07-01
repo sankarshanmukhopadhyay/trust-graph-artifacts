@@ -10,7 +10,7 @@ nav_order: 2
 
 # TGA ↔ TSMM Alignment Crosswalk
 
-This crosswalk defines how active Trust Graph Artifact repository surfaces map to TSMM v0.20 concepts.
+This crosswalk defines how active Trust Graph Artifact repository surfaces map to TSMM concepts. For the current v0.4.0 runtime assurance mapping to TSMM v0.21 and TIS v0.10, use `tga-tsmm-tis-runtime-assurance.md`.
 
 | TGA surface | TSMM concept | Harmonization rule |
 |---|---|---|
@@ -42,4 +42,3 @@ TGA decision receipts use the TSMM runtime decision receipt core. TGA adds only 
 | `revocationStateChecked` | `revocationStateChecked` | Status, time, and source of revocation check. |
 | `assuranceLevel` | `assuranceLevel` | TSMM posture value, not a TIS AL1-AL4 claim. |
 | `reviewPath` | `reviewPath` | Contestability or escalation route. |
-

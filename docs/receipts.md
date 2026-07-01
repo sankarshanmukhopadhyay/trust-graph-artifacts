@@ -86,7 +86,7 @@ A TGA decision receipt is conformant when it can answer five audit questions wit
 5. What effect was admitted, blocked, restricted, or routed for review?
 
 
-## TSMM v0.20 profile hardening
+## TSMM-profiled receipt hardening
 
 As of v0.2.0, TGA decision receipts are explicitly treated as TSMM-profiled receipts with Trust Graph provenance extensions. The schema `schemas/receipts/decision_receipt.schema.json` remains the active receipt contract. The schema `schemas/receipts/tsmm_profiled_decision_receipt.schema.json` makes the profile boundary visible for implementers and reviewers.
 

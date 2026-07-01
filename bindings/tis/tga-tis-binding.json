@@ -1,0 +1,63 @@
+{
+  "bindingId": "tga-tis-v0.10.0",
+  "bindingType": "runtime-assurance-projection",
+  "sourceRepository": "trust-graph-artifacts",
+  "sourceVersion": "v0.4.0",
+  "targetRepository": "trust-infrastructure-schemas",
+  "targetVersion": "v0.10.0",
+  "status": "experimental",
+  "role": "TGA packages preserve Trust Graph essay-derived governance pressure and project runtime assurance surfaces into TIS v0.10.0 executable artifact contracts when external validation, registry publication, or assurance review is required.",
+  "owns": [
+    "essay-derived governance pattern corpus",
+    "package interpretation",
+    "Trust Graph provenance extension",
+    "TSMM-native package examples"
+  ],
+  "doesNotOwn": [
+    "TIS schema authority",
+    "TIS AL1-AL4 assurance semantics",
+    "generic evidence bundle contract",
+    "generic decision receipt contract",
+    "registry publication contract"
+  ],
+  "maps": [
+    {
+      "tgaSurface": "package graph",
+      "tisArtifact": "profiles/tsmm/tsmm-runtime-governance-projection.schema.json",
+      "notes": "TGA graph surfaces can identify the TSMM runtime governance envelope being projected."
+    },
+    {
+      "tgaSurface": "authority and delegation controls",
+      "tisArtifact": "governance/authority-boundary.schema.json",
+      "notes": "TGA controls describe the governance pressure; TIS records the artifact-level authority boundary."
+    },
+    {
+      "tgaSurface": "evidence expectations",
+      "tisArtifact": "evidence/evidence-bundle-manifest.schema.json",
+      "notes": "Runtime evidence belongs in TIS-compatible bundles, not in essay provenance."
+    },
+    {
+      "tgaSurface": "verification or assessment surface",
+      "tisArtifact": "oasf/oasf-evaluation-envelope.schema.json",
+      "notes": "TGA package evaluations can be recorded as externally reviewable evaluation envelopes."
+    },
+    {
+      "tgaSurface": "decision receipt",
+      "tisArtifact": "decision/decision-receipt.schema.json",
+      "notes": "TGA decision examples should remain mappable to TIS decision receipts when relied on across repositories."
+    },
+    {
+      "tgaSurface": "registry or publication example",
+      "tisArtifact": "registry/registry-publication-profile.schema.json",
+      "notes": "Registry publication is discoverability evidence, not runtime authorization."
+    }
+  ],
+  "compatibleWith": [
+    "trust-systems-meta-model v0.21.0",
+    "trust-infrastructure-schemas v0.10.0"
+  ],
+  "validation": [
+    "python3 scripts/validate_tsmm_native.py",
+    "python3 scripts/validate_tis_alignment.py"
+  ]
+}

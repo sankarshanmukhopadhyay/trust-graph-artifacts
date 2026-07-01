@@ -16,6 +16,45 @@ All notable repository changes are documented here. The repository treats change
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-06-30
+
+### Added
+
+- Added TIS v0.10.0 runtime assurance projection binding under `bindings/tis/`.
+- Added `docs/crosswalks/tga-tsmm-tis-runtime-assurance.md` to define the current TGA / TSMM / TIS alignment chain.
+- Added `docs/crosswalks/tga-portfolio-alignment.md` to classify TGA as the portfolio research-to-executable-artifact translation layer.
+- Added runtime assurance composition examples under `examples/composition/runtime-assurance-v0.4/`.
+- Added six TSMM-native package families:
+  - `profiles/personhood-participation-governance-profile`
+  - `patterns/agent-accountability-edge`
+  - `overlays/redress-rails-for-machine-decisions`
+  - `profiles/registry-gatekeeper-risk-profile`
+  - `evidence/proof-first-market-decision-receipt`
+  - `systems/executable-trust-governance-stack`
+- Added `scripts/validate_tis_alignment.py`.
+- Added `requirements.txt` for full local and CI validation dependencies.
+- Added `docs/release-notes/v0.4.0.md` and `docs/release-impact/v0.4.0.md`.
+
+### Changed
+
+- Updated repository version to `0.4.0`.
+- Updated active TSMM binding metadata from TSMM v0.20.0 to TSMM v0.21.0.
+- Updated README, quickstart, architecture, binding, crosswalk, and index documentation for TSMM v0.21 / TIS v0.10 runtime assurance alignment.
+- Updated provenance and essay-to-artifact crosswalks for the new package families.
+- Hardened validators to provide useful fallback checks in lean environments while preserving `requirements.txt` as the full validation path.
+
+### Fixed
+
+- Removed inherited `.DS_Store` metadata from the active repository surface.
+- Reconciled current documentation references that still described the older TSMM v0.20 / TIS v0.8 boundary as the active alignment.
+
+### Validation
+
+- `python3 scripts/validate_tsmm_native.py` passes for 46 active packages and artifact crosswalks.
+- `python3 scripts/validate_tis_alignment.py` passes.
+- `python3 scripts/validate_receipts.py` passes in JSON parse fallback mode in the current lean runtime; install `requirements.txt` for full JSON Schema validation.
+- `python3 scripts/validate_authority_envelopes.py` passes.
+
 ## [0.3.1] - 2026-05-14
 
 ### Added

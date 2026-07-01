@@ -1,0 +1,65 @@
+{
+  "packageId": "ttg.system.executable-trust-governance-stack",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.executable.trust.governance.stack",
+      "artifactType": "tis-evidence-bundle-manifest",
+      "description": "Evidence bundle for Executable Trust Governance Stack.",
+      "supportsRefs": [
+        "policy.executable.trust.stack",
+        "decision.executable.trust.governance.stack",
+        "control.authority-to-effect-chain",
+        "control.registry-not-authorization",
+        "control.audit-and-redress-loop"
+      ]
+    }
+  ],
+  "tisArtifactProjection": {
+    "authorityBoundary": "governance/authority-boundary.schema.json",
+    "evidenceBundle": "evidence/evidence-bundle-manifest.schema.json",
+    "evaluationEnvelope": "oasf/oasf-evaluation-envelope.schema.json",
+    "decisionReceipt": "decision/decision-receipt.schema.json",
+    "registryPublicationProfile": "registry/registry-publication-profile.schema.json"
+  },
+  "verificationExpectations": [
+    {
+      "id": "assessment.executable.trust.governance.stack",
+      "method": "tsmm-tis-runtime-assurance-check",
+      "performedBy": "assurance reviewer or automated validator",
+      "controlRefs": [
+        "control.authority-to-effect-chain",
+        "control.registry-not-authorization",
+        "control.audit-and-redress-loop"
+      ],
+      "inputRefs": [
+        "evidence.executable.trust.governance.stack",
+        "policy.executable.trust.stack"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.executable.trust.governance.stack",
+      "policyRef": "policy.executable.trust.stack",
+      "verificationRefs": [
+        "assessment.executable.trust.governance.stack"
+      ],
+      "effectRefs": [
+        "effect.admit-governed-effect",
+        "effect.block-unproven-effect",
+        "effect.publish-audit-evidence"
+      ],
+      "requiredFields": [
+        "actor",
+        "authority_boundary",
+        "policy_evaluated",
+        "evidence_bundle",
+        "revocation_or_status_check",
+        "outcome",
+        "effect_admission",
+        "redress_route",
+        "timestamp"
+      ]
+    }
+  ]
+}

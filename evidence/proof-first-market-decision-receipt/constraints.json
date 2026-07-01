@@ -1,0 +1,89 @@
+{
+  "packageId": "ttg.evidence.proof-first-market-decision-receipt",
+  "kind": "evidence-model",
+  "controlSet": [
+    {
+      "id": "control.proof-requirement-boundary",
+      "type": "proof-scope",
+      "description": "Bind decision to explicit proof requirement"
+    },
+    {
+      "id": "control.no-surveillance-upgrade",
+      "type": "privacy",
+      "description": "Prevent proof presentation from becoming persistent tracking"
+    },
+    {
+      "id": "control.price-or-eligibility-receipt",
+      "type": "auditability",
+      "description": "Record proof, policy, decision, effect, and review path"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.proof.first.market.decision",
+      "rules": [
+        "Bind decision to explicit proof requirement",
+        "Prevent proof presentation from becoming persistent tracking",
+        "Record proof, policy, decision, effect, and review path"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.proof-as-surveillance",
+      "type": "privacy-risk",
+      "description": "Proof flow becomes a durable behavioral profile"
+    },
+    {
+      "id": "threat.unexplainable-pricing",
+      "type": "market-risk",
+      "description": "Pricing or eligibility decision lacks evidence trail"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "active",
+      "suspended",
+      "revoked",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.activate",
+        "from": "drafted",
+        "to": "active",
+        "trigger": "policy approved and evidence present",
+        "actor": "governance authority",
+        "evidenceRequirement": "package graph, constraints, evidence, and provenance present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence gap, challenge, or status uncertainty",
+        "actor": "review authority",
+        "evidenceRequirement": "review record and decision receipt"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "active",
+        "to": "revoked",
+        "trigger": "authority withdrawn or control failure confirmed",
+        "actor": "governance authority",
+        "evidenceRequirement": "revocation record with rationale"
+      }
+    ]
+  },
+  "tisRuntimeAssurance": {
+    "authorityBoundaryRequired": true,
+    "evidenceBundleRequired": true,
+    "decisionReceiptRequired": true,
+    "registryPublicationIsAuthorization": false,
+    "redressRouteRequired": true
+  },
+  "notes": [
+    "Authored as a TSMM-native package for v0.4.0 runtime assurance alignment.",
+    "Controls are intended to be projected into TIS v0.10.0 artifact contracts when external validation or publication is required."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ttg.overlay.redress-rails-for-machine-decisions",
+  "title": "Redress Rails for Machine Decisions",
+  "kind": "overlay",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Redress at Machine Speed",
+    "url": "https://thetrustgraph.substack.com/p/redress-at-machine-speed",
+    "publishedDate": "2026-05-01"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "redress",
+    "machine-decisions",
+    "auditability",
+    "state-repair"
+  ],
+  "notes": [
+    "Adds machine-readable redress requirements to automated or agentic decisions so review authority, evidence disclosure, correction, and state repair are part of the execution surface.",
+    "Aligned with TSMM v0.21.0 and TIS v0.10.0 runtime assurance."
+  ]
+}

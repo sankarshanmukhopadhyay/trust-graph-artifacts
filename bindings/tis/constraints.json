@@ -1,0 +1,31 @@
+{
+  "bindingId": "tga-tis-v0.10.0",
+  "version": "0.4.0",
+  "constraints": [
+    {
+      "id": "tga-tis-boundary-001",
+      "level": "MUST",
+      "statement": "TGA packages MUST NOT treat essay provenance as runtime evidence. Runtime evidence MUST be expressed through package evidence fields or TIS-compatible evidence bundles."
+    },
+    {
+      "id": "tga-tis-boundary-002",
+      "level": "MUST",
+      "statement": "TGA runtime assurance examples MUST preserve the distinction between registry publication and runtime authorization."
+    },
+    {
+      "id": "tga-tis-boundary-003",
+      "level": "MUST",
+      "statement": "A consequential TGA runtime decision MUST identify authority boundary, policy reference, evidence reference, status or revocation check, decision outcome, admitted effect, and redress route."
+    },
+    {
+      "id": "tga-tis-boundary-004",
+      "level": "SHOULD",
+      "statement": "TGA packages that depend on external validation SHOULD include a TIS artifact projection covering authority boundary, evidence bundle, evaluation envelope, decision receipt, and registry publication profile."
+    },
+    {
+      "id": "tga-tis-boundary-005",
+      "level": "MUST",
+      "statement": "TGA assurance posture labels MUST NOT be treated as TIS AL1-AL4 assurance levels unless an explicit TIS assurance artifact is present."
+    }
+  ]
+}

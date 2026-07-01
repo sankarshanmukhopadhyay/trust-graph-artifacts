@@ -1,0 +1,89 @@
+{
+  "packageId": "ttg.profile.registry-gatekeeper-risk-profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.admission-criteria-public",
+      "type": "legitimacy",
+      "description": "Publish admission and suspension criteria"
+    },
+    {
+      "id": "control.appeal-route-required",
+      "type": "redress",
+      "description": "Provide appeal and review route for exclusion or downgrade"
+    },
+    {
+      "id": "control.capture-risk-monitor",
+      "type": "assurance",
+      "description": "Monitor concentration, conflicts, and anti-competitive registry behavior"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.registry.gatekeeper.risk",
+      "rules": [
+        "Publish admission and suspension criteria",
+        "Provide appeal and review route for exclusion or downgrade",
+        "Monitor concentration, conflicts, and anti-competitive registry behavior"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.registry-capture",
+      "type": "capture-risk",
+      "description": "Registry becomes an unreviewable market access gatekeeper"
+    },
+    {
+      "id": "threat.silent-delisting",
+      "type": "process-risk",
+      "description": "Participant is delisted without evidence, notice, or appeal"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "active",
+      "suspended",
+      "revoked",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.activate",
+        "from": "drafted",
+        "to": "active",
+        "trigger": "policy approved and evidence present",
+        "actor": "governance authority",
+        "evidenceRequirement": "package graph, constraints, evidence, and provenance present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence gap, challenge, or status uncertainty",
+        "actor": "review authority",
+        "evidenceRequirement": "review record and decision receipt"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "active",
+        "to": "revoked",
+        "trigger": "authority withdrawn or control failure confirmed",
+        "actor": "governance authority",
+        "evidenceRequirement": "revocation record with rationale"
+      }
+    ]
+  },
+  "tisRuntimeAssurance": {
+    "authorityBoundaryRequired": true,
+    "evidenceBundleRequired": true,
+    "decisionReceiptRequired": true,
+    "registryPublicationIsAuthorization": false,
+    "redressRouteRequired": true
+  },
+  "notes": [
+    "Authored as a TSMM-native package for v0.4.0 runtime assurance alignment.",
+    "Controls are intended to be projected into TIS v0.10.0 artifact contracts when external validation or publication is required."
+  ]
+}

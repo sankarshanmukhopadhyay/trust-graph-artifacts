@@ -1,0 +1,193 @@
+{
+  "graphId": "ttg.overlay.redress-rails-for-machine-decisions",
+  "label": "Redress Rails for Machine Decisions",
+  "description": "Adds machine-readable redress requirements to automated or agentic decisions so review authority, evidence disclosure, correction, and state repair are part of the execution surface.",
+  "profile": "overlay",
+  "contexts": [
+    "context.redress-rails-for-machine-decisions"
+  ],
+  "nodes": [
+    {
+      "id": "context.redress-rails-for-machine-decisions",
+      "type": "TrustDomain",
+      "label": "Machine decision redress and state correction",
+      "description": "Adds machine-readable redress requirements to automated or agentic decisions so review authority, evidence disclosure, correction, and state repair are part of the execution surface."
+    },
+    {
+      "id": "overlay.redress.rails.machine.decisions",
+      "type": "AssuranceProfile",
+      "label": "Redress Rails for Machine Decisions",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "tisProjection": "runtime-assurance-v0.10"
+      }
+    },
+    {
+      "id": "policy.redress.rails.machine.decisions",
+      "type": "Policy",
+      "label": "Redress Rails for Machine Decisions",
+      "attributes": {
+        "decisionMode": "pre-effect",
+        "requiresDecisionReceipt": true
+      }
+    },
+    {
+      "id": "entity.affected-party",
+      "type": "Subject",
+      "label": "Affected Party",
+      "description": "Person or organization affected by the machine decision"
+    },
+    {
+      "id": "entity.decision-system",
+      "type": "Agent",
+      "label": "Decision System",
+      "description": "Automated or agentic component producing the decision"
+    },
+    {
+      "id": "entity.review-authority",
+      "type": "GovernanceAuthority",
+      "label": "Review Authority",
+      "description": "Authority empowered to review, correct, or reverse the decision"
+    },
+    {
+      "id": "entity.service-operator",
+      "type": "RegistryService",
+      "label": "Service Operator",
+      "description": "Operator responsible for state repair and notice"
+    },
+    {
+      "id": "evidence.redress.rails.for.machine.decisions",
+      "type": "EvidenceBundle",
+      "label": "Redress Rails for Machine Decisions Evidence Bundle",
+      "attributes": {
+        "artifactType": "tis-evidence-bundle-manifest"
+      }
+    },
+    {
+      "id": "assessment.redress.rails.for.machine.decisions",
+      "type": "Assessment",
+      "label": "Redress Rails for Machine Decisions Evaluation",
+      "attributes": {
+        "method": "tsmm-tis-runtime-assurance-check"
+      }
+    },
+    {
+      "id": "decision.redress.rails.for.machine.decisions",
+      "type": "TrustDecision",
+      "label": "Redress Rails for Machine Decisions Decision",
+      "attributes": {
+        "receiptProfile": "tis-decision-receipt",
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.accept-decision",
+      "type": "Effect",
+      "label": "Allow decision with redress path",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.pause-effect",
+      "type": "Effect",
+      "label": "Pause effect pending review",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.repair-state",
+      "type": "Effect",
+      "label": "Repair downstream state",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "redress-rails-for-machine-decisions.edge.context-profile",
+      "type": "invalidRelation",
+      "from": "context.redress-rails-for-machine-decisions",
+      "to": "overlay.redress.rails.machine.decisions",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.profile-policy",
+      "type": "defines",
+      "from": "overlay.redress.rails.machine.decisions",
+      "to": "policy.redress.rails.machine.decisions",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.policy-primary",
+      "type": "constrains",
+      "from": "policy.redress.rails.machine.decisions",
+      "to": "entity.affected-party",
+      "description": "Policy constrains the primary authority or actor."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.authority-delegates",
+      "type": "delegates",
+      "from": "entity.affected-party",
+      "to": "entity.decision-system",
+      "description": "Authority, eligibility, or review scope is delegated under policy."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.evidence-assessment",
+      "type": "substantiates",
+      "from": "evidence.redress.rails.for.machine.decisions",
+      "to": "assessment.redress.rails.for.machine.decisions",
+      "description": "Evidence bundle substantiates the evaluation."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.assessment-decision",
+      "type": "informs",
+      "from": "assessment.redress.rails.for.machine.decisions",
+      "to": "decision.redress.rails.for.machine.decisions",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.policy-decision",
+      "type": "informs",
+      "from": "policy.redress.rails.machine.decisions",
+      "to": "decision.redress.rails.for.machine.decisions",
+      "description": "Policy informs the decision."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.decision-accept-decision",
+      "type": "produces",
+      "from": "decision.redress.rails.for.machine.decisions",
+      "to": "effect.accept-decision",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.decision-pause-effect",
+      "type": "produces",
+      "from": "decision.redress.rails.for.machine.decisions",
+      "to": "effect.pause-effect",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "redress-rails-for-machine-decisions.edge.decision-repair-state",
+      "type": "produces",
+      "from": "decision.redress.rails.for.machine.decisions",
+      "to": "effect.repair-state",
+      "description": "Trust decision produces a downstream effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Redress at Machine Speed",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/redress-at-machine-speed",
+    "publishedDate": "2026-05-01",
+    "signalTier": "priority",
+    "packageKind": "overlay",
+    "alignedWith": "TSMM v0.21.0 / TIS v0.10.0"
+  }
+}

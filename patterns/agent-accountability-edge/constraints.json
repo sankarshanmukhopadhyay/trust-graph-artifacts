@@ -1,0 +1,89 @@
+{
+  "packageId": "ttg.pattern.agent-accountability-edge",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.scoped-agent-mandate",
+      "type": "delegation-scope",
+      "description": "Require mandate, scope, expiry, and revocation state for agent action"
+    },
+    {
+      "id": "control.controller-traceability",
+      "type": "accountability",
+      "description": "Bind every agent action to accountable controller and principal"
+    },
+    {
+      "id": "control.pre-effect-decision-receipt",
+      "type": "auditability",
+      "description": "Emit decision receipt before consequential effect is admitted"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.agent.accountability.edge",
+      "rules": [
+        "Require mandate, scope, expiry, and revocation state for agent action",
+        "Bind every agent action to accountable controller and principal",
+        "Emit decision receipt before consequential effect is admitted"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.orphan-agent-action",
+      "type": "accountability-gap",
+      "description": "Agent action cannot be attributed to current controller or mandate"
+    },
+    {
+      "id": "threat.scope-creep",
+      "type": "delegation-risk",
+      "description": "Agent uses a capability outside delegated purpose or context"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "active",
+      "suspended",
+      "revoked",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.activate",
+        "from": "drafted",
+        "to": "active",
+        "trigger": "policy approved and evidence present",
+        "actor": "governance authority",
+        "evidenceRequirement": "package graph, constraints, evidence, and provenance present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence gap, challenge, or status uncertainty",
+        "actor": "review authority",
+        "evidenceRequirement": "review record and decision receipt"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "active",
+        "to": "revoked",
+        "trigger": "authority withdrawn or control failure confirmed",
+        "actor": "governance authority",
+        "evidenceRequirement": "revocation record with rationale"
+      }
+    ]
+  },
+  "tisRuntimeAssurance": {
+    "authorityBoundaryRequired": true,
+    "evidenceBundleRequired": true,
+    "decisionReceiptRequired": true,
+    "registryPublicationIsAuthorization": false,
+    "redressRouteRequired": true
+  },
+  "notes": [
+    "Authored as a TSMM-native package for v0.4.0 runtime assurance alignment.",
+    "Controls are intended to be projected into TIS v0.10.0 artifact contracts when external validation or publication is required."
+  ]
+}

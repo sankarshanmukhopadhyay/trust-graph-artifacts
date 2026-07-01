@@ -1,12 +1,12 @@
 {
-  "bindingId": "tga-tsmm-v0.20.0",
+  "bindingId": "tga-tsmm-v0.21.0",
   "bindingType": "interpretation-corpus",
   "sourceModel": "trust-systems-meta-model",
-  "sourceVersion": "v0.20.0",
+  "sourceVersion": "v0.21.0",
   "targetRepository": "trust-graph-artifacts",
-  "targetVersion": "v0.2.0",
+  "targetVersion": "v0.4.0",
   "status": "experimental",
-  "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.20 semantics while preserving essay provenance as a repository-specific extension.",
+  "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.21 runtime governance semantics while preserving essay provenance as a repository-specific extension.",
   "owns": [
     "essay provenance",
     "package interpretation",
@@ -32,6 +32,21 @@
       "notes": "TGA extends the TSMM receipt core with sourceEssays and optional signature material."
     },
     {
+      "tgaSurface": "runtime assurance package",
+      "tsmmConcept": "runtime governance envelope",
+      "notes": "TGA packages identify the actor, effect, boundary, authority basis, policy references, evidence references, status or revocation check, decision, and receipt expectation before effect admission."
+    },
+    {
+      "tgaSurface": "authority and delegation package controls",
+      "tsmmConcept": "authority graph",
+      "notes": "TGA controls are interpreted as package-local projections of TSMM authority origin, delegation edge, scope, status, and revocation semantics."
+    },
+    {
+      "tgaSurface": "runtime task evidence",
+      "tsmmConcept": "task evidence lifecycle",
+      "notes": "TGA examples distinguish lifecycle state, decision outcome, and effect admission rather than collapsing them into a single success flag."
+    },
+    {
       "tgaSurface": "sourceEssays",
       "tsmmConcept": "provenance/evidence context",
       "notes": "Essay provenance explains design motivation and must not be confused with runtime evidence."
@@ -43,10 +58,11 @@
     }
   ],
   "compatibleWith": [
-    "trust-systems-meta-model v0.20.0",
-    "trust-infrastructure-schemas v0.8.0 via TSMM/TIS mapping"
+    "trust-systems-meta-model v0.21.0",
+    "trust-infrastructure-schemas v0.10.0 via TSMM/TIS runtime assurance projection"
   ],
   "validation": [
-    "python3 scripts/validate_tsmm_native.py"
+    "python3 scripts/validate_tsmm_native.py",
+    "python3 scripts/validate_tis_alignment.py"
   ]
 }

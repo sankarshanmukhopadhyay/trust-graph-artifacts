@@ -1,0 +1,193 @@
+{
+  "graphId": "ttg.evidence.proof-first-market-decision-receipt",
+  "label": "Proof-First Market Decision Receipt",
+  "description": "Records market decisions based on verifiable proofs, policy, and scoped eligibility while preserving minimal disclosure, auditability, and contestability.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.proof-first-market-decision-receipt"
+  ],
+  "nodes": [
+    {
+      "id": "context.proof-first-market-decision-receipt",
+      "type": "TrustDomain",
+      "label": "Proof-first market eligibility and pricing decisions",
+      "description": "Records market decisions based on verifiable proofs, policy, and scoped eligibility while preserving minimal disclosure, auditability, and contestability."
+    },
+    {
+      "id": "evidence.proof.first.market.decision.receipt",
+      "type": "AssuranceProfile",
+      "label": "Proof-First Market Decision Receipt",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "tisProjection": "runtime-assurance-v0.10"
+      }
+    },
+    {
+      "id": "policy.proof.first.market.decision",
+      "type": "Policy",
+      "label": "Proof-First Market Decision Receipt",
+      "attributes": {
+        "decisionMode": "pre-effect",
+        "requiresDecisionReceipt": true
+      }
+    },
+    {
+      "id": "entity.market-operator",
+      "type": "GovernanceAuthority",
+      "label": "Market Operator",
+      "description": "Authority defining proof requirements and pricing policy"
+    },
+    {
+      "id": "entity.proof-holder",
+      "type": "Subject",
+      "label": "Proof Holder",
+      "description": "Participant presenting proof without full data surrender"
+    },
+    {
+      "id": "entity.verifier",
+      "type": "Verifier",
+      "label": "Market Verifier",
+      "description": "Verifier evaluating proof and policy"
+    },
+    {
+      "id": "entity.service",
+      "type": "RelyingParty",
+      "label": "Service",
+      "description": "Service applying eligibility or pricing outcome"
+    },
+    {
+      "id": "evidence.proof.first.market.decision.receipt",
+      "type": "EvidenceBundle",
+      "label": "Proof-First Market Decision Receipt Evidence Bundle",
+      "attributes": {
+        "artifactType": "tis-evidence-bundle-manifest"
+      }
+    },
+    {
+      "id": "assessment.proof.first.market.decision.receipt",
+      "type": "Assessment",
+      "label": "Proof-First Market Decision Receipt Evaluation",
+      "attributes": {
+        "method": "tsmm-tis-runtime-assurance-check"
+      }
+    },
+    {
+      "id": "decision.proof.first.market.decision.receipt",
+      "type": "TrustDecision",
+      "label": "Proof-First Market Decision Receipt Decision",
+      "attributes": {
+        "receiptProfile": "tis-decision-receipt",
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.apply-eligible-offer",
+      "type": "Effect",
+      "label": "Apply eligible offer",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.deny-with-reason",
+      "type": "Effect",
+      "label": "Deny with reason and appeal path",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.request-step-up-proof",
+      "type": "Effect",
+      "label": "Request step-up proof",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "proof-first-market-decision-receipt.edge.context-profile",
+      "type": "anchors",
+      "from": "context.proof-first-market-decision-receipt",
+      "to": "evidence.proof.first.market.decision.receipt",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.profile-policy",
+      "type": "defines",
+      "from": "evidence.proof.first.market.decision.receipt",
+      "to": "policy.proof.first.market.decision",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.policy-primary",
+      "type": "constrains",
+      "from": "policy.proof.first.market.decision",
+      "to": "entity.market-operator",
+      "description": "Policy constrains the primary authority or actor."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.authority-delegates",
+      "type": "delegates",
+      "from": "entity.market-operator",
+      "to": "entity.proof-holder",
+      "description": "Authority, eligibility, or review scope is delegated under policy."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.evidence-assessment",
+      "type": "substantiates",
+      "from": "evidence.proof.first.market.decision.receipt",
+      "to": "assessment.proof.first.market.decision.receipt",
+      "description": "Evidence bundle substantiates the evaluation."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.assessment-decision",
+      "type": "informs",
+      "from": "assessment.proof.first.market.decision.receipt",
+      "to": "decision.proof.first.market.decision.receipt",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.policy-decision",
+      "type": "informs",
+      "from": "policy.proof.first.market.decision",
+      "to": "decision.proof.first.market.decision.receipt",
+      "description": "Policy informs the decision."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.decision-apply-eligible-offer",
+      "type": "produces",
+      "from": "decision.proof.first.market.decision.receipt",
+      "to": "effect.apply-eligible-offer",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.decision-deny-with-reason",
+      "type": "produces",
+      "from": "decision.proof.first.market.decision.receipt",
+      "to": "effect.deny-with-reason",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "proof-first-market-decision-receipt.edge.decision-request-step-up-proof",
+      "type": "produces",
+      "from": "decision.proof.first.market.decision.receipt",
+      "to": "effect.request-step-up-proof",
+      "description": "Trust decision produces a downstream effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Proof-First Markets",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/proof-first-markets",
+    "publishedDate": "2026-02-23",
+    "signalTier": "priority",
+    "packageKind": "evidence-model",
+    "alignedWith": "TSMM v0.21.0 / TIS v0.10.0"
+  }
+}

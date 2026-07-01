@@ -1,0 +1,29 @@
+{
+  "id": "ttg.evidence.proof-first-market-decision-receipt",
+  "title": "Proof-First Market Decision Receipt",
+  "kind": "evidence-model",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Proof-First Markets",
+    "url": "https://thetrustgraph.substack.com/p/proof-first-markets",
+    "publishedDate": "2026-02-23"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "proof-first-markets",
+    "portable-eligibility",
+    "decision-receipts",
+    "minimal-disclosure"
+  ],
+  "notes": [
+    "Records market decisions based on verifiable proofs, policy, and scoped eligibility while preserving minimal disclosure, auditability, and contestability.",
+    "Aligned with TSMM v0.21.0 and TIS v0.10.0 runtime assurance."
+  ]
+}

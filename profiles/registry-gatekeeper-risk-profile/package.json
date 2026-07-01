@@ -1,0 +1,29 @@
+{
+  "id": "ttg.profile.registry-gatekeeper-risk-profile",
+  "title": "Registry Gatekeeper Risk Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Trust Lists as Market Gatekeepers",
+    "url": "https://thetrustgraph.substack.com/p/trust-lists-as-market-gatekeepers",
+    "publishedDate": "2026-05-04"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "trust-registries",
+    "gatekeeping",
+    "market-governance",
+    "appeal"
+  ],
+  "notes": [
+    "Models registry admission and suspension as market-shaping governance power with appeal, anti-capture controls, revocation evidence, and publication transparency.",
+    "Aligned with TSMM v0.21.0 and TIS v0.10.0 runtime assurance."
+  ]
+}

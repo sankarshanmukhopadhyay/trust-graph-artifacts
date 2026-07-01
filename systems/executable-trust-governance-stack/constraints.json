@@ -1,0 +1,89 @@
+{
+  "packageId": "ttg.system.executable-trust-governance-stack",
+  "kind": "system",
+  "controlSet": [
+    {
+      "id": "control.authority-to-effect-chain",
+      "type": "runtime-governance",
+      "description": "Bind authority, policy, evidence, status, decision, and effect"
+    },
+    {
+      "id": "control.registry-not-authorization",
+      "type": "boundary",
+      "description": "Prevent registry discovery from being treated as authorization"
+    },
+    {
+      "id": "control.audit-and-redress-loop",
+      "type": "auditability",
+      "description": "Preserve decision receipt, evidence bundle, review route, and correction path"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.executable.trust.stack",
+      "rules": [
+        "Bind authority, policy, evidence, status, decision, and effect",
+        "Prevent registry discovery from being treated as authorization",
+        "Preserve decision receipt, evidence bundle, review route, and correction path"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.narrative-assurance",
+      "type": "assurance-gap",
+      "description": "System claims trust without executable evidence"
+    },
+    {
+      "id": "threat.discovery-as-authorization",
+      "type": "authorization-gap",
+      "description": "Registry publication is misused as effect authorization"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "active",
+      "suspended",
+      "revoked",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.activate",
+        "from": "drafted",
+        "to": "active",
+        "trigger": "policy approved and evidence present",
+        "actor": "governance authority",
+        "evidenceRequirement": "package graph, constraints, evidence, and provenance present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence gap, challenge, or status uncertainty",
+        "actor": "review authority",
+        "evidenceRequirement": "review record and decision receipt"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "active",
+        "to": "revoked",
+        "trigger": "authority withdrawn or control failure confirmed",
+        "actor": "governance authority",
+        "evidenceRequirement": "revocation record with rationale"
+      }
+    ]
+  },
+  "tisRuntimeAssurance": {
+    "authorityBoundaryRequired": true,
+    "evidenceBundleRequired": true,
+    "decisionReceiptRequired": true,
+    "registryPublicationIsAuthorization": false,
+    "redressRouteRequired": true
+  },
+  "notes": [
+    "Authored as a TSMM-native package for v0.4.0 runtime assurance alignment.",
+    "Controls are intended to be projected into TIS v0.10.0 artifact contracts when external validation or publication is required."
+  ]
+}

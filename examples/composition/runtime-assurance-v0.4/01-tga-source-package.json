@@ -1,0 +1,5 @@
+{
+  "packageRef": "systems/executable-trust-governance-stack",
+  "sourceEssay": "Trust Is Not a Promise",
+  "governanceProblem": "runtime trust claim requires executable evidence before effect"
+}

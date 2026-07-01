@@ -1,0 +1,65 @@
+{
+  "packageId": "ttg.profile.personhood-participation-governance-profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.personhood.participation.governance.profile",
+      "artifactType": "tis-evidence-bundle-manifest",
+      "description": "Evidence bundle for Personhood Participation Governance Profile.",
+      "supportsRefs": [
+        "policy.personhood.participation.governance",
+        "decision.personhood.participation.governance.profile",
+        "control.personhood-not-identity",
+        "control.minimal-disclosure-proof",
+        "control.participation-redress"
+      ]
+    }
+  ],
+  "tisArtifactProjection": {
+    "authorityBoundary": "governance/authority-boundary.schema.json",
+    "evidenceBundle": "evidence/evidence-bundle-manifest.schema.json",
+    "evaluationEnvelope": "oasf/oasf-evaluation-envelope.schema.json",
+    "decisionReceipt": "decision/decision-receipt.schema.json",
+    "registryPublicationProfile": "registry/registry-publication-profile.schema.json"
+  },
+  "verificationExpectations": [
+    {
+      "id": "assessment.personhood.participation.governance.profile",
+      "method": "tsmm-tis-runtime-assurance-check",
+      "performedBy": "assurance reviewer or automated validator",
+      "controlRefs": [
+        "control.personhood-not-identity",
+        "control.minimal-disclosure-proof",
+        "control.participation-redress"
+      ],
+      "inputRefs": [
+        "evidence.personhood.participation.governance.profile",
+        "policy.personhood.participation.governance"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.personhood.participation.governance.profile",
+      "policyRef": "policy.personhood.participation.governance",
+      "verificationRefs": [
+        "assessment.personhood.participation.governance.profile"
+      ],
+      "effectRefs": [
+        "effect.admit-participation",
+        "effect.block-overbroad-identification",
+        "effect.route-exclusion-review"
+      ],
+      "requiredFields": [
+        "actor",
+        "authority_boundary",
+        "policy_evaluated",
+        "evidence_bundle",
+        "revocation_or_status_check",
+        "outcome",
+        "effect_admission",
+        "redress_route",
+        "timestamp"
+      ]
+    }
+  ]
+}

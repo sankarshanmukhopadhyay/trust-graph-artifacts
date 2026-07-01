@@ -44,7 +44,7 @@ That separation helps new contributors avoid mixing concept language with struct
 - do not add package-specific structure when shared structure already exists
 
 
-## TSMM v0.20 alignment checklist
+## TSMM v0.21 alignment checklist
 
 Before merging a new or revised package, verify that:
 

@@ -1,0 +1,193 @@
+{
+  "graphId": "ttg.profile.personhood-participation-governance-profile",
+  "label": "Personhood Participation Governance Profile",
+  "description": "Separates personhood, identity, eligibility, and participation claims so systems can protect participation rights without turning personhood into a surveillance identifier.",
+  "profile": "profile",
+  "contexts": [
+    "context.personhood-participation-governance-profile"
+  ],
+  "nodes": [
+    {
+      "id": "context.personhood-participation-governance-profile",
+      "type": "TrustDomain",
+      "label": "Digital personhood, eligibility, and participation rights",
+      "description": "Separates personhood, identity, eligibility, and participation claims so systems can protect participation rights without turning personhood into a surveillance identifier."
+    },
+    {
+      "id": "profile.personhood.participation.governance",
+      "type": "AssuranceProfile",
+      "label": "Personhood Participation Governance Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "tisProjection": "runtime-assurance-v0.10"
+      }
+    },
+    {
+      "id": "policy.personhood.participation.governance",
+      "type": "Policy",
+      "label": "Personhood Participation Governance Profile",
+      "attributes": {
+        "decisionMode": "pre-effect",
+        "requiresDecisionReceipt": true
+      }
+    },
+    {
+      "id": "entity.participation-authority",
+      "type": "GovernanceAuthority",
+      "label": "Participation Authority",
+      "description": "Authority defining participation rules and acceptable proofs"
+    },
+    {
+      "id": "entity.person",
+      "type": "Subject",
+      "label": "Affected Person",
+      "description": "Human participant seeking access without excessive identity disclosure"
+    },
+    {
+      "id": "entity.credential-issuer",
+      "type": "Issuer",
+      "label": "Personhood Credential Issuer",
+      "description": "Issuer producing bounded personhood or participation assertions"
+    },
+    {
+      "id": "entity.relying-service",
+      "type": "RelyingParty",
+      "label": "Relying Service",
+      "description": "Service evaluating eligibility without over-collection"
+    },
+    {
+      "id": "evidence.personhood.participation.governance.profile",
+      "type": "EvidenceBundle",
+      "label": "Personhood Participation Governance Profile Evidence Bundle",
+      "attributes": {
+        "artifactType": "tis-evidence-bundle-manifest"
+      }
+    },
+    {
+      "id": "assessment.personhood.participation.governance.profile",
+      "type": "Assessment",
+      "label": "Personhood Participation Governance Profile Evaluation",
+      "attributes": {
+        "method": "tsmm-tis-runtime-assurance-check"
+      }
+    },
+    {
+      "id": "decision.personhood.participation.governance.profile",
+      "type": "TrustDecision",
+      "label": "Personhood Participation Governance Profile Decision",
+      "attributes": {
+        "receiptProfile": "tis-decision-receipt",
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.admit-participation",
+      "type": "Effect",
+      "label": "Permit bounded participation",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.block-overbroad-identification",
+      "type": "Effect",
+      "label": "Block unnecessary identity disclosure",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.route-exclusion-review",
+      "type": "Effect",
+      "label": "Route exclusion to review authority",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "personhood-participation-governance-profile.edge.context-profile",
+      "type": "anchors",
+      "from": "context.personhood-participation-governance-profile",
+      "to": "profile.personhood.participation.governance",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.personhood.participation.governance",
+      "to": "policy.personhood.participation.governance",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.policy-primary",
+      "type": "constrains",
+      "from": "policy.personhood.participation.governance",
+      "to": "entity.participation-authority",
+      "description": "Policy constrains the primary authority or actor."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.authority-delegates",
+      "type": "delegates",
+      "from": "entity.participation-authority",
+      "to": "entity.person",
+      "description": "Authority, eligibility, or review scope is delegated under policy."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.evidence-assessment",
+      "type": "substantiates",
+      "from": "evidence.personhood.participation.governance.profile",
+      "to": "assessment.personhood.participation.governance.profile",
+      "description": "Evidence bundle substantiates the evaluation."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.assessment-decision",
+      "type": "informs",
+      "from": "assessment.personhood.participation.governance.profile",
+      "to": "decision.personhood.participation.governance.profile",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.policy-decision",
+      "type": "informs",
+      "from": "policy.personhood.participation.governance",
+      "to": "decision.personhood.participation.governance.profile",
+      "description": "Policy informs the decision."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.decision-admit-participation",
+      "type": "produces",
+      "from": "decision.personhood.participation.governance.profile",
+      "to": "effect.admit-participation",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.decision-block-overbroad-identification",
+      "type": "produces",
+      "from": "decision.personhood.participation.governance.profile",
+      "to": "effect.block-overbroad-identification",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "personhood-participation-governance-profile.edge.decision-route-exclusion-review",
+      "type": "produces",
+      "from": "decision.personhood.participation.governance.profile",
+      "to": "effect.route-exclusion-review",
+      "description": "Trust decision produces a downstream effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "First-Person Credentials",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/first-person-credentials",
+    "publishedDate": "2026-03-02",
+    "signalTier": "priority",
+    "packageKind": "profile",
+    "alignedWith": "TSMM v0.21.0 / TIS v0.10.0"
+  }
+}

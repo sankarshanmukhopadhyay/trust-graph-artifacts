@@ -50,7 +50,7 @@ Before merging, ask:
 - Does the README explain the line between essay pressure and TSMM structure?
 
 
-## TSMM v0.20 alignment checklist
+## TSMM v0.21 alignment checklist
 
 Before merging a new or revised package, verify that:
 

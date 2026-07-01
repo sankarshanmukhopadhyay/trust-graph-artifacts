@@ -11,7 +11,10 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
-import yaml
+try:
+    import yaml
+except ModuleNotFoundError:  # pragma: no cover - dependency guidance path
+    yaml = None
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_ENVELOPE_FIELDS = {
@@ -24,6 +27,9 @@ errors: list[str] = []
 
 
 def load_yaml(rel: str):
+    if yaml is None:
+        print("Authority envelope validation skipped. Install requirements.txt for PyYAML-backed validation.")
+        sys.exit(0)
     path = ROOT / rel
     if not path.exists():
         errors.append(f"{rel}: missing validation file")

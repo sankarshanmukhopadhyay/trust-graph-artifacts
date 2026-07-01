@@ -1,0 +1,10 @@
+{
+  "artifactType": "tis.authority-boundary",
+  "authorityRef": "entity.governance-authority",
+  "scope": "runtime effect admission",
+  "delegationRefs": [
+    "entity.runtime-system"
+  ],
+  "status": "active",
+  "revocationRequired": true
+}

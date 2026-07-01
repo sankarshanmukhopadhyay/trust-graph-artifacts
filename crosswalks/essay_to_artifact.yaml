@@ -153,3 +153,76 @@ crosswalk:
   - high_risk_governance_assurance
   - constitutional_boundary_attestation
   - decision
+- essay:
+    title: First-Person Credentials
+    url: https://thetrustgraph.substack.com/p/first-person-credentials
+    publishedDate: '2026-03-02'
+  claim: Personhood, identity, eligibility, and participation must remain distinct to prevent proof of personhood from becoming a surveillance identifier.
+  artifacts:
+  - profiles/personhood-participation-governance-profile
+  - profiles/first-person-credentials
+  receipts:
+  - decision
+  - authority
+  - redress
+- essay:
+    title: Your Agents Are Not Failing Your
+    url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
+    publishedDate: '2026-02-26'
+  claim: Agent accountability requires principal, controller, mandate, scope, policy, revocation state, and redress before effect admission.
+  artifacts:
+  - patterns/agent-accountability-edge
+  - patterns/agent-mandate-envelope
+  - patterns/runtime-authority-envelope
+  receipts:
+  - authority_envelope
+  - decision
+  - delegation
+- essay:
+    title: Redress at Machine Speed
+    url: https://thetrustgraph.substack.com/p/redress-at-machine-speed
+    publishedDate: '2026-05-01'
+  claim: Machine decisions require review authority, evidence disclosure, state repair, and downstream correction paths.
+  artifacts:
+  - overlays/redress-rails-for-machine-decisions
+  - profiles/public-agent-contestability-profile
+  receipts:
+  - decision
+  - enforcement
+  - redress
+- essay:
+    title: Trust Lists as Market Gatekeepers
+    url: https://thetrustgraph.substack.com/p/trust-lists-as-market-gatekeepers
+    publishedDate: '2026-05-04'
+  claim: Trust registries shape market access and therefore require admission transparency, appealability, anti-capture controls, and revocation evidence.
+  artifacts:
+  - profiles/registry-gatekeeper-risk-profile
+  - profiles/trust-registry-governance-model
+  receipts:
+  - registry_governance
+  - decision
+  - revocation
+- essay:
+    title: Proof-First Markets
+    url: https://thetrustgraph.substack.com/p/proof-first-markets
+    publishedDate: '2026-02-23'
+  claim: Market eligibility and pricing decisions should be based on bounded proof, policy, evidence, and review rather than raw data surrender.
+  artifacts:
+  - evidence/proof-first-market-decision-receipt
+  - profiles/portable-eligibility
+  receipts:
+  - decision
+  - proof_requirement
+  - eligibility
+- essay:
+    title: Trust Is Not a Promise
+    url: https://thetrustgraph.substack.com/p/trust-is-not-a-promise
+    publishedDate: '2026-05-10'
+  claim: Trust becomes credible when authority, policy, evidence, revocation, decision, registry publication, and redress are executable system properties.
+  artifacts:
+  - systems/executable-trust-governance-stack
+  - examples/composition/runtime-assurance-v0.4
+  receipts:
+  - decision
+  - evidence_bundle
+  - registry_publication

@@ -1,0 +1,199 @@
+{
+  "graphId": "ttg.system.executable-trust-governance-stack",
+  "label": "Executable Trust Governance Stack",
+  "description": "Composes authority graph, runtime governance envelope, evidence bundle, decision receipt, registry publication, and redress into an end-to-end executable governance system.",
+  "profile": "system",
+  "contexts": [
+    "context.executable-trust-governance-stack"
+  ],
+  "nodes": [
+    {
+      "id": "context.executable-trust-governance-stack",
+      "type": "TrustDomain",
+      "label": "Trust as executable system property",
+      "description": "Composes authority graph, runtime governance envelope, evidence bundle, decision receipt, registry publication, and redress into an end-to-end executable governance system."
+    },
+    {
+      "id": "system.executable.trust.governance.stack",
+      "type": "AssuranceProfile",
+      "label": "Executable Trust Governance Stack",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "tisProjection": "runtime-assurance-v0.10"
+      }
+    },
+    {
+      "id": "policy.executable.trust.stack",
+      "type": "Policy",
+      "label": "Executable Trust Governance Stack",
+      "attributes": {
+        "decisionMode": "pre-effect",
+        "requiresDecisionReceipt": true
+      }
+    },
+    {
+      "id": "entity.governance-authority",
+      "type": "GovernanceAuthority",
+      "label": "Governance Authority",
+      "description": "Authority defining rules and delegation model"
+    },
+    {
+      "id": "entity.runtime-system",
+      "type": "RegistryService",
+      "label": "Runtime Governance System",
+      "description": "System evaluating requests before effects"
+    },
+    {
+      "id": "entity.evidence-service",
+      "type": "EvidenceBundle",
+      "label": "Evidence Service",
+      "description": "Evidence bundle and integrity surface"
+    },
+    {
+      "id": "entity.registry",
+      "type": "TrustRegistry",
+      "label": "Registry",
+      "description": "Publication and status surface"
+    },
+    {
+      "id": "entity.relying-party",
+      "type": "RelyingParty",
+      "label": "Relying Party",
+      "description": "Consumer of decision and registry evidence"
+    },
+    {
+      "id": "evidence.executable.trust.governance.stack",
+      "type": "EvidenceBundle",
+      "label": "Executable Trust Governance Stack Evidence Bundle",
+      "attributes": {
+        "artifactType": "tis-evidence-bundle-manifest"
+      }
+    },
+    {
+      "id": "assessment.executable.trust.governance.stack",
+      "type": "Assessment",
+      "label": "Executable Trust Governance Stack Evaluation",
+      "attributes": {
+        "method": "tsmm-tis-runtime-assurance-check"
+      }
+    },
+    {
+      "id": "decision.executable.trust.governance.stack",
+      "type": "TrustDecision",
+      "label": "Executable Trust Governance Stack Decision",
+      "attributes": {
+        "receiptProfile": "tis-decision-receipt",
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.admit-governed-effect",
+      "type": "Effect",
+      "label": "Admit governed effect",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.block-unproven-effect",
+      "type": "Effect",
+      "label": "Block unproven effect",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.publish-audit-evidence",
+      "type": "Effect",
+      "label": "Publish audit evidence",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "executable-trust-governance-stack.edge.context-profile",
+      "type": "anchors",
+      "from": "context.executable-trust-governance-stack",
+      "to": "system.executable.trust.governance.stack",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.profile-policy",
+      "type": "defines",
+      "from": "system.executable.trust.governance.stack",
+      "to": "policy.executable.trust.stack",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.policy-primary",
+      "type": "constrains",
+      "from": "policy.executable.trust.stack",
+      "to": "entity.governance-authority",
+      "description": "Policy constrains the primary authority or actor."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.authority-delegates",
+      "type": "delegates",
+      "from": "entity.governance-authority",
+      "to": "entity.runtime-system",
+      "description": "Authority, eligibility, or review scope is delegated under policy."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.evidence-assessment",
+      "type": "substantiates",
+      "from": "evidence.executable.trust.governance.stack",
+      "to": "assessment.executable.trust.governance.stack",
+      "description": "Evidence bundle substantiates the evaluation."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.assessment-decision",
+      "type": "informs",
+      "from": "assessment.executable.trust.governance.stack",
+      "to": "decision.executable.trust.governance.stack",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.policy-decision",
+      "type": "informs",
+      "from": "policy.executable.trust.stack",
+      "to": "decision.executable.trust.governance.stack",
+      "description": "Policy informs the decision."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.decision-admit-governed-effect",
+      "type": "produces",
+      "from": "decision.executable.trust.governance.stack",
+      "to": "effect.admit-governed-effect",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.decision-block-unproven-effect",
+      "type": "produces",
+      "from": "decision.executable.trust.governance.stack",
+      "to": "effect.block-unproven-effect",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "executable-trust-governance-stack.edge.decision-publish-audit-evidence",
+      "type": "produces",
+      "from": "decision.executable.trust.governance.stack",
+      "to": "effect.publish-audit-evidence",
+      "description": "Trust decision produces a downstream effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Trust Is Not a Promise",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/trust-is-not-a-promise",
+    "publishedDate": "2026-05-10",
+    "signalTier": "priority",
+    "packageKind": "system",
+    "alignedWith": "TSMM v0.21.0 / TIS v0.10.0"
+  }
+}

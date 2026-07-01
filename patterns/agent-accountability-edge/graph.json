@@ -1,0 +1,193 @@
+{
+  "graphId": "ttg.pattern.agent-accountability-edge",
+  "label": "Agent Accountability Edge",
+  "description": "Models the accountable edge for delegated agent action: principal, controller, agent, mandate, scope, policy, revocation state, and redress before effect admission.",
+  "profile": "pattern",
+  "contexts": [
+    "context.agent-accountability-edge"
+  ],
+  "nodes": [
+    {
+      "id": "context.agent-accountability-edge",
+      "type": "TrustDomain",
+      "label": "Delegated agent action and accountable controller boundary",
+      "description": "Models the accountable edge for delegated agent action: principal, controller, agent, mandate, scope, policy, revocation state, and redress before effect admission."
+    },
+    {
+      "id": "pattern.agent.accountability.edge",
+      "type": "AssuranceProfile",
+      "label": "Agent Accountability Edge",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "tisProjection": "runtime-assurance-v0.10"
+      }
+    },
+    {
+      "id": "policy.agent.accountability.edge",
+      "type": "Policy",
+      "label": "Agent Accountability Edge",
+      "attributes": {
+        "decisionMode": "pre-effect",
+        "requiresDecisionReceipt": true
+      }
+    },
+    {
+      "id": "entity.principal",
+      "type": "Subject",
+      "label": "Principal",
+      "description": "Party on whose behalf the agent acts"
+    },
+    {
+      "id": "entity.accountable-controller",
+      "type": "GovernanceAuthority",
+      "label": "Accountable Controller",
+      "description": "Controller accountable for agent scope and supervision"
+    },
+    {
+      "id": "entity.delegated-agent",
+      "type": "Agent",
+      "label": "Delegated Agent",
+      "description": "Agent requesting an operational effect"
+    },
+    {
+      "id": "entity.relying-system",
+      "type": "Verifier",
+      "label": "Relying System",
+      "description": "System evaluating the agent action before effect"
+    },
+    {
+      "id": "evidence.agent.accountability.edge",
+      "type": "EvidenceBundle",
+      "label": "Agent Accountability Edge Evidence Bundle",
+      "attributes": {
+        "artifactType": "tis-evidence-bundle-manifest"
+      }
+    },
+    {
+      "id": "assessment.agent.accountability.edge",
+      "type": "Assessment",
+      "label": "Agent Accountability Edge Evaluation",
+      "attributes": {
+        "method": "tsmm-tis-runtime-assurance-check"
+      }
+    },
+    {
+      "id": "decision.agent.accountability.edge",
+      "type": "TrustDecision",
+      "label": "Agent Accountability Edge Decision",
+      "attributes": {
+        "receiptProfile": "tis-decision-receipt",
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.admit-agent-action",
+      "type": "Effect",
+      "label": "Permit scoped agent effect",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.block-orphan-action",
+      "type": "Effect",
+      "label": "Block orphan agent action",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    },
+    {
+      "id": "effect.escalate-high-risk-action",
+      "type": "Effect",
+      "label": "Escalate high-risk action for review",
+      "attributes": {
+        "effectClass": "runtime-governance"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "agent-accountability-edge.edge.context-profile",
+      "type": "anchors",
+      "from": "context.agent-accountability-edge",
+      "to": "pattern.agent.accountability.edge",
+      "description": "Governance context anchors the TSMM-native package."
+    },
+    {
+      "id": "agent-accountability-edge.edge.profile-policy",
+      "type": "defines",
+      "from": "pattern.agent.accountability.edge",
+      "to": "policy.agent.accountability.edge",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "agent-accountability-edge.edge.policy-primary",
+      "type": "constrains",
+      "from": "policy.agent.accountability.edge",
+      "to": "entity.principal",
+      "description": "Policy constrains the primary authority or actor."
+    },
+    {
+      "id": "agent-accountability-edge.edge.authority-delegates",
+      "type": "delegates",
+      "from": "entity.principal",
+      "to": "entity.accountable-controller",
+      "description": "Authority, eligibility, or review scope is delegated under policy."
+    },
+    {
+      "id": "agent-accountability-edge.edge.evidence-assessment",
+      "type": "substantiates",
+      "from": "evidence.agent.accountability.edge",
+      "to": "assessment.agent.accountability.edge",
+      "description": "Evidence bundle substantiates the evaluation."
+    },
+    {
+      "id": "agent-accountability-edge.edge.assessment-decision",
+      "type": "informs",
+      "from": "assessment.agent.accountability.edge",
+      "to": "decision.agent.accountability.edge",
+      "description": "Assessment informs the trust decision."
+    },
+    {
+      "id": "agent-accountability-edge.edge.policy-decision",
+      "type": "informs",
+      "from": "policy.agent.accountability.edge",
+      "to": "decision.agent.accountability.edge",
+      "description": "Policy informs the decision."
+    },
+    {
+      "id": "agent-accountability-edge.edge.decision-admit-agent-action",
+      "type": "produces",
+      "from": "decision.agent.accountability.edge",
+      "to": "effect.admit-agent-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "agent-accountability-edge.edge.decision-block-orphan-action",
+      "type": "produces",
+      "from": "decision.agent.accountability.edge",
+      "to": "effect.block-orphan-action",
+      "description": "Trust decision produces a downstream effect."
+    },
+    {
+      "id": "agent-accountability-edge.edge.decision-escalate-high-risk-action",
+      "type": "produces",
+      "from": "decision.agent.accountability.edge",
+      "to": "effect.escalate-high-risk-action",
+      "description": "Trust decision produces a downstream effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "Your Agents Are Not Failing Your",
+    "sourceUrl": "https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your",
+    "publishedDate": "2026-02-26",
+    "signalTier": "priority",
+    "packageKind": "pattern",
+    "alignedWith": "TSMM v0.21.0 / TIS v0.10.0"
+  }
+}

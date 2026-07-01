@@ -70,11 +70,11 @@ The repository intentionally keeps two related provenance surfaces:
 When adding a new package, update both files. The validator enforces the package provenance map; the catalog remains the browsing index.
 
 
-## Layer 5: Cross-repo executable governance alignment
+## Layer 5: Cross-repo runtime assurance alignment
 
-As of v0.2.0, the active corpus is aligned with TSMM v0.20.0 and the TSMM/TIS split. TSMM owns semantic trust-system modeling. Trust Infrastructure Schemas owns executable artifact contracts where cross-repo validation, registry publication, or assurance-level semantics are needed. TGA owns the Trust Graph interpretation corpus and provenance extension layer.
+As of v0.4.0, the active corpus is aligned with TSMM v0.21.0 and Trust Infrastructure Schemas v0.10.0. TSMM owns semantic trust-system modeling, including authority graph, runtime governance envelope, decision receipt, lifecycle, and task evidence semantics. Trust Infrastructure Schemas owns executable artifact contracts where cross-repo validation, evidence bundles, evaluation envelopes, decision receipts, registry publication, status/revocation evidence, or assurance-level semantics are needed. TGA owns the Trust Graph interpretation corpus and provenance extension layer.
 
-The active binding declaration is `bindings/tsmm/tga-tsmm-binding.json`. The binding constraints are `bindings/tsmm/constraints.json`.
+The active TSMM binding declaration is `bindings/tsmm/tga-tsmm-binding.json`. The active TIS projection binding is `bindings/tis/tga-tis-binding.json`.
 
 This prevents TGA from becoming a competing model authority while preserving its real value: turning governance failure patterns into reusable TSMM-native packages.
 

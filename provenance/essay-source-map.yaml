@@ -279,3 +279,45 @@ provenance:
   packageKind: profile
   packagePath: profiles/public-agent-contestability-profile
   signalTier: priority
+- slug: personhood-participation-governance-profile
+  title: Personhood Participation Governance Profile
+  publishedDate: '2026-03-02'
+  url: https://thetrustgraph.substack.com/p/first-person-credentials
+  packageKind: profile
+  packagePath: profiles/personhood-participation-governance-profile
+  signalTier: priority
+- slug: agent-accountability-edge
+  title: Agent Accountability Edge
+  publishedDate: '2026-02-26'
+  url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
+  packageKind: pattern
+  packagePath: patterns/agent-accountability-edge
+  signalTier: priority
+- slug: redress-rails-for-machine-decisions
+  title: Redress Rails for Machine Decisions
+  publishedDate: '2026-05-01'
+  url: https://thetrustgraph.substack.com/p/redress-at-machine-speed
+  packageKind: overlay
+  packagePath: overlays/redress-rails-for-machine-decisions
+  signalTier: priority
+- slug: registry-gatekeeper-risk-profile
+  title: Registry Gatekeeper Risk Profile
+  publishedDate: '2026-05-04'
+  url: https://thetrustgraph.substack.com/p/trust-lists-as-market-gatekeepers
+  packageKind: profile
+  packagePath: profiles/registry-gatekeeper-risk-profile
+  signalTier: priority
+- slug: proof-first-market-decision-receipt
+  title: Proof-First Market Decision Receipt
+  publishedDate: '2026-02-23'
+  url: https://thetrustgraph.substack.com/p/proof-first-markets
+  packageKind: evidence-model
+  packagePath: evidence/proof-first-market-decision-receipt
+  signalTier: priority
+- slug: executable-trust-governance-stack
+  title: Executable Trust Governance Stack
+  publishedDate: '2026-05-10'
+  url: https://thetrustgraph.substack.com/p/trust-is-not-a-promise
+  packageKind: system
+  packagePath: systems/executable-trust-governance-stack
+  signalTier: priority

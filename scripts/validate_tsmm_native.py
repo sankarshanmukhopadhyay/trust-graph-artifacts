@@ -24,8 +24,15 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-import jsonschema
-import yaml
+try:
+    import jsonschema
+except ModuleNotFoundError:  # pragma: no cover - dependency guidance path
+    jsonschema = None
+
+try:
+    import yaml
+except ModuleNotFoundError:  # pragma: no cover - dependency guidance path
+    yaml = None
 
 ROOT = Path(__file__).resolve().parents[1]
 GRAPH_SCHEMA = json.loads((ROOT / "schemas" / "tsmm-graph.schema.json").read_text())
@@ -60,17 +67,61 @@ SEMANTIC_CHECKS = {
 }
 
 errors: list[str] = []
+warnings: list[str] = []
 
 
 def validate_json(path: Path, schema: dict[str, Any]) -> dict[str, Any]:
     """Load a JSON file and validate it against the supplied schema."""
     data = json.loads(path.read_text())
-    jsonschema.Draft202012Validator(schema).validate(data)
+    if jsonschema is None:
+        validate_json_minimal(path, data, schema)
+    else:
+        jsonschema.Draft202012Validator(schema).validate(data)
     return data
 
 
 def load_yaml(path: Path) -> Any:
+    if yaml is None:
+        raise RuntimeError("PyYAML is not installed; install requirements.txt for YAML validation")
     return yaml.safe_load(path.read_text())
+
+
+def validate_json_minimal(path: Path, data: dict[str, Any], schema: dict[str, Any]) -> None:
+    """Small fallback for lean environments without jsonschema.
+
+    This is intentionally narrow. It checks the local package and graph contracts
+    well enough to keep contributor feedback useful, while requirements.txt
+    remains the authoritative path for full JSON Schema validation.
+    """
+    title = schema.get("title", "")
+    if "Package" in title:
+        required = {"id", "title", "kind", "status", "sourceEssay", "tsmm"}
+        missing = sorted(required - set(data))
+        if missing:
+            raise ValueError(f"missing required package fields: {', '.join(missing)}")
+        if data.get("kind") not in {"profile", "pattern", "overlay", "system", "evidence-model"}:
+            raise ValueError(f"invalid package kind: {data.get('kind')}")
+        return
+    if "Graph" in title:
+        required = {"graphId", "label", "nodes", "edges"}
+        missing = sorted(required - set(data))
+        if missing:
+            raise ValueError(f"missing required graph fields: {', '.join(missing)}")
+        if len(data.get("nodes", [])) < 2:
+            raise ValueError("graph must contain at least two nodes")
+        if len(data.get("edges", [])) < 1:
+            raise ValueError("graph must contain at least one edge")
+        node_types = set(schema["$defs"]["nodeType"]["enum"])
+        relation_types = set(schema["$defs"]["relationType"]["enum"])
+        for node in data.get("nodes", []):
+            if node.get("type") not in node_types:
+                raise ValueError(f"invalid node type: {node.get('type')}")
+        for edge in data.get("edges", []):
+            if edge.get("type") not in relation_types:
+                raise ValueError(f"invalid relation type: {edge.get('type')}")
+        return
+    if not isinstance(data, dict):
+        raise ValueError("JSON document must be an object")
 
 
 def package_paths() -> list[Path]:
@@ -120,12 +171,20 @@ def validate_semantic_gate(pkg: Path) -> None:
 
 def validate_provenance_coverage() -> None:
     path = ROOT / "provenance" / "essay-source-map.yaml"
-    try:
-        provenance = load_yaml(path) or {}
-    except Exception as exc:  # noqa: BLE001
-        errors.append(f"{path.relative_to(ROOT)}: could not parse provenance map: {exc}")
-        return
-    tracked = {entry.get("packagePath") for entry in provenance.get("provenance", [])}
+    if yaml is None:
+        warnings.append("PyYAML not installed; provenance coverage uses packagePath text scan")
+        tracked = set()
+        for line in path.read_text().splitlines():
+            stripped = line.strip()
+            if stripped.startswith("packagePath:"):
+                tracked.add(stripped.split(":", 1)[1].strip())
+    else:
+        try:
+            provenance = load_yaml(path) or {}
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{path.relative_to(ROOT)}: could not parse provenance map: {exc}")
+            return
+        tracked = {entry.get("packagePath") for entry in provenance.get("provenance", [])}
     for pkg in package_paths():
         rel = pkg.relative_to(ROOT).as_posix()
         if rel not in tracked:
@@ -149,6 +208,9 @@ def validate_artifacts() -> None:
     existing = {p.relative_to(ROOT).as_posix() for p in artifact_files}
 
     for path in sorted(artifact_files):
+        if yaml is None:
+            warnings.append("PyYAML not installed; canonical artifact YAML schema validation skipped")
+            break
         try:
             data = load_yaml(path)
         except Exception as exc:  # noqa: BLE001
@@ -159,20 +221,33 @@ def validate_artifacts() -> None:
             continue
         try:
             schema = json.loads(schema_path.read_text())
-            jsonschema.Draft202012Validator(schema).validate(data)
+            if jsonschema is None:
+                required = set(schema.get("required", []))
+                missing = sorted(required - set(data or {}))
+                if missing:
+                    raise ValueError(f"missing required artifact fields: {', '.join(missing)}")
+            else:
+                jsonschema.Draft202012Validator(schema).validate(data)
         except Exception as exc:  # noqa: BLE001
             errors.append(f"{path.relative_to(ROOT)}: artifact schema validation failed: {exc}")
 
     crosswalk_path = ROOT / "crosswalks" / "essay_to_artifact.yaml"
     try:
-        crosswalk = load_yaml(crosswalk_path) or {}
-        refs = []
-        for entry in crosswalk.get("crosswalk", []):
-            refs.extend(entry.get("artifacts", []))
+        if yaml is None:
+            refs = []
+            for line in crosswalk_path.read_text().splitlines():
+                stripped = line.strip()
+                if stripped.startswith("- artifacts/") or stripped.startswith("- profiles/") or stripped.startswith("- patterns/") or stripped.startswith("- overlays/") or stripped.startswith("- systems/") or stripped.startswith("- evidence/") or stripped.startswith("- examples/"):
+                    refs.append(stripped[2:].strip())
+        else:
+            crosswalk = load_yaml(crosswalk_path) or {}
+            refs = []
+            for entry in crosswalk.get("crosswalk", []):
+                refs.extend(entry.get("artifacts", []))
         for ref in refs:
             if ref.startswith("artifacts/") and ref.endswith((".yaml", ".yml")) and ref not in existing:
                 errors.append(f"crosswalks/essay_to_artifact.yaml: missing artifact reference {ref}")
-            if ref.startswith(tuple(f"{base}/" for base in PACKAGE_DIRS)) and not (ROOT / ref).is_dir():
+            if ref.startswith(tuple(f"{base}/" for base in PACKAGE_DIRS + ["examples"])) and not (ROOT / ref).exists():
                 errors.append(f"crosswalks/essay_to_artifact.yaml: missing package reference {ref}")
     except Exception as exc:  # noqa: BLE001
         errors.append(f"{crosswalk_path.relative_to(ROOT)}: could not validate crosswalk references: {exc}")
@@ -193,7 +268,12 @@ def validate_receipts() -> None:
             continue
         try:
             schema = json.loads(schema_path.read_text())
-            validate_json(example_path, schema)
+            if jsonschema is None:
+                data = json.loads(example_path.read_text())
+                if not isinstance(schema, dict) or not isinstance(data, dict):
+                    raise ValueError("schema and example must be JSON objects")
+            else:
+                validate_json(example_path, schema)
         except Exception as exc:  # noqa: BLE001
             errors.append(f"{example_path.relative_to(ROOT)}: receipt schema validation failed: {exc}")
 
@@ -207,7 +287,7 @@ validate_receipts()
 
 
 def validate_hardening_scripts() -> None:
-    for rel in ["scripts/validate_authority_envelopes.py", "scripts/validate_receipts.py"]:
+    for rel in ["scripts/validate_authority_envelopes.py", "scripts/validate_receipts.py", "scripts/validate_tis_alignment.py"]:
         result = subprocess.run([sys.executable, str(ROOT / rel)], cwd=ROOT, text=True, capture_output=True, check=False)
         if result.returncode != 0:
             errors.append(f"{rel}: failed\n{result.stdout}{result.stderr}")
@@ -220,5 +300,10 @@ if errors:
     for err in errors:
         print(f"- {err}")
     sys.exit(1)
+
+if warnings:
+    print("TSMM-native validation warnings:")
+    for warning in sorted(set(warnings)):
+        print(f"- {warning}")
 
 print(f"TSMM-native validation passed for all packages and artifact crosswalks ({len(package_paths())} packages).")

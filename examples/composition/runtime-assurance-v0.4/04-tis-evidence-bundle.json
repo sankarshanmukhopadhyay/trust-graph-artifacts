@@ -1,0 +1,9 @@
+{
+  "artifactType": "tis.evidence-bundle-manifest",
+  "bundleId": "evidence-bundle-ttg-v040-001",
+  "artifactRefs": [
+    "03-tis-authority-boundary.json",
+    "05-tis-decision-receipt.json"
+  ],
+  "integrity": "digest-required"
+}

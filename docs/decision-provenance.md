@@ -36,7 +36,7 @@ TGA adds `sourceEssays` to preserve the intellectual provenance of each receipt 
 This distinction keeps TGA aligned with TSMM while preserving the repository's role as an operational interpretation layer for The Trust Graph.
 
 
-## TSMM v0.20 alignment rule
+## TSMM v0.21 alignment rule
 
 A TGA decision provenance record is valid when it can be interpreted as a TSMM runtime trust decision without losing authority, policy, evidence, revocation, assurance, effect, or review-path context. TGA-specific fields may add provenance and interpretive force, but they should not redefine TSMM semantics.
 

@@ -1,0 +1,21 @@
+{
+  "envelopeId": "tsmm-runtime-envelope-ttg-v040-001",
+  "actor": "entity.runtime-system",
+  "requestedEffect": "effect.admit-governed-effect",
+  "trustBoundary": "boundary.policy-to-effect",
+  "authorityBasis": "entity.governance-authority",
+  "policyRefs": [
+    "policy.executable.trust.stack"
+  ],
+  "evidenceRefs": [
+    "evidence.executable.trust.governance.stack"
+  ],
+  "revocationCheck": {
+    "checked": true,
+    "authorityState": "active",
+    "cacheAgeSeconds": 30,
+    "maxCacheAgeSeconds": 120
+  },
+  "decision": "allow",
+  "receiptExpectation": "required"
+}

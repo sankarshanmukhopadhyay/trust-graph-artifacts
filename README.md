@@ -11,16 +11,16 @@ The repository does not treat essays as executable truth. It treats them as a so
 
 The result is a developer-facing library that moves from governance claims to concrete system shapes, machine-readable constraints, valid/invalid examples, and evidence-bearing decisions.
 
-## TSMM v0.20 alignment
+## TSMM v0.21 and TIS v0.10 alignment
 
-Version `0.3.1` preserves the TSMM v0.20 boundary and hardens the runtime authority-envelope layer introduced in v0.3.0:
+Version `0.4.0` aligns the active corpus with TSMM v0.21.0 and Trust Infrastructure Schemas v0.10.0:
 
-- **TSMM v0.20.0** is the semantic authority for trust-system modeling.
-- **Trust Infrastructure Schemas v0.8.0** is the executable artifact contract layer where cross-repo validation, registry publication, or assurance-level semantics are required.
+- **TSMM v0.21.0** is the semantic authority for trust-system modeling, including authority graphs, runtime governance envelopes, decision receipts, lifecycle semantics, and task evidence.
+- **Trust Infrastructure Schemas v0.10.0** is the executable artifact contract layer where cross-repo validation, registry publication, evidence bundles, evaluation envelopes, decision receipts, and assurance-level semantics are required.
 - **TGA** is the Trust Graph interpretation corpus: it turns essay-derived governance pressure into TSMM-native packages, receipts, examples, and provenance overlays.
-- **v0.3.1** adds authority-envelope receipt validation, PAD enforcement cases, revocation-lag measurement cases, and a public-agent contestability profile while retaining the v0.3.0 authority, commitments, fraud, inference, and high-risk infrastructure package families.
+- **v0.4.0** adds a TIS runtime assurance projection binding, six new essay-derived package families, and a canonical composition path from authority graph to runtime governance envelope to TIS evidence and decision artifacts.
 
-Start with [`docs/tsmm-v0.20-alignment.md`](docs/tsmm-v0.20-alignment.md) and [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md) for the current alignment contract.
+Start with [`docs/crosswalks/tga-tsmm-tis-runtime-assurance.md`](docs/crosswalks/tga-tsmm-tis-runtime-assurance.md), [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md), and [`bindings/tis/tga-tis-binding.json`](bindings/tis/tga-tis-binding.json) for the current alignment contract.
 
 ## What is in this repository now
 
@@ -29,6 +29,7 @@ The active repository surface has three coherent layers:
 1. **TSMM-native package corpus** — profiles, patterns, overlays, systems, and evidence models under `profiles/`, `patterns/`, `overlays/`, `systems/`, and `evidence/`.
 2. **Executable governance artifact and receipt layer** — canonical artifact YAML, receipt schemas, and examples under `artifacts/`, `schemas/receipts/`, and `examples/receipts/`.
 3. **Temporal governance layer** — revocation propagation, persistence traps, execution-time authority state, and gradient exploitation surfaces modeled as first-class validation targets.
+4. **Runtime assurance projection layer** — TSMM authority, delegation, evidence, decision, status, revocation, registry, and redress semantics projected into TIS v0.10.0 artifact contracts.
 
 Together these layers make authority, delegation, enforcement, revocation, evidence, and auditability visible as repository structure rather than narrative intent.
 
@@ -68,6 +69,7 @@ Then run the validator:
 
 ```bash
 python3 scripts/validate_tsmm_native.py
+python3 scripts/validate_tis_alignment.py
 ```
 
 ## Recommended package tours
@@ -129,6 +131,20 @@ Use this cluster to inspect the v0.3.1 enforcement layer:
 - `validation/revocation-lag-test-cases.yaml`
 - `scripts/validate_authority_envelopes.py`
 - `profiles/public-agent-contestability-profile`
+
+### v0.4.0 runtime assurance tour
+
+Use this cluster to inspect the TSMM v0.21 / TIS v0.10 alignment release:
+
+- `bindings/tis/tga-tis-binding.json`
+- `docs/crosswalks/tga-tsmm-tis-runtime-assurance.md`
+- `examples/composition/runtime-assurance-v0.4`
+- `profiles/personhood-participation-governance-profile`
+- `patterns/agent-accountability-edge`
+- `overlays/redress-rails-for-machine-decisions`
+- `profiles/registry-gatekeeper-risk-profile`
+- `evidence/proof-first-market-decision-receipt`
+- `systems/executable-trust-governance-stack`
 
 ### Temporal governance tour
 

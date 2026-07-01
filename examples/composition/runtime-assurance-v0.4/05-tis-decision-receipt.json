@@ -1,0 +1,9 @@
+{
+  "artifactType": "tis.decision-receipt",
+  "decisionId": "decision-ttg-v040-001",
+  "policyRef": "policy.executable.trust.stack",
+  "evidenceBundleRef": "evidence-bundle-ttg-v040-001",
+  "outcome": "allow",
+  "effectAdmission": "permitted",
+  "redressRoute": "review-authority"
+}

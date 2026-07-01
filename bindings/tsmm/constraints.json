@@ -1,6 +1,6 @@
 {
-  "bindingId": "tga-tsmm-v0.20.0",
-  "version": "0.2.0",
+  "bindingId": "tga-tsmm-v0.21.0",
+  "version": "0.4.0",
   "constraints": [
     {
       "id": "tga-tsmm-boundary-001",
@@ -26,6 +26,21 @@
       "id": "tga-tsmm-boundary-005",
       "level": "MUST",
       "statement": "Essay provenance MUST NOT be treated as runtime evidence. Runtime evidence belongs in evidenceRefs or TIS-compatible evidence artifacts."
+    },
+    {
+      "id": "tga-tsmm-boundary-006",
+      "level": "MUST",
+      "statement": "Runtime assurance packages MUST identify the pre-effect governance surface: actor, requested effect, trust boundary, authority basis, policy references, evidence references, revocation or status check, decision, and receipt expectation."
+    },
+    {
+      "id": "tga-tsmm-boundary-007",
+      "level": "MUST",
+      "statement": "Authority graph semantics MUST distinguish authority origin, delegated actor, scope, policy constraint, registry publication surface, and revocation behavior."
+    },
+    {
+      "id": "tga-tsmm-boundary-008",
+      "level": "SHOULD",
+      "statement": "Task or agent execution examples SHOULD keep lifecycle state, decision outcome, and effect admission as separate fields."
     }
   ]
 }

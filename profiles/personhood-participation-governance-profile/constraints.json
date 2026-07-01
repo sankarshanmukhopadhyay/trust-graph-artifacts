@@ -1,0 +1,89 @@
+{
+  "packageId": "ttg.profile.personhood-participation-governance-profile",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.personhood-not-identity",
+      "type": "scope-boundary",
+      "description": "Keep personhood, identity, and eligibility as separate claims"
+    },
+    {
+      "id": "control.minimal-disclosure-proof",
+      "type": "evidence-minimization",
+      "description": "Require proof sufficient for participation without persistent cross-context tracking"
+    },
+    {
+      "id": "control.participation-redress",
+      "type": "redress",
+      "description": "Provide review route for exclusion, duplication, coercion, or credential loss"
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.personhood.participation.governance",
+      "rules": [
+        "Keep personhood, identity, and eligibility as separate claims",
+        "Require proof sufficient for participation without persistent cross-context tracking",
+        "Provide review route for exclusion, duplication, coercion, or credential loss"
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.identity-collapse",
+      "type": "scope-collapse",
+      "description": "System treats personhood proof as a general identity dossier"
+    },
+    {
+      "id": "threat.participation-exclusion",
+      "type": "rights-risk",
+      "description": "Eligible participants are denied because recovery or appeal is missing"
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "drafted",
+      "active",
+      "suspended",
+      "revoked",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.activate",
+        "from": "drafted",
+        "to": "active",
+        "trigger": "policy approved and evidence present",
+        "actor": "governance authority",
+        "evidenceRequirement": "package graph, constraints, evidence, and provenance present"
+      },
+      {
+        "id": "transition.suspend",
+        "from": "active",
+        "to": "suspended",
+        "trigger": "evidence gap, challenge, or status uncertainty",
+        "actor": "review authority",
+        "evidenceRequirement": "review record and decision receipt"
+      },
+      {
+        "id": "transition.revoke",
+        "from": "active",
+        "to": "revoked",
+        "trigger": "authority withdrawn or control failure confirmed",
+        "actor": "governance authority",
+        "evidenceRequirement": "revocation record with rationale"
+      }
+    ]
+  },
+  "tisRuntimeAssurance": {
+    "authorityBoundaryRequired": true,
+    "evidenceBundleRequired": true,
+    "decisionReceiptRequired": true,
+    "registryPublicationIsAuthorization": false,
+    "redressRouteRequired": true
+  },
+  "notes": [
+    "Authored as a TSMM-native package for v0.4.0 runtime assurance alignment.",
+    "Controls are intended to be projected into TIS v0.10.0 artifact contracts when external validation or publication is required."
+  ]
+}
