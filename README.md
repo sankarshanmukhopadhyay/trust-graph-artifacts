@@ -64,6 +64,7 @@ Read these in order:
 3. [`docs/tsmm-and-the-trust-graph.md`](docs/tsmm-and-the-trust-graph.md)
 4. [`docs/package-anatomy.md`](docs/package-anatomy.md)
 5. [`docs/authoring-model.md`](docs/authoring-model.md)
+6. [`guides/agentic-systems-architecture-and-governance/`](guides/agentic-systems-architecture-and-governance/) — architect-facing implementation method for building governed multi-agent jobs with TSMM, TIS, and TGA.
 
 Then run the validator:
 
@@ -71,6 +72,10 @@ Then run the validator:
 python3 scripts/validate_tsmm_native.py
 python3 scripts/validate_tis_alignment.py
 ```
+
+## Implementation guide for agentic systems
+
+Architects and consultants can use the [Agentic Systems Architecture and Governance Implementation Guide](guides/agentic-systems-architecture-and-governance/) to move from a bounded job definition through authority modeling, delegation lineage, capability issuance, governed execution, evidence, revocation, and operational assurance. The guide cross-references TSMM semantics, TIS contracts, and TGA patterns while preserving their separate authority.
 
 ## Recommended package tours
 

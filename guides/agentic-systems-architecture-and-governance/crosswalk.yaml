@@ -1,0 +1,175 @@
+document:
+  id: TGA-IG-001
+  title: Agentic Systems Architecture and Governance Implementation Guide
+  status: implementation-guidance
+  repositories:
+    - TSMM
+    - TIS
+    - TGA
+stages:
+  - id: ASAG-00
+    name: Define the bounded job and effects
+    tsmm:
+      - effect-centered-trust-decision-model
+    tga:
+      - docs/quickstart.md
+      - governance-profiles
+    tis:
+      - selected-artifact-contracts
+    outputs:
+      - job-charter
+      - effect-catalog
+      - effect-admission-matrix
+    evidence:
+      - architecture-review-record
+    exit_gate: system is described independently of model vendor and orchestration framework
+  - id: ASAG-01
+    name: Model principals roles and authority
+    tsmm:
+      - core-model
+      - entity-and-relationship-model
+      - agentic-extension
+    tga:
+      - patterns/agent-accountability-edge
+    tis:
+      - governance/authority-boundary.schema.json
+    outputs:
+      - tsmm-instance
+      - role-catalog
+      - authority-source-map
+    evidence:
+      - role-resolution-test
+    exit_gate: every consequential action resolves to a persistent role and authority source
+  - id: ASAG-02
+    name: Define mandates and policy boundaries
+    tsmm:
+      - authority-and-policy-concepts
+    tga:
+      - artifacts/agent-mandate-envelope
+      - patterns/runtime-authority-envelope
+      - profiles/delegation-first-governance-profile
+    tis:
+      - governance/authority-boundary.schema.json
+    outputs:
+      - mandate-instance
+      - approval-matrix
+      - policy-rules
+    evidence:
+      - mandate-verification-receipt
+    exit_gate: no consequential effect is admitted without current mandate and policy result
+  - id: ASAG-03
+    name: Design delegation and lineage
+    tsmm:
+      - chained-delegation
+      - fanout-delegation
+    tga:
+      - patterns/delegation-lineage-envelope
+    tis:
+      - delegation/delegation-lineage.schema.json
+      - delegation/delegation-lineage-verification.schema.json
+    outputs:
+      - delegation-topology
+      - lineage-verifier
+      - negative-fixtures
+    evidence:
+      - delegation-lineage-verification
+    exit_gate: complete authority path is reconstructable and machine-verifiable
+  - id: ASAG-04
+    name: Separate authority from capability
+    tsmm:
+      - authority-and-effect-model
+    tga:
+      - artifacts/execution-time-delegation
+    tis:
+      - governance/authority-boundary.schema.json
+      - trust-task-execution-records
+    outputs:
+      - capability-broker
+      - enforcement-map
+      - grant-receipt
+    evidence:
+      - capability-grant-receipt
+    exit_gate: agents cannot bypass enforcement points
+  - id: ASAG-05
+    name: Build governed execution workflow
+    tsmm:
+      - trust-decision-model
+      - effect-model
+    tga:
+      - patterns/runtime-authority-envelope
+      - artifacts/execution-time-delegation
+    tis:
+      - trust-task-execution-records
+    outputs:
+      - candidate-action-schema
+      - policy-decision-workflow
+      - execution-state-machine
+    evidence:
+      - policy-decision-receipt
+      - execution-receipt
+    exit_gate: model proposes but cannot unilaterally create consequential effect
+  - id: ASAG-06
+    name: Add fanout convergence and return review
+    tsmm:
+      - fanout-delegation
+    tga:
+      - delegation-lineage-tests
+      - profiles/delegation-first-governance-profile
+    tis:
+      - delegation-lineage-verification
+    outputs:
+      - branch-manifests
+      - convergence-policy
+      - dissent-record
+    evidence:
+      - aggregate-effect-review
+    exit_gate: branch and combined effects are governed and reconstructable
+  - id: ASAG-07
+    name: Produce evidence and receipts
+    tsmm:
+      - evidence-model
+    tga:
+      - evidence/proof-carrying-commitment-receipt
+      - receipt-packages
+    tis:
+      - portable-receipts
+    outputs:
+      - evidence-bundle
+      - challenge-route
+    evidence:
+      - complete-receipt-chain
+    exit_gate: independent verifier can reconstruct each consequential effect
+  - id: ASAG-08
+    name: Implement revocation interruption and remediation
+    tsmm:
+      - lifecycle-model
+      - authority-graph
+    tga:
+      - revocation-dynamics
+      - commitment-lifecycle-mediation
+    tis:
+      - lifecycle-events
+      - lineage-verification
+    outputs:
+      - revocation-state-machine
+      - propagation-service
+      - remediation-playbooks
+    evidence:
+      - revocation-propagation-receipt
+    exit_gate: live integration demonstrates revocation and recovery
+  - id: ASAG-09
+    name: Operationalize assurance
+    tsmm:
+      - conformance-guidance
+    tga:
+      - validation-scripts
+      - assurance-cases
+    tis:
+      - schema-validators
+    outputs:
+      - ci-validation
+      - adr-set
+      - assurance-dashboard
+    evidence:
+      - release-assurance-record
+    exit_gate: system evolves without silent semantic authority or evidence drift
