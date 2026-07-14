@@ -4,7 +4,7 @@ last_reviewed: 2026-06-30
 applicable_version: v0.4.0
 title: Portfolio Alignment
 layout: default
-parent: Crosswalks
+parent: TSMM alignment
 nav_order: 7
 ---
 

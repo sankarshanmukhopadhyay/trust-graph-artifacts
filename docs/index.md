@@ -25,22 +25,22 @@ permalink: /docs/
 
 ## TSMM v0.21 and TIS v0.10 runtime assurance
 
-- [TSMM binding](bindings/tsmm-binding.md)
-- [TGA / TSMM / TIS runtime assurance](crosswalks/tga-tsmm-tis-runtime-assurance.md)
-- [Portfolio alignment](crosswalks/tga-portfolio-alignment.md)
-- [TGA ↔ TSMM alignment crosswalk](crosswalks/tsmm-alignment-crosswalk.md)
-- [TSMM / TIS / TGA layering](crosswalks/tsmm-tis-tga-layering.md)
-- [TSMM decision receipt profile](crosswalks/tsmm-decision-receipt-profile.md)
-- [Outcome vocabulary](crosswalks/outcome-vocabulary.md)
-- [Assurance posture](crosswalks/assurance-posture.md)
-- [TGA → TSMM → TIS composition](crosswalks/tga-tsmm-tis-composition.md)
+- [TSMM binding]({% link docs/bindings/tsmm-binding.md %})
+- [TGA / TSMM / TIS runtime assurance]({% link docs/crosswalks/tga-tsmm-tis-runtime-assurance.md %})
+- [Portfolio alignment]({% link docs/crosswalks/tga-portfolio-alignment.md %})
+- [TGA ↔ TSMM alignment crosswalk]({% link docs/crosswalks/tsmm-alignment-crosswalk.md %})
+- [TSMM / TIS / TGA layering]({% link docs/crosswalks/tsmm-tis-tga-layering.md %})
+- [TSMM decision receipt profile]({% link docs/crosswalks/tsmm-decision-receipt-profile.md %})
+- [Outcome vocabulary]({% link docs/crosswalks/outcome-vocabulary.md %})
+- [Assurance posture]({% link docs/crosswalks/assurance-posture.md %})
+- [TGA → TSMM → TIS composition]({% link docs/crosswalks/tga-tsmm-tis-composition.md %})
 
 ## Governance and release
 
 - `control-plane-legitimacy.md` — design note for authority relocation, legitimacy gaps, intermediary governance, and governed licensing
 - `release-process.md` — release discipline and expectations
-- [v0.4.0 release notes](release-notes/v0.4.0.md)
-- [v0.4.0 release impact](release-impact/v0.4.0.md)
+- [v0.4.0 release notes]({% link docs/release-notes/v0.4.0.md %})
+- [v0.4.0 release impact]({% link docs/release-impact/v0.4.0.md %})
 
 ## Historical material
 
@@ -48,34 +48,34 @@ permalink: /docs/
 
 ## Executable governance artifact expansion
 
-- [Artifact methodology](artifact-methodology.md)
-- [Execution model](execution-model.md)
-- [Governance model](governance-model.md)
-- [Receipts](receipts.md)
-- [Decision provenance](decision-provenance.md)
-- [Walkthrough](walkthrough.md)
+- [Artifact methodology]({% link docs/artifact-methodology.md %})
+- [Execution model]({% link docs/execution-model.md %})
+- [Governance model]({% link docs/governance-model.md %})
+- [Receipts]({% link docs/receipts.md %})
+- [Decision provenance]({% link docs/decision-provenance.md %})
+- [Walkthrough]({% link docs/walkthrough.md %})
 
 
 ## v0.3.1 runtime authority hardening
 
-- [Runtime authority envelopes](authority-envelope.md)
-- [Public agent contestability](public-agent-contestability.md)
-- [Preservation–authority divergence](preservation-authority-divergence.md)
-- [Revocation dynamics](revocation-dynamics.md)
-- [Receipts](receipts.md)
+- [Runtime authority envelopes]({% link docs/authority-envelope.md %})
+- [Public agent contestability]({% link docs/public-agent-contestability.md %})
+- [Preservation–authority divergence]({% link docs/preservation-authority-divergence.md %})
+- [Revocation dynamics]({% link docs/revocation-dynamics.md %})
+- [Receipts]({% link docs/receipts.md %})
 
 ## v0.3.0 authority, commitments, and high-risk infrastructure
 
-- [Runtime authority envelopes](authority-envelope.md)
-- [Machine commitments](machine-commitments.md)
-- [Fraud externalities](fraud-externalities.md)
-- [From inference to verification](inference-to-verification.md)
-- [High-risk digital infrastructure governance](high-risk-digital-infrastructure.md)
-- [Constitutional digital infrastructure controls](constitutional-controls.md)
+- [Runtime authority envelopes]({% link docs/authority-envelope.md %})
+- [Machine commitments]({% link docs/machine-commitments.md %})
+- [Fraud externalities]({% link docs/fraud-externalities.md %})
+- [From inference to verification]({% link docs/inference-to-verification.md %})
+- [High-risk digital infrastructure governance]({% link docs/high-risk-digital-infrastructure.md %})
+- [Constitutional digital infrastructure controls]({% link docs/constitutional-controls.md %})
 
 ## Temporal governance and revocation dynamics
 
-- [Temporal governance](temporal-governance.md)
-- [Revocation dynamics](revocation-dynamics.md)
-- [Preservation–authority divergence](preservation-authority-divergence.md)
-- [Gradient exploitation model](gradient-exploitation-model.md)
+- [Temporal governance]({% link docs/temporal-governance.md %})
+- [Revocation dynamics]({% link docs/revocation-dynamics.md %})
+- [Preservation–authority divergence]({% link docs/preservation-authority-divergence.md %})
+- [Gradient exploitation model]({% link docs/gradient-exploitation-model.md %})
