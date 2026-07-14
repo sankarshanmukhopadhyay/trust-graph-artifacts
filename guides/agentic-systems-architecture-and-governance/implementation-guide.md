@@ -3,87 +3,46 @@ layout: default
 title: Implementation Guide
 parent: Agentic Systems Architecture and Governance
 nav_order: 1
+permalink: /guides/agentic-systems-architecture-and-governance/implementation-guide/
 ---
 
 # Implementation Guide
 
-## 1. Executive orientation
+## 1. How to use this playbook
 
-A production agentic system is not merely a collection of models that call tools. It is an authority-bearing system that can produce effects in the world.
+Use this guide to deliver one bounded job from discovery through production readiness. Do not begin by selecting a model, agent framework, or tool protocol. Begin with the effects the job may produce and work backward to authority, controls, evidence, and execution.
 
-The primary design question is therefore not how autonomous an agent should be. It is:
+For every stage:
 
-> Which effects may be admitted, under whose authority, through which delegation path, using which technical capability, with what evidence, and under what revocation and remediation arrangements?
+1. Confirm the entry criteria.
+2. Make the listed architecture decisions.
+3. Produce the required artifacts using the linked templates.
+4. map the design to TSMM, TGA, and TIS.
+5. implement positive and negative tests.
+6. retain the evidence required by the exit gate.
+7. record material choices in an Architecture Decision Record.
 
-The core architectural shift is to design around **effect admission**, not agent autonomy. Model output is a candidate action. A governed workflow evaluates it. An enforcement point controls technical execution. Evidence services preserve what happened and why the effect was permitted or denied.
+A stage is complete only when its exit evidence exists. Code completion alone is not a governance gate.
 
-### 1.1 What this guide enables
+## 2. Governing model: effect admission
 
-An implementation team can use this guide to:
+A production agentic system is an authority-bearing system capable of changing the world. The primary question is not how autonomous the agent is. The primary question is whether a specific effect may be admitted.
 
-- decompose a business job into bounded roles and governed effects;
-- model principals, mandates, authority relationships, policies, evidence, decisions, and lifecycle states with TSMM;
-- apply TGA patterns and negative tests to authority, delegation, execution, revocation, and contestability;
-- use TIS schemas as API, message, storage, and verification contracts;
-- implement multi-hop and fan-out delegation without silent scope expansion;
-- separate valid delegated authority from the receiving system's local policy decision;
-- produce evidence supporting conformance, audit, challenge, correction, and operational improvement.
-
-### 1.2 End-state test
-
-For every consequential effect, the system should answer:
-
-1. Which persistent role acted?
-2. Which principal or authority source empowered that role?
-3. Which mandate and policy were current?
-4. How did authority reach the executing workload?
-5. Did scope remain constant or narrow at every hop?
-6. Which technical capability was granted?
-7. Which checks and approvals occurred?
-8. What effect was produced?
-9. How can the effect be challenged, revoked, interrupted, corrected, or remediated?
-10. Which machine-verifiable evidence supports these answers?
-
-## 2. The three repositories as an architecture kit
-
-The repositories have distinct authority and should not be flattened into one specification.
-
-| Repository | Architectural role | How an architect uses it |
-|---|---|---|
-| TSMM | Canonical semantic and structural model | Define entities, roles, authority, policies, decisions, effects, evidence, lifecycle, and delegation topology. |
-| TIS | Portable machine-readable contracts | Validate authority boundaries, delegation lineage, verification results, execution evidence, and cross-system exchange. |
-| TGA | Executable governance pattern and assurance corpus | Select mandate, delegation, runtime, receipt, revocation, threat, and adoption patterns. |
-
-The intended design flow is:
-
-```text
-Governance problem or operational failure
-        ↓
-TGA pattern, control, threat, assurance case, and test vector
-        ↓
-TSMM semantic model and architecture instance
-        ↓
-TIS portable schema and verification contract
-        ↓
-Implementation profile, conformance tests, and operational evidence
+```mermaid
+flowchart TD
+  P[Principal or authority source] --> M[Mandate and policy]
+  M --> R[Persistent agent role]
+  R --> L[Delegation lineage]
+  L --> C[Candidate action]
+  C --> D[Policy decision]
+  D -->|permit| G[Least-privilege capability]
+  D -->|deny / narrow / escalate| X[Non-execution outcome]
+  G --> E[Policy enforcement point]
+  E --> F[Effect]
+  F --> O[Receipt, status, challenge, revocation and remediation]
 ```
 
-Use **TSMM to define what the system means**, **TIS to define what implementations exchange and validate**, and **TGA to define what must be governed and tested**.
-
-### 2.1 Priority reading path
-
-1. TSMM implementer guidance and core model.
-2. TSMM effect-centred decision and delegation patterns.
-3. TGA quickstart and delegation governance guidance.
-4. TGA agent mandate, runtime authority, and delegation lineage artifacts.
-5. TIS authority-boundary and delegation-lineage schemas.
-6. TGA receipt, lifecycle, revocation, and assurance artifacts.
-
-Use the [repository crosswalk](repository-crosswalk.md) for the detailed path map.
-
-## 3. Governing model: effect admission
-
-### 3.1 Five objects that must remain distinct
+### 2.1 Five objects that must remain distinct
 
 | Object | Question answered | Failure if collapsed |
 |---|---|---|
@@ -91,295 +50,483 @@ Use the [repository crosswalk](repository-crosswalk.md) for the detailed path ma
 | Authority | What may legitimately be done, for whom, and why? | Role membership or tool possession becomes presumed permission. |
 | Capability | What can technically be done now? | Broad credentials create excessive blast radius. |
 | Decision | What does the governed workflow conclude should happen? | Model output is mistaken for approved action. |
-| Execution or effect | What actually happened in the world? | Intent and outcome cannot be reconciled, challenged, or remediated. |
+| Execution or effect | What actually happened? | Intent and outcome cannot be reconciled, challenged, or remediated. |
 
-### 3.2 Two independent gates
+### 2.2 Two independent admission gates
 
-| Gate | Core question | Typical outcomes |
+| Gate | Question | Outcomes |
 |---|---|---|
-| Delegation assurance | Is the requester authentic, authorized, in scope, current, unrevoked, and connected to an intact lineage? | Pass, fail, indeterminate, escalate. |
-| Local policy admission | May this receiving system cooperate under its own policies, approvals, agreements, data limits, and risk constraints? | Accept, narrow, request evidence, request approval, refuse, escalate. |
+| Delegation assurance | Is the requester authentic, authorized, in scope, current, unrevoked, and connected to an intact lineage? | pass, fail, indeterminate, escalate |
+| Local policy admission | May this receiving system cooperate under its policies, approvals, agreements, data limits, and risk constraints? | accept, narrow, request evidence, request approval, refuse, escalate |
 
-A valid delegation creates a legitimate request surface. It does not create an obligation to comply and does not override local governance.
+A valid delegation creates a legitimate request surface. It does not create an obligation to comply.
 
-## 4. Reference architecture
+## 3. Reference architecture
 
-A scalable design places governance in a model-neutral control plane. Model invocations remain behind governed workflows and policy enforcement points.
+```mermaid
+flowchart LR
+  subgraph CP[Governance control plane]
+    RR[Role and principal registry]
+    MS[Mandate service]
+    LS[Lineage service]
+    PDP[Policy decision service]
+    CB[Capability broker]
+    SR[Status and revocation]
+    ER[Evidence and receipt store]
+    AR[Approval and remediation]
+  end
+  W1[Agent workflow A] --> PDP
+  W2[Agent workflow B] --> PDP
+  EA[External agent] --> PDP
+  PDP --> CB
+  CB --> PEP[Policy enforcement points]
+  PEP --> FX[Effects]
+  RR --> PDP
+  MS --> PDP
+  LS --> PDP
+  SR --> PDP
+  FX --> ER
+  AR --> PDP
+```
+
+### 3.1 Component contracts
+
+| Component | Required inputs | Required outputs | Mandatory deny or safe-state conditions |
+|---|---|---|---|
+| Role registry | role reference, principal context, requested status | resolved role, principal, lifecycle state | unknown role; unresolved principal; suspended role |
+| Mandate service | mandate reference, action context, time | mandate state and verification receipt | expired, revoked, wrong purpose, prohibited effect |
+| Lineage service | lineage root, hop chain, action context | verification result and failed invariants | missing parent, principal substitution, scope expansion, stale status |
+| Policy decision point | candidate action, mandate, lineage, evidence, approvals | permit, deny, narrow, or escalate decision | incomplete evidence, conflicting policy, unknown risk state |
+| Capability broker | permitted action digest, resource, operation, bounds | scoped grant or denial receipt | request exceeds decision, missing binding, unavailable revocation |
+| Enforcement point | grant, target resource, exact operation | execution event or denial | invalid signature, expired grant, parameter mismatch, replay |
+| Evidence store | signed events, references, custody metadata | append-only bundle and authorized views | missing provenance, broken digest, retention conflict |
+| Revocation service | revocation authority, affected scope, lineage graph | status event and propagation evidence | unauthorised revoker, ambiguous target, unknown descendants |
+
+## 4. Stage 0 — Define the bounded job and effects
+
+### Objective
+
+Select one valuable job with an observable completion state and explicitly bounded effects.
+
+### Entry criteria
+
+- a named business owner exists;
+- the desired outcome can be described without naming an AI model;
+- a human or institutional fallback process is known;
+- the system boundary can be drawn.
+
+### Procedure
+
+1. Write a one-sentence job statement using: **For [principal], produce [outcome] using [permitted information] without [prohibited effects].**
+2. Identify every externally observable effect, including reads, writes, messages, commitments, disclosures, and agent creation.
+3. Classify each effect by consequence, reversibility, affected parties, and required approval.
+4. Define explicit non-outcomes and forbidden transitions.
+5. Define completion, timeout, cancellation, and fallback states.
+6. Build the effect-admission matrix.
+7. Review the matrix with the job owner, security owner, and governance owner.
+
+### Required outputs
+
+- [job charter]({% link guides/agentic-systems-architecture-and-governance/templates/job-charter.md %});
+- [effect-admission matrix]({% link guides/agentic-systems-architecture-and-governance/templates/effect-admission-matrix.md %});
+- system boundary diagram;
+- effect catalog and risk tier;
+- definition of done and non-outcomes.
+
+### Repository mapping
+
+- **TSMM:** effect, decision, actor, policy, evidence, lifecycle.
+- **TGA:** quickstart, governance profiles, effect-oriented packages.
+- **TIS:** later schema targets are identified, but no implementation schema is selected yet.
+
+### Tests
+
+- every consequential external effect is named;
+- no effect is hidden inside a generic label such as “complete task”;
+- each effect has permit, deny, and escalation behavior;
+- prohibited effects are testable;
+- the job remains understandable after removing model and vendor names.
+
+### Evidence produced
+
+Approved job charter, effect catalog, risk rationale, decision log, and stakeholder sign-off.
+
+### Common failure modes
+
+- beginning from a chatbot persona rather than a job;
+- classifying only writes as effects and ignoring sensitive reads;
+- treating “recommend” and “commit” as the same authority class;
+- failing to define partial completion or cancellation.
+
+### Exit gate
+
+The team can state exactly what the system may change, what it may not change, and what evidence is required before every consequential effect.
+
+## 5. Stage 1 — Model principals, roles, and authority
+
+### Objective
+
+Identify who is represented, which persistent roles participate, where authority originates, and which actors rely on the result.
+
+### Entry criteria
+
+- Stage 0 effect catalog is approved;
+- business ownership and fallback process are known.
+
+### Procedure
+
+1. List principals, authority sources, beneficiaries, operators, relying parties, and affected parties.
+2. Define persistent agent roles independently of model sessions or runtime processes.
+3. Assign each effect to a role that may propose it and a role or service that may admit it.
+4. Map authority-source relationships and delegation boundaries.
+5. Identify trust-domain boundaries and external dependencies.
+6. Record lifecycle owners for role creation, suspension, replacement, and retirement.
+7. Create a TSMM instance model and role catalog.
+
+### Required outputs
+
+- principal and authority-source map;
+- role catalog;
+- TSMM instance model;
+- trust-domain map;
+- role lifecycle and accountability matrix.
+
+### Tests
+
+- no role is self-authorizing;
+- every consequential role resolves to a principal or recognized authority source;
+- persistent role and ephemeral workload instance are distinct;
+- every relying party knows which evidence it may verify;
+- responsibility remains identifiable after model replacement.
+
+### Exit gate
+
+Every proposed effect can be attributed to a persistent role, a principal, and an authority source.
+
+## 6. Stage 2 — Define mandates and policy boundaries
+
+### Objective
+
+Turn authority into machine-readable, reviewable, and revocable operating boundaries before granting tool access.
+
+### Procedure
+
+1. Create a mandate for each consequential role.
+2. Bind the mandate to purpose, effects, resources, duration, value limits, and risk thresholds.
+3. Define prohibited actions explicitly rather than relying only on allow lists.
+4. Set delegation depth, subdelegation rights, approval thresholds, and escalation triggers.
+5. Identify revocation authority and status endpoints.
+6. Define amendment and renewal rules.
+7. produce valid, expired, revoked, wrong-purpose, and excessive-scope fixtures.
+8. validate the authority boundary against applicable TIS schemas.
+
+### Required outputs
+
+- machine-readable mandate;
+- policy rules and approval matrix;
+- mandate status endpoint contract;
+- positive and negative fixtures;
+- [mandate template]({% link guides/agentic-systems-architecture-and-governance/templates/mandate.yaml %}).
+
+### Mandatory tests
+
+- expired and revoked mandates fail;
+- action outside purpose fails;
+- prohibited effect fails even when technically available;
+- value threshold routes to approval;
+- amendment is distinguishable from refresh;
+- absent or ambiguous mandate produces a safe state.
+
+### Exit gate
+
+No consequential effect can be admitted without a current mandate and an applicable policy result.
+
+## 7. Stage 3 — Design delegation and lineage
+
+### Objective
+
+Make authority transfer reconstructable and machine-verifiable before implementing agent-to-agent routing.
+
+### Procedure
+
+1. Select direct, chained, fan-out, cross-domain, or combined topology.
+2. Define the lineage root, originating principal, original intent, and transaction binding.
+3. Define required hop fields and parent-hop references.
+4. Define the scope comparison function and monotonic attenuation rule.
+5. Define trust-domain translation evidence.
+6. Define status freshness, refresh, and revocation propagation rules.
+7. Create valid and invalid lineage examples.
+8. Implement a verifier that returns invariant-level results rather than a single boolean.
+
+### Delegation invariant
+
+For every non-root hop, granted authority must be equal to or narrower than authority received from the parent. A broader grant is a new authorization event, not valid subdelegation.
+
+### Required outputs
+
+- topology diagram;
+- [delegation-hop record]({% link guides/agentic-systems-architecture-and-governance/templates/delegation-hop.yaml %});
+- lineage verifier and result format;
+- translation record;
+- negative fixture corpus.
+
+### Mandatory negative tests
+
+- missing intermediate hop;
+- principal substitution;
+- scope expansion;
+- transaction mismatch;
+- stale or revoked parent;
+- refresh that changes purpose;
+- translation that broadens authority;
+- revocation reaching only some descendants.
+
+### Exit gate
+
+The complete authority path to every executing workload is reconstructable and machine-verifiable.
+
+## 8. Stage 4 — Separate authority from capability
+
+### Objective
+
+Issue technical power only after authority and policy checks and make the grant as narrow as practical.
+
+### Procedure
+
+1. Inventory consequential tools, APIs, data stores, signing functions, and messaging channels.
+2. place each behind a policy enforcement point.
+3. define capability operations, resource boundaries, parameters, duration, purpose, transferability, and revocation.
+4. bind every capability request to the candidate-action digest and policy decision.
+5. issue short-lived grants from a capability broker.
+6. isolate secrets from model and orchestration contexts.
+7. emit grant and denial receipts.
+8. test replay, parameter substitution, and direct-tool bypass.
+
+### Capability broker contract
+
+**Inputs:** role, mandate verification, lineage verification, action digest, operation, resource, parameters, requested duration.
+
+**Outputs:** scoped capability grant, denial reason, or escalation requirement.
+
+**MUST deny when:** mandate is stale; lineage is incomplete; operation exceeds authority; resource is outside scope; approval is absent; action digest differs; revocation cannot be enforced for the risk class.
+
+### Required outputs
+
+- capability broker service boundary;
+- [capability grant template]({% link guides/agentic-systems-architecture-and-governance/templates/capability-grant.yaml %});
+- enforcement map;
+- secrets isolation design;
+- grant and denial receipts.
+
+### Exit gate
+
+No workload can reach a consequential resource except through a validated capability and enforcement point.
+
+## 9. Stage 5 — Build the governed execution workflow
+
+### Objective
+
+Treat model output as a candidate action, validate it, and separate policy decision from execution.
+
+### Procedure
+
+1. Define a structured candidate-action schema for each effect class.
+2. Require exact evidence references, uncertainty, requested capability, and approval state.
+3. validate shape, semantic completeness, and evidence availability.
+4. evaluate mandate, lineage, local policy, risk, and approvals.
+5. bind approval to the exact action digest.
+6. request a capability only after a permit decision.
+7. execute through the enforcement point.
+8. record deny, narrow, retry, timeout, and escalation outcomes.
+9. cap retry loops and prevent the model from altering policy state.
+
+### Required outputs
+
+- [candidate action template]({% link guides/agentic-systems-architecture-and-governance/templates/candidate-action.json %});
+- policy decision state machine;
+- human-review packet;
+- refusal and escalation format;
+- exact action digesting rules.
+
+### Mandatory tests
+
+- prompt injection cannot invoke tools directly;
+- malformed candidate action fails;
+- missing evidence fails or escalates;
+- human approval cannot be reused for a changed action;
+- model cannot mark its own action approved;
+- retries cannot silently broaden purpose or scope.
+
+### Exit gate
+
+A model can propose an effect but cannot unilaterally produce it.
+
+## 10. Stage 6 — Govern fan-out, convergence, and return review
+
+### Objective
+
+Govern each branch and the combined result when several agents, tools, or reasoning passes contribute to one job.
+
+### Procedure
+
+1. define one bounded subtask per branch.
+2. issue distinct delegated scope, data, capability, and expiry to each branch.
+3. record branch manifests and lineage.
+4. require structured results, evidence, confidence, limitations, and dissent.
+5. verify each branch independently.
+6. perform aggregate-authority, aggregate-data, prohibited-inference, and conflict checks.
+7. preserve material dissent rather than reducing review to majority voting.
+8. create a convergence receipt before final effect admission.
+
+### Required outputs
+
+- [branch manifest]({% link guides/agentic-systems-architecture-and-governance/templates/branch-manifest.yaml %});
+- convergence policy;
+- [convergence review]({% link guides/agentic-systems-architecture-and-governance/templates/convergence-review.yaml %});
+- dissent record;
+- aggregate-effect test cases.
+
+### Critical rule
+
+Individual branch validity does not prove aggregate validity. Combined outputs may exceed parent authority, disclose prohibited information, or create an impermissible inference.
+
+### Exit gate
+
+The initiating workflow can prove what was delegated, returned, reviewed, accepted, rejected, or escalated.
+
+## 11. Stage 7 — Produce evidence and receipts
+
+### Objective
+
+Make governance evidence a first-class runtime product, not a reconstruction from logs.
+
+### Procedure
+
+1. define receipt types and stable identifiers.
+2. bind receipts to job, action, role, mandate, lineage, policy, capability, and effect.
+3. sign or otherwise protect integrity and attribution.
+4. add reliable time and lifecycle status.
+5. define evidence custody, availability, retention, and selective-disclosure views.
+6. define challenge access and redaction rules.
+7. assemble an end-to-end evidence bundle.
+8. test independent reconstruction without model memory.
+
+### Minimum receipt chain
 
 ```text
-┌──────────────────────── Governance Control Plane ────────────────────────┐
-│ Role and Principal Registry     Mandate Service                         │
-│ Delegation Lineage Service      Policy Decision Service                 │
-│ Capability Broker               Status and Revocation Service           │
-│ Evidence and Receipt Store      Approval and Escalation Service         │
-│ Challenge and Remediation Service                                      │
-└──────────────────────────────────────────────────────────────────────────┘
-                ↑                    ↑                    ↑
-         Agent Workflow A     Agent Workflow B     External Agent
-                │                    │                    │
-                └──────────── Policy Enforcement Points ─┘
-                                      │
-                                    Effects
+mandate verification
+  → lineage verification
+  → policy decision
+  → capability grant
+  → execution receipt
+  → status, challenge, revocation and remediation records
 ```
 
-### 4.1 Logical components
+### Required outputs
 
-| Component | Responsibility | Evidence produced |
+- receipt catalog;
+- [execution receipt template]({% link guides/agentic-systems-architecture-and-governance/templates/execution-receipt.yaml %});
+- evidence bundle manifest;
+- custody and disclosure policy;
+- independent verification procedure.
+
+### Exit gate
+
+Every consequential effect has a portable evidence bundle and a discoverable challenge route.
+
+## 12. Stage 8 — Implement revocation, interruption, and remediation
+
+### Objective
+
+Treat revocation as a graph operation and operational workflow rather than token expiry.
+
+### Procedure
+
+1. identify who may revoke which authority.
+2. define granular scopes and affected descendants.
+3. define propagation latency by risk tier.
+4. implement status events and descendant discovery.
+5. add interruption hooks for in-flight work.
+6. define safe behavior when propagation state is unknown.
+7. define remediation for completed or irreversible effects.
+8. require downstream acknowledgements and evidence.
+9. exercise revocation in a live integration test.
+
+### Required outputs
+
+- revocation state machine;
+- [revocation event]({% link guides/agentic-systems-architecture-and-governance/templates/revocation-event.yaml %});
+- propagation service;
+- interruption hooks;
+- [remediation record]({% link guides/agentic-systems-architecture-and-governance/templates/remediation-record.yaml %});
+- risk-tier runbooks.
+
+### Mandatory tests
+
+- root revocation reaches all known descendants;
+- branch-specific revocation does not disable unrelated authority;
+- in-flight execution is interrupted where possible;
+- unknown descendant state causes suspension;
+- completed effects route to compensation or remediation;
+- refresh cannot revive revoked authority.
+
+### Exit gate
+
+The team can demonstrate prevention, interruption, and remediation with verifiable evidence.
+
+## 13. Stage 9 — Operationalize assurance
+
+### Objective
+
+Keep implementation, semantic model, schemas, documentation, controls, and evidence aligned as the system evolves.
+
+### Procedure
+
+1. select a conformance target and risk profile.
+2. pin TSMM, TIS, and TGA revisions in the architecture baseline.
+3. run schema, semantic-invariant, policy, integration, adversarial, and lifecycle tests in CI.
+4. assign control and evidence ownership.
+5. define operational metrics and service objectives.
+6. run evidence-reconstruction and revocation exercises.
+7. review changes affecting authority, evidence, interoperability, or lifecycle semantics.
+8. publish release evidence and migration notes.
+
+### Required outputs
+
+- conformance profile;
+- CI gates;
+- ADR set;
+- control ownership matrix;
+- assurance dashboard;
+- production-readiness review;
+- release evidence bundle.
+
+### Exit gate
+
+The system can evolve without silently changing authority, evidence, or interoperability semantics.
+
+## 14. Delivery plan for architects and consultants
+
+| Work package | Primary deliverables | Acceptance evidence |
 |---|---|---|
-| Role registry | Resolve persistent roles, principals, policy profiles, and current status. | Role resolution receipt. |
-| Mandate service | Issue, version, validate, suspend, and revoke machine-readable mandates. | Mandate verification receipt. |
-| Lineage service | Record authority transfers and verify continuity, attenuation, and status. | Delegation-lineage verification. |
-| Policy decision point | Evaluate authority, policy, risk, agreements, and approval conditions. | Policy decision receipt. |
-| Capability broker | Issue narrow, time-bound, transaction-bound technical grants. | Capability grant receipt. |
-| Policy enforcement point | Mediate access to tools, data, signing, messaging, or payment. | Execution and denial events. |
-| Evidence store | Preserve linked, append-only evidence and authorized views. | Evidence bundle or root. |
-| Status and revocation service | Publish current validity and propagate revocation. | Status and propagation receipts. |
-| Challenge and remediation service | Support dispute, correction, compensation, and recovery. | Challenge and remediation records. |
-
-### 4.2 Persistent roles and ephemeral workloads
-
-Accountability attaches to the persistent role and its authority architecture. Model invocations, reasoning passes, and temporary workers are ephemeral workload instances.
-
-| Persistent role retains | Ephemeral workload receives |
-|---|---|
-| Identity and principal relationship | Task-specific context |
-| Mandates and agreements | Narrow delegated scope |
-| Policy profile | Short-lived capability references |
-| Reputation and lifecycle state | Transaction and intent bindings |
-| Audit and challenge obligations | Execution identifier and termination conditions |
-
-## 5. Sequential implementation stages
-
-Each stage has an architecture decision, repository inputs, implementation outputs, tests, and an exit gate. A team should not progress only because code exists; it should progress when the evidence for the gate is available.
-
-### Stage 0 — Define the job and effects
-
-**Objective:** Select one bounded job that creates observable value. Do not begin with a general-purpose autonomous agent.
-
-**Architecture decisions:** Define the job owner, intended outcome, prohibited outcomes, consequence classes, completion state, and fallback to a human or institutional process.
-
-**Repository inputs:** TSMM effect-centred decision model; TGA quickstart and governance profiles.
-
-**Outputs:** Job charter, effect catalog, risk tier, effect-admission matrix, definition of done.
-
-**Tests:** Every external effect is named. Each effect has allow, deny, downgrade, and escalation handling where applicable.
-
-**Exit gate:** The team can describe the system without referring to a model vendor or orchestration framework.
-
-| Effect | Risk tier | Required authority | Evidence before effect | Failure route |
-|---|---|---|---|---|
-| Read protected record | Medium | Role mandate and transaction scope | Identity, mandate, resource scope, status | Deny or request narrower scope |
-| Send external message | Medium | Communication mandate | Recipient, purpose, approved content version | Queue for review |
-| Commit funds | High | Financial mandate and approval threshold | Lineage, amount, payee, approval, fraud checks | Deny or human approval |
-| Sign agreement | High | Binding authority | Exact agreement digest, terms, duration, required review | Escalate |
-| Publish or disclose data | High | Data-use authority | Purpose, recipient, minimization, agreement, provenance | Deny, narrow, or use controlled interface |
-
-### Stage 1 — Model principals, roles, and authority
-
-**Objective:** Define who is represented, which persistent roles exist, and where authority originates.
-
-**Architecture decisions:** Identify principals, authority sources, beneficiaries, operators, role owners, relying parties, affected parties, and trust domains.
-
-**Repository inputs:** TSMM core model, entity definitions, relationship model, and agentic extension.
-
-**Outputs:** TSMM instance model, role catalog, authority-source map, trust-domain map.
-
-**Tests:** No role is self-authorizing. Every consequential role resolves to an accountable authority source. Persistent role and live workload are distinguishable.
-
-**Exit gate:** Every proposed action can be attributed to a persistent role and an authority source.
-
-### Stage 2 — Define mandates and policy boundaries
-
-**Objective:** Convert authority into machine-readable, reviewable boundaries before building tool access.
-
-**Architecture decisions:** Define purpose, permitted and prohibited actions, resource boundaries, value limits, duration, delegation depth, approval thresholds, revocation authority, and escalation.
-
-**Repository inputs:** TGA agent mandate envelope, runtime authority envelope, and delegation-first governance profile; TIS authority-boundary schema.
-
-**Outputs:** Mandate instance, policy rules, status endpoint, approval matrix, mandate test cases.
-
-**Tests:** Expired, revoked, ambiguous, excessive-value, wrong-purpose, and prohibited-action requests fail or escalate.
-
-**Exit gate:** No consequential effect can be admitted without a current mandate and applicable policy result.
-
-```yaml
-mandate_id: supplier-assessment-01
-principal_ref: enterprise-procurement
-agent_role_ref: supplier-assessment-coordinator
-purpose: assess approved suppliers and produce a non-binding recommendation
-permitted_actions:
-  - request_public_supplier_information
-  - request_approved_internal_risk_data
-  - delegate_bounded_analysis
-  - produce_recommendation
-prohibited_actions:
-  - execute_contract
-  - commit_funds
-  - disclose_unrelated_supplier_data
-constraints:
-  maximum_delegation_depth: 2
-  human_approval_required_for:
-    - recommendation_above_risk_threshold
-    - use_of_nonapproved_data_source
-revocation:
-  authority_ref: procurement-governance-board
-  status_ref: status:mandate:supplier-assessment-01
-```
-
-### Stage 3 — Design delegation and lineage
-
-**Objective:** Model authority transfer before implementing task routing.
-
-**Architecture decisions:** Choose direct, chained, fan-out, or cross-domain topology. Define parent references, original principal and intent, transaction binding, attenuation, refresh, and revocation propagation.
-
-**Repository inputs:** TSMM chained and fan-out delegation patterns; TGA delegation lineage envelope; TIS delegation-lineage and verification schemas.
-
-**Outputs:** Delegation topology, hop record format, lineage verifier, domain-translation record, negative fixtures.
-
-**Tests:** Broken lineage, principal substitution, scope expansion, stale status, refresh renegotiation, domain-translation amplification, and partial revocation fail.
-
-**Exit gate:** The complete authority path to every executing workload is reconstructable and machine-verifiable.
-
-> **Monotonic attenuation:** For every non-root hop, granted authority must be equal to or narrower than the authority received from the parent. A broader grant is a new authorization event, not a valid subdelegation.
-
-### Stage 4 — Separate authority from capability
-
-**Objective:** Issue technical power only after authority and policy checks, and make the grant narrower than the supporting authority where possible.
-
-**Architecture decisions:** Select enforcement points. Define resource, operation, parameter, purpose, duration, transfer, and revocation restrictions.
-
-**Repository inputs:** TGA mandate and execution-time delegation artifacts; TIS authority-boundary and trust-task schemas.
-
-**Outputs:** Capability broker, capability request format, grant receipt, denial reasons, secrets isolation design.
-
-**Tests:** Broad standing credentials are unavailable to workloads. Out-of-scope resources and parameters are technically blocked.
-
-**Exit gate:** Agents cannot bypass the broker to reach consequential tools or protected data.
-
-| Weak pattern | Governed pattern |
-|---|---|
-| Database administrator credential plus prompt restraint | Read-only query capability for named records, bounded fields, transaction, and expiry |
-| General payment token | Single-payee, maximum-value, one-time capability after approval |
-| Unrestricted messaging account | Recipient-bound, template-bound, purpose-bound send capability |
-| Raw dataset copy | Query-only or aggregate-only controlled workspace capability |
-| General agent spawning | Named subtask, maximum depth, resource, time, and no-further-delegation capability |
-
-### Stage 5 — Build the governed execution workflow
-
-**Objective:** Treat model output as a candidate action object. Validation and policy evaluation occur before execution.
-
-**Architecture decisions:** Define action schema, evidence requirements, risk scoring, approvals, policy checks, retry limits, escalation, and execution transaction boundaries.
-
-**Repository inputs:** TSMM trust-decision and effect model; TGA runtime authority and execution-time delegation; TIS trust-task execution records.
-
-**Outputs:** Candidate action schema, policy decision workflow, execution state machine, human-review packet, refusal and escalation format.
-
-**Tests:** Prompt injection cannot invoke tools directly. Malformed or unsupported action objects fail. Approval is bound to the exact action version or digest.
-
-**Exit gate:** The model can propose but cannot unilaterally create a consequential effect.
-
-```json
-{
-  "action": "publish_supplier_recommendation",
-  "job_ref": "job-017",
-  "supplier_ref": "supplier-442",
-  "evidence_refs": ["financial-verify-22", "security-review-19"],
-  "risk_level": "medium",
-  "uncertainty": "low",
-  "requested_capability": "write-recommendation-record",
-  "approval_required": false
-}
-```
-
-### Stage 6 — Add fan-out, convergence, and return review
-
-**Objective:** Govern both the authority given to each branch and the combined effect produced when branches return.
-
-**Architecture decisions:** Define subtask boundaries, branch data minimization, branch capabilities, independence requirements, dissent handling, convergence rules, and aggregate-authority checks.
-
-**Repository inputs:** TSMM fan-out delegation pattern; TGA delegation-lineage test vectors and delegation-first profile; TIS lineage verification and topology fields.
-
-**Outputs:** Branch manifests, branch lineage records, convergence policy, dissent record, aggregate-effect review.
-
-**Tests:** Each branch is valid individually. Combined outputs do not exceed parent authority, create prohibited inference, or erase material dissent.
-
-**Exit gate:** The initiating workflow can prove what was delegated, returned, reviewed, accepted, rejected, or escalated.
-
-> Individual branch validity does not prove aggregate validity. The initiating workflow must check combined authority, data exposure, prohibited inference, conflicts, and material dissent before admitting the final effect.
-
-### Stage 7 — Produce evidence and receipts
-
-**Objective:** Make evidence a first-class runtime output, not an after-the-fact log reconstruction exercise.
-
-**Architecture decisions:** Define receipt types, signing, timestamping, evidence links, selective disclosure, custody, retention, challenge access, and schema identifiers.
-
-**Repository inputs:** TGA receipt packages and proof-carrying commitment receipt; TIS execution, authority, and lineage schemas.
-
-**Outputs:** Mandate, lineage, policy, capability, execution, approval, refusal, revocation, and remediation receipts.
-
-**Tests:** An independent verifier can reconstruct authority and execution using authorized evidence without querying model memory.
-
-**Exit gate:** Every consequential effect has a portable evidence bundle and discoverable challenge route.
-
-```text
-mandate_verification_receipt
-        ↓
-delegation_lineage_verification
-        ↓
-policy_decision_receipt
-        ↓
-capability_grant_receipt
-        ↓
-execution_receipt
-        ↓
-status, challenge, correction, and remediation records
-```
-
-### Stage 8 — Implement revocation, interruption, and remediation
-
-**Objective:** Design revocation as a graph operation and operational workflow, not only as token expiry.
-
-**Architecture decisions:** Define revokers, scope, propagation, latency, branch handling, in-flight interruption, settled effects, compensation, quarantine, and degraded-safe behaviour.
-
-**Repository inputs:** TGA revocation dynamics, delegation-first profile, and commitment lifecycle mediation; TIS lineage verification and lifecycle records.
-
-**Outputs:** Revocation state machine, propagation service, interruption hooks, remediation playbooks, downstream-response evidence.
-
-**Tests:** Root revocation reaches descendants. In-flight work stops where possible. Completed effects route to remediation. Unknown state causes safe suspension.
-
-**Exit gate:** The team can demonstrate revocation and recovery in a live integration test.
-
-### Stage 9 — Operationalize assurance
-
-**Objective:** Keep implementation, schemas, semantic model, documentation, and release evidence aligned as the system evolves.
-
-**Architecture decisions:** Select conformance target, evidence owner, release gates, schema compatibility policy, threat-review cadence, control ownership, and operational metrics.
-
-**Repository inputs:** TSMM conformance guidance; TGA validators and assurance cases; TIS validators.
-
-**Outputs:** Conformance profile, CI validation, ADR set, control ownership matrix, operational assurance dashboard, release evidence.
-
-**Tests:** Schemas and examples validate. Documentation links resolve. Authority-sensitive changes trigger review. Release evidence is complete.
-
-**Exit gate:** The system can evolve without silently changing authority, evidence, or interoperability semantics.
-
-## 6. Production design rules
-
-1. Build a bounded job, not a general-purpose agent.
-2. Make persistent roles accountable and workload instances ephemeral.
-3. Require an explicit authority source for every consequential role.
-4. Treat model output as a proposal.
-5. Place enforcement outside the model and orchestration runtime.
-6. Require monotonic attenuation across delegation.
-7. Bind authority, capabilities, approvals, and evidence to the same transaction and intent.
-8. Evaluate fan-out branches individually and collectively.
-9. Generate receipts at every consequential control transition.
-10. Make revocation, interruption, challenge, and remediation executable workflows.
-11. Record exact repository revisions in each implementation baseline, but do not hard-code them into this guide.
-
-## 7. Next steps
-
-- Apply the [architecture decision set](architecture-decisions.md).
-- Run the [assurance and testing strategy](assurance-and-testing.md).
-- Use the [adoption checklist](adoption-checklist.md) for pilot and production gates.
-- Study the [supplier assessment example](examples/supplier-assessment-system.md) as an end-to-end reference.
+| WP1 — Job and effect definition | job charter, effect catalog, system boundary | approved effect-admission matrix |
+| WP2 — Authority architecture | role catalog, principal map, mandates, revocation model | TSMM instance and mandate tests |
+| WP3 — Delegation and capability | topology, lineage records, broker and enforcement design | TIS-valid examples and negative tests |
+| WP4 — Governed workflow | candidate actions, policy state machine, fan-out and convergence | end-to-end job demonstration |
+| WP5 — Evidence and assurance | receipts, bundle, authorized views, challenge and remediation | independent reconstruction report |
+| WP6 — Operational adoption | CI, ADRs, runbooks, training, metrics | production-readiness approval |
+
+## 15. Definition of a working governed job
+
+A job is implementation-ready when:
+
+- its effects and non-effects are explicit;
+- every role resolves to authority;
+- every consequential action requires a current mandate;
+- every delegation has verifiable lineage and attenuation;
+- every capability is mediated and narrower than supporting authority;
+- model output is validated before execution;
+- fan-out is checked individually and collectively;
+- evidence supports independent reconstruction;
+- revocation, interruption, and remediation are demonstrated;
+- operational ownership and assurance gates are assigned.

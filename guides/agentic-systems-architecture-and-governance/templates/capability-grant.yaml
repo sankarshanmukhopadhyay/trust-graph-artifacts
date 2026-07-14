@@ -1,0 +1,14 @@
+capability_id: replace-me
+subject_role_ref: replace-me
+mandate_ref: replace-me
+lineage_verification_ref: replace-me
+policy_decision_ref: replace-me
+candidate_action_digest: replace-me
+operation: replace-me
+resource_ref: replace-me
+parameter_constraints: {}
+purpose: replace-me
+valid_from: ""
+valid_until: ""
+transferable: false
+revocation_ref: ""

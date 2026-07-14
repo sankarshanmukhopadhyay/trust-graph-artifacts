@@ -1,0 +1,12 @@
+branch_id: replace-me
+parent_job_ref: replace-me
+parent_delegation_ref: replace-me
+subtask: replace-me
+role_ref: replace-me
+scope: {}
+data_inputs: []
+capability_refs: []
+expected_output_schema_ref: ""
+valid_until: ""
+no_further_delegation: true
+return_review_requirements: []

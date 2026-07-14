@@ -1,0 +1,15 @@
+review_id: replace-me
+job_ref: replace-me
+branch_result_refs: []
+checks:
+  branch_lineage: pass
+  schema_validity: pass
+  evidence_sufficiency: pass
+  aggregate_authority: pass
+  aggregate_data_exposure: pass
+  prohibited_inference: pass
+  material_dissent_preserved: pass
+result: permit
+dissent_refs: []
+constraints_added: []
+reviewer_role_ref: replace-me

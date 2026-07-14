@@ -1,0 +1,17 @@
+receipt_id: replace-me
+job_ref: replace-me
+transaction_ref: replace-me
+actor_role_ref: replace-me
+mandate_verification_ref: replace-me
+lineage_verification_ref: replace-me
+policy_decision_ref: replace-me
+capability_grant_ref: replace-me
+candidate_action_digest: replace-me
+execution:
+  effect_type: replace-me
+  target_ref: replace-me
+  result: replace-me
+  occurred_at: ""
+status_ref: ""
+challenge_ref: ""
+signature: {}

@@ -1,0 +1,19 @@
+hop_id: replace-me
+lineage_id: replace-me
+parent_hop_ref: null
+originating_principal_ref: replace-me
+original_intent_ref: replace-me
+transaction_ref: replace-me
+delegator_ref: replace-me
+delegate_role_ref: replace-me
+scope_received: {}
+scope_granted: {}
+attenuation_result:
+  result: pass
+  verifier_ref: ""
+trust_domain_ref: ""
+validity:
+  valid_from: ""
+  valid_until: ""
+status_ref: ""
+revocation_ref: ""

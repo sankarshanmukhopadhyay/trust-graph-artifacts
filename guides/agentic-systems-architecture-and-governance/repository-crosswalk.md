@@ -3,85 +3,44 @@ layout: default
 title: Repository Crosswalk
 parent: Agentic Systems Architecture and Governance
 nav_order: 2
+permalink: /guides/agentic-systems-architecture-and-governance/repository-crosswalk/
 ---
 
 # Repository Crosswalk
 
-This crosswalk identifies the primary TSMM, TIS, and TGA inputs for each design need. Repository paths may evolve; implementation baselines should pin the exact revision used.
+Use the crosswalk to trace each design decision from semantics to governance controls, portable contracts, implementation components, tests, and runtime evidence.
 
-| Design need | TSMM | TGA | TIS |
-|---|---|---|---|
-| Define the system and effects | Core model; effect-centred trust-decision model | Quickstart; executable-governance packages | Artifact and evidence contracts used by the selected profile |
-| Model persistent agent participation | Agentic extension; entity and relationship model | Agent-accountability and runtime-authority patterns | Authority-boundary and runtime projection schemas |
-| Define root authority | Authority and policy concepts | `artifacts/agent-mandate-envelope/`; `patterns/agent-mandate-envelope/` | `governance/authority-boundary.schema.json` |
-| Govern direct delegation | Delegated-agent pattern | `patterns/delegation-after-identity/` | Authority-boundary and artifact references |
-| Govern multi-hop delegation | Chained-delegation pattern | `patterns/delegation-lineage-envelope/` | `delegation/delegation-lineage.schema.json` |
-| Govern parallel branches | Fan-out delegation pattern | Delegation lineage tests; delegation-first profile | Delegation verification and branch/convergence fields |
-| Evaluate runtime authority | Trust-decision and effect model | `patterns/runtime-authority-envelope/` | Runtime governance projection and verification records |
-| Record execution | Effect and evidence model | `artifacts/execution-time-delegation/`; proof-carrying receipts | Trust-task execution receipt |
-| Handle revocation | Lifecycle and authority graph | Revocation dynamics; commitment-lifecycle mediation | Lifecycle events and lineage verification |
-| Validate adoption | Conformance guidance | Validation scripts, assurance cases, and negative fixtures | Schema validators and examples |
+| Design need | TSMM | TGA | TIS | Implementation output | Evidence |
+|---|---|---|---|---|---|
+| define actors and effects | core entity, relationship, decision and effect model | quickstart and governance packages | authority and runtime projections | instance model and effect catalog | architecture baseline |
+| define root authority | authority source and policy concepts | agent mandate envelope | authority-boundary schema | mandate service and policy rules | mandate receipt |
+| govern direct delegation | delegated-agent pattern | delegation-after-identity | artifact references | delegated task contract | delegation receipt |
+| govern multi-hop authority | chained-delegation pattern | delegation-lineage envelope | lineage and verification schemas | lineage service | lineage verification |
+| govern parallel work | fan-out pattern | lineage tests and delegation-first controls | branch and convergence fields | branch manager and convergence gate | convergence receipt |
+| mediate technical power | authority/effect separation | runtime authority and execution-time delegation | capability and execution contracts | broker and enforcement points | grant and execution receipts |
+| handle lifecycle | lifecycle and authority graph | revocation dynamics and lifecycle mediation | status and lifecycle events | revocation service | propagation receipt |
+| preserve evidence | evidence and decision concepts | proof-carrying receipts | receipt schemas | evidence store | evidence bundle |
 
-## Reading sequence
+## Architect reading order
 
-### Step 1: Establish semantics in TSMM
+1. TSMM implementer guidance and core model.
+2. TSMM effect-centred decision and delegation patterns.
+3. TGA quickstart and delegation governance guidance.
+4. TGA mandate, runtime authority, delegation lineage, receipt, and revocation packages.
+5. TIS authority-boundary, delegation-lineage, verification, and execution schemas.
+6. This guide's templates, examples, and negative test suite.
 
-Read the implementer guide, core model, authority and policy concepts, effect-centred decision model, and delegation patterns. Produce a TSMM instance describing the job, principals, roles, authority edges, decisions, evidence, effects, and lifecycle.
+## Traceability rule
 
-### Step 2: Select governance patterns in TGA
+For every consequential control, record:
 
-Start with:
-
-- [`../../docs/quickstart.md`](../../docs/quickstart.md)
-- [`../../docs/delegation-governance.md`](../../docs/delegation-governance.md)
-- [`../../artifacts/agent-mandate-envelope/`](../../artifacts/agent-mandate-envelope/)
-- [`../../patterns/runtime-authority-envelope/`](../../patterns/runtime-authority-envelope/)
-- [`../../patterns/delegation-lineage-envelope/`](../../patterns/delegation-lineage-envelope/)
-- [`../../profiles/delegation-first-governance-profile/`](../../profiles/delegation-first-governance-profile/)
-- [`../../artifacts/execution-time-delegation/`](../../artifacts/execution-time-delegation/)
-- [`../../evidence/proof-carrying-commitment-receipt/`](../../evidence/proof-carrying-commitment-receipt/)
-
-Select the smallest set of patterns that covers the job's effects and failure modes.
-
-### Step 3: Adopt TIS contracts
-
-Use TIS schemas for authority boundaries, delegation lineage, lineage verification, lifecycle records, and execution receipts. Validate every stored and exchanged artifact at system boundaries, not only in unit tests.
-
-### Step 4: Trace design decisions
-
-For every implementation control, maintain a trace to:
-
-1. the TSMM semantic concept;
-2. the TGA governance pattern or assurance case;
-3. the TIS schema or validation rule;
-4. the implementation component;
-5. the positive and negative tests;
-6. the evidence produced in operation.
-
-## Traceability record template
-
-```yaml
-control_id: CTRL-DELEGATION-001
-objective: prevent authority expansion across agent delegation
-semantic_basis:
-  repository: TSMM
-  concept: chained delegation and authority attenuation
-governance_basis:
-  repository: TGA
-  artifact: patterns/delegation-lineage-envelope
-contract_basis:
-  repository: TIS
-  artifact: delegation/delegation-lineage.schema.json
-implementation:
-  component: lineage-verifier
-  enforcement_point: delegation-admission-api
-tests:
-  positive:
-    - valid-linear-chain
-  negative:
-    - invalid-scope-expansion
-    - invalid-principal-substitution
-evidence:
-  - delegation-lineage-verification
-owner: authority-platform-team
+```text
+TSMM concept
+  → TGA pattern or assurance case
+  → TIS schema or validation contract
+  → implementation component
+  → positive and negative tests
+  → runtime evidence
 ```
+
+The machine-readable form is maintained in [crosswalk.yaml]({% link guides/agentic-systems-architecture-and-governance/crosswalk.yaml %}).

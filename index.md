@@ -13,6 +13,8 @@ This site is the Just the Docs/Jekyll publication surface for the repository. It
 
 ## Start here
 
+1. [Agentic Systems Architecture and Governance]({% link guides/agentic-systems-architecture-and-governance/README.md %})
+
 1. [Quickstart]({% link docs/quickstart.md %})
 2. [Architecture]({% link docs/architecture.md %})
 3. [Package anatomy]({% link docs/package-anatomy.md %})

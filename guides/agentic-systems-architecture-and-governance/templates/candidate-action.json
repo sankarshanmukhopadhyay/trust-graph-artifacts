@@ -1,0 +1,14 @@
+{
+  "action_id": "replace-me",
+  "action_type": "replace-me",
+  "job_ref": "replace-me",
+  "transaction_ref": "replace-me",
+  "proposing_role_ref": "replace-me",
+  "target_resource_ref": "replace-me",
+  "parameters": {},
+  "evidence_refs": [],
+  "risk_level": "replace-me",
+  "uncertainty": "replace-me",
+  "requested_capability": "replace-me",
+  "approval_required": false
+}

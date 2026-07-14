@@ -1,3 +1,12 @@
+
+## Unreleased — Agentic Systems adoption playbook and Pages hardening
+
+- Expanded the architect guide into a granular, stage-gated implementation playbook.
+- Added copy-ready templates, three worked examples, maturity model, component contracts, and negative test requirements.
+- Added stable Jekyll permalinks, Just the Docs navigation, Mermaid support, responsive and print styling.
+- Added strict Jekyll build, HTML validation, and repository documentation validation workflows.
+- Added a machine-readable TSMM/TGA/TIS implementation crosswalk.
+
 # Changelog
 
 ## Unreleased

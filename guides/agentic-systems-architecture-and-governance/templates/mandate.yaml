@@ -1,0 +1,19 @@
+mandate_id: replace-me
+principal_ref: replace-me
+agent_role_ref: replace-me
+purpose: replace-me
+permitted_actions: []
+prohibited_actions: []
+resource_boundaries: []
+constraints:
+  maximum_delegation_depth: 0
+  value_limits: []
+  approval_required_for: []
+validity:
+  valid_from: ""
+  valid_until: ""
+revocation:
+  authority_ref: ""
+  status_ref: ""
+  propagation_slo: ""
+evidence_requirements: []

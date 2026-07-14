@@ -1,0 +1,8 @@
+.main-content table { display: block; overflow-x: auto; width: 100%; }
+.main-content pre { overflow-x: auto; }
+.main-content .mermaid { overflow-x: auto; }
+@media print {
+  .side-bar, .site-header, .search, .aux-nav, .breadcrumb-nav, .site-footer { display: none !important; }
+  .main { margin-left: 0 !important; max-width: none !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 80%; }
+}

@@ -1,0 +1,12 @@
+remediation_id: replace-me
+source_effect_ref: replace-me
+trigger_event_ref: replace-me
+responsible_role_ref: replace-me
+harm_or_nonconformance: replace-me
+containment_actions: []
+correction_actions: []
+compensation_actions: []
+evidence_refs: []
+status: open
+challenge_ref: ""
+closed_at: null

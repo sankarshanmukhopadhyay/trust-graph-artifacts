@@ -1,0 +1,12 @@
+revocation_event_id: replace-me
+revoker_ref: replace-me
+authority_basis_ref: replace-me
+target_type: mandate
+target_ref: replace-me
+scope: {}
+effective_at: ""
+reason_code: replace-me
+propagate_to_descendants: true
+interruption_required: true
+remediation_required: false
+status_event_ref: ""
