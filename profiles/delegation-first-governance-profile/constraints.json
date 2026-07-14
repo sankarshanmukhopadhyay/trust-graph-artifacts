@@ -1,0 +1,114 @@
+{
+  "packageId": "ttg.profile.delegation.first.governance",
+  "kind": "profile",
+  "controlSet": [
+    {
+      "id": "control.principal-continuity",
+      "type": "lineage-integrity",
+      "description": "Preserve the originating principal across every hop and refresh."
+    },
+    {
+      "id": "control.parent-hop-completeness",
+      "type": "lineage-integrity",
+      "description": "Require every non-root hop to reference a verifiable parent."
+    },
+    {
+      "id": "control.monotonic-attenuation",
+      "type": "scope-check",
+      "description": "Require granted scope to be equal to or narrower than received scope."
+    },
+    {
+      "id": "control.transaction-intent-binding",
+      "type": "binding-check",
+      "description": "Preserve immutable transaction and original-intent references."
+    },
+    {
+      "id": "control.domain-transition-evidence",
+      "type": "translation-check",
+      "description": "Require evidence that scope semantics remain bounded across trust domains."
+    },
+    {
+      "id": "control.aggregate-authority-check",
+      "type": "convergence-check",
+      "description": "Evaluate the aggregate effect of converging branches against the parent mandate."
+    },
+    {
+      "id": "control.revocation-propagation",
+      "type": "lifecycle-check",
+      "description": "Propagate preventive revocation and record interruption and compensation outcomes."
+    },
+    {
+      "id": "control.mandate-completeness",
+      "type": "admissibility-check",
+      "description": "Require scope, duration, constraints, revocability, and principal chain before activation."
+    },
+    {
+      "id": "control.constraint-executability",
+      "type": "policy-check",
+      "description": "Classify every constraint as machine-checkable or escalation-bound."
+    },
+    {
+      "id": "control.pre-effect-admission",
+      "type": "effect-constraint",
+      "description": "Deny consequential effects until mandate, lineage, status, and evidence checks pass."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.delegation.first.governance",
+      "rules": [
+        "Preserve the originating principal across every hop and refresh.",
+        "Require every non-root hop to reference a verifiable parent.",
+        "Require granted scope to be equal to or narrower than received scope.",
+        "Preserve immutable transaction and original-intent references.",
+        "Require evidence that scope semantics remain bounded across trust domains.",
+        "Evaluate the aggregate effect of converging branches against the parent mandate.",
+        "Propagate preventive revocation and record interruption and compensation outcomes.",
+        "Require scope, duration, constraints, revocability, and principal chain before activation.",
+        "Classify every constraint as machine-checkable or escalation-bound.",
+        "Deny consequential effects until mandate, lineage, status, and evidence checks pass."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.scope-expansion",
+      "type": "authority-amplification",
+      "description": "A downstream hop gains broader authority than its parent."
+    },
+    {
+      "id": "threat.broken-lineage",
+      "type": "lineage-gap",
+      "description": "A local actor is valid but cannot be resolved to the originating principal."
+    },
+    {
+      "id": "threat.aggregation-amplification",
+      "type": "convergence-gap",
+      "description": "Valid branches combine into an unauthorized aggregate effect."
+    },
+    {
+      "id": "threat.translation-amplification",
+      "type": "domain-boundary-gap",
+      "description": "Scope broadens during trust-domain translation."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "issued",
+      "active",
+      "suspended",
+      "revoked",
+      "expired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.revoke",
+        "from": "state.active",
+        "to": "state.revoked",
+        "trigger": "authority withdrawal",
+        "actor": "originating principal or authorized revocation authority",
+        "evidenceRequirement": "revocation propagation receipt"
+      }
+    ]
+  }
+}

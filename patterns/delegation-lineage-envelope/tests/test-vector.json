@@ -1,0 +1,14 @@
+{
+  "packageId": "ttg.pattern.delegation.lineage.envelope",
+  "expectedValidation": {
+    "package": "pass",
+    "graph": "pass",
+    "invalidExample": "fail"
+  },
+  "evidenceChecks": [
+    "originating principal continuity",
+    "monotonic scope attenuation",
+    "aggregate authority at convergence",
+    "revocation propagation"
+  ]
+}

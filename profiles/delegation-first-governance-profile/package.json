@@ -1,0 +1,26 @@
+{
+  "id": "ttg.profile.delegation.first.governance",
+  "title": "Delegation-First Governance Profile",
+  "kind": "profile",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Governing Delegation, Not Decisions",
+    "url": "https://thetrustgraph.substack.com/p/governing-delegation-not-decisions",
+    "publishedDate": "2026-07-13"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "profile",
+    "delegation",
+    "mandate",
+    "revocation",
+    "effect-admission"
+  ]
+}

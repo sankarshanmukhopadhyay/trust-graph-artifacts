@@ -81,3 +81,13 @@ That order separates intent, classification, structure, control, evidence, and v
 - **Receipt** = the evidence object emitted when authority, delegation, enforcement, revocation, or decision state must be audited
 
 This is the core adoption rule: do not flatten concept, model, package, and evidence into one narrative layer.
+
+## Multi-hop delegation quickstart
+
+```bash
+python scripts/validate_delegation_lineage.py
+python scripts/validate_tsmm_native.py
+python scripts/validate_tis_alignment.py
+```
+
+Then inspect `patterns/delegation-lineage-envelope/examples/valid-graph.json` and the portable TIS binding under `bindings/tis/`.

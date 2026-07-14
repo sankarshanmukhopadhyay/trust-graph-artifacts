@@ -16,8 +16,8 @@ crosswalk:
     title: The Commons After the Control Plane Shifts
     url: https://thetrustgraph.substack.com/p/the-commons-after-the-control-plane
     publishedDate: 2026-04-17
-  claim: Commons governance fails when AI intermediaries change knowledge admission
-    and propagation without contestable control.
+  claim: Commons governance fails when AI intermediaries change knowledge admission and propagation without contestable
+    control.
   artifacts:
   - artifacts/control-plane/execution_flow.yaml
   - artifacts/legitimacy/legitimacy_gap.yaml
@@ -31,8 +31,8 @@ crosswalk:
     title: Who Holds the License
     url: https://thetrustgraph.substack.com/p/who-holds-the-license
     publishedDate: 2026-04-18
-  claim: A licensing coalition must prove its authority rather than reproduce the
-    legitimacy failures it seeks to correct.
+  claim: A licensing coalition must prove its authority rather than reproduce the legitimacy failures it seeks to
+    correct.
   artifacts:
   - artifacts/licensing/license_authority_model.yaml
   - artifacts/legitimacy/legitimacy_gap.yaml
@@ -56,8 +56,8 @@ crosswalk:
     title: Exploiting the Revocation Lag Gradient
     url: https://thetrustgraph.substack.com/p/exploiting-the-revocation-lag-gradient
     publishedDate: '2026-04-17'
-  claim: Revocation becomes effective only when execution environments stop accepting
-    revoked authority within a measurable propagation window.
+  claim: Revocation becomes effective only when execution environments stop accepting revoked authority within a
+    measurable propagation window.
   artifacts:
   - patterns/revocation-lag-analyzer
   - profiles/compositional-revocation-profile
@@ -69,8 +69,8 @@ crosswalk:
     title: When the Gradient Is the Attack Surface
     url: https://thetrustgraph.substack.com/p/when-the-gradient-is-the-attack-surface
     publishedDate: '2026-04-21'
-  claim: Revocation lag can be deliberately exploited through timing, routing, and
-    delegation before evidence can prove intent.
+  claim: Revocation lag can be deliberately exploited through timing, routing, and delegation before evidence can
+    prove intent.
   artifacts:
   - patterns/gradient-exploitation-surface
   - profiles/compositional-revocation-profile
@@ -81,8 +81,8 @@ crosswalk:
     title: The Authority Gap
     url: https://thetrustgraph.substack.com/p/the-authority-gap
     publishedDate: '2026-05-05'
-  claim: Agentic systems become governable only when identity is wrapped by runtime
-    authority, mandate, scope, revocation state, evidence, and redress.
+  claim: Agentic systems become governable only when identity is wrapped by runtime authority, mandate, scope, revocation
+    state, evidence, and redress.
   artifacts:
   - patterns/runtime-authority-envelope
   - patterns/agent-mandate-envelope
@@ -98,9 +98,8 @@ crosswalk:
     title: When Machines Make Commitments
     url: https://thetrustgraph.substack.com/p/when-machines-make-commitments
     publishedDate: '2026-05-05'
-  claim: Machine-generated commitments require proof-carrying authority, lifecycle
-    mediation, reconciliation, and contestability before they induce institutional
-    reliance.
+  claim: Machine-generated commitments require proof-carrying authority, lifecycle mediation, reconciliation, and
+    contestability before they induce institutional reliance.
   artifacts:
   - profiles/machine-commitment-governance-profile
   - evidence/proof-carrying-commitment-receipt
@@ -113,8 +112,8 @@ crosswalk:
     title: Fraud as an Externality of Missing Infrastructure
     url: https://thetrustgraph.substack.com/p/fraud-as-an-externality-of-missing
     publishedDate: '2026-05-05'
-  claim: Fraud cost is externalized when identity, claims, provenance, issuer authority,
-    registry governance, and anti-capture controls are not verifiable.
+  claim: Fraud cost is externalized when identity, claims, provenance, issuer authority, registry governance, and
+    anti-capture controls are not verifiable.
   artifacts:
   - profiles/fraud-externality-verification-profile
   - profiles/trust-registry-governance-model
@@ -127,9 +126,8 @@ crosswalk:
     title: Before the Graph
     url: https://thetrustgraph.substack.com/p/before-the-graph
     publishedDate: '2026-04-13'
-  claim: Digital governance fails when inference substitutes for verifiable identity,
-    claims, authority, and provenance, then demands more legibility instead of better
-    verification.
+  claim: Digital governance fails when inference substitutes for verifiable identity, claims, authority, and provenance,
+    then demands more legibility instead of better verification.
   artifacts:
   - patterns/inference-substitution-gap
   - patterns/legibility-trap-detector
@@ -142,9 +140,8 @@ crosswalk:
     title: Governance for High-Risk Digital Infrastructure
     url: https://thetrustgraph.substack.com/p/governance-for-high-risk-digital
     publishedDate: '2026-04-08'
-  claim: 'High-risk digital infrastructure requires architectural governance: traceability,
-    reversibility, delegation boundaries, contestability, auditability, and constitutional
-    controls embedded inside the system.'
+  claim: 'High-risk digital infrastructure requires architectural governance: traceability, reversibility, delegation
+    boundaries, contestability, auditability, and constitutional controls embedded inside the system.'
   artifacts:
   - profiles/high-risk-digital-infrastructure-governance-profile
   - overlays/constitutional-digital-infrastructure-controls
@@ -157,7 +154,8 @@ crosswalk:
     title: First-Person Credentials
     url: https://thetrustgraph.substack.com/p/first-person-credentials
     publishedDate: '2026-03-02'
-  claim: Personhood, identity, eligibility, and participation must remain distinct to prevent proof of personhood from becoming a surveillance identifier.
+  claim: Personhood, identity, eligibility, and participation must remain distinct to prevent proof of personhood
+    from becoming a surveillance identifier.
   artifacts:
   - profiles/personhood-participation-governance-profile
   - profiles/first-person-credentials
@@ -169,7 +167,8 @@ crosswalk:
     title: Your Agents Are Not Failing Your
     url: https://thetrustgraph.substack.com/p/your-agents-are-not-failing-your
     publishedDate: '2026-02-26'
-  claim: Agent accountability requires principal, controller, mandate, scope, policy, revocation state, and redress before effect admission.
+  claim: Agent accountability requires principal, controller, mandate, scope, policy, revocation state, and redress
+    before effect admission.
   artifacts:
   - patterns/agent-accountability-edge
   - patterns/agent-mandate-envelope
@@ -182,7 +181,8 @@ crosswalk:
     title: Redress at Machine Speed
     url: https://thetrustgraph.substack.com/p/redress-at-machine-speed
     publishedDate: '2026-05-01'
-  claim: Machine decisions require review authority, evidence disclosure, state repair, and downstream correction paths.
+  claim: Machine decisions require review authority, evidence disclosure, state repair, and downstream correction
+    paths.
   artifacts:
   - overlays/redress-rails-for-machine-decisions
   - profiles/public-agent-contestability-profile
@@ -194,7 +194,8 @@ crosswalk:
     title: Trust Lists as Market Gatekeepers
     url: https://thetrustgraph.substack.com/p/trust-lists-as-market-gatekeepers
     publishedDate: '2026-05-04'
-  claim: Trust registries shape market access and therefore require admission transparency, appealability, anti-capture controls, and revocation evidence.
+  claim: Trust registries shape market access and therefore require admission transparency, appealability, anti-capture
+    controls, and revocation evidence.
   artifacts:
   - profiles/registry-gatekeeper-risk-profile
   - profiles/trust-registry-governance-model
@@ -206,7 +207,8 @@ crosswalk:
     title: Proof-First Markets
     url: https://thetrustgraph.substack.com/p/proof-first-markets
     publishedDate: '2026-02-23'
-  claim: Market eligibility and pricing decisions should be based on bounded proof, policy, evidence, and review rather than raw data surrender.
+  claim: Market eligibility and pricing decisions should be based on bounded proof, policy, evidence, and review
+    rather than raw data surrender.
   artifacts:
   - evidence/proof-first-market-decision-receipt
   - profiles/portable-eligibility
@@ -218,7 +220,8 @@ crosswalk:
     title: Trust Is Not a Promise
     url: https://thetrustgraph.substack.com/p/trust-is-not-a-promise
     publishedDate: '2026-05-10'
-  claim: Trust becomes credible when authority, policy, evidence, revocation, decision, registry publication, and redress are executable system properties.
+  claim: Trust becomes credible when authority, policy, evidence, revocation, decision, registry publication, and
+    redress are executable system properties.
   artifacts:
   - systems/executable-trust-governance-stack
   - examples/composition/runtime-assurance-v0.4
@@ -226,3 +229,51 @@ crosswalk:
   - decision
   - evidence_bundle
   - registry_publication
+- essay:
+    title: Acting on Behalf
+    url: https://thetrustgraph.substack.com/p/acting-on-behalf-when-the-agent-enters
+    publishedDate: '2026-07-06'
+  claim: Agent market standing requires independently inspectable evidence of principal, delegated scope, current
+    validity, attribution, and contestability rather than authentication or platform logs alone.
+  artifacts:
+  - patterns/runtime-authority-envelope
+  - patterns/agent-mandate-envelope
+  - patterns/delegation-after-identity
+  - evidence/execution-time-delegation
+  receipts:
+  - authority_envelope
+  - delegation
+  - execution_authority_state
+  - redress
+- essay:
+    title: Delegation Without a Fixed Referent
+    url: https://thetrustgraph.substack.com/p/delegation-without-a-fixed-referent
+    publishedDate: '2026-07-08'
+  claim: Multi-hop authority is a property of the chain and requires preserved principal lineage, immutable intent,
+    monotonic attenuation, transaction binding, domain-transition evidence, and chain-level verification.
+  artifacts:
+  - patterns/delegation-lineage-envelope
+  - patterns/delegation-after-identity
+  - evidence/execution-time-delegation
+  receipts:
+  - delegation_lineage
+  - delegation
+  - revocation_propagation
+  - execution_authority_state
+- essay:
+    title: Governing Delegation, Not Decisions
+    url: https://thetrustgraph.substack.com/p/governing-delegation-not-decisions
+    publishedDate: '2026-07-13'
+  claim: Agentic governance should govern mandates, authorization boundaries, constraints, principal chains, and
+    revocation before effect admission rather than relying primarily on retrospective review of individual decisions.
+  artifacts:
+  - profiles/delegation-first-governance-profile
+  - patterns/agent-mandate-envelope
+  - patterns/runtime-authority-envelope
+  - patterns/delegation-lineage-envelope
+  receipts:
+  - authority_envelope
+  - delegation_lineage
+  - execution_authority_state
+  - revocation_propagation
+  - decision

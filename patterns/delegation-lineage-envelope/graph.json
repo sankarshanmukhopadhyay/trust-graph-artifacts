@@ -1,0 +1,100 @@
+{
+  "graphId": "ttg.pattern.delegation.lineage.envelope",
+  "label": "Delegation Lineage Envelope",
+  "description": "Chain-level delegated authority verification with attenuation and topology controls.",
+  "profile": "pattern",
+  "contexts": [
+    "context.delegation.lineage"
+  ],
+  "nodes": [
+    {
+      "id": "context.delegation.lineage",
+      "type": "TrustDomain",
+      "label": "Delegation Lineage Context"
+    },
+    {
+      "id": "profile.delegation.lineage",
+      "type": "AssuranceProfile",
+      "label": "Delegation Lineage Envelope",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.delegation.lineage",
+      "type": "Policy",
+      "label": "Delegation Lineage Policy",
+      "attributes": {
+        "decisionMode": "automated"
+      }
+    },
+    {
+      "id": "entity.originating-principal",
+      "type": "Subject",
+      "label": "Originating Principal"
+    },
+    {
+      "id": "entity.current-actor",
+      "type": "Agent",
+      "label": "Current Actor"
+    },
+    {
+      "id": "entity.lineage-verifier",
+      "type": "Verifier",
+      "label": "Lineage Verifier"
+    },
+    {
+      "id": "evidence.delegation.lineage",
+      "type": "EvidenceBundle",
+      "label": "Delegation Lineage Evidence",
+      "attributes": {
+        "artifactType": "delegation-lineage"
+      }
+    },
+    {
+      "id": "verification.delegation.lineage",
+      "type": "Assessment",
+      "label": "Delegation Lineage Verification",
+      "attributes": {
+        "method": "chain-conformance-check"
+      }
+    },
+    {
+      "id": "decision.delegation.lineage",
+      "type": "TrustDecision",
+      "label": "Delegation Effect Admission Decision"
+    },
+    {
+      "id": "effect.delegation.lineage.allow",
+      "type": "Effect",
+      "label": "Admit Bounded Effect"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge.1",
+      "type": "delegates",
+      "from": "entity.originating-principal",
+      "to": "entity.current-actor"
+    },
+    {
+      "id": "edge.2",
+      "type": "substantiates",
+      "from": "evidence.delegation.lineage",
+      "to": "verification.delegation.lineage"
+    },
+    {
+      "id": "edge.3",
+      "type": "substantiates",
+      "from": "verification.delegation.lineage",
+      "to": "decision.delegation.lineage"
+    },
+    {
+      "id": "edge.4",
+      "type": "governs",
+      "from": "decision.delegation.lineage",
+      "to": "effect.delegation.lineage.allow"
+    }
+  ]
+}

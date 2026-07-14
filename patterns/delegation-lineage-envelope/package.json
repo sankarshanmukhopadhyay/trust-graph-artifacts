@@ -1,0 +1,29 @@
+{
+  "id": "ttg.pattern.delegation.lineage.envelope",
+  "title": "Delegation Lineage Envelope",
+  "kind": "pattern",
+  "status": "draft",
+  "sourceEssay": {
+    "title": "Delegation Without a Fixed Referent",
+    "url": "https://thetrustgraph.substack.com/p/delegation-without-a-fixed-referent",
+    "publishedDate": "2026-07-08"
+  },
+  "signal": {
+    "tier": "priority"
+  },
+  "tsmm": {
+    "graph": "graph.json",
+    "constraints": "constraints.json",
+    "evidence": "evidence.json"
+  },
+  "tags": [
+    "pattern",
+    "delegation",
+    "lineage",
+    "attenuation",
+    "multi-agent"
+  ],
+  "notes": [
+    "TSMM-native pattern for chain-level delegated authority verification."
+  ]
+}

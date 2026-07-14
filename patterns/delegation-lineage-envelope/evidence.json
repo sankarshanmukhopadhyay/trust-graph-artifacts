@@ -1,0 +1,53 @@
+{
+  "packageId": "ttg.pattern.delegation.lineage.envelope",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.delegation.lineage",
+      "artifactType": "delegation-lineage",
+      "description": "Ordered or branching authority derivation with scope and status evidence.",
+      "supportsRefs": [
+        "policy.delegation.lineage",
+        "decision.delegation.lineage"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.delegation.lineage",
+      "method": "chain-conformance-check",
+      "performedBy": "entity.lineage-verifier",
+      "controlRefs": [
+        "control.principal-continuity",
+        "control.parent-hop-completeness",
+        "control.monotonic-attenuation",
+        "control.transaction-intent-binding",
+        "control.domain-transition-evidence",
+        "control.aggregate-authority-check",
+        "control.revocation-propagation"
+      ],
+      "inputRefs": [
+        "evidence.delegation.lineage"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.delegation.lineage",
+      "policyRef": "policy.delegation.lineage",
+      "verificationRefs": [
+        "verification.delegation.lineage"
+      ],
+      "effectRefs": [
+        "effect.delegation.lineage.allow"
+      ]
+    }
+  ],
+  "requiredFields": [
+    "originating_principal",
+    "original_intent",
+    "transaction_id",
+    "topology",
+    "hops",
+    "chain_verification"
+  ]
+}

@@ -228,3 +228,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/authoring-model.md`](docs/au
 ## In one sentence
 
 **TSMM provides the modeling discipline. The Trust Graph provides the reason to model these problems at all. This repository turns that relationship into reusable, testable packages.**
+
+## Delegation governance release
+
+Version 0.5.0 adds chain-aware delegation artifacts derived from three Trust Graph essays. Implementers can start with [`docs/delegation-governance.md`](docs/delegation-governance.md), validate the new packages with `python scripts/validate_delegation_lineage.py`, and use the TIS v0.11.0 binding example in `patterns/delegation-lineage-envelope/bindings/tis/`.

@@ -150,3 +150,10 @@ All notable repository changes are documented here. The repository treats change
 - Initial TSMM-native package corpus derived from The Trust Graph essays.
 - Receipt schema and example layer for authority, delegation, decision, enforcement, licensing, revocation, execution authority state, revocation propagation, and gradient exploitation signals.
 - Temporal governance and revocation dynamics package cluster.
+
+## 0.5.0 - 2026-07-14
+
+- Added delegation-lineage and delegation-first governance packages.
+- Added three essay mappings and adoption documentation.
+- Added cross-repository TSMM v0.22.0 and TIS v0.11.0 bindings.
+- Added delegation-specific positive and negative assurance cases.

@@ -321,3 +321,24 @@ essays:
   packageKind: system
   packagePath: systems/executable-trust-governance-stack
   signalTier: priority
+- slug: acting-on-behalf
+  title: Acting on Behalf
+  publishedDate: '2026-07-06'
+  url: https://thetrustgraph.substack.com/p/acting-on-behalf-when-the-agent-enters
+  packageKind: pattern
+  packagePath: patterns/runtime-authority-envelope
+  signalTier: priority
+- slug: delegation-without-a-fixed-referent
+  title: Delegation Without a Fixed Referent
+  publishedDate: '2026-07-08'
+  url: https://thetrustgraph.substack.com/p/delegation-without-a-fixed-referent
+  packageKind: pattern
+  packagePath: patterns/delegation-lineage-envelope
+  signalTier: priority
+- slug: governing-delegation-not-decisions
+  title: Governing Delegation, Not Decisions
+  publishedDate: '2026-07-13'
+  url: https://thetrustgraph.substack.com/p/governing-delegation-not-decisions
+  packageKind: profile
+  packagePath: profiles/delegation-first-governance-profile
+  signalTier: priority

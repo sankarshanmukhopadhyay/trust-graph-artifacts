@@ -1,0 +1,26 @@
+version: 0.5.0
+cases:
+  - id: valid-linear-chain
+    expected: pass
+    invariant: every hop resolves to one originating principal and scope never expands
+  - id: invalid-scope-expansion
+    expected: fail
+    invariant: child scope must be a subset of parent scope
+  - id: invalid-principal-substitution
+    expected: fail
+    invariant: originating principal is immutable
+  - id: invalid-broken-lineage
+    expected: fail
+    invariant: every non-root hop identifies a verifiable parent
+  - id: invalid-domain-translation-amplification
+    expected: fail
+    invariant: cross-domain scope mapping cannot broaden authority
+  - id: invalid-aggregation-amplification
+    expected: fail
+    invariant: converged effect remains within parent mandate
+  - id: invalid-refresh-renegotiation
+    expected: fail
+    invariant: refresh cannot change principal, transaction, or original intent
+  - id: invalid-partial-revocation
+    expected: fail
+    invariant: root revocation reaches every active branch

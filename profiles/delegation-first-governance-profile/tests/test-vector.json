@@ -1,0 +1,14 @@
+{
+  "packageId": "ttg.profile.delegation.first.governance",
+  "expectedValidation": {
+    "package": "pass",
+    "graph": "pass",
+    "invalidExample": "fail"
+  },
+  "evidenceChecks": [
+    "mandate completeness",
+    "constraint executability",
+    "pre-effect admission",
+    "revocation and compensation"
+  ]
+}

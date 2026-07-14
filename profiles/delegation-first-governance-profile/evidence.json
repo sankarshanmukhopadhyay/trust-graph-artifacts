@@ -1,0 +1,55 @@
+{
+  "packageId": "ttg.profile.delegation.first.governance",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.delegation.governance.assurance",
+      "artifactType": "assurance-record",
+      "description": "Evidence that a mandate and delegation boundary passed pre-effect governance checks.",
+      "supportsRefs": [
+        "policy.delegation.first.governance"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.delegation.first.governance",
+      "method": "profile-conformance-check",
+      "performedBy": "entity.lineage-verifier",
+      "controlRefs": [
+        "control.principal-continuity",
+        "control.parent-hop-completeness",
+        "control.monotonic-attenuation",
+        "control.transaction-intent-binding",
+        "control.domain-transition-evidence",
+        "control.aggregate-authority-check",
+        "control.revocation-propagation",
+        "control.mandate-completeness",
+        "control.constraint-executability",
+        "control.pre-effect-admission"
+      ],
+      "inputRefs": [
+        "evidence.delegation.governance.assurance"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.delegation.first.governance",
+      "policyRef": "policy.delegation.first.governance",
+      "verificationRefs": [
+        "verification.delegation.first.governance"
+      ],
+      "effectRefs": [
+        "effect.delegation.lineage.allow"
+      ]
+    }
+  ],
+  "requiredFields": [
+    "mandate_reference",
+    "lineage_reference",
+    "status_evidence",
+    "constraint_results",
+    "revocation_policy",
+    "redress_route"
+  ]
+}
