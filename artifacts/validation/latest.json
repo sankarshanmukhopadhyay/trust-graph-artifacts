@@ -1,0 +1,57 @@
+{
+  "repository": "trust-graph-artifacts",
+  "repositoryVersion": "0.5.0",
+  "commit": "working-tree",
+  "validationProfile": "repository-full",
+  "executedAt": "2026-07-15T06:03:59.686690+00:00",
+  "checks": [
+    {
+      "id": "packages",
+      "status": "pass",
+      "detail": "TSMM-native validation passed for all packages and artifact crosswalks (48 packages)."
+    },
+    {
+      "id": "authority-envelopes",
+      "status": "pass",
+      "detail": "Authority envelope hardening validation passed."
+    },
+    {
+      "id": "delegation-lineage",
+      "status": "pass",
+      "detail": "Delegation lineage validation passed."
+    },
+    {
+      "id": "receipts",
+      "status": "pass",
+      "detail": "Receipt schema validation passed."
+    },
+    {
+      "id": "tis-alignment",
+      "status": "pass",
+      "detail": "TIS runtime assurance alignment validation passed."
+    },
+    {
+      "id": "docs",
+      "status": "pass",
+      "detail": "Documentation validation passed: 77 published Markdown pages, 77 unique output routes, and 77 navigation titles."
+    },
+    {
+      "id": "governance",
+      "status": "pass",
+      "detail": "Repository governance declaration: PASS"
+    },
+    {
+      "id": "relationships",
+      "status": "pass",
+      "detail": "Portfolio relationships: PASS (2 declarations)"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "limitations": [
+    "Repository validation is not external certification."
+  ]
+}

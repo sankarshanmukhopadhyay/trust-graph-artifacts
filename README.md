@@ -1,5 +1,13 @@
 # Trust Graph Artifacts
 
+> **Flagship repository**  
+> **Role:** `executable-governance-and-implementation-layer`  
+> **Current version:** `0.5.0`  
+> **Canonical validation:** `make validate`  
+> **Authority:** [`governance/repository-authority.yaml`](governance/repository-authority.yaml)  
+> **Start here:** [`docs/adoption.md`](docs/adoption.md)
+
+
 **A TSMM-native corpus for turning essay-derived governance failures into reusable, testable trust-system packages.**
 
 This repository sits at the line between two layers that are often blurred together:

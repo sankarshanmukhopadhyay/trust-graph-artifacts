@@ -9,17 +9,24 @@ permalink: /
 
 **A TSMM-native corpus for turning essay-derived governance failures into reusable, testable trust-system packages.**
 
-This site is the Just the Docs/Jekyll publication surface for the repository. It exposes the active documentation, package methodology, TSMM alignment, executable governance receipts, and v0.3.0 authority-governance corpus in a navigable form.
+This site is the Just the Docs/Jekyll publication surface for the repository. It exposes the active documentation, package methodology, TSMM alignment, executable governance receipts, and the active authority-governance corpus in a navigable form.
 
 ## Start here
 
 1. [Agentic Systems Architecture and Governance]({% link guides/agentic-systems-architecture-and-governance/README.md %})
 
-1. [Quickstart]({% link docs/quickstart.md %})
-2. [Architecture]({% link docs/architecture.md %})
-3. [Package anatomy]({% link docs/package-anatomy.md %})
-4. [TSMM and The Trust Graph]({% link docs/tsmm-and-the-trust-graph.md %})
-5. [Executable governance]({% link docs/executable-governance.md %})
+2. [Quickstart]({% link docs/quickstart.md %})
+3. [Architecture]({% link docs/architecture.md %})
+4. [Package anatomy]({% link docs/package-anatomy.md %})
+5. [TSMM and The Trust Graph]({% link docs/tsmm-and-the-trust-graph.md %})
+6. [Executable governance]({% link docs/executable-governance.md %})
+
+## Flagship entry points
+
+- [Repository status]({% link docs/repository-status.md %})
+- [Adoption]({% link docs/adoption.md %})
+- [Assurance]({% link docs/assurance.md %})
+- [Interoperability]({% link docs/interoperability.md %})
 
 ## Repository control surfaces
 

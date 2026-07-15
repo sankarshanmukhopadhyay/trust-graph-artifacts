@@ -84,3 +84,8 @@ This prevents TGA from becoming a competing model authority while preserving its
 The v0.3.0 increment adds a fourth operational cluster to the active architecture: **authority, commitment, and high-risk infrastructure governance**. This cluster sits across package classes rather than inside one folder. Runtime authority envelopes live under `patterns/`, commitment and high-risk infrastructure configurations live under `profiles/`, constitutional constraints live under `overlays/`, and proof-bearing records live under `evidence/`.
 
 The architectural rule is simple: when a digital system can create institutional effects, the repo must model the authority used, the evidence produced, the lifecycle state of the obligation or action, and the route for contestability or reversal.
+
+
+## Flagship-layer responsibility
+
+TGA is the executable governance and implementation layer. It consumes TSMM semantics and TIS contracts but does not supersede either repository’s canonical authority.
