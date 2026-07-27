@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.pattern.edge.triggered.suspension",
+  "label": "Edge-Triggered Suspension",
+  "description": "Allows qualifying edge-originated objections to suspend a proposed effect pending independent review.",
+  "profile": "pattern",
+  "contexts": [
+    "context.edge.triggered.suspension"
+  ],
+  "nodes": [
+    {
+      "id": "context.edge.triggered.suspension",
+      "type": "EpistemicOracle",
+      "label": "Edge-Triggered Suspension",
+      "description": "Allows qualifying edge-originated objections to suspend a proposed effect pending independent review."
+    },
+    {
+      "id": "profile.edge.triggered.suspension",
+      "type": "AssuranceProfile",
+      "label": "Edge-Triggered Suspension",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.edge.triggered.suspension",
+      "type": "Policy",
+      "label": "Edge-Triggered Suspension Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.edge.triggered.suspension",
+      "type": "EvidenceBundle",
+      "label": "Edge-Triggered Suspension Evidence",
+      "description": "Allows qualifying edge-originated objections to suspend a proposed effect pending independent review.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.edge.triggered.suspension",
+      "type": "Assessment",
+      "label": "Edge-Triggered Suspension Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.edge.triggered.suspension",
+      "type": "TrustDecision",
+      "label": "Edge-Triggered Suspension Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.edge.triggered.suspension.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.edge.triggered.suspension.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.edge.triggered.suspension.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-triggered-suspension.edge.context-profile",
+      "type": "anchors",
+      "from": "context.edge.triggered.suspension",
+      "to": "profile.edge.triggered.suspension",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.edge.triggered.suspension",
+      "to": "policy.edge.triggered.suspension",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.edge.triggered.suspension",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.edge.triggered.suspension",
+      "to": "verification.edge.triggered.suspension",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.edge.triggered.suspension",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.edge.triggered.suspension",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.edge.triggered.suspension",
+      "to": "decision.edge.triggered.suspension",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.edge.triggered.suspension"
+      ]
+    },
+    {
+      "id": "edge-triggered-suspension.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.edge.triggered.suspension",
+      "to": "evidence.edge.triggered.suspension",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.edge.triggered.suspension",
+      "to": "effect.edge.triggered.suspension.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.decision-review",
+      "type": "produces",
+      "from": "decision.edge.triggered.suspension",
+      "to": "effect.edge.triggered.suspension.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "edge-triggered-suspension.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.edge.triggered.suspension",
+      "to": "effect.edge.triggered.suspension.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "edge-triggered-suspension",
+    "incubationStatus": "implementation-draft"
+  }
+}

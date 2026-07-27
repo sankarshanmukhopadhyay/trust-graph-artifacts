@@ -1,5 +1,26 @@
 crosswalk:
 - essay:
+    title: The Edge Knows First
+    url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+    publishedDate: '2026-07-22'
+  claim: Legitimate decisions can remain structurally blind when situated knowledge cannot reach the decision surface
+    before effect admission.
+  artifacts:
+  - patterns/epistemic-adequacy-gate
+  - patterns/edge-triggered-suspension
+  - patterns/prior-incident-retrieval
+  - overlays/legibility-budget
+  - overlays/representation-proximity-separation
+  - profiles/situated-knowledge-infrastructure-profile
+  - evidence/epistemic-impact-assessment
+  - evidence/epistemic-challenge-receipt
+  receipts:
+  - epistemic_impact_assessment
+  - epistemic_challenge
+  - decision
+  - override
+  - effect_status
+- essay:
     title: The Control Plane Has Already Shifted
     url: https://thetrustgraph.substack.com/p/the-control-plane-has-already-shifted
     publishedDate: 2026-04-13

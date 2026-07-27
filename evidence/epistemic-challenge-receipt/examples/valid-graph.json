@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.evidence-model.epistemic.challenge.receipt",
+  "label": "Epistemic Challenge Receipt",
+  "description": "Records a qualifying epistemic challenge, suspension decision, review, override, and final effect disposition.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.epistemic.challenge.receipt"
+  ],
+  "nodes": [
+    {
+      "id": "context.epistemic.challenge.receipt",
+      "type": "TrustDomain",
+      "label": "Epistemic Challenge Receipt",
+      "description": "Records a qualifying epistemic challenge, suspension decision, review, override, and final effect disposition."
+    },
+    {
+      "id": "profile.epistemic.challenge.receipt",
+      "type": "AssuranceProfile",
+      "label": "Epistemic Challenge Receipt",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "evidence-model"
+      }
+    },
+    {
+      "id": "policy.epistemic.challenge.receipt",
+      "type": "Policy",
+      "label": "Epistemic Challenge Receipt Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.epistemic.challenge.receipt",
+      "type": "EvidenceBundle",
+      "label": "Epistemic Challenge Receipt Evidence",
+      "description": "Records a qualifying epistemic challenge, suspension decision, review, override, and final effect disposition.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.epistemic.challenge.receipt",
+      "type": "Assessment",
+      "label": "Epistemic Challenge Receipt Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.epistemic.challenge.receipt",
+      "type": "TrustDecision",
+      "label": "Epistemic Challenge Receipt Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.epistemic.challenge.receipt.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.epistemic.challenge.receipt.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.epistemic.challenge.receipt.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "epistemic-challenge-receipt.edge.context-profile",
+      "type": "anchors",
+      "from": "context.epistemic.challenge.receipt",
+      "to": "profile.epistemic.challenge.receipt",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.epistemic.challenge.receipt",
+      "to": "policy.epistemic.challenge.receipt",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.epistemic.challenge.receipt",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.epistemic.challenge.receipt",
+      "to": "verification.epistemic.challenge.receipt",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.epistemic.challenge.receipt",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.epistemic.challenge.receipt",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.epistemic.challenge.receipt",
+      "to": "decision.epistemic.challenge.receipt",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.epistemic.challenge.receipt"
+      ]
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.epistemic.challenge.receipt",
+      "to": "evidence.epistemic.challenge.receipt",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.epistemic.challenge.receipt",
+      "to": "effect.epistemic.challenge.receipt.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.decision-review",
+      "type": "produces",
+      "from": "decision.epistemic.challenge.receipt",
+      "to": "effect.epistemic.challenge.receipt.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "epistemic-challenge-receipt.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.epistemic.challenge.receipt",
+      "to": "effect.epistemic.challenge.receipt.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "epistemic-challenge-receipt",
+    "incubationStatus": "implementation-draft"
+  }
+}

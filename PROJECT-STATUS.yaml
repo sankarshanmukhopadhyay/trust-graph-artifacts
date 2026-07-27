@@ -1,0 +1,28 @@
+schema_version: '1.0'
+repository: trust-graph-artifacts
+portfolio_disposition: included
+tier: flagship
+maturity: implementation-draft
+lifecycle: active
+operational_status: active-development
+specification_status: not-applicable
+role: executable-governance-incubator
+authority_scope:
+- governance-patterns
+- implementation-guidance
+- negative-assurance-tests
+- epistemic-governance-patterns
+current_version: 0.5.0
+evidence:
+  repository_governance: governance/repository-authority.yaml
+  portfolio_relationships: data/portfolio-relationships.json
+  validation_entrypoint: make validate
+  documentation: docs/index.md
+dependencies:
+- repository: trust-systems-meta-model
+  role: canonical-semantic-model
+  compatibility: v0.23.0 reviewed baseline
+- repository: trust-infrastructure-schemas
+  role: portable-schema-contracts
+  compatibility: v0.12.0 reviewed baseline
+last_reviewed: '2026-07-27'

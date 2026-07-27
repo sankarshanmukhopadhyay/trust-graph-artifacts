@@ -1,0 +1,11 @@
+{
+  "decisionRef": "decision:example:restructure-001",
+  "effectRef": "effect:example:service-change-001",
+  "authorityRef": "authority:example:board-mandate-2026",
+  "knowledgeDependencies": ["maintenance-context", "community-workflow", "historical-incident-patterns"],
+  "knowledgeBearerClasses": ["maintainers", "affected-operational-community"],
+  "assessmentOutcome": "indeterminate",
+  "effectStatus": "suspended",
+  "challengeReceiptRef": "receipt:example:epistemic-challenge-001",
+  "expiresAt": "2026-08-27T00:00:00Z"
+}

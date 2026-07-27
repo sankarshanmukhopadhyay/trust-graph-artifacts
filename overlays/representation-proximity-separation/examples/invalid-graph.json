@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.overlay.representation.proximity.separation",
+  "label": "Representation and Epistemic Proximity Separation",
+  "description": "Prevents representative legitimacy, expertise, or stakeholder status from being treated as proof of situated operational knowledge.",
+  "profile": "overlay",
+  "contexts": [
+    "context.representation.proximity.separation"
+  ],
+  "nodes": [
+    {
+      "id": "context.representation.proximity.separation",
+      "type": "EpistemicOracle",
+      "label": "Representation and Epistemic Proximity Separation",
+      "description": "Prevents representative legitimacy, expertise, or stakeholder status from being treated as proof of situated operational knowledge."
+    },
+    {
+      "id": "profile.representation.proximity.separation",
+      "type": "AssuranceProfile",
+      "label": "Representation and Epistemic Proximity Separation",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "overlay"
+      }
+    },
+    {
+      "id": "policy.representation.proximity.separation",
+      "type": "Policy",
+      "label": "Representation and Epistemic Proximity Separation Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.representation.proximity.separation",
+      "type": "EvidenceBundle",
+      "label": "Representation and Epistemic Proximity Separation Evidence",
+      "description": "Prevents representative legitimacy, expertise, or stakeholder status from being treated as proof of situated operational knowledge.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.representation.proximity.separation",
+      "type": "Assessment",
+      "label": "Representation and Epistemic Proximity Separation Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.representation.proximity.separation",
+      "type": "TrustDecision",
+      "label": "Representation and Epistemic Proximity Separation Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.representation.proximity.separation.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.representation.proximity.separation.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.representation.proximity.separation.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "representation-proximity-separation.edge.context-profile",
+      "type": "anchors",
+      "from": "context.representation.proximity.separation",
+      "to": "profile.representation.proximity.separation",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "representation-proximity-separation.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.representation.proximity.separation",
+      "to": "policy.representation.proximity.separation",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "representation-proximity-separation.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.representation.proximity.separation",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "representation-proximity-separation.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.representation.proximity.separation",
+      "to": "verification.representation.proximity.separation",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "representation-proximity-separation.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.representation.proximity.separation",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "representation-proximity-separation.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.representation.proximity.separation",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "representation-proximity-separation.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.representation.proximity.separation",
+      "to": "decision.representation.proximity.separation",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.representation.proximity.separation"
+      ]
+    },
+    {
+      "id": "representation-proximity-separation.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.representation.proximity.separation",
+      "to": "evidence.representation.proximity.separation",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "representation-proximity-separation.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.representation.proximity.separation",
+      "to": "effect.representation.proximity.separation.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "representation-proximity-separation.edge.decision-review",
+      "type": "produces",
+      "from": "decision.representation.proximity.separation",
+      "to": "effect.representation.proximity.separation.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "representation-proximity-separation.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.representation.proximity.separation",
+      "to": "effect.representation.proximity.separation.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "representation-proximity-separation",
+    "incubationStatus": "implementation-draft"
+  }
+}

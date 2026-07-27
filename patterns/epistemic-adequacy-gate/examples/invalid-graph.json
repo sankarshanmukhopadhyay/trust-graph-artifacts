@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.pattern.epistemic.adequacy.gate",
+  "label": "Epistemic Adequacy Gate",
+  "description": "Determines whether a consequential decision has sufficient, contestable knowledge pathways before its effect is admitted.",
+  "profile": "pattern",
+  "contexts": [
+    "context.epistemic.adequacy.gate"
+  ],
+  "nodes": [
+    {
+      "id": "context.epistemic.adequacy.gate",
+      "type": "EpistemicOracle",
+      "label": "Epistemic Adequacy Gate",
+      "description": "Determines whether a consequential decision has sufficient, contestable knowledge pathways before its effect is admitted."
+    },
+    {
+      "id": "profile.epistemic.adequacy.gate",
+      "type": "AssuranceProfile",
+      "label": "Epistemic Adequacy Gate",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.epistemic.adequacy.gate",
+      "type": "Policy",
+      "label": "Epistemic Adequacy Gate Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.epistemic.adequacy.gate",
+      "type": "EvidenceBundle",
+      "label": "Epistemic Adequacy Gate Evidence",
+      "description": "Determines whether a consequential decision has sufficient, contestable knowledge pathways before its effect is admitted.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.epistemic.adequacy.gate",
+      "type": "Assessment",
+      "label": "Epistemic Adequacy Gate Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.epistemic.adequacy.gate",
+      "type": "TrustDecision",
+      "label": "Epistemic Adequacy Gate Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.epistemic.adequacy.gate.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.epistemic.adequacy.gate.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.epistemic.adequacy.gate.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "epistemic-adequacy-gate.edge.context-profile",
+      "type": "anchors",
+      "from": "context.epistemic.adequacy.gate",
+      "to": "profile.epistemic.adequacy.gate",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.epistemic.adequacy.gate",
+      "to": "policy.epistemic.adequacy.gate",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.epistemic.adequacy.gate",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.epistemic.adequacy.gate",
+      "to": "verification.epistemic.adequacy.gate",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.epistemic.adequacy.gate",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.epistemic.adequacy.gate",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.epistemic.adequacy.gate",
+      "to": "decision.epistemic.adequacy.gate",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.epistemic.adequacy.gate"
+      ]
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.epistemic.adequacy.gate",
+      "to": "evidence.epistemic.adequacy.gate",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.epistemic.adequacy.gate",
+      "to": "effect.epistemic.adequacy.gate.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.decision-review",
+      "type": "produces",
+      "from": "decision.epistemic.adequacy.gate",
+      "to": "effect.epistemic.adequacy.gate.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "epistemic-adequacy-gate.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.epistemic.adequacy.gate",
+      "to": "effect.epistemic.adequacy.gate.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "epistemic-adequacy-gate",
+    "incubationStatus": "implementation-draft"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "packageId": "ttg.overlay.representation.proximity.separation",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.representation.proximity.separation",
+      "artifactType": "decision-receipt",
+      "description": "Prevents representative legitimacy, expertise, or stakeholder status from being treated as proof of situated operational knowledge.",
+      "supportsRefs": [
+        "policy.representation.proximity.separation",
+        "decision.representation.proximity.separation",
+        "control.representation-purpose-declared",
+        "control.proximity-evidence-separate",
+        "control.knowledge-transmission-path",
+        "control.no-substitution-claim"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.representation.proximity.separation",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.representation-purpose-declared",
+        "control.proximity-evidence-separate",
+        "control.knowledge-transmission-path",
+        "control.no-substitution-claim"
+      ],
+      "inputRefs": [
+        "artifact.representation.proximity.separation",
+        "evidence.representation.proximity.separation"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.representation.proximity.separation",
+      "policyRef": "policy.representation.proximity.separation",
+      "verificationRefs": [
+        "verification.representation.proximity.separation"
+      ],
+      "effectRefs": [
+        "effect.representation.proximity.separation.allow",
+        "effect.representation.proximity.separation.review",
+        "effect.representation.proximity.separation.deny"
+      ],
+      "requiredFields": [
+        "representation_basis",
+        "proximity_evidence",
+        "knowledge_transmission_path",
+        "coverage_limitations",
+        "non_substitution_attestation"
+      ]
+    }
+  ]
+}

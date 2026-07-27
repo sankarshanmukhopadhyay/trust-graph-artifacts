@@ -1,0 +1,60 @@
+{
+  "packageId": "ttg.evidence-model.epistemic.challenge.receipt",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.epistemic.challenge.receipt",
+      "artifactType": "decision-receipt",
+      "description": "Records a qualifying epistemic challenge, suspension decision, review, override, and final effect disposition.",
+      "supportsRefs": [
+        "policy.epistemic.challenge.receipt",
+        "decision.epistemic.challenge.receipt",
+        "control.trigger-evidenced",
+        "control.authority-separated",
+        "control.state-transitions-receipted",
+        "control.affected-parties-visible"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.epistemic.challenge.receipt",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.trigger-evidenced",
+        "control.authority-separated",
+        "control.state-transitions-receipted",
+        "control.affected-parties-visible"
+      ],
+      "inputRefs": [
+        "artifact.epistemic.challenge.receipt",
+        "evidence.epistemic.challenge.receipt"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.epistemic.challenge.receipt",
+      "policyRef": "policy.epistemic.challenge.receipt",
+      "verificationRefs": [
+        "verification.epistemic.challenge.receipt"
+      ],
+      "effectRefs": [
+        "effect.epistemic.challenge.receipt.allow",
+        "effect.epistemic.challenge.receipt.review",
+        "effect.epistemic.challenge.receipt.deny"
+      ],
+      "requiredFields": [
+        "trigger",
+        "threshold_evidence",
+        "eligible_participant_verification",
+        "suspension_state",
+        "review_authority",
+        "review_outcome",
+        "override_evidence",
+        "effect_status",
+        "notification_and_redress"
+      ]
+    }
+  ]
+}

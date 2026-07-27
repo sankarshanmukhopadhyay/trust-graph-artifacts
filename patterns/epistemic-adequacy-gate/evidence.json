@@ -1,0 +1,57 @@
+{
+  "packageId": "ttg.pattern.epistemic.adequacy.gate",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.epistemic.adequacy.gate",
+      "artifactType": "decision-receipt",
+      "description": "Determines whether a consequential decision has sufficient, contestable knowledge pathways before its effect is admitted.",
+      "supportsRefs": [
+        "policy.epistemic.adequacy.gate",
+        "decision.epistemic.adequacy.gate",
+        "control.knowledge-dependencies-declared",
+        "control.knowledge-bearers-represented",
+        "control.unanticipated-input-channel",
+        "control.residual-uncertainty-recorded"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.epistemic.adequacy.gate",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.knowledge-dependencies-declared",
+        "control.knowledge-bearers-represented",
+        "control.unanticipated-input-channel",
+        "control.residual-uncertainty-recorded"
+      ],
+      "inputRefs": [
+        "artifact.epistemic.adequacy.gate",
+        "evidence.epistemic.adequacy.gate"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.epistemic.adequacy.gate",
+      "policyRef": "policy.epistemic.adequacy.gate",
+      "verificationRefs": [
+        "verification.epistemic.adequacy.gate"
+      ],
+      "effectRefs": [
+        "effect.epistemic.adequacy.gate.allow",
+        "effect.epistemic.adequacy.gate.review",
+        "effect.epistemic.adequacy.gate.deny"
+      ],
+      "requiredFields": [
+        "knowledge_dependencies",
+        "knowledge_bearer_classes",
+        "consultation_channels",
+        "unanticipated_input_channel",
+        "residual_epistemic_risks",
+        "assessment_outcome"
+      ]
+    }
+  ]
+}

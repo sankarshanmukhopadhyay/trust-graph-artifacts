@@ -1,0 +1,22 @@
+{
+  "bindingId": "tga.tis.epistemic-governance.v1",
+  "status": "provisional",
+  "reviewedBaseline": "trust-infrastructure-schemas v0.12.0",
+  "authority": {
+    "tgaOwns": ["profiles", "composition", "examples", "negative-tests"],
+    "tisOwns": ["portable-schema-contracts", "identifiers", "conformance", "release-authority"]
+  },
+  "bindings": [
+    {"tgaArtifact": "epistemic-impact-assessment", "tisContractClass": "evidence-bundle-manifest"},
+    {"tgaArtifact": "prior-incident-retrieval", "tisContractClass": "artifact-reference"},
+    {"tgaArtifact": "epistemic-challenge", "tisContractClass": "evidence-artifact"},
+    {"tgaArtifact": "suspension-state", "tisContractClass": "status-evidence"},
+    {"tgaArtifact": "emergency-override", "tisContractClass": "decision-receipt"},
+    {"tgaArtifact": "reviewer-authority", "tisContractClass": "authority-boundary"},
+    {"tgaArtifact": "implementation-claim", "tisContractClass": "conformance-declaration"}
+  ],
+  "limitations": [
+    "This binding does not add or modify a TIS schema.",
+    "Institution-specific roles and numeric thresholds remain adopter profile data."
+  ]
+}

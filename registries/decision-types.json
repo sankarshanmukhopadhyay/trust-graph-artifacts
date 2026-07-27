@@ -96,6 +96,15 @@
     },
     {
       "id": "decision.constitutional.human-review-required"
+    },
+    {
+      "id": "decision.epistemic.adequacy"
+    },
+    {
+      "id": "decision.epistemic.challenge"
+    },
+    {
+      "id": "decision.epistemic.override"
     }
   ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate TGA package projections into TIS v0.10 runtime assurance artifacts."""
+"""Validate TGA package projections into TIS v0.12 runtime assurance artifacts."""
 from __future__ import annotations
 
 import json
@@ -42,10 +42,10 @@ def validate_tis_binding() -> None:
         errors.append("bindings/tis/constraints.json is missing")
         return
     data = load_json(binding)
-    if data.get("targetVersion") != "v0.10.0":
-        errors.append("TIS binding targetVersion must be v0.10.0")
-    if "trust-infrastructure-schemas v0.10.0" not in data.get("compatibleWith", []):
-        errors.append("TIS binding compatibleWith must include trust-infrastructure-schemas v0.10.0")
+    if data.get("targetVersion") != "v0.12.0":
+        errors.append("TIS binding targetVersion must be v0.12.0")
+    if "trust-infrastructure-schemas v0.12.0" not in data.get("compatibleWith", []):
+        errors.append("TIS binding compatibleWith must include trust-infrastructure-schemas v0.12.0")
 
 
 def validate_package_projection(pkg: Path) -> None:

@@ -1,4 +1,60 @@
 essays:
+- slug: epistemic-adequacy-gate
+  title: Epistemic Adequacy Gate
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: pattern
+  packagePath: patterns/epistemic-adequacy-gate
+  signalTier: priority
+- slug: edge-triggered-suspension
+  title: Edge-Triggered Suspension
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: pattern
+  packagePath: patterns/edge-triggered-suspension
+  signalTier: priority
+- slug: prior-incident-retrieval
+  title: Prior-Incident Retrieval
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: pattern
+  packagePath: patterns/prior-incident-retrieval
+  signalTier: priority
+- slug: legibility-budget
+  title: Legibility Budget
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: overlay
+  packagePath: overlays/legibility-budget
+  signalTier: priority
+- slug: representation-proximity-separation
+  title: Representation and Epistemic Proximity Separation
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: overlay
+  packagePath: overlays/representation-proximity-separation
+  signalTier: priority
+- slug: situated-knowledge-infrastructure-profile
+  title: Situated-Knowledge-Dependent Infrastructure Profile
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: profile
+  packagePath: profiles/situated-knowledge-infrastructure-profile
+  signalTier: priority
+- slug: epistemic-impact-assessment
+  title: Epistemic Impact Assessment
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: evidence-model
+  packagePath: evidence/epistemic-impact-assessment
+  signalTier: priority
+- slug: epistemic-challenge-receipt
+  title: Epistemic Challenge Receipt
+  publishedDate: '2026-07-22'
+  url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+  packageKind: evidence-model
+  packagePath: evidence/epistemic-challenge-receipt
+  signalTier: priority
 - slug: execution-bound-revocation
   title: Execution-Bound Revocation Overlay
   publishedDate: '2026-04-14'

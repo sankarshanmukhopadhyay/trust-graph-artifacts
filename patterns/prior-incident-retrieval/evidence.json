@@ -1,0 +1,57 @@
+{
+  "packageId": "ttg.pattern.prior.incident.retrieval",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.prior.incident.retrieval",
+      "artifactType": "decision-receipt",
+      "description": "Requires comparable institutional incidents and outcomes to be retrieved and assessed before a consequential decision.",
+      "supportsRefs": [
+        "policy.prior.incident.retrieval",
+        "decision.prior.incident.retrieval",
+        "control.incident-corpus-declared",
+        "control.search-reproducible",
+        "control.precedent-relevance-assessed",
+        "control.limitations-visible"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.prior.incident.retrieval",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.incident-corpus-declared",
+        "control.search-reproducible",
+        "control.precedent-relevance-assessed",
+        "control.limitations-visible"
+      ],
+      "inputRefs": [
+        "artifact.prior.incident.retrieval",
+        "evidence.prior.incident.retrieval"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.prior.incident.retrieval",
+      "policyRef": "policy.prior.incident.retrieval",
+      "verificationRefs": [
+        "verification.prior.incident.retrieval"
+      ],
+      "effectRefs": [
+        "effect.prior.incident.retrieval.allow",
+        "effect.prior.incident.retrieval.review",
+        "effect.prior.incident.retrieval.deny"
+      ],
+      "requiredFields": [
+        "incident_corpus",
+        "search_terms",
+        "retrieved_precedents",
+        "relevance_assessment",
+        "distinction_rationale",
+        "search_limitations"
+      ]
+    }
+  ]
+}

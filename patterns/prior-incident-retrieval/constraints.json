@@ -1,0 +1,112 @@
+{
+  "packageId": "ttg.pattern.prior.incident.retrieval",
+  "kind": "pattern",
+  "controlSet": [
+    {
+      "id": "control.incident-corpus-declared",
+      "type": "governance-control",
+      "description": "Declare the incident corpus and its authority."
+    },
+    {
+      "id": "control.search-reproducible",
+      "type": "governance-control",
+      "description": "Record reproducible search terms, filters, and time bounds."
+    },
+    {
+      "id": "control.precedent-relevance-assessed",
+      "type": "governance-control",
+      "description": "Assess the relevance and distinguishing facts of retrieved precedents."
+    },
+    {
+      "id": "control.limitations-visible",
+      "type": "governance-control",
+      "description": "Record search limitations and unresolved precedent conflicts."
+    }
+  ],
+  "policyRules": [
+    {
+      "policyId": "policy.prior.incident.retrieval",
+      "rules": [
+        "Declare the incident corpus and its authority.",
+        "Record reproducible search terms, filters, and time bounds.",
+        "Assess the relevance and distinguishing facts of retrieved precedents.",
+        "Record search limitations and unresolved precedent conflicts."
+      ]
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat.epistemic-blindness",
+      "type": "governance-risk",
+      "description": "A legitimate and well-recorded decision proceeds without access to materially relevant situated knowledge."
+    },
+    {
+      "id": "threat.knowledge-path-capture",
+      "type": "capture-risk",
+      "description": "The authority controlling the proposed effect also controls the channels used to certify epistemic adequacy."
+    },
+    {
+      "id": "threat.receipt-completeness-confusion",
+      "type": "assurance-risk",
+      "description": "A complete decision receipt is incorrectly treated as proof that all relevant knowledge was discoverable."
+    }
+  ],
+  "lifecycle": {
+    "states": [
+      "not-assessed",
+      "assessment-required",
+      "knowledge-path-incomplete",
+      "challenge-open",
+      "adequate",
+      "override-invoked",
+      "expired",
+      "retired"
+    ],
+    "transitions": [
+      {
+        "id": "transition.assess",
+        "from": "state.not-assessed",
+        "to": "state.assessment-required",
+        "trigger": "qualifying effect proposed",
+        "actor": "decision authority",
+        "evidenceRequirement": "effect and scope declaration"
+      },
+      {
+        "id": "transition.challenge",
+        "from": "state.assessment-required",
+        "to": "state.challenge-open",
+        "trigger": "material knowledge-path gap or qualifying objection",
+        "actor": "knowledge bearer or challenge authority",
+        "evidenceRequirement": "challenge receipt"
+      },
+      {
+        "id": "transition.adequate",
+        "from": "state.assessment-required",
+        "to": "state.adequate",
+        "trigger": "independent assessment completed",
+        "actor": "independent assessor",
+        "evidenceRequirement": "epistemic impact assessment"
+      },
+      {
+        "id": "transition.override",
+        "from": "state.challenge-open",
+        "to": "state.override-invoked",
+        "trigger": "bounded emergency override",
+        "actor": "override authority",
+        "evidenceRequirement": "override receipt and retrospective review"
+      },
+      {
+        "id": "transition.expire",
+        "from": "state.adequate",
+        "to": "state.expired",
+        "trigger": "validity period elapsed or material conditions changed",
+        "actor": "system or assessor",
+        "evidenceRequirement": "freshness evidence"
+      }
+    ]
+  },
+  "notes": [
+    "Epistemic adequacy is a bounded assurance conclusion, not a guarantee of complete knowledge or correct outcome.",
+    "Authority, delegation, enforcement, expiry, override, and redress remain explicit."
+  ]
+}

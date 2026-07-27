@@ -1,0 +1,11 @@
+{
+  "id": "test.legibility-budget",
+  "package": "overlays/legibility-budget",
+  "expected": "pass",
+  "negativeExample": "examples/invalid-graph.json",
+  "assertions": [
+    "authority scope is explicit",
+    "evidence fields are required",
+    "expiry and challenge paths are present"
+  ]
+}

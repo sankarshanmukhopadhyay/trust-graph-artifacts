@@ -66,6 +66,18 @@
     },
     {
       "id": "constitutional-boundary-attestation"
+    },
+    {
+      "id": "epistemic-impact-assessment"
+    },
+    {
+      "id": "epistemic-challenge-receipt"
+    },
+    {
+      "id": "prior-incident-retrieval-record"
+    },
+    {
+      "id": "epistemic-override-receipt"
     }
   ]
 }

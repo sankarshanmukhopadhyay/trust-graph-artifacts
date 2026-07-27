@@ -1,29 +1,35 @@
-schema_version: "1.0"
+schema_version: '1.0'
 repository: trust-graph-artifacts
 portfolio_tier: flagship
 lifecycle: active
 role: executable-governance-and-implementation-layer
 stability: provisional
-current_version: "0.5.0"
+current_version: 0.5.0
 authority:
   owns:
-    - governance-pattern-packages
-    - implementation-guidance
-    - assurance-compositions
-    - negative-governance-tests
+  - governance-pattern-packages
+  - implementation-guidance
+  - assurance-compositions
+  - negative-governance-tests
+  - epistemic-governance-patterns
   does_not_own:
-    - canonical-semantic-definitions
-    - canonical-portable-schema-contracts
-    - external-certification
+  - canonical-semantic-definitions
+  - canonical-portable-schema-contracts
+  - external-certification
+  - universal-epistemic-thresholds
+  - canonical-epistemic-semantics
 dependencies:
-  - repository: trust-systems-meta-model
-    relationship: uses-semantics-from
-    role: canonical-semantic-model
-  - repository: trust-infrastructure-schemas
-    relationship: uses-contracts-from
-    role: portable-contract-layer
+- repository: trust-systems-meta-model
+  relationship: uses-semantics-from
+  role: canonical-semantic-model
+- repository: trust-infrastructure-schemas
+  relationship: uses-contracts-from
+  role: portable-contract-layer
 version_policy:
-  compatibility: additive changes preserve declared contracts unless migration guidance states otherwise
+  compatibility: additive changes preserve declared contracts unless migration guidance
+    states otherwise
   unverified_later_versions: require explicit review before compatibility is claimed
-supersession_policy: newer authoritative artifacts supersede earlier artifacts only when explicitly declared
-revocation_or_withdrawal_policy: unsafe or misleading artifacts may be withdrawn by maintainers with an auditable rationale
+supersession_policy: newer authoritative artifacts supersede earlier artifacts only
+  when explicitly declared
+revocation_or_withdrawal_policy: unsafe or misleading artifacts may be withdrawn by
+  maintainers with an auditable rationale

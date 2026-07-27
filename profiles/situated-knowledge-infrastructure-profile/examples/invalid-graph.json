@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.profile.situated.knowledge.infrastructure.profile",
+  "label": "Situated-Knowledge-Dependent Infrastructure Profile",
+  "description": "Classifies and protects functions whose value materially depends on tacit knowledge, operational proximity, or community-maintained context.",
+  "profile": "profile",
+  "contexts": [
+    "context.situated.knowledge.infrastructure.profile"
+  ],
+  "nodes": [
+    {
+      "id": "context.situated.knowledge.infrastructure.profile",
+      "type": "EpistemicOracle",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile",
+      "description": "Classifies and protects functions whose value materially depends on tacit knowledge, operational proximity, or community-maintained context."
+    },
+    {
+      "id": "profile.situated.knowledge.infrastructure.profile",
+      "type": "AssuranceProfile",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "profile"
+      }
+    },
+    {
+      "id": "policy.situated.knowledge.infrastructure.profile",
+      "type": "Policy",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.situated.knowledge.infrastructure.profile",
+      "type": "EvidenceBundle",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile Evidence",
+      "description": "Classifies and protects functions whose value materially depends on tacit knowledge, operational proximity, or community-maintained context.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.situated.knowledge.infrastructure.profile",
+      "type": "Assessment",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.situated.knowledge.infrastructure.profile",
+      "type": "TrustDecision",
+      "label": "Situated-Knowledge-Dependent Infrastructure Profile Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.situated.knowledge.infrastructure.profile.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.situated.knowledge.infrastructure.profile.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.situated.knowledge.infrastructure.profile.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.context-profile",
+      "type": "anchors",
+      "from": "context.situated.knowledge.infrastructure.profile",
+      "to": "profile.situated.knowledge.infrastructure.profile",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.situated.knowledge.infrastructure.profile",
+      "to": "policy.situated.knowledge.infrastructure.profile",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.situated.knowledge.infrastructure.profile",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.situated.knowledge.infrastructure.profile",
+      "to": "verification.situated.knowledge.infrastructure.profile",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.situated.knowledge.infrastructure.profile",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.situated.knowledge.infrastructure.profile",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.situated.knowledge.infrastructure.profile",
+      "to": "decision.situated.knowledge.infrastructure.profile",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.situated.knowledge.infrastructure.profile"
+      ]
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.situated.knowledge.infrastructure.profile",
+      "to": "evidence.situated.knowledge.infrastructure.profile",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.situated.knowledge.infrastructure.profile",
+      "to": "effect.situated.knowledge.infrastructure.profile.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.decision-review",
+      "type": "produces",
+      "from": "decision.situated.knowledge.infrastructure.profile",
+      "to": "effect.situated.knowledge.infrastructure.profile.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "situated-knowledge-infrastructure-profile.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.situated.knowledge.infrastructure.profile",
+      "to": "effect.situated.knowledge.infrastructure.profile.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "situated-knowledge-infrastructure-profile",
+    "incubationStatus": "implementation-draft"
+  }
+}

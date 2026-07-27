@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.pattern.prior.incident.retrieval",
+  "label": "Prior-Incident Retrieval",
+  "description": "Requires comparable institutional incidents and outcomes to be retrieved and assessed before a consequential decision.",
+  "profile": "pattern",
+  "contexts": [
+    "context.prior.incident.retrieval"
+  ],
+  "nodes": [
+    {
+      "id": "context.prior.incident.retrieval",
+      "type": "EpistemicOracle",
+      "label": "Prior-Incident Retrieval",
+      "description": "Requires comparable institutional incidents and outcomes to be retrieved and assessed before a consequential decision."
+    },
+    {
+      "id": "profile.prior.incident.retrieval",
+      "type": "AssuranceProfile",
+      "label": "Prior-Incident Retrieval",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "pattern"
+      }
+    },
+    {
+      "id": "policy.prior.incident.retrieval",
+      "type": "Policy",
+      "label": "Prior-Incident Retrieval Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.prior.incident.retrieval",
+      "type": "EvidenceBundle",
+      "label": "Prior-Incident Retrieval Evidence",
+      "description": "Requires comparable institutional incidents and outcomes to be retrieved and assessed before a consequential decision.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.prior.incident.retrieval",
+      "type": "Assessment",
+      "label": "Prior-Incident Retrieval Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.prior.incident.retrieval",
+      "type": "TrustDecision",
+      "label": "Prior-Incident Retrieval Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.prior.incident.retrieval.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.prior.incident.retrieval.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.prior.incident.retrieval.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "prior-incident-retrieval.edge.context-profile",
+      "type": "anchors",
+      "from": "context.prior.incident.retrieval",
+      "to": "profile.prior.incident.retrieval",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.prior.incident.retrieval",
+      "to": "policy.prior.incident.retrieval",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.prior.incident.retrieval",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.prior.incident.retrieval",
+      "to": "verification.prior.incident.retrieval",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.prior.incident.retrieval",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.prior.incident.retrieval",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.prior.incident.retrieval",
+      "to": "decision.prior.incident.retrieval",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.prior.incident.retrieval"
+      ]
+    },
+    {
+      "id": "prior-incident-retrieval.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.prior.incident.retrieval",
+      "to": "evidence.prior.incident.retrieval",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.prior.incident.retrieval",
+      "to": "effect.prior.incident.retrieval.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.decision-review",
+      "type": "produces",
+      "from": "decision.prior.incident.retrieval",
+      "to": "effect.prior.incident.retrieval.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "prior-incident-retrieval.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.prior.incident.retrieval",
+      "to": "effect.prior.incident.retrieval.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "prior-incident-retrieval",
+    "incubationStatus": "implementation-draft"
+  }
+}

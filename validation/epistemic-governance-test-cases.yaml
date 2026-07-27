@@ -1,0 +1,26 @@
+schema_version: "1.0"
+tests:
+  - id: EG-POS-001
+    title: Independent assessment with open knowledge path
+    expected: pass
+    assertions:
+      - authority is declared
+      - situated-knowledge dependencies are declared
+      - an unanticipated-input channel exists
+      - assessor independence is evidenced
+      - assessment validity and appeal are present
+  - id: EG-NEG-001
+    title: Complete receipt with missing knowledge path
+    expected: fail
+    missing:
+      - knowledge_dependencies
+      - knowledge_bearer_classes
+      - unanticipated_input_channel
+  - id: EG-NEG-002
+    title: Representative treated as operational proxy
+    expected: fail
+    violation: representation cannot substitute for proximity evidence
+  - id: EG-NEG-003
+    title: Stale assessment
+    expected: fail
+    violation: assessment expired after material operating change

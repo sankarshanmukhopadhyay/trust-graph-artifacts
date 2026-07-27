@@ -1,33 +1,47 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "relationships": [
     {
       "source_repository": "trust-graph-artifacts",
       "target_repository": "trust-systems-meta-model",
-      "relationship_type": "uses-semantics-from",
-      "authority_direction": "declared",
-      "artifact_mapping": "documented in docs/interoperability.md",
-      "compatibility_range": "explicitly reviewed versions only",
+      "relationship_type": "normative-dependency",
+      "authority_direction": "TSMM-to-TGA",
+      "artifact_mapping": "docs/epistemic-governance/tsmm-mapping.md",
+      "compatibility_range": "TSMM v0.23.0 reviewed baseline",
       "maturity": "provisional",
       "validation": "scripts/validate_portfolio_relationships.py",
       "known_limitations": [
-        "cross-repository source archives are validated structurally; remote state is not fetched"
+        "TGA may incubate candidate concepts but cannot modify or supersede TSMM semantics"
       ],
-      "supersession": "explicit declaration required"
+      "supersession": "explicit TSMM proposal and review required"
+    },
+    {
+      "source_repository": "trust-infrastructure-schemas",
+      "target_repository": "trust-graph-artifacts",
+      "relationship_type": "supports",
+      "authority_direction": "TIS-to-TGA",
+      "artifact_mapping": "docs/epistemic-governance/tis-binding.md",
+      "compatibility_range": "TIS v0.12.0 reviewed baseline",
+      "maturity": "provisional",
+      "validation": "scripts/validate_tis_alignment.py",
+      "known_limitations": [
+        "TGA profiles and examples do not redefine TIS schemas, identifiers, conformance, or release authority"
+      ],
+      "supersession": "explicit TIS version review required"
     },
     {
       "source_repository": "trust-graph-artifacts",
-      "target_repository": "trust-infrastructure-schemas",
-      "relationship_type": "uses-contracts-from",
-      "authority_direction": "declared",
-      "artifact_mapping": "documented in docs/interoperability.md",
-      "compatibility_range": "explicitly reviewed versions only",
-      "maturity": "provisional",
-      "validation": "scripts/validate_portfolio_relationships.py",
+      "target_repository": "trust-systems-meta-model",
+      "relationship_type": "incubates",
+      "authority_direction": "proposal-only",
+      "artifact_mapping": "docs/incubation/epistemic-governance-tsmm-extension-candidate.md",
+      "compatibility_range": "non-normative candidate concepts",
+      "maturity": "experimental",
+      "validation": "cross-domain implementation evidence required",
       "known_limitations": [
-        "cross-repository source archives are validated structurally; remote state is not fetched"
+        "incubation creates no canonical semantic authority"
       ],
-      "supersession": "explicit declaration required"
+      "supersession": "promotion only through TSMM governance"
     }
   ]
 }

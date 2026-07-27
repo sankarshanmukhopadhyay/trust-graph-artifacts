@@ -66,6 +66,24 @@
     },
     {
       "id": "high-risk-suspended"
+    },
+    {
+      "id": "not-assessed"
+    },
+    {
+      "id": "assessment-required"
+    },
+    {
+      "id": "knowledge-path-incomplete"
+    },
+    {
+      "id": "challenge-open"
+    },
+    {
+      "id": "adequate"
+    },
+    {
+      "id": "override-invoked"
     }
   ]
 }

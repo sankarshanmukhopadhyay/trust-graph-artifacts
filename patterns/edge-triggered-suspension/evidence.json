@@ -1,0 +1,59 @@
+{
+  "packageId": "ttg.pattern.edge.triggered.suspension",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.edge.triggered.suspension",
+      "artifactType": "decision-receipt",
+      "description": "Allows qualifying edge-originated objections to suspend a proposed effect pending independent review.",
+      "supportsRefs": [
+        "policy.edge.triggered.suspension",
+        "decision.edge.triggered.suspension",
+        "control.eligible-objectors-verifiable",
+        "control.threshold-machine-verifiable",
+        "control.suspension-enforced",
+        "control.override-receipted"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.edge.triggered.suspension",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.eligible-objectors-verifiable",
+        "control.threshold-machine-verifiable",
+        "control.suspension-enforced",
+        "control.override-receipted"
+      ],
+      "inputRefs": [
+        "artifact.edge.triggered.suspension",
+        "evidence.edge.triggered.suspension"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.edge.triggered.suspension",
+      "policyRef": "policy.edge.triggered.suspension",
+      "verificationRefs": [
+        "verification.edge.triggered.suspension"
+      ],
+      "effectRefs": [
+        "effect.edge.triggered.suspension.allow",
+        "effect.edge.triggered.suspension.review",
+        "effect.edge.triggered.suspension.deny"
+      ],
+      "requiredFields": [
+        "decision_ref",
+        "qualifying_effect",
+        "objector_eligibility",
+        "threshold_evidence",
+        "suspension_window",
+        "review_authority",
+        "override_receipt",
+        "outcome"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "packageId": "ttg.evidence-model.epistemic.impact.assessment",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.epistemic.impact.assessment",
+      "artifactType": "decision-receipt",
+      "description": "Portable evidence package for evaluating whether a proposed decision can access the situated knowledge it materially depends upon.",
+      "supportsRefs": [
+        "policy.epistemic.impact.assessment",
+        "decision.epistemic.impact.assessment",
+        "control.decision-and-effect-bound",
+        "control.knowledge-path-evidenced",
+        "control.independent-authority",
+        "control.freshness-and-appeal"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.epistemic.impact.assessment",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.decision-and-effect-bound",
+        "control.knowledge-path-evidenced",
+        "control.independent-authority",
+        "control.freshness-and-appeal"
+      ],
+      "inputRefs": [
+        "artifact.epistemic.impact.assessment",
+        "evidence.epistemic.impact.assessment"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.epistemic.impact.assessment",
+      "policyRef": "policy.epistemic.impact.assessment",
+      "verificationRefs": [
+        "verification.epistemic.impact.assessment"
+      ],
+      "effectRefs": [
+        "effect.epistemic.impact.assessment.allow",
+        "effect.epistemic.impact.assessment.review",
+        "effect.epistemic.impact.assessment.deny"
+      ],
+      "requiredFields": [
+        "decision_ref",
+        "effect_ref",
+        "knowledge_dependencies",
+        "knowledge_bearer_classes",
+        "consultation_channels",
+        "prior_incident_retrieval",
+        "contested_findings",
+        "residual_epistemic_risks",
+        "assessment_outcome",
+        "assessor_authority",
+        "validity_period",
+        "appeal_or_challenge_path"
+      ]
+    }
+  ]
+}

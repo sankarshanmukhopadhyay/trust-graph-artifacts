@@ -3,12 +3,12 @@
   "repositoryVersion": "0.5.0",
   "commit": "working-tree",
   "validationProfile": "repository-full",
-  "executedAt": "2026-07-15T06:03:59.686690+00:00",
+  "executedAt": "2026-07-27T00:52:48.862958+00:00",
   "checks": [
     {
       "id": "packages",
       "status": "pass",
-      "detail": "TSMM-native validation passed for all packages and artifact crosswalks (48 packages)."
+      "detail": "TSMM-native validation passed for all packages and artifact crosswalks (56 packages)."
     },
     {
       "id": "authority-envelopes",
@@ -33,7 +33,7 @@
     {
       "id": "docs",
       "status": "pass",
-      "detail": "Documentation validation passed: 77 published Markdown pages, 77 unique output routes, and 77 navigation titles."
+      "detail": "Documentation validation passed: 89 published Markdown pages, 89 unique output routes, and 89 navigation titles."
     },
     {
       "id": "governance",
@@ -43,7 +43,7 @@
     {
       "id": "relationships",
       "status": "pass",
-      "detail": "Portfolio relationships: PASS (2 declarations)"
+      "detail": "Portfolio relationships: PASS (3 declarations)"
     }
   ],
   "summary": {

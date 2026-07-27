@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import sys, yaml
+status=Path('PROJECT-STATUS.yaml')
+if not status.exists(): raise SystemExit('missing PROJECT-STATUS.yaml required by portfolio governance')
+sd=yaml.safe_load(status.read_text())
+for field in ['repository','portfolio_disposition','tier','maturity','lifecycle','role','authority_scope','evidence']:
+ if field not in sd: raise SystemExit('PROJECT-STATUS.yaml missing field: '+field)
+if sd['repository']!='trust-graph-artifacts' or sd['tier']!='flagship': raise SystemExit('invalid PROJECT-STATUS.yaml repository or tier')
 p=Path('governance/repository-authority.yaml')
 if not p.exists(): raise SystemExit('missing authority declaration')
 d=yaml.safe_load(p.read_text())

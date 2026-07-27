@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.overlay.legibility.budget",
+  "label": "Legibility Budget",
+  "description": "Constrains institutional simplification when it would destroy situated knowledge or replace open knowledge channels with centrally legible proxies.",
+  "profile": "overlay",
+  "contexts": [
+    "context.legibility.budget"
+  ],
+  "nodes": [
+    {
+      "id": "context.legibility.budget",
+      "type": "TrustDomain",
+      "label": "Legibility Budget",
+      "description": "Constrains institutional simplification when it would destroy situated knowledge or replace open knowledge channels with centrally legible proxies."
+    },
+    {
+      "id": "profile.legibility.budget",
+      "type": "AssuranceProfile",
+      "label": "Legibility Budget",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "overlay"
+      }
+    },
+    {
+      "id": "policy.legibility.budget",
+      "type": "Policy",
+      "label": "Legibility Budget Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.legibility.budget",
+      "type": "EvidenceBundle",
+      "label": "Legibility Budget Evidence",
+      "description": "Constrains institutional simplification when it would destroy situated knowledge or replace open knowledge channels with centrally legible proxies.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.legibility.budget",
+      "type": "Assessment",
+      "label": "Legibility Budget Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.legibility.budget",
+      "type": "TrustDecision",
+      "label": "Legibility Budget Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.legibility.budget.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.legibility.budget.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.legibility.budget.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "legibility-budget.edge.context-profile",
+      "type": "anchors",
+      "from": "context.legibility.budget",
+      "to": "profile.legibility.budget",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "legibility-budget.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.legibility.budget",
+      "to": "policy.legibility.budget",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "legibility-budget.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.legibility.budget",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "legibility-budget.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.legibility.budget",
+      "to": "verification.legibility.budget",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "legibility-budget.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.legibility.budget",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "legibility-budget.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.legibility.budget",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "legibility-budget.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.legibility.budget",
+      "to": "decision.legibility.budget",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.legibility.budget"
+      ]
+    },
+    {
+      "id": "legibility-budget.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.legibility.budget",
+      "to": "evidence.legibility.budget",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "legibility-budget.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.legibility.budget",
+      "to": "effect.legibility.budget.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "legibility-budget.edge.decision-review",
+      "type": "produces",
+      "from": "decision.legibility.budget",
+      "to": "effect.legibility.budget.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "legibility-budget.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.legibility.budget",
+      "to": "effect.legibility.budget.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "legibility-budget",
+    "incubationStatus": "implementation-draft"
+  }
+}

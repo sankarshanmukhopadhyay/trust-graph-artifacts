@@ -1,0 +1,11 @@
+{
+  "id": "test.edge-triggered-suspension",
+  "package": "patterns/edge-triggered-suspension",
+  "expected": "pass",
+  "negativeExample": "examples/invalid-graph.json",
+  "assertions": [
+    "authority scope is explicit",
+    "evidence fields are required",
+    "expiry and challenge paths are present"
+  ]
+}

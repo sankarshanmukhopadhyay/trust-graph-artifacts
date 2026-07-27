@@ -1,4 +1,55 @@
 provenance:
+- packagePath: evidence/epistemic-challenge-receipt
+  sourceEssay: &id001
+    title: The Edge Knows First
+    url: https://thetrustgraph.substack.com/p/the-edge-knows-first
+    publishedDate: '2026-07-22'
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: evidence/epistemic-impact-assessment
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: profiles/situated-knowledge-infrastructure-profile
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: overlays/representation-proximity-separation
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: overlays/legibility-budget
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: patterns/prior-incident-retrieval
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: patterns/edge-triggered-suspension
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
+- packagePath: patterns/epistemic-adequacy-gate
+  sourceEssay: *id001
+  derivedClaim: Epistemic adequacy requires testable knowledge paths, independent challenge, receipt-bearing suspension,
+    and bounded override.
+  status: incubation
+  authorityBoundary: TGA implementation artifact; no canonical TSMM or TIS authority claimed.
 - slug: coalition-legitimacy-model
   title: Coalition Legitimacy Model
   publishedDate: '2026-04-18'

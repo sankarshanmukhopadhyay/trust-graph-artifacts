@@ -35,6 +35,11 @@ permalink: /docs/
 - [Assurance posture]({% link docs/crosswalks/assurance-posture.md %})
 - [TGA → TSMM → TIS composition]({% link docs/crosswalks/tga-tsmm-tis-composition.md %})
 
+## Epistemic governance
+
+- [Guided learning path]({% link docs/epistemic-governance/index.md %}) — executable controls for situated knowledge, epistemic adequacy, challenge, suspension, and override
+- [TSMM extension candidate]({% link docs/incubation/epistemic-governance-tsmm-extension-candidate.md %}) — non-normative incubation boundary
+
 ## Governance and release
 
 - `control-plane-legitimacy.md` — design note for authority relocation, legitimacy gaps, intermediary governance, and governed licensing

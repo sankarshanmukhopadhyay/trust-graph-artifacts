@@ -424,6 +424,54 @@
     {
       "id": "control.independent-audit-reference",
       "description": "Record the audit or assessment reference used to substantiate governance posture."
+    },
+    {
+      "id": "EG-001",
+      "description": "Consequential decisions identify situated-knowledge dependencies."
+    },
+    {
+      "id": "EG-002",
+      "description": "Knowledge-bearing participant classes are declared."
+    },
+    {
+      "id": "EG-003",
+      "description": "At least one unanticipated-input channel remains available."
+    },
+    {
+      "id": "EG-004",
+      "description": "Prior comparable incidents are retrieved and assessed."
+    },
+    {
+      "id": "EG-005",
+      "description": "Qualifying objections can suspend effect admission."
+    },
+    {
+      "id": "EG-006",
+      "description": "Suspension thresholds and eligibility are machine-verifiable."
+    },
+    {
+      "id": "EG-007",
+      "description": "Emergency overrides require independent authority and retrospective evidence."
+    },
+    {
+      "id": "EG-008",
+      "description": "Epistemic assessment authority is separated from the restructuring authority."
+    },
+    {
+      "id": "EG-009",
+      "description": "Protected-function classification has appeal and revalidation."
+    },
+    {
+      "id": "EG-010",
+      "description": "Representation is not treated as proof of epistemic proximity."
+    },
+    {
+      "id": "EG-011",
+      "description": "Residual epistemic uncertainty is recorded."
+    },
+    {
+      "id": "EG-012",
+      "description": "Assessment freshness expires when operational conditions materially change."
     }
   ]
 }

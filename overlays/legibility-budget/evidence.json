@@ -1,0 +1,57 @@
+{
+  "packageId": "ttg.overlay.legibility.budget",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.legibility.budget",
+      "artifactType": "decision-receipt",
+      "description": "Constrains institutional simplification when it would destroy situated knowledge or replace open knowledge channels with centrally legible proxies.",
+      "supportsRefs": [
+        "policy.legibility.budget",
+        "decision.legibility.budget",
+        "control.knowledge-function-identified",
+        "control.replacement-capacity-tested",
+        "control.independent-impact-assessment",
+        "control.burden-of-proof-on-proponent"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.legibility.budget",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.knowledge-function-identified",
+        "control.replacement-capacity-tested",
+        "control.independent-impact-assessment",
+        "control.burden-of-proof-on-proponent"
+      ],
+      "inputRefs": [
+        "artifact.legibility.budget",
+        "evidence.legibility.budget"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.legibility.budget",
+      "policyRef": "policy.legibility.budget",
+      "verificationRefs": [
+        "verification.legibility.budget"
+      ],
+      "effectRefs": [
+        "effect.legibility.budget.allow",
+        "effect.legibility.budget.review",
+        "effect.legibility.budget.deny"
+      ],
+      "requiredFields": [
+        "original_knowledge_function",
+        "replacement_channel",
+        "unanticipated_input_test",
+        "independent_assessor",
+        "burden_of_proof_result",
+        "residual_loss"
+      ]
+    }
+  ]
+}

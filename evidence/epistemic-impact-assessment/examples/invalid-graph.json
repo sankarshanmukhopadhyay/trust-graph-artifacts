@@ -1,0 +1,206 @@
+{
+  "graphId": "ttg.evidence-model.epistemic.impact.assessment",
+  "label": "Epistemic Impact Assessment",
+  "description": "Portable evidence package for evaluating whether a proposed decision can access the situated knowledge it materially depends upon.",
+  "profile": "evidence-model",
+  "contexts": [
+    "context.epistemic.impact.assessment"
+  ],
+  "nodes": [
+    {
+      "id": "context.epistemic.impact.assessment",
+      "type": "EpistemicOracle",
+      "label": "Epistemic Impact Assessment",
+      "description": "Portable evidence package for evaluating whether a proposed decision can access the situated knowledge it materially depends upon."
+    },
+    {
+      "id": "profile.epistemic.impact.assessment",
+      "type": "AssuranceProfile",
+      "label": "Epistemic Impact Assessment",
+      "attributes": {
+        "constraintSetRef": "constraints.json",
+        "packageKind": "evidence-model"
+      }
+    },
+    {
+      "id": "policy.epistemic.impact.assessment",
+      "type": "Policy",
+      "label": "Epistemic Impact Assessment Policy",
+      "attributes": {
+        "decisionMode": "mixed",
+        "sourceEssay": "The Edge Knows First"
+      }
+    },
+    {
+      "id": "entity.decision-authority",
+      "type": "GovernanceAuthority",
+      "label": "Decision Authority",
+      "description": "Authority accountable for the proposed decision and effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "entity.knowledge-bearer",
+      "type": "Subject",
+      "label": "Situated Knowledge Bearer",
+      "description": "Actor or community holding operationally situated knowledge.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 0
+      }
+    },
+    {
+      "id": "entity.independent-assessor",
+      "type": "Verifier",
+      "label": "Independent Assessor",
+      "description": "Assessor independent from the authority proposing the effect.",
+      "attributes": {
+        "roleCount": 1,
+        "authorityCount": 1
+      }
+    },
+    {
+      "id": "evidence.epistemic.impact.assessment",
+      "type": "EvidenceBundle",
+      "label": "Epistemic Impact Assessment Evidence",
+      "description": "Portable evidence package for evaluating whether a proposed decision can access the situated knowledge it materially depends upon.",
+      "attributes": {
+        "artifactType": "decision-receipt"
+      }
+    },
+    {
+      "id": "verification.epistemic.impact.assessment",
+      "type": "Assessment",
+      "label": "Epistemic Impact Assessment Conformance Check",
+      "attributes": {
+        "method": "tsmm-native-conformance-check"
+      }
+    },
+    {
+      "id": "decision.epistemic.impact.assessment",
+      "type": "TrustDecision",
+      "label": "Epistemic Impact Assessment Decision",
+      "attributes": {
+        "outcomeModes": [
+          "allow",
+          "deny",
+          "review",
+          "suspend"
+        ]
+      }
+    },
+    {
+      "id": "effect.epistemic.impact.assessment.allow",
+      "type": "Effect",
+      "label": "Admit effect",
+      "attributes": {
+        "effectClass": "operational"
+      }
+    },
+    {
+      "id": "effect.epistemic.impact.assessment.review",
+      "type": "Effect",
+      "label": "Require review",
+      "attributes": {
+        "effectClass": "governance"
+      }
+    },
+    {
+      "id": "effect.epistemic.impact.assessment.deny",
+      "type": "Effect",
+      "label": "Suspend or deny effect",
+      "attributes": {
+        "effectClass": "protective"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "epistemic-impact-assessment.edge.context-profile",
+      "type": "anchors",
+      "from": "context.epistemic.impact.assessment",
+      "to": "profile.epistemic.impact.assessment",
+      "description": "Governance context anchors the package."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.profile-policy",
+      "type": "defines",
+      "from": "profile.epistemic.impact.assessment",
+      "to": "policy.epistemic.impact.assessment",
+      "description": "Profile defines the controlling policy."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.authority-policy",
+      "type": "governs",
+      "from": "entity.decision-authority",
+      "to": "policy.epistemic.impact.assessment",
+      "description": "Decision authority governs policy within declared scope."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.policy-assessment",
+      "type": "constrains",
+      "from": "policy.epistemic.impact.assessment",
+      "to": "verification.epistemic.impact.assessment",
+      "description": "Policy constrains assessment."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.bearer-evidence",
+      "type": "informs",
+      "from": "entity.knowledge-bearer",
+      "to": "evidence.epistemic.impact.assessment",
+      "description": "Situated knowledge informs evidence without conferring decision authority."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.assessor-profile",
+      "type": "assesses",
+      "from": "entity.independent-assessor",
+      "to": "profile.epistemic.impact.assessment",
+      "description": "Independent assessor evaluates conformance."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.assessment-decision",
+      "type": "informs",
+      "from": "verification.epistemic.impact.assessment",
+      "to": "decision.epistemic.impact.assessment",
+      "description": "Assessment informs the decision.",
+      "evidenceRefs": [
+        "evidence.epistemic.impact.assessment"
+      ]
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.decision-evidence",
+      "type": "produces",
+      "from": "decision.epistemic.impact.assessment",
+      "to": "evidence.epistemic.impact.assessment",
+      "description": "Decision produces a receipt-bearing evidence bundle."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.decision-allow",
+      "type": "produces",
+      "from": "decision.epistemic.impact.assessment",
+      "to": "effect.epistemic.impact.assessment.allow",
+      "description": "Decision produces a permitted effect."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.decision-review",
+      "type": "produces",
+      "from": "decision.epistemic.impact.assessment",
+      "to": "effect.epistemic.impact.assessment.review",
+      "description": "Decision produces a review effect."
+    },
+    {
+      "id": "epistemic-impact-assessment.edge.decision-deny",
+      "type": "produces",
+      "from": "decision.epistemic.impact.assessment",
+      "to": "effect.epistemic.impact.assessment.deny",
+      "description": "Decision produces a protective effect."
+    }
+  ],
+  "metadata": {
+    "sourceEssay": "The Edge Knows First",
+    "packageSlug": "epistemic-impact-assessment",
+    "incubationStatus": "implementation-draft"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "packageId": "ttg.profile.situated.knowledge.infrastructure.profile",
+  "evidenceArtifacts": [
+    {
+      "id": "evidence.situated.knowledge.infrastructure.profile",
+      "artifactType": "decision-receipt",
+      "description": "Classifies and protects functions whose value materially depends on tacit knowledge, operational proximity, or community-maintained context.",
+      "supportsRefs": [
+        "policy.situated.knowledge.infrastructure.profile",
+        "decision.situated.knowledge.infrastructure.profile",
+        "control.classification-criteria",
+        "control.protection-lifecycle",
+        "control.appeal-and-revalidation",
+        "control.change-impact-gate"
+      ]
+    }
+  ],
+  "verificationExpectations": [
+    {
+      "id": "verification.situated.knowledge.infrastructure.profile",
+      "method": "tsmm-native-conformance-check",
+      "performedBy": "independent-assessor",
+      "controlRefs": [
+        "control.classification-criteria",
+        "control.protection-lifecycle",
+        "control.appeal-and-revalidation",
+        "control.change-impact-gate"
+      ],
+      "inputRefs": [
+        "artifact.situated.knowledge.infrastructure.profile",
+        "evidence.situated.knowledge.infrastructure.profile"
+      ]
+    }
+  ],
+  "decisionReceipts": [
+    {
+      "id": "decision.situated.knowledge.infrastructure.profile",
+      "policyRef": "policy.situated.knowledge.infrastructure.profile",
+      "verificationRefs": [
+        "verification.situated.knowledge.infrastructure.profile"
+      ],
+      "effectRefs": [
+        "effect.situated.knowledge.infrastructure.profile.allow",
+        "effect.situated.knowledge.infrastructure.profile.review",
+        "effect.situated.knowledge.infrastructure.profile.deny"
+      ],
+      "requiredFields": [
+        "function_ref",
+        "dependency_criteria",
+        "classification_decision",
+        "protection_state",
+        "review_date",
+        "appeal_path",
+        "change_assessment_ref"
+      ]
+    }
+  ]
+}
