@@ -1,34 +1,50 @@
-## Newly added from the control-plane legitimacy essay set
+---
+title: Essay to artifact index
+layout: default
+nav_order: 2
+permalink: /essays/
+---
 
-- `patterns/control-plane-shift-detection` — identifies when authority relocates from institutional process into executable infrastructure
-- `patterns/legitimacy-gap-evaluator` — scores whether binding authority lacks adequate legitimacy controls
-- `overlays/intermediary-governance-overlay` — governs AI intermediaries that reshape commons access and legibility
-- `profiles/knowledge-substrate-integrity-profile` — preserves provenance, attribution, and policy binding across transformed knowledge outputs
-- `profiles/governed-license-authority` — bounds who may issue ecosystem licenses and under what legitimacy proof
-- `profiles/coalition-legitimacy-model` — models capture risk, publication, and appealability inside governance coalitions
+# Essay to artifact index
 
-## Newly added from *Enforceable Authority Without Legitimate Control*
+The Trust Graph is the source corpus for design pressure and governance failure modes. TGA does **not** treat essay prose as executable authority. Current artifacts are interpreted through **TSMM v0.24.0** semantics and projected through **TIS v0.14.1** portable contracts where interoperable assurance evidence is required.
 
-- `patterns/authority-legitimacy-validation` — validation pattern that distinguishes authority presence from authority legitimacy
-- `overlays/legitimate-control-enforcement` — overlay for revocation latency, attributable audit, redress proportionality, and designated accountability
-- `evidence/legitimate-control-decision-receipt` — evidence model for receipts proving consequential action occurred under legitimate control
+## Current release train
 
-# Essay to TSMM package index
+| Source essay | TGA artifact | Introduced | Primary governance surface |
+|---|---|---:|---|
+| *Why Reputation Economies Fail Without Provenance* | `artifacts/provenance-backed-reputation` | v0.6.0 | provenance-bearing, context-bounded reputation reliance |
+| *The State Learned to Recognise Us. The System Learned to Watch Us.* | `artifacts/context-bound-identifier-use` | v0.7.0 | purpose-bound identifier use and correlation authority |
+| *The Coming Trust Repricing in Global Trade* | `artifacts/verifiable-trade-corridor` | v0.8.0 | cross-border authority, provenance, status and decision receipts |
+| *The Labor Market for Agents* | `artifacts/agent-capability-accreditation` | v0.9.0 | task-class, configuration-bound, revocable capability accreditation |
+| *The Audit Nobody Asked For* | `artifacts/issuer-incentive-inversion` | v0.10.0 | issuer lifecycle accountability and institutional legibility |
+| *Delegated Intelligence: The Next Compute Paradigm* | `artifacts/autonomy-native-institution` | v0.11.0 | institutional composition of delegation, authority, accreditation, contestability and redress |
 
-| Essay | Kind | Package path |
-|---|---|---|
-| Agent Mandate Envelope | pattern | `patterns/agent-mandate-envelope` |
-| Consent Enforcement Schema | overlay | `overlays/consent-not-data-structure` |
-| Contextual Identity Projection | profile | `profiles/layers-of-the-self` |
-| Delegated Consent Protection Policy | overlay | `overlays/after-consent` |
-| Delegation Chain Policy | pattern | `patterns/delegation-after-identity` |
-| Execution Delegation Control Receipt | evidence-model | `evidence/execution-time-delegation` |
-| First-Person Assertion Envelope | profile | `profiles/first-person-credentials` |
-| Narrative Contestability Record | overlay | `overlays/crisis-of-narrative-control` |
-| Portable Eligibility Credential Profile | profile | `profiles/portable-eligibility` |
-| Privacy Term Enforcement Profile | overlay | `overlays/machine-readable-privacy-terms` |
-| Proof Requirement Profile | evidence-model | `evidence/the-proof-gap` |
-| Systemic Controller Registry Entry | pattern | `patterns/systemic-controllers` |
-| Trust Registry Governance Profile | profile | `profiles/trust-registry-governance-model` |
-| Verification Policy Profile | profile | `profiles/digital-credential-verification-policy-playbook` |
-| Wallet-Agent Binding Contract | system | `systems/wallet-to-agent-identity` |
+Machine-readable views:
+
+- [`current-release-catalog.yaml`]({% link essays/current-release-catalog.yaml %}) — source metadata and artifact paths.
+- [`../provenance/current-release-map.yaml`]({% link provenance/current-release-map.yaml %}) — interpretation and assurance provenance.
+- [`../crosswalks/current-release-essay-to-artifact.yaml`]({% link crosswalks/current-release-essay-to-artifact.yaml %}) — TSMM/TIS interoperability crosswalk.
+
+## Existing TSMM-native package corpus
+
+The repository also contains earlier reusable profiles, patterns, overlays, systems, and evidence models. High-value entry points include:
+
+- `patterns/runtime-authority-envelope`
+- `patterns/delegation-lineage-envelope`
+- `profiles/delegation-first-governance-profile`
+- `patterns/agent-mandate-envelope`
+- `patterns/agent-accountability-edge`
+- `profiles/public-agent-contestability-profile`
+- `overlays/redress-rails-for-machine-decisions`
+- `profiles/registry-gatekeeper-risk-profile`
+- `evidence/proof-first-market-decision-receipt`
+- `systems/executable-trust-governance-stack`
+- `patterns/epistemic-adequacy-gate`
+- `evidence/epistemic-challenge-receipt`
+
+The full historical source mapping remains in [`source-catalog.yaml`]({% link essays/source-catalog.yaml %}). The current-release catalog is the normalized view for the v0.6–v0.12 release train and should be used when evaluating the active documentation baseline.
+
+## Admission rule
+
+An essay should produce a TGA artifact only when it exposes a governable object that can be made testable: an authority boundary, delegation rule, enforcement or revocation condition, evidence requirement, failure mode, control surface, or system composition. Narrative duplication alone is not an artifact.

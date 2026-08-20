@@ -1,0 +1,97 @@
+schema_version: "1.0"
+repository: trust-graph-artifacts
+policy:
+  release_is_complete_when:
+    - merge_commit_recorded
+    - validation_evidence_recorded
+    - git_tag_published
+    - github_release_published
+  tag_format: "v<semver>"
+  tag_target: "release commit on main"
+  release_notes_source: "docs/release-notes/v<semver>.md"
+  immutable_after_publication: true
+releases:
+  - version: "0.2.0"
+    merge_commit: cdcbcd302705dc4908e51285e8bd627f1ac05bca
+    release_notes: docs/release-notes/v0.2.0.md
+    validation_evidence: historical-validation-described-in-release-notes
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.3.0"
+    merge_commit: acf4a381e6fc9f570c0ebe25103a119f2767b4c0
+    release_notes: docs/release-notes/v0.3.0.md
+    validation_evidence: historical-validation-described-in-release-notes
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.3.1"
+    merge_commit: 44ab07342e7ad4fcb54b6c43f4fccf84cffa7e2c
+    release_notes: docs/release-notes/v0.3.1.md
+    validation_evidence: historical-validation-described-in-release-notes
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.4.0"
+    merge_commit: c797fab9cf41dea0595582aaa45f9c07c21437ac
+    release_notes: docs/release-notes/v0.4.0.md
+    validation_evidence: historical-validation-described-in-release-notes
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.5.0"
+    merge_commit: a361ebfb1254b0d47885a29170f42c38c1f7b5fc
+    release_notes: docs/release-notes/v0.5.0.md
+    validation_evidence: historical-validation-described-in-commit-and-release-notes
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.5.1"
+    merge_commit: eb4dbaa869480790e2dd72d1c9bdfc80a6333562
+    release_notes: docs/release-notes/v0.5.1.md
+    validation_evidence: release-alignment-review
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.6.0"
+    merge_commit: 5a347e5c0397d7f5cefe253959f9f29346810517
+    release_notes: docs/release-notes/v0.6.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.7.0"
+    merge_commit: c183ef9d5146952de1be656508d2826117e9d0d9
+    release_notes: docs/release-notes/v0.7.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.8.0"
+    merge_commit: 00c4184187acbfbaffde6179097a3b205cc15e28
+    release_notes: docs/release-notes/v0.8.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.9.0"
+    merge_commit: 355ae87b8ff4dba345f83e83c36953a959d897e8
+    release_notes: docs/release-notes/v0.9.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.10.0"
+    merge_commit: 14c9dedf7f480752527eeddd4628b6239a91af4a
+    release_notes: docs/release-notes/v0.10.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.11.0"
+    merge_commit: d3ea855143b4fd8dcaea42cfacc74622300fc6dd
+    release_notes: docs/release-notes/v0.11.0.md
+    validation_evidence: artifact-assurance-cases
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.12.0"
+    merge_commit: 63fa9f2e29b9e67cd85752cd24847a0ef3abd806
+    release_notes: docs/release-notes/v0.12.0.md
+    validation_evidence: github-actions-run-44-and-artifacts-validation-latest-json
+    tag_status: pending-publication
+    github_release_status: pending-publication
+  - version: "0.12.1"
+    merge_commit: pending-pr-merge
+    release_notes: docs/release-notes/v0.12.1.md
+    validation_evidence: github-actions-pr-validation-green
+    tag_status: pending-publication
+    github_release_status: pending-publication

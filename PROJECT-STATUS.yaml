@@ -33,6 +33,10 @@ evidence:
     - governance/repository-authority.yaml
     - data/portfolio-relationships.json
     - artifacts/validation/latest.json
+    - essays/current-release-catalog.yaml
+    - provenance/current-release-map.yaml
+    - crosswalks/current-release-essay-to-artifact.yaml
+    - governance/release-publication-ledger.yaml
     - artifacts/provenance-backed-reputation/tests/assurance-cases.yaml
     - artifacts/context-bound-identifier-use/tests/assurance-cases.yaml
     - artifacts/verifiable-trade-corridor/tests/assurance-cases.yaml
@@ -42,8 +46,9 @@ evidence:
   known_limitations:
     - incubated patterns are not automatically canonical portfolio semantics
     - project-local evidence is not independent certification
+    - Git tag and GitHub Release publication status is tracked separately from merged release metadata
 release:
-  current_version: 0.12.0
+  current_version: 0.12.1
 dependencies:
   - repository: trust-systems-meta-model
     role: canonical-semantic-model
