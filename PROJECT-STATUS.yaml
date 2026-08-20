@@ -36,11 +36,12 @@ evidence:
     - artifacts/context-bound-identifier-use/tests/assurance-cases.yaml
     - artifacts/verifiable-trade-corridor/tests/assurance-cases.yaml
     - artifacts/agent-capability-accreditation/tests/assurance-cases.yaml
+    - artifacts/issuer-incentive-inversion/tests/assurance-cases.yaml
   known_limitations:
     - incubated patterns are not automatically canonical portfolio semantics
     - project-local evidence is not independent certification
 release:
-  current_version: 0.9.0
+  current_version: 0.10.0
 dependencies:
   - repository: trust-systems-meta-model
     role: canonical-semantic-model

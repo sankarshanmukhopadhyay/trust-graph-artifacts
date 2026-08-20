@@ -1,0 +1,27 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-issuer-incentive-inversion
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    issuer: Agent
+    credential_holder: Subject
+    governing_rule: Policy
+    lifecycle_evidence: EvidenceBundle
+    reliability_evaluation: Assessment
+    reliance_or_redress_decision: TrustDecision
+    remediation_effect: Effect
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+    registry_entry: registry/registry-entry.schema.json
+boundary_rules:
+  - TGA models issuer-accountability pressure but does not define credential formats or sector mandates.
+  - Institutional reliability claims must remain evidence-backed and attributable.
+  - TSMM retains canonical meaning for authority, policy, evidence, assessment, decision, lifecycle, and effect.
+  - TIS remains the portable serialization authority for externally relied-upon evidence and decisions.

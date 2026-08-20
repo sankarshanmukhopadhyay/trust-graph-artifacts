@@ -1,0 +1,44 @@
+id: ttg-artifact-issuer-incentive-inversion
+title: Issuer Incentive Inversion
+status: draft
+source:
+  essay_title: The Audit Nobody Asked For
+  essay_url: https://thetrustgraph.substack.com/p/the-audit-nobody-asked-for
+  published_date: '2026-06-30'
+classification:
+  artifact_type: [control-model, institutional-accountability-model]
+  domain: [credentials, issuers, transparency, accountability]
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: essay-derived issuer-accountability controls and assurance cases
+controls:
+  - id: issuer.granular-status
+    requirement: Revocation and correction events must remain attributable to the responsible issuing authority at institution-level granularity.
+  - id: issuer.error-legibility
+    requirement: Issuer reliability evidence must not be aggregated or obscured in ways that prevent independent evaluation of correction and revocation behavior.
+  - id: issuer.redress-traceability
+    requirement: A disputed claim must be traceable from issuance through correction, revocation, downstream reliance, and remediation.
+  - id: issuer.no-participation-selection-bias
+    requirement: Assurance claims derived from voluntary pilots must disclose participation-selection effects and must not be generalized to non-participating issuers without evidence.
+  - id: issuer.accountability-retention
+    requirement: Lifecycle evidence required to establish issuer accountability must remain auditable for the applicable governance period.
+  - id: issuer.no-intermediary-obfuscation
+    requirement: Aggregation or middleware must not sever the relying party's ability to resolve primary issuer authority and lifecycle evidence.
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle: {created: '2026-08-20', last_updated: '2026-08-20'}
+tsmm_binding: {enabled: true, binding_status: reviewed-baseline, tsmm_version: v0.24.0}
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  authority_contract: governance/authority-boundary.schema.json
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  decision_contract: decision/decision-receipt.schema.json
+  registry_contract: registry/registry-entry.schema.json

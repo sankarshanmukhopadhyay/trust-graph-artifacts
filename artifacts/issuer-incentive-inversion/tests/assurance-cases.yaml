@@ -1,0 +1,22 @@
+suite: issuer-incentive-inversion
+version: '0.10.0'
+cases:
+  - id: valid-attributable-lifecycle
+    expected: admit
+    given: {issuer_attributable: true, lifecycle_events_granular: true, error_history_auditable: true, redress_traceable: true, pilot_bias_disclosed: true, primary_authority_resolvable: true}
+  - id: reject-aggregated-revocation-opacity
+    expected: reject
+    given: {issuer_attributable: false, lifecycle_events_granular: false, error_history_auditable: false, redress_traceable: false, pilot_bias_disclosed: true, primary_authority_resolvable: false}
+    reason: aggregation prevents issuer-level accountability
+  - id: reject-private-correction-gap
+    expected: reject
+    given: {issuer_attributable: true, lifecycle_events_granular: false, error_history_auditable: false, redress_traceable: false, pilot_bias_disclosed: true, primary_authority_resolvable: true}
+    reason: correction path cannot be independently reconstructed
+  - id: reject-voluntary-pilot-generalization
+    expected: reject
+    given: {issuer_attributable: true, lifecycle_events_granular: true, error_history_auditable: true, redress_traceable: true, pilot_bias_disclosed: false, primary_authority_resolvable: true}
+    reason: self-selection effects are hidden from the assurance claim
+  - id: reject-middleware-authority-obfuscation
+    expected: reject
+    given: {issuer_attributable: false, lifecycle_events_granular: true, error_history_auditable: true, redress_traceable: true, pilot_bias_disclosed: true, primary_authority_resolvable: false}
+    reason: intermediary prevents resolution of primary issuer authority
