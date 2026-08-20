@@ -1,0 +1,57 @@
+suite: verifiable-trade-corridor
+version: '0.8.0'
+cases:
+  - id: valid-cross-border-clearance
+    expected: admit
+    given:
+      issuer_authority_resolved: true
+      subject_object_binding_valid: true
+      provenance_reconstructable: true
+      purpose_context_authorized: true
+      status_current: true
+      decision_receipt_capable: true
+      intermediary_only_assertion: false
+  - id: reject-unresolvable-certifier
+    expected: reject
+    given:
+      issuer_authority_resolved: false
+      subject_object_binding_valid: true
+      provenance_reconstructable: true
+      purpose_context_authorized: true
+      status_current: true
+      decision_receipt_capable: true
+      intermediary_only_assertion: false
+    reason: claim issuer authority cannot be independently resolved
+  - id: reject-shipment-binding-gap
+    expected: reject
+    given:
+      issuer_authority_resolved: true
+      subject_object_binding_valid: false
+      provenance_reconstructable: true
+      purpose_context_authorized: true
+      status_current: true
+      decision_receipt_capable: true
+      intermediary_only_assertion: false
+    reason: certification cannot be bound to the shipment or governed object
+  - id: reject-stale-registry-state
+    expected: reject
+    given:
+      issuer_authority_resolved: true
+      subject_object_binding_valid: true
+      provenance_reconstructable: true
+      purpose_context_authorized: true
+      status_current: false
+      decision_receipt_capable: true
+      intermediary_only_assertion: false
+    reason: registry or revocation state is stale at reliance time
+  - id: reject-intermediary-substitution
+    expected: reject
+    given:
+      issuer_authority_resolved: false
+      subject_object_binding_valid: true
+      provenance_reconstructable: false
+      purpose_context_authorized: true
+      status_current: true
+      decision_receipt_capable: true
+      intermediary_only_assertion: true
+    reason: intermediary assertion substitutes for resolvable authority and evidence

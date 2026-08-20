@@ -1,0 +1,71 @@
+id: ttg-artifact-verifiable-trade-corridor
+title: Verifiable Trade Corridor
+status: draft
+source:
+  essay_title: The Coming Trust Repricing in Global Trade
+  essay_url: https://thetrustgraph.substack.com/p/the-coming-trust-repricing-in-global
+  published_date: '2026-06-15'
+classification:
+  artifact_type:
+    - system-model
+    - assurance-composition
+  domain:
+    - trade
+    - cross-border
+    - verification
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: essay-derived system composition and negative assurance cases
+actors:
+  - exporter
+  - importer
+  - customs-authority
+  - certificate-issuer
+  - inspection-authority
+  - trade-finance-institution
+  - carrier
+  - insurer
+  - trust-registry
+  - verifier
+controls:
+  - id: trade.issuer-authority
+    requirement: Every credential or certification relied upon must resolve to an issuer with authority for that claim class.
+  - id: trade.subject-object-binding
+    requirement: Claims must bind unambiguously to the exporter, shipment, goods, facility, or declaration they govern.
+  - id: trade.provenance
+    requirement: Evidence lineage must be reconstructable across organizational and jurisdictional boundaries.
+  - id: trade.context-purpose
+    requirement: Cross-border reuse of identifiers or evidence must remain within authorized purposes and contexts.
+  - id: trade.status-freshness
+    requirement: Credential, registry, and revocation status must be current at the point of clearance, financing, or reliance.
+  - id: trade.decision-receipt
+    requirement: Consequential clearance, financing, insurance, or acceptance decisions must produce auditable receipts.
+  - id: trade.no-intermediary-substitution
+    requirement: An intermediary assertion cannot substitute for independently resolvable authority and evidence.
+composes:
+  - ttg-artifact-provenance-backed-reputation
+  - ttg-artifact-context-bound-identifier-use
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle:
+  created: '2026-08-20'
+  last_updated: '2026-08-20'
+tsmm_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tsmm_version: v0.24.0
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  authority_contract: governance/authority-boundary.schema.json
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  evaluation_contract: oasf/oasf-evaluation-envelope.schema.json
+  decision_contract: decision/decision-receipt.schema.json
+  registry_contract: registry/registry-entry.schema.json

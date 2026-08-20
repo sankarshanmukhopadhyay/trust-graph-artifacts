@@ -1,0 +1,31 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-verifiable-trade-corridor
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    exporter: Subject
+    importer_or_relying_party: Verifier
+    operational_actor: Agent
+    governing_rule: Policy
+    documentary_and_registry_evidence: EvidenceBundle
+    verification_step: Assessment
+    clearance_or_financing_decision: TrustDecision
+    admitted_trade_effect: Effect
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+    registry_entry: registry/registry-entry.schema.json
+composition:
+  provenance_control: artifacts/provenance-backed-reputation/artifact.yaml
+  contextual_use_control: artifacts/context-bound-identifier-use/artifact.yaml
+boundary_rules:
+  - TGA models the composition but does not define customs, trade-finance, credential, or registry standards.
+  - Trust decisions must remain attributable to the authority and policy applicable in the relying context.
+  - TIS artifacts are evidence carriers; they do not themselves confer trade authority.
+  - TSMM concepts retain canonical meaning across every jurisdiction-specific adapter.
