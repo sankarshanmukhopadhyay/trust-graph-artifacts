@@ -1,28 +1,48 @@
-schema_version: '1.0'
-repository: trust-graph-artifacts
-portfolio_disposition: included
-tier: flagship
-maturity: implementation-draft
-lifecycle: active
-operational_status: active-development
-specification_status: not-applicable
-role: executable-governance-incubator
-authority_scope:
-- governance-patterns
-- implementation-guidance
-- negative-assurance-tests
-- epistemic-governance-patterns
-current_version: 0.5.0
+schema_version: "1.0"
+project:
+  name: trust-graph-artifacts
+  maturity: implementation-draft
+  lifecycle: active
+  operational_status: active-development
+  specification_status: not-applicable
+  intended_use:
+    - executable-governance-incubation
+    - implementation-guidance
+    - negative-assurance-testing
+    - epistemic-governance-experimentation
+  not_asserted:
+    - production-certification
+    - canonical-semantic-authority
+    - portable-schema-authority
+authority:
+  normative_scope:
+    - governance-patterns
+    - implementation-guidance
+    - negative-assurance-tests
+    - epistemic-governance-patterns
+  does_not_own:
+    - canonical-semantics
+    - portable-schema-contracts
+    - external-protocol-governance
+  delegation: "Repository maintainers govern incubated patterns, implementation guidance, and project-local assurance artifacts; canonical semantics and portable contracts remain with their declared authority repositories."
+  revocation_or_supersession: "Patterns, guidance, evidence, and status claims are superseded through explicit versioned changes while historical artifacts remain auditable."
 evidence:
-  repository_governance: governance/repository-authority.yaml
-  portfolio_relationships: data/portfolio-relationships.json
-  validation_entrypoint: make validate
-  documentation: docs/index.md
+  validation_commands:
+    - make validate
+  evidence_outputs:
+    - governance/repository-authority.yaml
+    - data/portfolio-relationships.json
+  known_limitations:
+    - incubated patterns are not automatically canonical portfolio semantics
+    - project-local evidence is not independent certification
+release:
+  current_version: 0.5.0
 dependencies:
-- repository: trust-systems-meta-model
-  role: canonical-semantic-model
-  compatibility: v0.23.0 reviewed baseline
-- repository: trust-infrastructure-schemas
-  role: portable-schema-contracts
-  compatibility: v0.12.0 reviewed baseline
-last_reviewed: '2026-07-27'
+  - repository: trust-systems-meta-model
+    role: canonical-semantic-model
+    compatibility: v0.23.0 reviewed baseline
+  - repository: trust-infrastructure-schemas
+    role: portable-schema-contracts
+    compatibility: v0.12.0 reviewed baseline
+review:
+  last_review: "2026-07-27"
