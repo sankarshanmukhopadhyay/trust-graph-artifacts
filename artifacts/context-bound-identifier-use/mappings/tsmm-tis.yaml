@@ -1,0 +1,26 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-context-bound-identifier-use
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    identity_subject: Subject
+    verifier_or_controller: Agent
+    policy_basis: Policy
+    contextual_evidence: EvidenceBundle
+    purpose_evaluation: Assessment
+    use_decision: TrustDecision
+    resulting_processing: Effect
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+boundary_rules:
+  - TGA does not define a new identifier or credential format.
+  - TGA does not claim that technical interoperability creates authority to correlate.
+  - Existing TSMM authority, policy, evidence, assessment, decision, and effect semantics are used without extension.
+  - Externalized receipts must use TIS contracts rather than project-local serialization.
