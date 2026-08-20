@@ -37,11 +37,10 @@ releases:
     github_release_status: pending-publication
   - version: "0.5.0"
     merge_commit: a361ebfb1254b0d47885a29170f42c38c1f7b5fc
-    release_notes: null
-    validation_evidence: historical-validation-described-in-commit
+    release_notes: docs/release-notes/v0.5.0.md
+    validation_evidence: historical-validation-described-in-commit-and-release-notes
     tag_status: pending-publication
     github_release_status: pending-publication
-    note: delegation governance release; add canonical release notes before publication
   - version: "0.5.1"
     merge_commit: eb4dbaa869480790e2dd72d1c9bdfc80a6333562
     release_notes: docs/release-notes/v0.5.1.md
