@@ -1,0 +1,56 @@
+id: ttg-artifact-agent-capability-accreditation
+title: Agent Capability Accreditation
+status: draft
+source:
+  essay_title: The Labor Market for Agents
+  essay_url: https://thetrustgraph.substack.com/p/the-labor-market-for-agents
+  published_date: '2026-07-04'
+classification:
+  artifact_type:
+    - control-model
+    - accreditation-model
+  domain:
+    - agents
+    - market-participation
+    - capability-assurance
+    - accreditation
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: essay-derived agent market-entry controls and assurance cases
+controls:
+  - id: accreditation.task-class
+    requirement: Capability accreditation must be specific to a defined task class and risk tier.
+  - id: accreditation.configuration-binding
+    requirement: Accreditation must bind to the evaluated model, tool-access, and operating-context configuration and be re-evaluated after material change.
+  - id: accreditation.issuer-authority
+    requirement: The accreditation issuer must have resolvable authority for the capability class and must not rely solely on self-interested platform affiliation.
+  - id: accreditation.scope
+    requirement: The attempted action must be within both the accredited capability and the principal's delegated authority.
+  - id: accreditation.assurance
+    requirement: The capability assurance level must satisfy the relying workflow's consequence and risk requirements.
+  - id: accreditation.revocation
+    requirement: Accreditation status and revocation must be current and independently resolvable at effect time.
+  - id: accreditation.auditability
+    requirement: Consequential admission decisions must produce evidence sufficient to reconstruct capability, scope, configuration, issuer authority, and lifecycle state.
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle:
+  created: '2026-08-20'
+  last_updated: '2026-08-20'
+tsmm_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tsmm_version: v0.24.0
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  authority_contract: governance/authority-boundary.schema.json
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  decision_contract: decision/decision-receipt.schema.json

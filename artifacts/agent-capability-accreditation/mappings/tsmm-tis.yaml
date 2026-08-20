@@ -1,0 +1,26 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-agent-capability-accreditation
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    principal: Subject
+    agent: Agent
+    accreditation_policy: Policy
+    capability_evidence: EvidenceBundle
+    accreditation_evaluation: Assessment
+    market_entry_decision: TrustDecision
+    admitted_action: Effect
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+boundary_rules:
+  - TGA does not define a canonical agent capability credential or assurance scale.
+  - Platform affiliation is not equivalent to independent accreditation authority.
+  - Existing TSMM authority, policy, evidence, assessment, decision, and effect semantics are used without extension.
+  - Portable accreditation artifacts must use or extend TIS only through TIS governance, not project-local serialization.
