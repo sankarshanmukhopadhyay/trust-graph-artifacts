@@ -1,12 +1,16 @@
 {
-  "bindingId": "tga-tis-v0.12.0",
+  "bindingId": "tga-tis-v0.14.1",
   "bindingType": "runtime-assurance-projection",
   "sourceRepository": "trust-graph-artifacts",
-  "sourceVersion": "v0.5.0",
+  "sourceVersion": "v0.5.1",
   "targetRepository": "trust-infrastructure-schemas",
-  "targetVersion": "v0.12.0",
-  "status": "experimental",
-  "role": "TGA packages preserve Trust Graph essay-derived governance pressure and project runtime assurance surfaces into TIS v0.12.0 executable artifact contracts when external validation, registry publication, or assurance review is required.",
+  "targetVersion": "v0.14.1",
+  "semanticAuthority": {
+    "repository": "trust-systems-meta-model",
+    "version": "v0.24.0"
+  },
+  "status": "reviewed",
+  "role": "TGA packages preserve Trust Graph essay-derived governance pressure and project runtime assurance surfaces into TIS v0.14.1 executable artifact contracts when external validation, registry publication, or assurance review is required.",
   "owns": [
     "essay-derived governance pattern corpus",
     "package interpretation",
@@ -14,8 +18,9 @@
     "TSMM-native package examples"
   ],
   "doesNotOwn": [
+    "TSMM canonical semantic identifiers",
     "TIS schema authority",
-    "TIS AL1-AL4 assurance semantics",
+    "TIS assurance semantics",
     "generic evidence bundle contract",
     "generic decision receipt contract",
     "registry publication contract"
@@ -24,37 +29,37 @@
     {
       "tgaSurface": "package graph",
       "tisArtifact": "profiles/tsmm/tsmm-runtime-governance-projection.schema.json",
-      "notes": "TGA graph surfaces can identify the TSMM runtime governance envelope being projected."
+      "notes": "TGA graph surfaces identify TSMM-governed semantics; TIS serializes the portable projection."
     },
     {
       "tgaSurface": "authority and delegation controls",
       "tisArtifact": "governance/authority-boundary.schema.json",
-      "notes": "TGA controls describe the governance pressure; TIS records the artifact-level authority boundary."
+      "notes": "TGA controls describe governance pressure; TIS records the portable artifact-level authority boundary."
     },
     {
       "tgaSurface": "evidence expectations",
       "tisArtifact": "evidence/evidence-bundle-manifest.schema.json",
-      "notes": "Runtime evidence belongs in TIS-compatible bundles, not in essay provenance."
+      "notes": "Runtime evidence belongs in TIS-compatible bundles rather than essay provenance."
     },
     {
       "tgaSurface": "verification or assessment surface",
       "tisArtifact": "oasf/oasf-evaluation-envelope.schema.json",
-      "notes": "TGA package evaluations can be recorded as externally reviewable evaluation envelopes."
+      "notes": "TGA evaluations may be externalized as reviewable evaluation envelopes without moving semantic authority out of TSMM."
     },
     {
       "tgaSurface": "decision receipt",
       "tisArtifact": "decision/decision-receipt.schema.json",
-      "notes": "TGA decision examples should remain mappable to TIS decision receipts when relied on across repositories."
+      "notes": "TGA decision examples remain mappable to the canonical TIS decision receipt contract."
     },
     {
       "tgaSurface": "registry or publication example",
       "tisArtifact": "registry/registry-publication-profile.schema.json",
-      "notes": "Registry publication is discoverability evidence, not runtime authorization."
+      "notes": "Registry publication is discoverability and lifecycle evidence, not runtime authorization."
     }
   ],
   "compatibleWith": [
-    "trust-systems-meta-model v0.23.0",
-    "trust-infrastructure-schemas v0.12.0"
+    "trust-systems-meta-model v0.24.0",
+    "trust-infrastructure-schemas v0.14.1"
   ],
   "validation": [
     "python3 scripts/validate_tsmm_native.py",
