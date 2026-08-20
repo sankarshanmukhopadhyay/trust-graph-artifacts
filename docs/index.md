@@ -65,6 +65,7 @@ The current artifact families cover provenance-backed reputation, context-bound 
 - [Authoring model]({% link docs/authoring-model.md %})
 - [Developer guide]({% link docs/developer-guide.md %})
 - [Release process]({% link docs/release-process.md %})
+- [Release publication]({% link docs/release-publication.md %}) — merge, validation, tag, and GitHub Release publication discipline.
 
 ## Validation
 
@@ -78,7 +79,7 @@ It validates active packages, authority envelopes, delegation lineage, receipts,
 
 ## Release history
 
-Current release notes are under `docs/release-notes/`. Older architecture and transition material remains available for auditability, but should not be interpreted as the current compatibility baseline.
+Current release notes are under `docs/release-notes/`. The machine-readable release publication state is maintained in [`governance/release-publication-ledger.yaml`]({% link governance/release-publication-ledger.yaml %}). Older architecture and transition material remains available for auditability, but should not be interpreted as the current compatibility baseline.
 
 ## Historical material
 
