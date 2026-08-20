@@ -1,0 +1,25 @@
+suite: autonomy-native-institution
+version: '0.11.0'
+cases:
+  - id: valid-governed-autonomous-effect
+    expected: admit
+    given: {root_mandate_valid: true, runtime_authority_current: true, delegation_lineage_valid: true, capability_entry_valid: true, contestability_available: true, redress_available: true, receipt_chain_complete: true}
+  - id: reject-orphan-agent-action
+    expected: reject
+    given: {root_mandate_valid: false, runtime_authority_current: true, delegation_lineage_valid: false, capability_entry_valid: true, contestability_available: true, redress_available: true, receipt_chain_complete: false}
+    reason: autonomous effect cannot be resolved to an originating principal and mandate
+  - id: reject-stale-runtime-authority
+    expected: reject
+    given: {root_mandate_valid: true, runtime_authority_current: false, delegation_lineage_valid: true, capability_entry_valid: true, contestability_available: true, redress_available: true, receipt_chain_complete: true}
+  - id: reject-capability-authority-mismatch
+    expected: reject
+    given: {root_mandate_valid: true, runtime_authority_current: true, delegation_lineage_valid: true, capability_entry_valid: false, contestability_available: true, redress_available: true, receipt_chain_complete: true}
+  - id: reject-noncontestable-decision
+    expected: reject
+    given: {root_mandate_valid: true, runtime_authority_current: true, delegation_lineage_valid: true, capability_entry_valid: true, contestability_available: false, redress_available: true, receipt_chain_complete: true}
+  - id: reject-no-redress
+    expected: reject
+    given: {root_mandate_valid: true, runtime_authority_current: true, delegation_lineage_valid: true, capability_entry_valid: true, contestability_available: true, redress_available: false, receipt_chain_complete: true}
+  - id: reject-broken-receipt-chain
+    expected: reject
+    given: {root_mandate_valid: true, runtime_authority_current: true, delegation_lineage_valid: true, capability_entry_valid: true, contestability_available: true, redress_available: true, receipt_chain_complete: false}
