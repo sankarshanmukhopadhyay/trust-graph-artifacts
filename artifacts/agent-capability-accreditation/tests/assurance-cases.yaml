@@ -1,0 +1,23 @@
+suite: agent-capability-accreditation
+version: '0.9.0'
+cases:
+  - id: valid-accredited-agent-entry
+    expected: admit
+    given: {task_class_match: true, configuration_match: true, issuer_authority_valid: true, delegated_scope_valid: true, assurance_sufficient: true, status_current: true}
+  - id: reject-configuration-drift
+    expected: reject
+    given: {task_class_match: true, configuration_match: false, issuer_authority_valid: true, delegated_scope_valid: true, assurance_sufficient: true, status_current: true}
+    reason: evaluated configuration no longer matches executing agent
+  - id: reject-platform-self-certification
+    expected: reject
+    given: {task_class_match: true, configuration_match: true, issuer_authority_valid: false, delegated_scope_valid: true, assurance_sufficient: true, status_current: true}
+    reason: platform affiliation cannot substitute for resolvable accreditation authority
+  - id: reject-insufficient-capability-tier
+    expected: reject
+    given: {task_class_match: true, configuration_match: true, issuer_authority_valid: true, delegated_scope_valid: true, assurance_sufficient: false, status_current: true}
+  - id: reject-scope-excess
+    expected: reject
+    given: {task_class_match: true, configuration_match: true, issuer_authority_valid: true, delegated_scope_valid: false, assurance_sufficient: true, status_current: true}
+  - id: reject-revoked-accreditation
+    expected: reject
+    given: {task_class_match: true, configuration_match: true, issuer_authority_valid: true, delegated_scope_valid: true, assurance_sufficient: true, status_current: false}
