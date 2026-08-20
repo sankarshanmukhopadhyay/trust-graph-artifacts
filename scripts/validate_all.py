@@ -9,6 +9,7 @@ checks = [
     ('receipts',[PYTHON,'scripts/validate_receipts.py']),
     ('tis-alignment',[PYTHON,'scripts/validate_tis_alignment.py']),
     ('assurance-cases',[PYTHON,'scripts/validate_assurance_cases.py']),
+    ('publication-provenance',[PYTHON,'scripts/validate_publication_surfaces.py']),
     ('docs',[PYTHON,'scripts/validate_docs_site.py']),
     ('governance',[PYTHON,'scripts/validate_repository_governance.py']),
     ('relationships',[PYTHON,'scripts/validate_portfolio_relationships.py'])
