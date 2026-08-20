@@ -2,246 +2,116 @@
 
 > **Flagship repository**  
 > **Role:** `executable-governance-and-implementation-layer`  
-> **Current version:** `0.5.0`  
+> **Current version:** `0.12.1`  
 > **Canonical validation:** `make validate`  
-> **Authority:** [`governance/repository-authority.yaml`](governance/repository-authority.yaml)  
-> **Start here:** [`docs/adoption.md`](docs/adoption.md)
+> **Semantic authority:** `trust-systems-meta-model@v0.24.0`  
+> **Portable contract authority:** `trust-infrastructure-schemas@v0.14.1`
 
+**Trust Graph Artifacts (TGA) converts high-signal governance arguments from The Trust Graph into machine-readable, testable trust-system artifacts without taking semantic authority away from TSMM or portable-schema authority away from TIS.**
 
-**A TSMM-native corpus for turning essay-derived governance failures into reusable, testable trust-system packages.**
+## Authority model
 
-This repository sits at the line between two layers that are often blurred together:
+The repository operates as an executable-governance incubation and implementation layer:
 
-- **Trust Systems Meta Model (TSMM)** supplies the structural grammar for modeling trust systems.
-- **The Trust Graph** supplies the problem corpus, conceptual pressure, and governance stance.
+- **The Trust Graph** provides source arguments, failure modes, and design pressure.
+- **TSMM v0.24.0** is the canonical semantic authority for subjects, agents, authority, policy, evidence, assessment, trust decisions, effects, delegation, lifecycle, and related trust-system concepts.
+- **TIS v0.14.1** is the portable artifact-contract authority for authority boundaries, evidence bundles, evaluation envelopes, decision receipts, registry records, and other interoperable assurance artifacts.
+- **TGA** owns project-local governance patterns, system compositions, mappings, examples, provenance, and negative-assurance tests.
 
-The repository does not treat essays as executable truth. It treats them as a source of questions, failure modes, and design pressure. It also does not treat TSMM as a loose reference. TSMM is the modeling discipline for every active package.
+TGA artifacts are therefore implementation and assurance inputs. They are not independent certification, canonical semantic definitions, or substitutes for the authority of external protocols, institutions, or legal regimes.
 
-The result is a developer-facing library that moves from governance claims to concrete system shapes, machine-readable constraints, valid/invalid examples, and evidence-bearing decisions.
+## Current release posture
 
-## TSMM v0.21 and TIS v0.10 alignment
+The v0.6.0–v0.11.0 release train added six current artifact families:
 
-Version `0.4.0` aligns the active corpus with TSMM v0.21.0 and Trust Infrastructure Schemas v0.10.0:
+| Release | Artifact | Governance surface |
+|---|---|---|
+| v0.6.0 | `provenance-backed-reputation` | provenance-bearing and context-bounded reliance on reputation signals |
+| v0.7.0 | `context-bound-identifier-use` | purpose limitation and authority for cross-context correlation |
+| v0.8.0 | `verifiable-trade-corridor` | cross-border trust composition using authority, provenance, status and receipts |
+| v0.9.0 | `agent-capability-accreditation` | task-class, configuration-bound and revocable agent market participation |
+| v0.10.0 | `issuer-incentive-inversion` | issuer-level correction, revocation, redress and institutional legibility |
+| v0.11.0 | `autonomy-native-institution` | mandate, runtime authority, delegation, accreditation, contestability and redress composition |
 
-- **TSMM v0.21.0** is the semantic authority for trust-system modeling, including authority graphs, runtime governance envelopes, decision receipts, lifecycle semantics, and task evidence.
-- **Trust Infrastructure Schemas v0.10.0** is the executable artifact contract layer where cross-repo validation, registry publication, evidence bundles, evaluation envelopes, decision receipts, and assurance-level semantics are required.
-- **TGA** is the Trust Graph interpretation corpus: it turns essay-derived governance pressure into TSMM-native packages, receipts, examples, and provenance overlays.
-- **v0.4.0** adds a TIS runtime assurance projection binding, six new essay-derived package families, and a canonical composition path from authority graph to runtime governance envelope to TIS evidence and decision artifacts.
-
-Start with [`docs/crosswalks/tga-tsmm-tis-runtime-assurance.md`](docs/crosswalks/tga-tsmm-tis-runtime-assurance.md), [`docs/bindings/tsmm-binding.md`](docs/bindings/tsmm-binding.md), and [`bindings/tis/tga-tis-binding.json`](bindings/tis/tga-tis-binding.json) for the current alignment contract.
-
-## What is in this repository now
-
-The active repository surface has three coherent layers:
-
-1. **TSMM-native package corpus** — profiles, patterns, overlays, systems, and evidence models under `profiles/`, `patterns/`, `overlays/`, `systems/`, and `evidence/`.
-2. **Executable governance artifact and receipt layer** — canonical artifact YAML, receipt schemas, and examples under `artifacts/`, `schemas/receipts/`, and `examples/receipts/`.
-3. **Temporal governance layer** — revocation propagation, persistence traps, execution-time authority state, and gradient exploitation surfaces modeled as first-class validation targets.
-4. **Runtime assurance projection layer** — TSMM authority, delegation, evidence, decision, status, revocation, registry, and redress semantics projected into TIS v0.10.0 artifact contracts.
-
-Together these layers make authority, delegation, enforcement, revocation, evidence, and auditability visible as repository structure rather than narrative intent.
-
-
-## Documentation site
-
-This repository is now prepared for publication with **Jekyll** and the **Just the Docs** theme without changing the repository release version. The Jekyll source is the repository root, while `docs/` remains the canonical documentation navigation surface.
-
-Publication files added for GitHub Pages readiness:
-
-- `_config.yml` — Just the Docs site configuration, search, navigation, callouts, and page defaults.
-- `Gemfile` — local and CI dependency contract for Jekyll, Just the Docs, remote theme support, and SEO tags.
-- `.github/workflows/pages.yml` — GitHub Actions workflow for building and deploying the site to Pages.
-- `index.md` — Jekyll homepage that routes readers into the documentation corpus.
-- `docs/jekyll-publication.md` — maintainer guidance for local preview, navigation discipline, and publication assurance.
-
-To preview locally:
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
-
-To publish on GitHub Pages, use **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+v0.12.0 consolidated repository assurance and repaired validation/build drift. v0.12.1 aligns the public documentation, source catalog, provenance and crosswalk surfaces with that executable baseline.
 
 ## Start here
 
-Read these in order:
-
-1. [`docs/quickstart.md`](docs/quickstart.md)
-2. [`docs/architecture.md`](docs/architecture.md)
-3. [`docs/tsmm-and-the-trust-graph.md`](docs/tsmm-and-the-trust-graph.md)
-4. [`docs/package-anatomy.md`](docs/package-anatomy.md)
-5. [`docs/authoring-model.md`](docs/authoring-model.md)
-6. [`guides/agentic-systems-architecture-and-governance/`](guides/agentic-systems-architecture-and-governance/) — architect-facing implementation method for building governed multi-agent jobs with TSMM, TIS, and TGA.
-
-Then run the validator:
-
-```bash
-python3 scripts/validate_tsmm_native.py
-python3 scripts/validate_tis_alignment.py
-```
-
-## Implementation guide for agentic systems
-
-Architects and consultants can use the [Agentic Systems Architecture and Governance Implementation Guide](guides/agentic-systems-architecture-and-governance/) to move from a bounded job definition through authority modeling, delegation lineage, capability issuance, governed execution, evidence, revocation, and operational assurance. The guide cross-references TSMM semantics, TIS contracts, and TGA patterns while preserving their separate authority.
-
-## Recommended package tours
-
-### Authority modeling tour
-
-Start here when you want the cleanest view of executable authority, legitimate control, and decision evidence:
-
-- `patterns/authority-legitimacy-validation`
-- `overlays/legitimate-control-enforcement`
-- `evidence/legitimate-control-decision-receipt`
-- `profiles/public-agent-contestability-profile`
-
-### Cross-type structural tour
-
-Start here when you want one package from each major package class:
-
-- `profiles/first-person-credentials`
-- `patterns/delegation-after-identity`
-- `overlays/consent-not-data-structure`
-- `systems/wallet-to-agent-identity`
-- `evidence/the-proof-gap`
-
-### Control-plane legitimacy tour
-
-Use this cluster to study how commons governance, AI intermediaries, and licensing coalitions become TSMM-native model surfaces:
-
-- `patterns/control-plane-shift-detection`
-- `patterns/legitimacy-gap-evaluator`
-- `overlays/intermediary-governance-overlay`
-- `profiles/knowledge-substrate-integrity-profile`
-- `profiles/governed-license-authority`
-- `profiles/coalition-legitimacy-model`
-
-
-### Authority envelopes, commitments, and high-risk infrastructure tour
-
-Use this cluster to study the v0.3.0 governance increment:
-
-- `patterns/runtime-authority-envelope`
-- `profiles/machine-commitment-governance-profile`
-- `evidence/proof-carrying-commitment-receipt`
-- `overlays/commitment-lifecycle-mediation`
-- `profiles/fraud-externality-verification-profile`
-- `patterns/inference-substitution-gap`
-- `patterns/legibility-trap-detector`
-- `profiles/high-risk-digital-infrastructure-governance-profile`
-- `overlays/constitutional-digital-infrastructure-controls`
-- `evidence/high-risk-governance-assurance-record`
-
-### Runtime authority envelope hardening tour
-
-Use this cluster to inspect the v0.3.1 enforcement layer:
-
-- `schemas/receipts/authority_envelope_receipt.schema.json`
-- `examples/receipts/authority_envelope_receipt.example.json`
-- `validation/authority-envelope-test-cases.yaml`
-- `validation/pad-test-cases.yaml`
-- `validation/revocation-lag-test-cases.yaml`
-- `scripts/validate_authority_envelopes.py`
-- `profiles/public-agent-contestability-profile`
-
-### v0.4.0 runtime assurance tour
-
-Use this cluster to inspect the TSMM v0.21 / TIS v0.10 alignment release:
-
-- `bindings/tis/tga-tis-binding.json`
-- `docs/crosswalks/tga-tsmm-tis-runtime-assurance.md`
-- `examples/composition/runtime-assurance-v0.4`
-- `profiles/personhood-participation-governance-profile`
-- `patterns/agent-accountability-edge`
-- `overlays/redress-rails-for-machine-decisions`
-- `profiles/registry-gatekeeper-risk-profile`
-- `evidence/proof-first-market-decision-receipt`
-- `systems/executable-trust-governance-stack`
-
-### Temporal governance tour
-
-Use this cluster to study revocation dynamics and authority state at execution time:
-
-- `patterns/persistence-trap-detector`
-- `patterns/revocation-lag-analyzer`
-- `patterns/gradient-exploitation-surface`
-- `profiles/compositional-revocation-profile`
-- `overlays/execution-bound-revocation`
+1. [`docs/index.md`](docs/index.md) — documentation map and active release surfaces.
+2. [`docs/architecture.md`](docs/architecture.md) — repository and authority boundaries.
+3. [`docs/adoption.md`](docs/adoption.md) — adoption guidance.
+4. [`essays/index.md`](essays/index.md) — current source-to-artifact entry points.
+5. [`essays/current-release-catalog.yaml`](essays/current-release-catalog.yaml) — current machine-readable source catalog.
+6. [`provenance/current-release-map.yaml`](provenance/current-release-map.yaml) — source interpretation and assurance provenance.
+7. [`crosswalks/current-release-essay-to-artifact.yaml`](crosswalks/current-release-essay-to-artifact.yaml) — essay → TGA artifact → TSMM semantics → TIS contracts.
 
 ## Repository structure
 
 ```text
-.
-├── profiles/      # Reusable TSMM-native trust-system profiles
-├── patterns/      # Recurring governance and control structures
-├── overlays/      # Cross-cutting policy and governance constraints
-├── systems/       # Worked system compositions with named actors and effects
-├── evidence/      # Evidence and decision-receipt models
-├── artifacts/     # Canonical executable-governance artifact declarations
-├── essays/        # Source essay catalog
-├── provenance/    # Package-to-essay provenance records
-├── registries/    # Shared entity, control, evidence, decision, and lifecycle vocabularies
-├── schemas/       # JSON Schemas for packages, graphs, artifacts, and receipts
-├── scripts/       # Validation and repository maintenance scripts
-├── validation/    # Validation matrix and execution notes
-└── docs/          # Developer and architecture documentation
+profiles/      reusable TSMM-native trust-system profiles
+patterns/      recurring governance and control structures
+overlays/      cross-cutting governance constraints
+systems/       worked trust-system compositions
+evidence/      evidence and decision-receipt models
+artifacts/     executable-governance artifact declarations and assurance cases
+essays/        source catalogs and essay mappings
+provenance/    source-to-artifact provenance records
+crosswalks/    essay, risk, control and interoperability mappings
+bindings/      explicit TGA → TIS runtime-assurance bindings
+schemas/       project-local schemas and receipt contracts
+scripts/       canonical validation and maintenance scripts
+validation/    validation matrices and test cases
+docs/          publication and implementation guidance
 ```
 
-Older artifact-first and binding-transition material is retained under [`archive/legacy-artifact-model/`](archive/legacy-artifact-model/) for reference only. The active corpus is TSMM-native.
+## Assurance model
 
-## Package taxonomy
+Run the canonical gate with:
 
-Every active package is one of five types:
+```bash
+make validate
+```
 
-- **profile** — a bounded trust-system configuration meant for reuse
-- **pattern** — a recurring control or governance arrangement
-- **overlay** — a cross-cutting policy layer applied to other structures
-- **system** — a composed trust-system model with concrete actors and effects
-- **evidence-model** — a model of what the system must produce to justify actions and decisions
+The gate exercises package validation, authority envelopes, delegation lineage, receipts, TIS alignment, artifact assurance cases, documentation integrity, repository governance, portfolio relationships, and current-release publication/provenance surfaces.
 
-## Validation model
+CI writes a machine-readable result to:
 
-The validator now checks the active package corpus and the executable artifact layer:
+```text
+artifacts/validation/latest.json
+```
 
-- package metadata conforms to `schemas/tsmm-native-package.schema.json`
-- graph surfaces and valid examples conform to `schemas/tsmm-graph.schema.json`
-- invalid examples fail as negative conformance tests
-- selected semantic gates from `validation/test-matrix.yaml` are enforced
-- authority-envelope, PAD, and revocation-lag hardening cases are executed
-- every active package has provenance coverage
-- canonical artifact YAML validates against domain artifact schemas
-- essay-to-artifact crosswalk references resolve locally
+A failed gate is evidence too: the record identifies passed, failed and skipped checks and the GitHub commit evaluated. GitHub Pages publication is gated on the same repository-wide validation contract.
 
-The validation matrix distinguishes `implemented` checks from `planned` checks. This prevents planned governance controls from being mistaken for exercised test coverage.
+## Current artifact assurance cases
 
-## How to read a package
+The release train includes executable admit/reject cases for:
 
-Read package files in this order:
+- provenance completeness and contextual reputation use;
+- identifier purpose expansion and unauthorized correlation;
+- issuer authority, status freshness and primary-evidence reconstruction in trade;
+- agent capability/configuration mismatch and revoked accreditation;
+- issuer-level lifecycle opacity and voluntary-pilot generalization;
+- orphan agent actions, stale runtime authority, absent contestability/redress and broken receipt chains.
 
-1. `README.md`
-2. `package.json`
-3. `graph.json`
-4. `constraints.json`
-5. `evidence.json`
-6. `tests/test-vector.json`
+These cases are repository assurance evidence, not external certification.
 
-Every package README separates the essay contribution, the TSMM contribution, and the implementation contribution. That separation is the adoption path: it keeps the source argument, the model grammar, and the developer-facing artifact distinct.
+## Contribution discipline
 
-## Design stance
+A contribution should not paste an essay into a schema. It should:
 
-This repository assumes that governance only becomes credible when it is visible in system structure. Packages therefore favor explicit decision points, bounded scope, evidence outputs, lifecycle semantics, contestability, and revocation-aware execution over ambient authority or narrative assurance.
+1. identify a governable failure mode, authority boundary, evidence requirement, control surface, or system composition;
+2. reuse TSMM semantics wherever possible;
+3. project portable artifacts through TIS rather than creating project-local alternatives;
+4. declare provenance and authority explicitly;
+5. add positive and negative assurance cases;
+6. pass `make validate` before merge.
 
-## Contribution model
+See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`GOVERNANCE.md`](GOVERNANCE.md), and [`docs/authoring-model.md`](docs/authoring-model.md).
 
-A good contribution does not paste an essay into a schema. It identifies the trust problem, classifies it into the right package type, models it using the existing TSMM-native grammar, adds examples and validation cases, and explains what a developer or architect should learn from it.
+## Historical material
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/authoring-model.md`](docs/authoring-model.md).
+Earlier release documentation and transition material remain available in `docs/release-notes/` and `archive/`. Historical version references should be read as release-specific context, not as the current repository compatibility baseline.
 
 ## In one sentence
 
-**TSMM provides the modeling discipline. The Trust Graph provides the reason to model these problems at all. This repository turns that relationship into reusable, testable packages.**
-
-## Delegation governance release
-
-Version 0.5.0 adds chain-aware delegation artifacts derived from three Trust Graph essays. Implementers can start with [`docs/delegation-governance.md`](docs/delegation-governance.md), validate the new packages with `python scripts/validate_delegation_lineage.py`, and use the TIS v0.11.0 binding example in `patterns/delegation-lineage-envelope/bindings/tis/`.
+**The Trust Graph supplies design pressure, TSMM supplies canonical trust-system semantics, TIS supplies portable contracts, and TGA turns the relationship into executable governance and assurance evidence.**
