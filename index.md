@@ -7,42 +7,46 @@ permalink: /
 
 # Trust Graph Artifacts
 
-**A TSMM-native corpus for turning essay-derived governance failures into reusable, testable trust-system packages.**
+**v0.12.1 · TSMM v0.24.0 semantic authority · TIS v0.14.1 portable-contract authority**
 
-This site is the Just the Docs/Jekyll publication surface for the repository. It exposes the active documentation, package methodology, TSMM alignment, executable governance receipts, and the active authority-governance corpus in a navigable form.
+Trust Graph Artifacts converts high-signal governance arguments from The Trust Graph into reusable, testable trust-system artifacts while preserving a strict authority boundary: essays provide design pressure, TSMM provides canonical semantics, and TIS provides portable assurance contracts.
 
 ## Start here
 
-1. [Agentic Systems Architecture and Governance]({% link guides/agentic-systems-architecture-and-governance/README.md %})
-
+1. [Documentation]({% link docs/index.md %})
 2. [Quickstart]({% link docs/quickstart.md %})
 3. [Architecture]({% link docs/architecture.md %})
-4. [Package anatomy]({% link docs/package-anatomy.md %})
-5. [TSMM and The Trust Graph]({% link docs/tsmm-and-the-trust-graph.md %})
-6. [Executable governance]({% link docs/executable-governance.md %})
+4. [Adoption]({% link docs/adoption.md %})
+5. [Essay to artifact index]({% link essays/index.md %})
+6. [Release publication]({% link docs/release-publication.md %})
 
-## Flagship entry points
+## Current artifact train
 
-- [Repository status]({% link docs/repository-status.md %})
-- [Adoption]({% link docs/adoption.md %})
-- [Assurance]({% link docs/assurance.md %})
-- [Interoperability]({% link docs/interoperability.md %})
+The active release train adds executable governance for:
 
-## Repository control surfaces
+- provenance-backed reputation;
+- context-bound identifier use and correlation authority;
+- verifiable cross-border trade;
+- agent capability accreditation;
+- issuer incentive inversion and lifecycle accountability;
+- autonomy-native institutional composition.
 
-- **Authority and delegation:** packages model who can act, on whose behalf, within which scope, and under what revocation conditions.
-- **Enforcement and revocation:** receipts and constraints make execution-time governance observable.
-- **Evidence and auditability:** examples, schemas, and validation matrices provide machine-verifiable assurance hooks.
+The machine-readable source, provenance, and interoperability views are available in:
 
-## Local validation
+- [`essays/current-release-catalog.yaml`]({% link essays/current-release-catalog.yaml %})
+- [`provenance/current-release-map.yaml`]({% link provenance/current-release-map.yaml %})
+- [`crosswalks/current-release-essay-to-artifact.yaml`]({% link crosswalks/current-release-essay-to-artifact.yaml %})
+
+## Assurance
+
+The canonical repository gate is:
 
 ```bash
-python3 scripts/validate_tsmm_native.py
+make validate
 ```
 
-## Local documentation preview
+It exercises package conformance, authority envelopes, delegation lineage, receipts, TIS alignment, artifact assurance cases, publication/provenance consistency, documentation integrity, repository governance, and portfolio relationships. CI emits `artifacts/validation/latest.json`, and GitHub Pages publication is gated on the same assurance contract.
 
-```bash
-bundle install
-bundle exec jekyll serve
-```
+## Release integrity
+
+A merged release is not considered fully published until its merge commit, validation evidence, Git tag, and GitHub Release are all recorded. See [Release publication]({% link docs/release-publication.md %}) and the machine-readable [`governance/release-publication-ledger.yaml`]({% link governance/release-publication-ledger.yaml %}).
