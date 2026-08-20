@@ -1,168 +1,102 @@
-
-## Unreleased — Agentic Systems adoption playbook and Pages hardening
-
-- Expanded the architect guide into a granular, stage-gated implementation playbook.
-- Added copy-ready templates, three worked examples, maturity model, component contracts, and negative test requirements.
-- Added stable Jekyll permalinks, Just the Docs navigation, Mermaid support, responsive and print styling.
-- Added strict Jekyll build, HTML validation, and repository documentation validation workflows.
-- Added a machine-readable TSMM/TGA/TIS implementation crosswalk.
-
 # Changelog
 
-## Unreleased
+All notable versioned changes to Trust Graph Artifacts are recorded here. Detailed release evidence is maintained under `docs/release-notes/`, while release commit/tag/publication state is tracked in `governance/release-publication-ledger.yaml`.
 
-### Added
-
-- Added Jekyll/Just the Docs publication support without changing the repository release version.
-- Added `_config.yml`, `Gemfile`, `index.md`, and `.github/workflows/pages.yml` for GitHub Pages publication through GitHub Actions.
-- Added `docs/jekyll-publication.md` with maintainer guidance for local preview, navigation discipline, and assurance expectations.
-- Added Just the Docs front matter and sidebar structure across the documentation corpus.
-
-### Validation
-
-- Confirmed existing TSMM-native package validation still passes after documentation publication changes.
-All notable repository changes are documented here. The repository treats changelog entries as part of the governance evidence surface: they explain what changed, why it changed, and which validation surface was affected.
-
-## [Unreleased]
-
-## [0.4.0] - 2026-06-30
-
-### Added
-
-- Added TIS v0.10.0 runtime assurance projection binding under `bindings/tis/`.
-- Added `docs/crosswalks/tga-tsmm-tis-runtime-assurance.md` to define the current TGA / TSMM / TIS alignment chain.
-- Added `docs/crosswalks/tga-portfolio-alignment.md` to classify TGA as the portfolio research-to-executable-artifact translation layer.
-- Added runtime assurance composition examples under `examples/composition/runtime-assurance-v0.4/`.
-- Added six TSMM-native package families:
-  - `profiles/personhood-participation-governance-profile`
-  - `patterns/agent-accountability-edge`
-  - `overlays/redress-rails-for-machine-decisions`
-  - `profiles/registry-gatekeeper-risk-profile`
-  - `evidence/proof-first-market-decision-receipt`
-  - `systems/executable-trust-governance-stack`
-- Added `scripts/validate_tis_alignment.py`.
-- Added `requirements.txt` for full local and CI validation dependencies.
-- Added `docs/release-notes/v0.4.0.md` and `docs/release-impact/v0.4.0.md`.
+## [0.12.1] - 2026-08-20
 
 ### Changed
 
-- Updated repository version to `0.4.0`.
-- Updated active TSMM binding metadata from TSMM v0.20.0 to TSMM v0.21.0.
-- Updated README, quickstart, architecture, binding, crosswalk, and index documentation for TSMM v0.21 / TIS v0.10 runtime assurance alignment.
-- Updated provenance and essay-to-artifact crosswalks for the new package families.
-- Hardened validators to provide useful fallback checks in lean environments while preserving `requirements.txt` as the full validation path.
+- Aligned README, documentation navigation, version metadata, and the TGA→TIS binding with the active v0.12.1 / TSMM v0.24.0 / TIS v0.14.1 posture.
+- Added current release source, provenance, and essay→artifact→TSMM→TIS crosswalk surfaces.
+- Added an auditable release-publication ledger separating merge, validation, tag, and GitHub Release state.
+- Restored canonical v0.5.0 release notes from signed commit history.
+- Added executable publication/provenance validation to `make validate`.
 
-### Fixed
+## [0.12.0] - 2026-08-20
 
-- Removed inherited `.DS_Store` metadata from the active repository surface.
-- Reconciled current documentation references that still described the older TSMM v0.20 / TIS v0.8 boundary as the active alignment.
+### Assurance consolidation
 
-### Validation
+- Repaired stale TIS and repository-governance validators.
+- Synchronized repository version metadata.
+- Executed artifact assurance-case suites in the canonical repository gate.
+- Gated GitHub Pages publication on `make validate`.
+- Added machine-readable CI validation evidence.
 
-- `python3 scripts/validate_tsmm_native.py` passes for 46 active packages and artifact crosswalks.
-- `python3 scripts/validate_tis_alignment.py` passes.
-- `python3 scripts/validate_receipts.py` passes in JSON parse fallback mode in the current lean runtime; install `requirements.txt` for full JSON Schema validation.
-- `python3 scripts/validate_authority_envelopes.py` passes.
+## [0.11.0] - 2026-08-20
+
+### Autonomy-native institution
+
+- Added institution-level composition of mandate, runtime authority, delegation lineage, capability accreditation, contestability, redress, and receipt-chain controls.
+
+## [0.10.0] - 2026-08-20
+
+### Issuer incentive inversion
+
+- Added issuer-level lifecycle accountability, correction/revocation legibility, redress traceability, pilot-selection-bias disclosure, and primary-authority resolution assurance cases.
+
+## [0.9.0] - 2026-08-20
+
+### Agent capability accreditation
+
+- Added task-class, configuration-bound, revocable capability accreditation and negative assurance cases for agent market participation.
+
+## [0.8.0] - 2026-08-20
+
+### Verifiable trade corridor
+
+- Added a worked cross-border system composition joining authority, provenance, context, lifecycle state, and decision receipts.
+
+## [0.7.0] - 2026-08-20
+
+### Context-bound identifier use
+
+- Added purpose-bound identifier use, correlation-authority, derived-linkage, retention, and receipt controls.
+
+## [0.6.0] - 2026-08-20
+
+### Provenance-backed reputation
+
+- Added provenance-bearing, context-bounded reputation reliance and assurance cases for issuer authority, evidence reconstruction, context compatibility, and status freshness.
+
+## [0.5.1] - 2026-08-20
+
+### Portfolio alignment
+
+- Aligned TGA with TSMM v0.24.0 semantic authority and TIS v0.14.1 portable-contract authority before the next artifact release train.
+
+## [0.5.0] - 2026-07-14
+
+### Delegation governance
+
+- Added chain-aware delegation-lineage and delegation-first governance artifacts.
+- Added controls for principal continuity, intent binding, monotonic attenuation, fan-out, trust-domain transitions, revocation propagation, interruption, and compensation.
+
+## [0.4.0] - 2026-07-01
+
+### Runtime assurance alignment
+
+- Aligned the active corpus to TSMM v0.21.0 and TIS v0.10.0.
+- Added a formal TGA→TIS runtime-assurance projection and six TSMM-native package families.
+- Added end-to-end authority/evidence/decision/registry composition examples.
 
 ## [0.3.1] - 2026-05-14
 
-### Added
+### Runtime authority hardening
 
-- Added authority-envelope receipt schema and example for consequential agent action.
-- Added executable authority-envelope, PAD, and revocation-lag validation cases.
-- Added focused authority-envelope validator and standalone receipt validator.
-- Added public-agent contestability profile and artifact package.
-- Added public-agent contestability documentation.
+- Added executable authority-envelope, PAD, revocation-lag, receipt, and public-agent-contestability validation surfaces.
 
-### Changed
+## [0.3.0] - 2026-05-06
 
-- Integrated authority-envelope hardening checks into the repository-wide TSMM-native validator.
-- Marked PAD, RLG, and authority-envelope completeness checks as implemented in the validation matrix.
-- Strengthened runtime authority envelope constraints with authority-registry resolution, revocation cache bounds, and decision-receipt binding.
-- Corrected *The Authority Gap* provenance to `2026-05-05`.
-- Updated public-facing docs and README for v0.3.1.
+### Authority and high-risk infrastructure
 
-### Validation
-
-- `python3 scripts/validate_authority_envelopes.py` passes.
-- `python3 scripts/validate_receipts.py` passes.
-- `python3 scripts/validate_tsmm_native.py` passes for 40 active packages and artifact crosswalks.
-
-## [0.3.0] - 2026-05-05
-
-### Added
-
-- Added `patterns/runtime-authority-envelope` as a runtime admissibility wrapper for consequential agent action.
-- Added `profiles/machine-commitment-governance-profile`, `evidence/proof-carrying-commitment-receipt`, and `overlays/commitment-lifecycle-mediation` for machine-generated commitments, reliance, reconciliation, and lifecycle mediation.
-- Added `profiles/fraud-externality-verification-profile` to model fraud as an infrastructure externality created by weak verification, issuer accountability, registry governance, and anti-capture controls.
-- Added `patterns/inference-substitution-gap` and `patterns/legibility-trap-detector` for identifying inference-based governance failure and proxy-intensification traps.
-- Added `profiles/high-risk-digital-infrastructure-governance-profile`, `overlays/constitutional-digital-infrastructure-controls`, and `evidence/high-risk-governance-assurance-record`.
-- Added receipt schemas and examples for commitment receipts and high-risk governance assurance records.
-- Added documentation for authority envelopes, machine commitments, fraud externalities, inference-to-verification migration, high-risk infrastructure, and constitutional controls.
-
-### Changed
-
-- Updated source catalog, essay-to-artifact crosswalk, provenance maps, active registries, validation matrix, README, and documentation index for the v0.3.0 artifact families.
-- Updated repository version to `0.3.0`.
-
-### Validation
-
-- `python3 scripts/validate_tsmm_native.py` passes for 39 active packages and artifact crosswalks.
-
+- Added runtime authority envelopes, machine commitment governance, proof-carrying commitment receipts, fraud externality controls, inference-substitution and legibility patterns, and high-risk infrastructure governance packages.
 
 ## [0.2.0] - 2026-05-06
 
-### Added
+### TSMM harmonization
 
-- Added formal TGA ↔ TSMM v0.20 binding metadata under `bindings/tsmm/`.
-- Added TSMM alignment, decision receipt profile, layering, outcome vocabulary, assurance posture, and TGA → TSMM → TIS composition documentation.
-- Added `registries/outcome-vocabulary.yaml` and `registries/assurance-vocabulary.yaml`.
-- Added TSMM-profiled decision receipt schema and example.
-- Added a TSMM/TIS-aligned TGA decision composition example.
+- Rebuilt the active repository posture around TSMM-native semantics and formalized the TGA/TSMM/TIS authority boundary.
 
-### Changed
+## Unversioned maintenance
 
-- Updated repository version to `0.2.0`.
-- Updated active registry and artifact schema version markers.
-- Updated decision receipt schema `$id` to a release-pinned repository URL.
-- Refreshed receipt and decision-provenance documentation metadata for v0.2.0.
-
-### Fixed
-
-- Removed local `.DS_Store` artifacts.
-- Added `.gitignore` coverage for operating-system files and build outputs.
-
-
-### Added
-
-- Expanded `scripts/validate_tsmm_native.py` to validate provenance coverage, selected semantic gates, canonical artifact YAML files, and essay-to-artifact crosswalk references.
-- Added explicit `status` fields to `validation/test-matrix.yaml` so implemented checks and planned controls are no longer conflated.
-- Added domain-distinguishing artifact schema constraints for authority, control-plane, delegation, legitimacy, licensing, and verification artifacts.
-
-### Changed
-
-- Consolidated README onboarding into a current-state description instead of announcement-style update sections.
-- Reconciled `docs/quickstart.md` with README onboarding by separating the authority modeling tour from the cross-type structural tour.
-- Replaced placeholder JSON Schema `$id` values with GitHub raw schema URIs.
-- Renamed `patterns/your-agents-are-not-failing-your` to `patterns/agent-mandate-envelope` for navigational clarity while preserving the original essay URL.
-- Moved root commit-bundle scaffolds into `docs/release-notes/`.
-
-### Fixed
-
-- Synchronized temporal governance packages into `provenance/essay-source-map.yaml`.
-- Documented that `evidenceChecks` are declared evidence expectations, not yet machine-evaluated checks.
-
-## [0.1.0]
-
-### Added
-
-- Initial TSMM-native package corpus derived from The Trust Graph essays.
-- Receipt schema and example layer for authority, delegation, decision, enforcement, licensing, revocation, execution authority state, revocation propagation, and gradient exploitation signals.
-- Temporal governance and revocation dynamics package cluster.
-
-## 0.5.0 - 2026-07-14
-
-- Added delegation-lineage and delegation-first governance packages.
-- Added three essay mappings and adoption documentation.
-- Added cross-repository TSMM v0.22.0 and TIS v0.11.0 bindings.
-- Added delegation-specific positive and negative assurance cases.
+Repository history also contains documentation, GitHub Pages, portfolio-governance, and developer-adoption hardening commits that intentionally did not create new releases. Those commits remain auditable in Git history and must not be retrospectively assigned a release tag different from the exact release commits recorded in the publication ledger.
