@@ -1,0 +1,60 @@
+id: ttg-artifact-provenance-backed-reputation
+title: Provenance-Backed Reputation
+status: draft
+source:
+  essay_title: Why Reputation Economies Fail Without Provenance
+  essay_url: https://thetrustgraph.substack.com/p/why-reputation-economies-fail-without
+  published_date: '2026-05-25'
+classification:
+  artifact_type:
+    - control-model
+    - evidence-model
+  domain:
+    - reputation
+    - provenance
+    - market-participation
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: essay-derived governance pattern and assurance cases
+semantics:
+  affects:
+    - identity-lineage
+    - issuer-accountability
+    - contextual-scope
+    - evidence
+    - lifecycle
+controls:
+  - id: provenance.subject-lineage
+    requirement: A reputation signal used in a consequential decision must resolve to a verifiable subject lineage.
+  - id: provenance.issuer-authority
+    requirement: The issuer of a reputation signal must have resolvable authority for the asserted signal class.
+  - id: provenance.context-binding
+    requirement: Origin context and target-use context must be recorded and evaluated before reuse.
+  - id: provenance.evidence-reconstruction
+    requirement: The relying party must be able to reconstruct the evidence lineage supporting the signal.
+  - id: provenance.status-freshness
+    requirement: Status and revocation state must be evaluated at decision time.
+  - id: provenance.no-score-substitution
+    requirement: An aggregate score alone is insufficient evidence for a consequential trust decision.
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle:
+  created: '2026-08-20'
+  last_updated: '2026-08-20'
+tsmm_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tsmm_version: v0.24.0
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  decision_contract: decision/decision-receipt.schema.json
+  registry_contract: registry/registry-entry.schema.json
