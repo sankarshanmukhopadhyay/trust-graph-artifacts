@@ -1,0 +1,57 @@
+suite: provenance-backed-reputation
+version: '0.6.0'
+cases:
+  - id: valid-context-bound-signal
+    expected: admit
+    given:
+      subject_lineage_resolvable: true
+      issuer_authority_valid: true
+      origin_context_recorded: true
+      target_context_compatible: true
+      evidence_reconstructable: true
+      status_current: true
+      aggregate_score_only: false
+  - id: reject-unverifiable-issuer
+    expected: reject
+    given:
+      subject_lineage_resolvable: true
+      issuer_authority_valid: false
+      origin_context_recorded: true
+      target_context_compatible: true
+      evidence_reconstructable: true
+      status_current: true
+      aggregate_score_only: false
+    reason: issuer authority cannot be established
+  - id: reject-context-collapse
+    expected: reject
+    given:
+      subject_lineage_resolvable: true
+      issuer_authority_valid: true
+      origin_context_recorded: true
+      target_context_compatible: false
+      evidence_reconstructable: true
+      status_current: true
+      aggregate_score_only: false
+    reason: originating reputation semantics do not support target use
+  - id: reject-score-substitution
+    expected: reject
+    given:
+      subject_lineage_resolvable: false
+      issuer_authority_valid: false
+      origin_context_recorded: false
+      target_context_compatible: false
+      evidence_reconstructable: false
+      status_current: false
+      aggregate_score_only: true
+    reason: score cannot substitute for provenance and evidence
+  - id: reject-stale-status
+    expected: reject
+    given:
+      subject_lineage_resolvable: true
+      issuer_authority_valid: true
+      origin_context_recorded: true
+      target_context_compatible: true
+      evidence_reconstructable: true
+      status_current: false
+      aggregate_score_only: false
+    reason: lifecycle state is stale at decision time
