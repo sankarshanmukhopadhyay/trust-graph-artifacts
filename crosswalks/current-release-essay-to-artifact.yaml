@@ -1,0 +1,33 @@
+schema_version: "1.0"
+release: "0.12.1"
+entries:
+  - essay: Why Reputation Economies Fail Without Provenance
+    artifact: ttg-artifact-provenance-backed-reputation
+    artifact_path: artifacts/provenance-backed-reputation/artifact.yaml
+    tsmm_semantics: [Subject, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, oasf/oasf-evaluation-envelope.schema.json, decision/decision-receipt.schema.json]
+  - essay: The State Learned to Recognise Us. The System Learned to Watch Us.
+    artifact: ttg-artifact-context-bound-identifier-use
+    artifact_path: artifacts/context-bound-identifier-use/artifact.yaml
+    tsmm_semantics: [Subject, Agent, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, decision/decision-receipt.schema.json]
+  - essay: The Coming Trust Repricing in Global Trade
+    artifact: ttg-artifact-verifiable-trade-corridor
+    artifact_path: artifacts/verifiable-trade-corridor/artifact.yaml
+    tsmm_semantics: [Subject, Agent, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, oasf/oasf-evaluation-envelope.schema.json, decision/decision-receipt.schema.json, registry/registry-entry.schema.json]
+  - essay: The Labor Market for Agents
+    artifact: ttg-artifact-agent-capability-accreditation
+    artifact_path: artifacts/agent-capability-accreditation/artifact.yaml
+    tsmm_semantics: [Subject, Agent, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, oasf/oasf-evaluation-envelope.schema.json, decision/decision-receipt.schema.json]
+  - essay: The Audit Nobody Asked For
+    artifact: ttg-artifact-issuer-incentive-inversion
+    artifact_path: artifacts/issuer-incentive-inversion/artifact.yaml
+    tsmm_semantics: [Subject, Agent, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, decision/decision-receipt.schema.json, registry/registry-entry.schema.json]
+  - essay: "Delegated Intelligence: The Next Compute Paradigm"
+    artifact: ttg-artifact-autonomy-native-institution
+    artifact_path: artifacts/autonomy-native-institution/artifact.yaml
+    tsmm_semantics: [Subject, Agent, Policy, EvidenceBundle, Assessment, TrustDecision, Effect]
+    tis_contracts: [governance/authority-boundary.schema.json, evidence/evidence-bundle-manifest.schema.json, oasf/oasf-evaluation-envelope.schema.json, decision/decision-receipt.schema.json]
