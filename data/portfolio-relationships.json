@@ -7,7 +7,7 @@
       "relationship_type": "normative-dependency",
       "authority_direction": "TSMM-to-TGA",
       "artifact_mapping": "docs/epistemic-governance/tsmm-mapping.md",
-      "compatibility_range": "TSMM v0.23.0 reviewed baseline",
+      "compatibility_range": "TSMM v0.24.0 reviewed baseline",
       "maturity": "provisional",
       "validation": "scripts/validate_portfolio_relationships.py",
       "known_limitations": [
@@ -21,7 +21,7 @@
       "relationship_type": "supports",
       "authority_direction": "TIS-to-TGA",
       "artifact_mapping": "docs/epistemic-governance/tis-binding.md",
-      "compatibility_range": "TIS v0.12.0 reviewed baseline",
+      "compatibility_range": "TIS v0.14.1 reviewed baseline",
       "maturity": "provisional",
       "validation": "scripts/validate_tis_alignment.py",
       "known_limitations": [

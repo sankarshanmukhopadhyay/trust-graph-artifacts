@@ -3,7 +3,7 @@ project:
   name: trust-graph-artifacts
   maturity: implementation-draft
   lifecycle: active
-  operational_status: active-development
+  operational_status: active-validation
   specification_status: not-applicable
   intended_use:
     - executable-governance-incubation
@@ -32,6 +32,7 @@ evidence:
   evidence_outputs:
     - governance/repository-authority.yaml
     - data/portfolio-relationships.json
+    - artifacts/validation/latest.json
     - artifacts/provenance-backed-reputation/tests/assurance-cases.yaml
     - artifacts/context-bound-identifier-use/tests/assurance-cases.yaml
     - artifacts/verifiable-trade-corridor/tests/assurance-cases.yaml
@@ -42,7 +43,7 @@ evidence:
     - incubated patterns are not automatically canonical portfolio semantics
     - project-local evidence is not independent certification
 release:
-  current_version: 0.11.0
+  current_version: 0.12.0
 dependencies:
   - repository: trust-systems-meta-model
     role: canonical-semantic-model

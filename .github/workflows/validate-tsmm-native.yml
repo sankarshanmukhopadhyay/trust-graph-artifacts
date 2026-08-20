@@ -1,12 +1,10 @@
-name: validate-tsmm-native
+name: validate-repository-assurance
 
 on:
-  # Validate all package classes on every push to main and on every pull request.
-  # This keeps the repository trustworthy as a developer-facing corpus rather than
-  # allowing invalid examples or broken package metadata to accumulate silently.
   push:
     branches: [ main ]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -16,7 +14,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dependencies
-        run: pip install jsonschema pyyaml
-      - name: Validate TSMM-native packages
-        run: python3 scripts/validate_tsmm_native.py
+      - name: Install validation dependencies
+        run: python -m pip install jsonschema pyyaml
+      - name: Run canonical repository validation
+        run: make validate
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tga-validation-evidence
+          path: artifacts/validation/latest.json
+          if-no-files-found: error
