@@ -1,0 +1,26 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-provenance-backed-reputation
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    subject_lineage: Subject
+    issuer_or_service_actor: Agent
+    relying_party: Verifier
+    supporting_material: EvidenceBundle
+    contextual_evaluation: Assessment
+    consequential_outcome: TrustDecision
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+    registry_entry: registry/registry-entry.schema.json
+boundary_rules:
+  - TGA does not define a new canonical reputation credential schema.
+  - TGA does not introduce new TSMM node or relation types.
+  - Portable reputation credentials remain within TIS authority.
+  - A TGA reputation decision must be projectable into existing TIS evidence and decision contracts before external reliance.

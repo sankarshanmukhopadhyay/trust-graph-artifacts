@@ -32,11 +32,12 @@ evidence:
   evidence_outputs:
     - governance/repository-authority.yaml
     - data/portfolio-relationships.json
+    - artifacts/provenance-backed-reputation/tests/assurance-cases.yaml
   known_limitations:
     - incubated patterns are not automatically canonical portfolio semantics
     - project-local evidence is not independent certification
 release:
-  current_version: 0.5.1
+  current_version: 0.6.0
 dependencies:
   - repository: trust-systems-meta-model
     role: canonical-semantic-model
