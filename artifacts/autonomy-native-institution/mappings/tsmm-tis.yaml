@@ -1,0 +1,26 @@
+mapping_version: '1.0'
+artifact: ttg-artifact-autonomy-native-institution
+semantic_authority:
+  repository: trust-systems-meta-model
+  version: v0.24.0
+  mappings:
+    principal: Subject
+    autonomous_actor: Agent
+    governing_mandate: Policy
+    runtime_evidence: EvidenceBundle
+    authority_and_capability_evaluation: Assessment
+    consequential_decision: TrustDecision
+    operational_effect: Effect
+portable_contract_authority:
+  repository: trust-infrastructure-schemas
+  version: v0.14.1
+  mappings:
+    authority_boundary: governance/authority-boundary.schema.json
+    evidence_bundle: evidence/evidence-bundle-manifest.schema.json
+    evaluation_envelope: oasf/oasf-evaluation-envelope.schema.json
+    decision_receipt: decision/decision-receipt.schema.json
+boundary_rules:
+  - This release composes existing TGA patterns and does not create a new delegation primitive.
+  - TSMM remains semantic authority for authority, delegation, evidence, decision, lifecycle, and effect.
+  - TIS remains portable-contract authority for externally relied-upon runtime artifacts.
+  - Institution-specific law, policy, liability, and redress authority remain external to TGA.

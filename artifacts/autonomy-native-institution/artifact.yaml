@@ -1,0 +1,53 @@
+id: ttg-artifact-autonomy-native-institution
+title: Autonomy-Native Institution
+status: draft
+source:
+  essay_title: Delegated Intelligence: The Next Compute Paradigm
+  essay_url: https://thetrustgraph.substack.com/p/delegated-intelligence-the-next-compute
+  published_date: '2026-05-18'
+classification:
+  artifact_type: [system-model, governance-composition]
+  domain: [agents, delegation, institutions, runtime-governance]
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: composition of existing TGA governance patterns into an institution-level agentic system
+composes:
+  - patterns/agent-mandate-envelope
+  - patterns/runtime-authority-envelope
+  - patterns/delegation-lineage-envelope
+  - patterns/agent-accountability-edge
+  - profiles/public-agent-contestability-profile
+  - overlays/redress-rails-for-machine-decisions
+  - artifacts/agent-capability-accreditation/artifact.yaml
+controls:
+  - id: institution.root-mandate
+    requirement: Every autonomous workflow must resolve to a bounded originating mandate and principal.
+  - id: institution.runtime-authority
+    requirement: Consequential effects must be checked against current authority at execution time.
+  - id: institution.delegation-lineage
+    requirement: Multi-hop delegation must preserve principal continuity, monotonic attenuation, and revocation propagation.
+  - id: institution.capability-entry
+    requirement: Agents entering consequential workflows must satisfy task-class and configuration-bound capability requirements.
+  - id: institution.contestability
+    requirement: Affected parties must have a resolvable challenge path for consequential automated decisions.
+  - id: institution.redress
+    requirement: The institution must support interruption, correction, compensation, and auditable remediation where harm or unauthorized effect occurs.
+  - id: institution.receipt-chain
+    requirement: Authority, delegation, evidence, evaluation, decision, and remediation must be reconstructable from linked receipts.
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle: {created: '2026-08-20', last_updated: '2026-08-20'}
+tsmm_binding: {enabled: true, binding_status: reviewed-baseline, tsmm_version: v0.24.0}
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  authority_contract: governance/authority-boundary.schema.json
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  decision_contract: decision/decision-receipt.schema.json
