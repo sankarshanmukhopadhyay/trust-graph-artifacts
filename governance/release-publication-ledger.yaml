@@ -92,6 +92,6 @@ releases:
   - version: "0.12.1"
     merge_commit: pending-pr-merge
     release_notes: docs/release-notes/v0.12.1.md
-    validation_evidence: pending-pr-validation
+    validation_evidence: github-actions-pr-validation-green
     tag_status: pending-publication
     github_release_status: pending-publication
