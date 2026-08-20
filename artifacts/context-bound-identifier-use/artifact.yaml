@@ -1,0 +1,60 @@
+id: ttg-artifact-context-bound-identifier-use
+title: Context-Bound Identifier Use
+status: draft
+source:
+  essay_title: The State Learned to Recognise Us. The System Learned to Watch Us.
+  essay_url: https://thetrustgraph.substack.com/p/the-state-learned-to-recognise-us
+  published_date: '2026-07-16'
+classification:
+  artifact_type:
+    - control-model
+    - privacy-governance
+  domain:
+    - identity
+    - correlation
+    - purpose-limitation
+governance:
+  authority: The Trust Graph
+  maturity: experimental
+  authority_boundary:
+    semantic_authority: trust-systems-meta-model@v0.24.0
+    portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+    local_scope: essay-derived effect-admission controls and assurance cases
+semantics:
+  affects:
+    - purpose
+    - context
+    - authority
+    - evidence
+    - lifecycle
+controls:
+  - id: context.purpose-authority
+    requirement: Cross-context identifier use must have explicit authority for the target purpose.
+  - id: context.target-context
+    requirement: The target context must be within the authorized use envelope.
+  - id: context.correlation-basis
+    requirement: Durable correlation must have a resolvable legal or governance basis distinct from mere technical possibility.
+  - id: context.derived-linkage
+    requirement: Derived linkages must not broaden scope beyond the authorized purpose.
+  - id: context.retention
+    requirement: Retention must remain bounded by the purpose-specific lifecycle envelope.
+  - id: context.receipt
+    requirement: Consequential cross-context use must produce a decision receipt recording authority, purpose, context, evidence, and outcome.
+validation:
+  has_examples: false
+  has_tests: true
+  conformance_level: incubation
+lifecycle:
+  created: '2026-08-20'
+  last_updated: '2026-08-20'
+tsmm_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tsmm_version: v0.24.0
+tis_binding:
+  enabled: true
+  binding_status: reviewed-baseline
+  tis_version: v0.14.1
+  authority_contract: governance/authority-boundary.schema.json
+  evidence_contract: evidence/evidence-bundle-manifest.schema.json
+  decision_contract: decision/decision-receipt.schema.json

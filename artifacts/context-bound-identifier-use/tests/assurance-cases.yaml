@@ -1,0 +1,52 @@
+suite: context-bound-identifier-use
+version: '0.7.0'
+cases:
+  - id: valid-purpose-bound-use
+    expected: admit
+    given:
+      purpose_authority_valid: true
+      target_context_authorized: true
+      correlation_basis_resolvable: true
+      derived_linkage_within_scope: true
+      retention_within_envelope: true
+      receipt_capable: true
+  - id: reject-purpose-expansion
+    expected: reject
+    given:
+      purpose_authority_valid: false
+      target_context_authorized: false
+      correlation_basis_resolvable: false
+      derived_linkage_within_scope: false
+      retention_within_envelope: true
+      receipt_capable: true
+    reason: technical correlatability does not establish authority for the new purpose
+  - id: reject-derived-linkage-amplification
+    expected: reject
+    given:
+      purpose_authority_valid: true
+      target_context_authorized: true
+      correlation_basis_resolvable: true
+      derived_linkage_within_scope: false
+      retention_within_envelope: true
+      receipt_capable: true
+    reason: derived linkage exceeds the authorized use envelope
+  - id: reject-unbounded-retention
+    expected: reject
+    given:
+      purpose_authority_valid: true
+      target_context_authorized: true
+      correlation_basis_resolvable: true
+      derived_linkage_within_scope: true
+      retention_within_envelope: false
+      receipt_capable: true
+    reason: retention outlives the purpose-specific lifecycle envelope
+  - id: reject-unreceipted-consequential-use
+    expected: reject
+    given:
+      purpose_authority_valid: true
+      target_context_authorized: true
+      correlation_basis_resolvable: true
+      derived_linkage_within_scope: true
+      retention_within_envelope: true
+      receipt_capable: false
+    reason: consequential cross-context use cannot be independently audited
