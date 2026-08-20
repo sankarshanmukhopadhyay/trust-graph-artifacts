@@ -2,7 +2,7 @@
   "bindingId": "tga-tis-v0.14.1",
   "bindingType": "runtime-assurance-projection",
   "sourceRepository": "trust-graph-artifacts",
-  "sourceVersion": "v0.5.1",
+  "sourceVersion": "v0.12.0",
   "targetRepository": "trust-infrastructure-schemas",
   "targetVersion": "v0.14.1",
   "semanticAuthority": {
@@ -62,7 +62,7 @@
     "trust-infrastructure-schemas v0.14.1"
   ],
   "validation": [
-    "python3 scripts/validate_tsmm_native.py",
-    "python3 scripts/validate_tis_alignment.py"
+    "make validate",
+    "python3 scripts/validate_assurance_cases.py"
   ]
 }
