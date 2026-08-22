@@ -1,0 +1,39 @@
+scenario_id: TGA-ASAG-ARPA-001
+relationship: informative-implementation-alignment
+tests:
+  - id: registered-agent-without-authority-denied
+    precondition: agent record resolves and is active; no applicable authority envelope exists
+    expected: deny
+    invariant: registration != permission_to_act
+  - id: expired-authority-denied
+    precondition: authority envelope is otherwise valid but expired at evaluation time
+    expected: deny
+    invariant: authority must be current
+  - id: revoked-authority-denied
+    precondition: authority has a material revocation before requested effect admission
+    expected: deny
+    invariant: revoked authority cannot admit effect
+  - id: delegation-scope-expansion-denied
+    precondition: child delegation requests broader scope than its parent grant
+    expected: deny
+    invariant: downstream authority may narrow but not expand
+  - id: stale-revocation-state-denied-or-escalated
+    precondition: local state is older than a material revocation event and freshness cannot be established
+    expected: deny_or_escalate
+    invariant: stale state cannot silently authorize
+  - id: unrecognized-federation-domain-denied
+    precondition: foreign registry is technically reachable but governance recognition is absent or withdrawn
+    expected: deny
+    invariant: technical_federation != governance_recognition
+  - id: capability-without-mandate-denied
+    precondition: capability evidence exists but no current mandate authorizes the requested effect
+    expected: deny
+    invariant: capability != legitimate_authority
+  - id: changed-action-invalidates-prior-approval
+    precondition: human approval exists for one action digest but execution requests a different digest
+    expected: deny
+    invariant: approval binds exact action
+  - id: execution-success-without-authority-is-governance-failure
+    precondition: technical execution succeeds but required authority evidence is absent
+    expected: governance_failure
+    invariant: successful_execution != legitimate_effect
