@@ -1,7 +1,7 @@
 ---
 owner: maintainers
-last_reviewed: 2026-06-30
-applicable_version: v0.4.0
+last_reviewed: 2026-08-22
+applicable_version: v0.12.1
 title: TSMM Binding
 layout: default
 parent: TSMM alignment
@@ -10,13 +10,13 @@ nav_order: 1
 
 # TSMM Binding
 
-The active binding declaration is available at:
+The active binding declaration is:
 
 ```text
 bindings/tsmm/tga-tsmm-binding.json
 ```
 
-The binding constraints are available at:
+The binding constraints are:
 
 ```text
 bindings/tsmm/constraints.json
@@ -24,26 +24,60 @@ bindings/tsmm/constraints.json
 
 ## Binding purpose
 
-The binding makes explicit that Trust Graph Artifacts is an interpretation corpus aligned to TSMM v0.21.0.
+Trust Graph Artifacts is an interpretation and assurance corpus aligned to **TSMM v0.24.0**. The alignment direction is deliberately asymmetric:
 
-TGA owns package interpretation and essay provenance. TSMM owns the trust-system semantic grammar, including authority graphs, runtime governance envelopes, decision receipts, and task evidence lifecycle semantics. TIS owns executable artifact contracts when artifacts need external validation, registry publication, evidence bundles, evaluation envelopes, decision receipts, or assurance-level semantics.
+- **TSMM owns canonical trust-system semantics and stable semantic identifiers.**
+- **TGA consumes and profiles those semantics into essay-derived implementation, governance, and assurance artifacts.**
+- **TIS owns portable executable contracts when evidence, authority boundaries, decisions, registry publication, or assurance objects must travel across repository boundaries.**
+
+TGA does not create a semantic dependency from TSMM back to TGA.
+
+## Stable semantic identifiers
+
+Active TGA mappings use TSMM v0.24.0 identifiers such as:
+
+```text
+urn:tsmm:concept:authority
+urn:tsmm:concept:delegation
+urn:tsmm:concept:scope
+urn:tsmm:concept:policy
+urn:tsmm:concept:evidence-artifact
+urn:tsmm:concept:trust-decision
+urn:tsmm:concept:effect
+urn:tsmm:concept:revocation
+urn:tsmm:concept:assurance-profile
+urn:tsmm:concept:redress
+```
+
+The binding pins the TSMM source commit used for the current alignment review while treating the released v0.24.0 semantic registry, rather than a copied local vocabulary, as semantic authority.
 
 ## Runtime assurance projection
 
-The active v0.4.0 release also includes a TIS binding:
+The corresponding TIS binding is:
 
 ```text
 bindings/tis/tga-tis-binding.json
 bindings/tis/constraints.json
 ```
 
-Use this binding when a TGA package must produce evidence that can be consumed outside this repository.
+The current compatibility baseline is:
+
+```text
+TGA  v0.12.1
+TSMM v0.24.0
+TIS  v0.14.1
+```
 
 ## Validation
 
 Run:
 
 ```bash
-python3 scripts/validate_tsmm_native.py
-python3 scripts/validate_tis_alignment.py
+python3 scripts/validate_tsmm_alignment.py
+make validate
 ```
+
+The alignment validator fails if the TGA version, TSMM binding version, TIS semantic-authority declaration, stable semantic identifiers, or active binding documentation drift from the declared baseline.
+
+{: .assurance }
+> This is repository-level compatibility evidence, not external certification. TSMM remains authoritative for semantic definitions; TGA validation proves that the local binding contract is internally consistent with the reviewed TSMM baseline.
