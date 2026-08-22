@@ -5,6 +5,7 @@ PYTHON = sys.executable
 checks = [
     ('packages',[PYTHON,'scripts/validate_tsmm_native.py']),
     ('tsmm-alignment',[PYTHON,'scripts/validate_tsmm_alignment.py']),
+    ('arpa-alignment',[PYTHON,'scripts/validate_arpa_alignment.py']),
     ('authority-envelopes',[PYTHON,'scripts/validate_authority_envelopes.py']),
     ('delegation-lineage',[PYTHON,'scripts/validate_delegation_lineage.py']),
     ('receipts',[PYTHON,'scripts/validate_receipts.py']),
@@ -37,5 +38,6 @@ ev={
     },
     'limitations':['Repository validation is not external certification.']
 }
+pathlib.Path('artifacts/validation').mkdir(parents=True,exist_ok=True)
 pathlib.Path('artifacts/validation/latest.json').write_text(json.dumps(ev,indent=2)+'\n')
 sys.exit(1 if ev['summary']['failed'] else 0)

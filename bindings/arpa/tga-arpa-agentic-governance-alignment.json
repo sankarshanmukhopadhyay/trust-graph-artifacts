@@ -1,0 +1,102 @@
+{
+  "alignmentId": "tga-arpa-agentic-governance-v1",
+  "relationship": "informative-implementation-alignment",
+  "sourceGuide": "guides/agentic-systems-architecture-and-governance/",
+  "targetRepository": "agent-registry-protocol",
+  "targetImplementationRelease": "v0.9.5",
+  "targetNormativeBaseline": "v0.9.0",
+  "semanticAuthority": {
+    "repository": "trust-systems-meta-model",
+    "version": "v0.24.0"
+  },
+  "portableContractAuthority": {
+    "repository": "trust-infrastructure-schemas",
+    "version": "v0.14.1"
+  },
+  "authorityBoundary": {
+    "tgaOwns": [
+      "agentic governance patterns",
+      "architecture and assurance guidance",
+      "negative-test framing"
+    ],
+    "arpaOwns": [
+      "agent-registry-protocol semantics",
+      "ARPA module behavior",
+      "ARPA conformance requirements",
+      "ARPA implementation and interoperability evidence"
+    ],
+    "arpaDoesNotOwn": [
+      "TSMM canonical semantics",
+      "generic agentic-system architecture",
+      "TGA assurance methodology",
+      "TIS portable schema authority"
+    ]
+  },
+  "planes": {
+    "discovery": "ARPA-Core provides a concrete registry/discovery realization without implying authority.",
+    "authorityControl": "ARPA-Relations and ARPA-Authority provide concrete relationship, delegation and authority-control realizations.",
+    "execution": "Execution remains outside ARPA except for protocol-defined evidence and authority checks around consequential action.",
+    "evidenceAssurance": "ARPA-Assurance and ARPA-Evidence provide protocol-specific evidence, assurance and reconstruction surfaces."
+  },
+  "mappings": [
+    {
+      "guideConcept": "persistent agent identity and lifecycle",
+      "tsmmConceptIds": ["urn:tsmm:concept:trust-registry"],
+      "arpaModules": ["ARPA-Core"]
+    },
+    {
+      "guideConcept": "principal and operator relationships",
+      "tsmmConceptIds": ["urn:tsmm:concept:authority"],
+      "arpaModules": ["ARPA-Relations"]
+    },
+    {
+      "guideConcept": "bounded authority and delegation",
+      "tsmmConceptIds": ["urn:tsmm:concept:authority", "urn:tsmm:concept:delegation", "urn:tsmm:concept:scope"],
+      "arpaModules": ["ARPA-Authority", "ARPA-Relations"]
+    },
+    {
+      "guideConcept": "capability and assurance evidence",
+      "tsmmConceptIds": ["urn:tsmm:concept:assessment", "urn:tsmm:concept:evidence-artifact"],
+      "arpaModules": ["ARPA-Assurance", "ARPA-Evidence"]
+    },
+    {
+      "guideConcept": "decision and consequential-effect reconstruction",
+      "tsmmConceptIds": ["urn:tsmm:concept:trust-decision", "urn:tsmm:concept:effect", "urn:tsmm:concept:evidence-bundle"],
+      "arpaModules": ["ARPA-Authority", "ARPA-Evidence"]
+    },
+    {
+      "guideConcept": "revocation and enforcement convergence",
+      "tsmmConceptIds": ["urn:tsmm:concept:revocation"],
+      "arpaModules": ["ARPA-Core", "ARPA-Authority", "ARPA-Evidence"]
+    },
+    {
+      "guideConcept": "cross-domain recognition",
+      "tsmmConceptIds": ["urn:tsmm:concept:trust-registry"],
+      "arpaModules": ["ARPA-Federation"]
+    },
+    {
+      "guideConcept": "contestability and remediation",
+      "tsmmConceptIds": ["urn:tsmm:concept:redress"],
+      "arpaModules": ["ARPA-Evidence", "ARPA-Authority"]
+    }
+  ],
+  "nonImplications": [
+    "discovery != authorization",
+    "authentication != authority",
+    "registration != permission_to_act",
+    "capability != legitimate_authority",
+    "relationship != delegated_authority",
+    "technical_federation != governance_recognition",
+    "successful_execution != legitimate_effect"
+  ],
+  "requiredNegativeTests": [
+    "registered-agent-without-authority-denied",
+    "expired-authority-denied",
+    "revoked-authority-denied",
+    "delegation-scope-expansion-denied",
+    "stale-revocation-state-denied-or-escalated",
+    "unrecognized-federation-domain-denied",
+    "capability-without-mandate-denied",
+    "changed-action-invalidates-prior-approval"
+  ]
+}

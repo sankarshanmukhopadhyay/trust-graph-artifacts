@@ -1,5 +1,18 @@
 guide_id: TGA-ASAG
 title: Agentic Systems Architecture and Governance Implementation Guide
+protocol_alignments:
+  arpa:
+    relationship: informative-implementation-alignment
+    binding: bindings/arpa/tga-arpa-agentic-governance-alignment.json
+    required: false
+    non_implications:
+      - discovery != authorization
+      - authentication != authority
+      - registration != permission_to_act
+      - capability != legitimate_authority
+      - relationship != delegated_authority
+      - technical_federation != governance_recognition
+      - successful_execution != legitimate_effect
 stages:
 - id: ASAG-00
   name: Define bounded job and effects
@@ -11,6 +24,7 @@ stages:
   - quickstart
   - governance profiles
   tis: []
+  arpa: []
   outputs:
   - job charter
   - effect catalog
@@ -27,6 +41,9 @@ stages:
   tga:
   - runtime authority
   tis: []
+  arpa:
+  - ARPA-Core
+  - ARPA-Relations
   outputs:
   - TSMM instance
   - role catalog
@@ -44,6 +61,9 @@ stages:
   - delegation-first-governance
   tis:
   - authority-boundary
+  arpa:
+  - ARPA-Authority
+  - ARPA-Core
   outputs:
   - mandate
   - policy rules
@@ -60,6 +80,9 @@ stages:
   tis:
   - delegation-lineage
   - lineage-verification
+  arpa:
+  - ARPA-Authority
+  - ARPA-Relations
   outputs:
   - topology
   - hop format
@@ -77,6 +100,9 @@ stages:
   tis:
   - authority-boundary
   - trust-task
+  arpa:
+  - ARPA-Assurance
+  - ARPA-Authority
   outputs:
   - capability broker
   - enforcement map
@@ -93,6 +119,9 @@ stages:
   - execution-time-delegation
   tis:
   - execution receipt
+  arpa:
+  - ARPA-Authority
+  - ARPA-Evidence
   outputs:
   - candidate action
   - policy state machine
@@ -107,6 +136,8 @@ stages:
   - delegation-first-governance
   tis:
   - lineage verification
+  arpa:
+  - ARPA-Authority
   outputs:
   - branch manifests
   - convergence policy
@@ -122,6 +153,9 @@ stages:
   - proof-carrying receipts
   tis:
   - receipt schemas
+  arpa:
+  - ARPA-Evidence
+  - ARPA-Authority
   outputs:
   - receipt catalog
   - evidence bundle
@@ -137,6 +171,10 @@ stages:
   - lifecycle mediation
   tis:
   - status and lifecycle events
+  arpa:
+  - ARPA-Core
+  - ARPA-Authority
+  - ARPA-Evidence
   outputs:
   - revocation service
   - runbooks
@@ -151,6 +189,10 @@ stages:
   - assurance cases
   tis:
   - validators
+  arpa:
+  - ARPA-Assurance
+  - ARPA-Evidence
+  - ARPA-Federation
   outputs:
   - CI gates
   - dashboard
