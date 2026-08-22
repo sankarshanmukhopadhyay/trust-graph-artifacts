@@ -7,80 +7,103 @@ permalink: /docs/
 
 # Documentation
 
-Trust Graph Artifacts is currently **v0.12.1**, aligned to **TSMM v0.24.0** as canonical semantic authority and **TIS v0.14.1** as portable-contract authority.
+<p class="tga-lede">Navigate Trust Graph Artifacts by the question you are trying to answer, not by the repository directory tree.</p>
 
-## Start here
+**Current compatibility baseline:** TGA **v0.12.1**, TSMM **v0.24.0** as canonical semantic authority, and TIS **v0.14.1** as portable-contract authority.
 
-- [Quickstart]({% link docs/quickstart.md %}) — fastest path to the repository.
-- [Architecture]({% link docs/architecture.md %}) — repository layers and authority boundaries.
-- [TSMM and The Trust Graph]({% link docs/tsmm-and-the-trust-graph.md %}) — source pressure versus canonical semantics.
-- [Package anatomy]({% link docs/package-anatomy.md %}) — structure of reusable TSMM-native packages.
-- [Adoption]({% link docs/adoption.md %}) — implementation and adoption guidance.
+## Four reader journeys
 
-## Current release surfaces
+<div class="tga-path-grid">
+  <div class="tga-path-card">
+    <h3>1. I need the mental model</h3>
+    <p>Understand what authority lives where and how narrative pressure becomes executable governance without turning essays into normative specifications.</p>
+    <p><a href="{% link docs/architecture.md %}">Architecture →</a><br><a href="{% link docs/tsmm-and-the-trust-graph.md %}">TSMM and The Trust Graph →</a><br><a href="{% link docs/crosswalks/tsmm-tis-tga-layering.md %}">TSMM / TIS / TGA layering →</a></p>
+  </div>
+  <div class="tga-path-card">
+    <h3>2. I need to build</h3>
+    <p>Start from an implementation problem, choose an artifact class, inspect a representative package, and apply the authoring and validation model.</p>
+    <p><a href="{% link docs/quickstart.md %}">Quickstart →</a><br><a href="{% link docs/package-anatomy.md %}">Package anatomy →</a><br><a href="{% link docs/developer-guide.md %}">Developer guide →</a></p>
+  </div>
+  <div class="tga-path-card">
+    <h3>3. I need assurance evidence</h3>
+    <p>Trace authority, delegation, enforcement, revocation, decision state, and interoperability into receipts and machine-verifiable gates.</p>
+    <p><a href="{% link docs/assurance.md %}">Assurance →</a><br><a href="{% link docs/receipts.md %}">Receipts →</a><br><a href="{% link docs/crosswalks/tga-tsmm-tis-runtime-assurance.md %}">Runtime assurance →</a></p>
+  </div>
+  <div class="tga-path-card">
+    <h3>4. I need provenance or auditability</h3>
+    <p>Trace a claim from source essay to artifact, canonical semantics, portable contract, validation evidence, and published release state.</p>
+    <p><a href="{% link essays/index.md %}">Essay-to-artifact index →</a><br><a href="{% link docs/decision-provenance.md %}">Decision provenance →</a><br><a href="{% link docs/release-publication.md %}">Release publication →</a></p>
+  </div>
+</div>
 
-The v0.6–v0.11 artifact train and v0.12 assurance consolidation are represented through three current machine-readable publication surfaces:
+## Core concepts
 
-- [`essays/current-release-catalog.yaml`]({% link essays/current-release-catalog.yaml %}) — canonical source metadata for the current essay-derived artifact families.
-- [`provenance/current-release-map.yaml`]({% link provenance/current-release-map.yaml %}) — source interpretation, artifact mapping, and assurance evidence paths.
-- [`crosswalks/current-release-essay-to-artifact.yaml`]({% link crosswalks/current-release-essay-to-artifact.yaml %}) — essay → TGA artifact → TSMM semantics → TIS portable contracts.
+Read these when you need the vocabulary and architectural boundary conditions rather than a specific implementation recipe.
 
-The current artifact families cover provenance-backed reputation, context-bound identifier use, verifiable trade, agent capability accreditation, issuer incentive inversion, and autonomy-native institutional composition.
+| Topic | Read this | Question answered |
+| --- | --- | --- |
+| Authority boundaries | [Architecture]({% link docs/architecture.md %}) | Which layer is authoritative for what? |
+| Essay relationship | [TSMM and The Trust Graph]({% link docs/tsmm-and-the-trust-graph.md %}) | How does narrative design pressure become structured semantics? |
+| Artifact structure | [Package anatomy]({% link docs/package-anatomy.md %}) | What is inside a reusable package? |
+| Executable governance | [Artifact methodology]({% link docs/artifact-methodology.md %}) | How do governance claims become enforceable/testable artifacts? |
+| Runtime authority | [Runtime authority envelopes]({% link docs/authority-envelope.md %}) | How is delegated authority bounded at execution time? |
+| Temporal control | [Revocation dynamics]({% link docs/revocation-dynamics.md %}) | What happens when authority changes faster than system state? |
+| Epistemic adequacy | [Epistemic governance]({% link docs/epistemic-governance/index.md %}) | How are situated knowledge, challenge, suspension, and override represented? |
 
-## Runtime assurance and interoperability
+## Build and adoption
 
+Use these surfaces when moving from understanding to implementation.
+
+1. [Quickstart]({% link docs/quickstart.md %}) — validate the repository and choose a first tour.
+2. [Package anatomy]({% link docs/package-anatomy.md %}) — understand package files and their roles.
+3. [Profile taxonomy]({% link docs/profile-taxonomy.md %}) — choose the right artifact type.
+4. [Authoring model]({% link docs/authoring-model.md %}) — create or extend artifacts consistently.
+5. [Developer guide]({% link docs/developer-guide.md %}) — work with repository tooling and conventions.
+6. [Adoption]({% link docs/adoption.md %}) — integrate patterns into another system or repository.
+
+## Assurance and interoperability
+
+The assurance path is intentionally evidence-first:
+
+**authority → delegation → permitted effect → enforcement/revocation → receipt → semantic alignment → portable assurance → repository validation**
+
+Key references:
+
+- [Assurance]({% link docs/assurance.md %})
 - [TSMM binding]({% link docs/bindings/tsmm-binding.md %})
 - [TGA / TSMM / TIS runtime assurance]({% link docs/crosswalks/tga-tsmm-tis-runtime-assurance.md %})
-- [Portfolio alignment]({% link docs/crosswalks/tga-portfolio-alignment.md %})
 - [TGA ↔ TSMM alignment crosswalk]({% link docs/crosswalks/tsmm-alignment-crosswalk.md %})
 - [TSMM / TIS / TGA layering]({% link docs/crosswalks/tsmm-tis-tga-layering.md %})
 - [TSMM decision receipt profile]({% link docs/crosswalks/tsmm-decision-receipt-profile.md %})
 - [Assurance posture]({% link docs/crosswalks/assurance-posture.md %})
 - [TGA → TSMM → TIS composition]({% link docs/crosswalks/tga-tsmm-tis-composition.md %})
+- [Portfolio alignment]({% link docs/crosswalks/tga-portfolio-alignment.md %})
 
-> Historical references to earlier TSMM/TIS versions in release-specific documentation describe those releases only. The active repository compatibility baseline is TSMM v0.24.0 / TIS v0.14.1.
+{: .governance }
+> **Authority boundary:** historical release documents can cite older TSMM/TIS baselines. They are evidence of their release state, not current semantic authority. The active compatibility baseline is TSMM v0.24.0 / TIS v0.14.1.
 
-## Executable governance
+## Provenance and machine-readable discovery
 
-- [Artifact methodology]({% link docs/artifact-methodology.md %})
-- [Execution model]({% link docs/execution-model.md %})
-- [Governance model]({% link docs/governance-model.md %})
-- [Receipts]({% link docs/receipts.md %})
-- [Decision provenance]({% link docs/decision-provenance.md %})
-- [Walkthrough]({% link docs/walkthrough.md %})
-- [Runtime authority envelopes]({% link docs/authority-envelope.md %})
-- [Public agent contestability]({% link docs/public-agent-contestability.md %})
-- [Revocation dynamics]({% link docs/revocation-dynamics.md %})
+Three synchronized current-release surfaces support automated discovery and audit:
 
-## Epistemic governance
+- [`essays/current-release-catalog.yaml`]({% link essays/current-release-catalog.yaml %}) — canonical source metadata;
+- [`provenance/current-release-map.yaml`]({% link provenance/current-release-map.yaml %}) — source interpretation, artifact mapping, and evidence paths;
+- [`crosswalks/current-release-essay-to-artifact.yaml`]({% link crosswalks/current-release-essay-to-artifact.yaml %}) — essay → TGA artifact → TSMM semantics → TIS portable contracts.
 
-- [Guided learning path]({% link docs/epistemic-governance/index.md %}) — situated knowledge, epistemic adequacy, challenge, suspension, and override.
-- [TSMM extension candidate]({% link docs/incubation/epistemic-governance-tsmm-extension-candidate.md %}) — explicitly non-normative incubation boundary.
+The current artifact families cover provenance-backed reputation, context-bound identifier use, verifiable trade, agent capability accreditation, issuer incentive inversion, and autonomy-native institutional composition.
 
-## Method and authoring
-
-- [Methodology]({% link docs/methodology.md %})
-- [Essay-to-TSMM method]({% link docs/essay-to-tsmm-method.md %})
-- [Profile taxonomy]({% link docs/profile-taxonomy.md %})
-- [Authoring model]({% link docs/authoring-model.md %})
-- [Developer guide]({% link docs/developer-guide.md %})
-- [Release process]({% link docs/release-process.md %})
-- [Release publication]({% link docs/release-publication.md %}) — merge, validation, tag, and GitHub Release publication discipline.
-
-## Validation
-
-The canonical repository assurance contract is:
+## Repository assurance contract
 
 ```bash
 make validate
 ```
 
-It validates active packages, authority envelopes, delegation lineage, receipts, TIS alignment, artifact assurance cases, documentation integrity, repository governance, portfolio relationships, and current-release publication/provenance surfaces. CI emits `artifacts/validation/latest.json` as machine-readable evidence and GitHub Pages publication is gated on the same validation contract.
+This is the canonical conformance gate. It validates active packages, authority envelopes, delegation lineage, receipts, TIS alignment, artifact assurance cases, documentation integrity, repository governance, portfolio relationships, and current-release publication/provenance surfaces. CI emits `artifacts/validation/latest.json`, and GitHub Pages publication is gated on the same contract.
 
-## Release history
+## Release and historical material
 
-Current release notes are under `docs/release-notes/`. The machine-readable release publication state is maintained in [`governance/release-publication-ledger.yaml`]({% link governance/release-publication-ledger.yaml %}). Older architecture and transition material remains available for auditability, but should not be interpreted as the current compatibility baseline.
-
-## Historical material
-
-See [`archive/README.md`]({% link archive/README.md %}) for archived models and transition material that are no longer active authority surfaces.
+- [Release process]({% link docs/release-process.md %}) — how a release is prepared.
+- [Release publication]({% link docs/release-publication.md %}) — merge, validation, tag, GitHub Release, and ledger completion.
+- `docs/release-notes/` — release-specific change and impact records.
+- [`governance/release-publication-ledger.yaml`]({% link governance/release-publication-ledger.yaml %}) — machine-readable publication state.
+- [`archive/README.md`]({% link archive/README.md %}) — superseded models and transition material retained for auditability.
