@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import json
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,16 +32,28 @@ required_rules = {
 missing_rules = sorted(required_rules - set(data.get("nonImplications", [])))
 if missing_rules:
     errors.append("missing non-implication rules: " + ", ".join(missing_rules))
-if len(data.get("requiredNegativeTests", [])) < 8:
+required_tests = set(data.get("requiredNegativeTests", []))
+if len(required_tests) < 8:
     errors.append("alignment profile must retain the minimum negative-test corpus")
 for mapping in data.get("mappings", []):
     for concept in mapping.get("tsmmConceptIds", []):
         if not concept.startswith("urn:tsmm:concept:"):
             errors.append(f"non-canonical TSMM identifier: {concept}")
 
+vector_path = ROOT / "guides" / "agentic-systems-architecture-and-governance" / "examples" / "arpa-authority-negative-tests.yaml"
+if not vector_path.exists():
+    errors.append("missing ARPA negative-test vector file")
+else:
+    vector_ids = set(re.findall(r"^\s*- id:\s*([^\s]+)\s*$", vector_path.read_text(), flags=re.MULTILINE))
+    missing_vectors = sorted(required_tests - vector_ids)
+    if missing_vectors:
+        errors.append("declared negative tests missing vectors: " + ", ".join(missing_vectors))
+    if "execution-success-without-authority-is-governance-failure" not in vector_ids:
+        errors.append("missing explicit successful-execution governance-failure vector")
+
 if errors:
     print("ARPA alignment validation failed:")
     for error in errors:
         print(f"- {error}")
     sys.exit(1)
-print(f"ARPA alignment validation passed ({len(data.get('mappings', []))} mappings, {len(data.get('requiredNegativeTests', []))} negative tests).")
+print(f"ARPA alignment validation passed ({len(data.get('mappings', []))} mappings, {len(required_tests)} required negative tests).")
