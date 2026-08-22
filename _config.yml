@@ -27,6 +27,160 @@ nav_sort: case_insensitive
 back_to_top: true
 back_to_top_text: "Back to top"
 
+# Navigation is curated by reader intent. Documentation remains searchable and
+# directly addressable even when it is not exposed in the primary sidebar.
+defaults:
+  - scope:
+      path: "docs"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "docs/index.md"
+    values:
+      nav_exclude: false
+      parent: Start
+  - scope:
+      path: "docs/quickstart.md"
+    values:
+      nav_exclude: false
+      parent: Start
+  - scope:
+      path: "docs/architecture.md"
+    values:
+      nav_exclude: false
+      parent: Start
+  - scope:
+      path: "docs/package-anatomy.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/profile-taxonomy.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/authoring-model.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/developer-guide.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/adoption.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/walkthrough.md"
+    values:
+      nav_exclude: false
+      parent: Build
+  - scope:
+      path: "docs/governance-model.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/execution-model.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/authority-envelope.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/revocation-dynamics.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/temporal-governance.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/public-agent-contestability.md"
+    values:
+      nav_exclude: false
+      parent: Govern
+  - scope:
+      path: "docs/assurance.md"
+    values:
+      nav_exclude: false
+      parent: Assure
+  - scope:
+      path: "docs/receipts.md"
+    values:
+      nav_exclude: false
+      parent: Assure
+  - scope:
+      path: "docs/tsmm-alignment.md"
+    values:
+      nav_exclude: false
+      parent: Assure
+  - scope:
+      path: "docs/bindings/tsmm-binding.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "docs/crosswalks/tga-tsmm-tis-runtime-assurance.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "docs/crosswalks/tsmm-alignment-crosswalk.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "docs/crosswalks/tsmm-tis-tga-layering.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "docs/decision-provenance.md"
+    values:
+      nav_exclude: false
+      parent: Trace
+  - scope:
+      path: "docs/essay-to-tsmm-method.md"
+    values:
+      nav_exclude: false
+      parent: Trace
+  - scope:
+      path: "essays/index.md"
+    values:
+      nav_exclude: false
+      parent: Trace
+  - scope:
+      path: "docs/methodology.md"
+    values:
+      nav_exclude: false
+      parent: Project
+  - scope:
+      path: "docs/release-process.md"
+    values:
+      nav_exclude: false
+      parent: Project
+  - scope:
+      path: "docs/release-publication.md"
+    values:
+      nav_exclude: false
+      parent: Project
+  - scope:
+      path: "docs/release-notes.md"
+    values:
+      nav_exclude: false
+      parent: Project
+  - scope:
+      path: "docs/jekyll-publication.md"
+    values:
+      nav_exclude: false
+      parent: Project
+
 aux_links:
   "Trust Graph Artifacts on GitHub":
     - "https://github.com/sankarshanmukhopadhyay/trust-graph-artifacts"

@@ -4,6 +4,7 @@ import subprocess, json, datetime, pathlib, sys, os
 PYTHON = sys.executable
 checks = [
     ('packages',[PYTHON,'scripts/validate_tsmm_native.py']),
+    ('tsmm-alignment',[PYTHON,'scripts/validate_tsmm_alignment.py']),
     ('authority-envelopes',[PYTHON,'scripts/validate_authority_envelopes.py']),
     ('delegation-lineage',[PYTHON,'scripts/validate_delegation_lineage.py']),
     ('receipts',[PYTHON,'scripts/validate_receipts.py']),

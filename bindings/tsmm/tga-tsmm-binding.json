@@ -1,12 +1,19 @@
 {
-  "bindingId": "tga-tsmm-v0.21.0",
+  "bindingId": "tga-tsmm-v0.24.0",
   "bindingType": "interpretation-corpus",
   "sourceModel": "trust-systems-meta-model",
-  "sourceVersion": "v0.21.0",
+  "sourceVersion": "v0.24.0",
+  "sourceCommit": "e6f1f2920181968370722fb104be8d48fedd6efc",
+  "semanticRegistry": "model/semantic-concepts.json",
   "targetRepository": "trust-graph-artifacts",
-  "targetVersion": "v0.4.0",
-  "status": "experimental",
-  "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.21 runtime governance semantics while preserving essay provenance as a repository-specific extension.",
+  "targetVersion": "v0.12.1",
+  "status": "reviewed",
+  "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.24.0 canonical semantics while preserving essay provenance and implementation evidence as repository-specific surfaces.",
+  "authority": {
+    "semanticAuthority": "trust-systems-meta-model",
+    "implementationAuthority": "trust-graph-artifacts",
+    "portableContractAuthority": "trust-infrastructure-schemas"
+  },
   "owns": [
     "essay provenance",
     "package interpretation",
@@ -15,54 +22,76 @@
     "TGA-specific provenance extension fields"
   ],
   "doesNotOwn": [
-    "TSMM core semantics",
+    "TSMM canonical semantics",
+    "TSMM semantic identifiers",
     "generic decision receipt semantics",
-    "cross-repo executable artifact contracts",
+    "cross-repository executable artifact contracts",
     "TIS AL1-AL4 assurance semantics"
   ],
   "maps": [
     {
-      "tgaSurface": "package graph",
-      "tsmmConcept": "trust-system graph",
-      "notes": "TGA graph.json files are TSMM-native interpretations of essay-derived governance problems."
+      "tgaSurface": "authority and delegation controls",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:authority",
+        "urn:tsmm:concept:delegation",
+        "urn:tsmm:concept:scope"
+      ],
+      "notes": "TGA controls are package-local projections of TSMM authority origin, delegation, attenuation, scope, status, and revocation semantics."
+    },
+    {
+      "tgaSurface": "policy and runtime constraints",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:policy",
+        "urn:tsmm:concept:effect"
+      ],
+      "notes": "TGA constraints define implementation pressure while TSMM remains authoritative for policy and admitted-effect semantics."
+    },
+    {
+      "tgaSurface": "runtime evidence",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:evidence-artifact",
+        "urn:tsmm:concept:evidence-bundle",
+        "urn:tsmm:concept:assessment"
+      ],
+      "notes": "Essay provenance is design provenance; runtime evidence is represented using TSMM evidence and assessment semantics and may be serialized through TIS."
     },
     {
       "tgaSurface": "decision receipt",
-      "tsmmConcept": "runtime trust decision receipt",
-      "notes": "TGA extends the TSMM receipt core with sourceEssays and optional signature material."
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:trust-decision",
+        "urn:tsmm:concept:effect"
+      ],
+      "notes": "TGA receipt examples profile canonical TSMM decision/effect semantics and do not establish a competing decision model."
     },
     {
-      "tgaSurface": "runtime assurance package",
-      "tsmmConcept": "runtime governance envelope",
-      "notes": "TGA packages identify the actor, effect, boundary, authority basis, policy references, evidence references, status or revocation check, decision, and receipt expectation before effect admission."
+      "tgaSurface": "revocation and lifecycle controls",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:revocation",
+        "urn:tsmm:concept:supersession"
+      ],
+      "notes": "TGA temporal-governance artifacts apply TSMM lifecycle semantics to implementation and assurance cases."
     },
     {
-      "tgaSurface": "authority and delegation package controls",
-      "tsmmConcept": "authority graph",
-      "notes": "TGA controls are interpreted as package-local projections of TSMM authority origin, delegation edge, scope, status, and revocation semantics."
+      "tgaSurface": "contestability and remedy",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:redress"
+      ],
+      "notes": "TGA contestability patterns operationalize TSMM redress semantics without moving semantic authority into TGA."
     },
     {
-      "tgaSurface": "runtime task evidence",
-      "tsmmConcept": "task evidence lifecycle",
-      "notes": "TGA examples distinguish lifecycle state, decision outcome, and effect admission rather than collapsing them into a single success flag."
-    },
-    {
-      "tgaSurface": "sourceEssays",
-      "tsmmConcept": "provenance/evidence context",
-      "notes": "Essay provenance explains design motivation and must not be confused with runtime evidence."
-    },
-    {
-      "tgaSurface": "assuranceLevel",
-      "tsmmConcept": "profile posture",
-      "notes": "Values minimal, operational, assured, and agentic are posture labels, not TIS assurance levels."
+      "tgaSurface": "assurance posture",
+      "tsmmConceptIds": [
+        "urn:tsmm:concept:assurance-profile"
+      ],
+      "notes": "TGA posture labels are contextual. Executable assurance rigor remains governed by explicit portable assurance contracts such as TIS AL1-AL4."
     }
   ],
   "compatibleWith": [
-    "trust-systems-meta-model v0.21.0",
-    "trust-infrastructure-schemas v0.10.0 via TSMM/TIS runtime assurance projection"
+    "trust-systems-meta-model v0.24.0",
+    "trust-infrastructure-schemas v0.14.1"
   ],
   "validation": [
-    "python3 scripts/validate_tsmm_native.py",
-    "python3 scripts/validate_tis_alignment.py"
+    "python3 scripts/validate_tsmm_alignment.py",
+    "make validate"
   ]
 }
