@@ -3,7 +3,7 @@ project:
   name: trust-graph-artifacts
   maturity: implementation-draft
   lifecycle: active
-  operational_status: active-validation
+  operational_status: active-development
   specification_status: not-applicable
   intended_use:
     - executable-governance-incubation
