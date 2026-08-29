@@ -10,6 +10,7 @@ checks = [
     ('delegation-lineage',[PYTHON,'scripts/validate_delegation_lineage.py']),
     ('receipts',[PYTHON,'scripts/validate_receipts.py']),
     ('tis-alignment',[PYTHON,'scripts/validate_tis_alignment.py']),
+    ('tsms-golden-path',[PYTHON,'scripts/validate_tsms_golden_path.py']),
     ('assurance-cases',[PYTHON,'scripts/validate_assurance_cases.py']),
     ('publication-provenance',[PYTHON,'scripts/validate_publication_surfaces.py']),
     ('docs',[PYTHON,'scripts/validate_docs_site.py']),
