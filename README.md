@@ -20,6 +20,17 @@ The repository operates as an executable-governance incubation and implementatio
 
 TGA artifacts are therefore implementation and assurance inputs. They are not independent certification, canonical semantic definitions, or substitutes for the authority of external protocols, institutions, or legal regimes.
 
+## TGA in the Trust Systems Modelling Stack (TSMS)
+
+TGA is the **executable governance and implementation layer** of TSMS. The first stack-qualified golden path binds explicit TSMM concept identifiers to existing TIS portable contracts and produces machine-readable local conformance evidence.
+
+- [TSMS executable golden-path guide](docs/tsms.md)
+- Golden-path artifact: `examples/tsms/golden-path.json`
+- Validation: `python3 scripts/validate_tsms_golden_path.py`
+- Evidence: `artifacts/validation/tsms-golden-path.json`
+- Governing workstream: [#16](https://github.com/sankarshanmukhopadhyay/trust-graph-artifacts/issues/16)
+
+
 ## Current release posture
 
 The v0.6.0–v0.11.0 release train added six current artifact families:

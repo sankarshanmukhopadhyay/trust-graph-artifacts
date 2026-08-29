@@ -1,0 +1,33 @@
+{
+  "artifactId": "urn:tga:tsms:test:unknown-version",
+  "stackQualified": true,
+  "tgaVersion": "v0.12.1",
+  "semanticAuthority": {
+    "repository": "trust-systems-meta-model",
+    "version": "v999.0.0",
+    "conceptIds": [
+      "urn:tsmm:concept:authority",
+      "urn:tsmm:concept:delegation",
+      "urn:tsmm:concept:scope",
+      "urn:tsmm:concept:evidence-bundle",
+      "urn:tsmm:concept:trust-decision",
+      "urn:tsmm:concept:effect"
+    ]
+  },
+  "portableContractAuthority": {
+    "repository": "trust-infrastructure-schemas",
+    "version": "v0.14.1",
+    "contracts": [
+      "governance/authority-boundary.schema.json",
+      "evidence/evidence-bundle-manifest.schema.json",
+      "decision/decision-receipt.schema.json"
+    ]
+  },
+  "claim": "A delegated action is admissible only when authority, scope and evidence support a bounded trust decision and effect.",
+  "validationDisposition": "candidate-compatible",
+  "nonClaims": [
+    "external-certification",
+    "future-version-compatibility"
+  ],
+  "expectedDisposition": "unsupported"
+}

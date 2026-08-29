@@ -3,6 +3,8 @@ title: Adoption
 ---
 # Adoption
 
+If you are consuming TGA as part of the **Trust Systems Modelling Stack (TSMS)**, start with [`docs/tsms.md`]({% link docs/tsms.md %}) and run the stack-qualified golden path. It makes the TSMM semantic dependencies, TIS portable-contract dependencies, negative cases, validation command, and evidence surface explicit.
+
 ## First valid result
 
 1. Install the repository dependencies documented in the README.
