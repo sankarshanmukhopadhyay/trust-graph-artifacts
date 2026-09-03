@@ -1,7 +1,7 @@
 ---
 name: Engineering work
 about: Track a bounded implementation, validation, documentation, or assurance change
-title: ""
+title: "[Work] "
 labels: []
 assignees: []
 ---
