@@ -1,6 +1,6 @@
 ---
 name: Engineering work
-aabout: Track a bounded implementation, validation, documentation, or assurance change
+about: Track a bounded implementation, validation, documentation, or assurance change
 title: ""
 labels: []
 assignees: []
