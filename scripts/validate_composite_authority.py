@@ -5,7 +5,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / "artifacts" / "authority" / "composite_authority_invalidation.yaml"
+FIXTURE = ROOT / "validation" / "pressure-tests" / "composite_authority_invalidation.yaml"
 
 
 def evaluate(case: dict) -> tuple[str, str]:
