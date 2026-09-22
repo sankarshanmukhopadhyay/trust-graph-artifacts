@@ -19,6 +19,8 @@ This package converts the essay-derived governance pressure into a TSMM-native s
 - `control.authority-envelope-completeness` — Require technical actor, accountable controller, principal, mandate, scope, policy version, evidence reference, revocation state, and redress route.
 - `control.execution-time-revocation-check` — Check authority and mandate status at the moment the operational effect is requested.
 - `control.scope-bound-effect` — Deny or route actions whose requested effect exceeds the temporal, jurisdictional, transactional, or risk scope in the envelope.
+- `control.authority-at-commitment` — For material commitments, bind the exact action digest and evaluation time to current authority and all material constraint results.
+- `control.exact-action-approval` — When additional approval is required, require an approval artifact bound to the same action digest; missing approval escalates, mismatched or stale approval denies.
 - `control.redress-route-required` — Require a challenge, reversal, or remediation route for consequential actions.
 
 ## Required evidence fields
@@ -32,6 +34,7 @@ This package converts the essay-derived governance pressure into a TSMM-native s
 - `revocation_state`
 - `decision_receipt`
 - `redress_route`
+- material commitments additionally require `commitment.actionDigest`, `commitment.evaluatedAt`, constraint results, and exact-action approval evidence when policy requires approval
 
 ## Threat model
 
