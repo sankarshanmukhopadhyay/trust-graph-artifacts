@@ -22,7 +22,7 @@ REQUIRED_ENVELOPE_FIELDS = {
     "scopeBoundary", "policyVersion", "evidenceRefs", "revocationStateChecked",
     "decisionReceiptRef", "redressRoute", "executionContext",
 }
-NON_CURRENT_STATES = {"suspended", "revoked", "expired", "stale", "orphaned", "unknown"}
+NON_CURRENT_STATES = {"suspended", "revoked", "expired", "stale", "orphaned", "unknown", "unavailable"}
 errors: list[str] = []
 
 
@@ -51,8 +51,34 @@ def evaluate_envelope(envelope: dict) -> str:
         return "deny"
     if rev.get("cacheAgeSeconds", 10**9) > rev.get("maxCacheAgeSeconds", -1):
         return "deny"
-    if envelope.get("executionContext", {}).get("highConsequence") and not envelope.get("redressRoute", {}).get("humanReviewAvailable"):
+    context = envelope.get("executionContext", {})
+    if context.get("highConsequence") and not envelope.get("redressRoute", {}).get("humanReviewAvailable"):
         return "escalate"
+
+    # Material commitments require exact-action authority evidence at the transition boundary.
+    if context.get("materialCommitment"):
+        commitment = envelope.get("commitment")
+        if not isinstance(commitment, dict):
+            return "deny"
+        action_digest = commitment.get("actionDigest")
+        evaluated_at = commitment.get("evaluatedAt")
+        if not action_digest or not evaluated_at:
+            return "deny"
+        constraints = commitment.get("constraintResults", {})
+        if any(result != "satisfied" for result in constraints.values()):
+            return "deny"
+
+        approval_required = bool(commitment.get("approvalRequired"))
+        approval = commitment.get("approval")
+        if approval_required:
+            if not isinstance(approval, dict):
+                return "escalate"
+            if approval.get("actionDigest") != action_digest:
+                return "deny"
+            valid_until = approval.get("validUntil")
+            if valid_until and parse_z(valid_until) < parse_z(evaluated_at):
+                return "deny"
+
     return "allow"
 
 

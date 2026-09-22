@@ -80,3 +80,138 @@ cases:
     executionContext:
       requestedEffect: route-benefits-application
       highConsequence: true
+
+- id: AE-COMMIT-VALID-001
+  description: Material commitment has active authority, satisfied constraints, and exact-action evidence.
+  expectedDecision: allow
+  envelope:
+    technicalActorRef: agent.procurement.commit.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.commit.2026-09
+    scopeBoundary:
+      purpose: [procurement-commitment]
+    policyVersion: procurement-policy@2026.09
+    evidenceRefs: [evidence.commitment-authority.current]
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 5
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:commit-valid
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: procurement-commit
+      highConsequence: true
+      materialCommitment: true
+    commitment:
+      actionDigest: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      evaluatedAt: '2026-09-22T12:00:00Z'
+      constraintResults:
+        scope: satisfied
+        amount_limit: satisfied
+      approvalRequired: false
+
+- id: AE-COMMIT-DENY-SCOPE-001
+  description: Material commitment exceeds a mandate constraint and must not execute.
+  expectedDecision: deny
+  envelope:
+    technicalActorRef: agent.procurement.commit.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.commit.2026-09
+    scopeBoundary:
+      purpose: [procurement-commitment]
+    policyVersion: procurement-policy@2026.09
+    evidenceRefs: [evidence.commitment-authority.current]
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 5
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:commit-scope-deny
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: procurement-commit
+      highConsequence: true
+      materialCommitment: true
+    commitment:
+      actionDigest: sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+      evaluatedAt: '2026-09-22T12:00:00Z'
+      constraintResults:
+        scope: satisfied
+        amount_limit: failed
+      approvalRequired: false
+
+- id: AE-COMMIT-ESCALATE-MISSING-APPROVAL-001
+  description: A material commitment requiring approval pauses at the authority boundary when approval is absent.
+  expectedDecision: escalate
+  envelope:
+    technicalActorRef: agent.procurement.commit.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.commit.2026-09
+    scopeBoundary:
+      purpose: [procurement-commitment]
+    policyVersion: procurement-policy@2026.09
+    evidenceRefs: [evidence.commitment-authority.current]
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 5
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:commit-needs-approval
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: procurement-commit
+      highConsequence: true
+      materialCommitment: true
+    commitment:
+      actionDigest: sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+      evaluatedAt: '2026-09-22T12:00:00Z'
+      constraintResults:
+        scope: satisfied
+        amount_limit: satisfied
+      approvalRequired: true
+
+- id: AE-COMMIT-DENY-WRONG-APPROVAL-001
+  description: Approval exists but is bound to a different action and cannot authorize the material commitment.
+  expectedDecision: deny
+  envelope:
+    technicalActorRef: agent.procurement.commit.v1
+    accountableControllerRef: org.example.procurement-office
+    principalRef: org.example.buying-entity
+    mandateRef: mandate.procurement.commit.2026-09
+    scopeBoundary:
+      purpose: [procurement-commitment]
+    policyVersion: procurement-policy@2026.09
+    evidenceRefs: [evidence.commitment-authority.current]
+    revocationStateChecked:
+      checked: true
+      authorityState: active
+      cacheAgeSeconds: 5
+      maxCacheAgeSeconds: 60
+    decisionReceiptRef: urn:tga:receipt:decision:commit-wrong-approval
+    redressRoute:
+      routeRef: redress.procurement.review-board
+      humanReviewAvailable: true
+    executionContext:
+      requestedEffect: procurement-commit
+      highConsequence: true
+      materialCommitment: true
+    commitment:
+      actionDigest: sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+      evaluatedAt: '2026-09-22T12:00:00Z'
+      constraintResults:
+        scope: satisfied
+        amount_limit: satisfied
+      approvalRequired: true
+      approval:
+        actionDigest: sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        validUntil: '2026-09-22T13:00:00Z'
