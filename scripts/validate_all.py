@@ -7,6 +7,7 @@ checks = [
     ('tsmm-alignment',[PYTHON,'scripts/validate_tsmm_alignment.py']),
     ('arpa-alignment',[PYTHON,'scripts/validate_arpa_alignment.py']),
     ('authority-envelopes',[PYTHON,'scripts/validate_authority_envelopes.py']),
+    ('composite-authority',[PYTHON,'scripts/validate_composite_authority.py']),
     ('delegation-lineage',[PYTHON,'scripts/validate_delegation_lineage.py']),
     ('receipts',[PYTHON,'scripts/validate_receipts.py']),
     ('tis-alignment',[PYTHON,'scripts/validate_tis_alignment.py']),
