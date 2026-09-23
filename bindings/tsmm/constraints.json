@@ -1,6 +1,6 @@
 {
-  "bindingId": "tga-tsmm-v0.24.0",
-  "version": "0.12.1",
+  "bindingId": "tga-tsmm-v0.25.0",
+  "version": "0.13.0",
   "constraints": [
     {
       "id": "tga-tsmm-boundary-001",
@@ -10,7 +10,7 @@
     {
       "id": "tga-tsmm-boundary-002",
       "level": "MUST",
-      "statement": "Active TGA semantic mappings MUST use stable TSMM semantic identifiers from the v0.24.0 semantic concept registry when such identifiers exist."
+      "statement": "Active TGA semantic mappings MUST use stable TSMM semantic identifiers from the v0.25.0 semantic concept registry when such identifiers exist."
     },
     {
       "id": "tga-tsmm-boundary-003",
