@@ -1,7 +1,7 @@
 ---
 owner: maintainers
-last_reviewed: 2026-08-22
-applicable_version: v0.12.1
+last_reviewed: 2026-09-23
+applicable_version: v0.13.0
 title: TSMM Binding
 layout: default
 parent: TSMM alignment
@@ -24,7 +24,7 @@ bindings/tsmm/constraints.json
 
 ## Binding purpose
 
-Trust Graph Artifacts is an interpretation and assurance corpus aligned to **TSMM v0.24.0**. The alignment direction is deliberately asymmetric:
+Trust Graph Artifacts is an interpretation and assurance corpus aligned to **TSMM v0.25.0**. The alignment direction is deliberately asymmetric:
 
 - **TSMM owns canonical trust-system semantics and stable semantic identifiers.**
 - **TGA consumes and profiles those semantics into essay-derived implementation, governance, and assurance artifacts.**
@@ -34,7 +34,7 @@ TGA does not create a semantic dependency from TSMM back to TGA.
 
 ## Stable semantic identifiers
 
-Active TGA mappings use TSMM v0.24.0 identifiers such as:
+Active TGA mappings use TSMM v0.25.0 identifiers such as:
 
 ```text
 urn:tsmm:concept:authority
@@ -49,7 +49,7 @@ urn:tsmm:concept:assurance-profile
 urn:tsmm:concept:redress
 ```
 
-The binding pins the TSMM source commit used for the current alignment review while treating the released v0.24.0 semantic registry, rather than a copied local vocabulary, as semantic authority.
+The binding pins the TSMM source commit used for the current alignment review while treating the released v0.25.0 semantic registry, rather than a copied local vocabulary, as semantic authority.
 
 ## Runtime assurance projection
 
@@ -63,9 +63,9 @@ bindings/tis/constraints.json
 The current compatibility baseline is:
 
 ```text
-TGA  v0.12.1
-TSMM v0.24.0
-TIS  v0.14.1
+TGA  v0.13.0
+TSMM v0.25.0
+TIS  v0.15.0
 ```
 
 ## Validation
