@@ -1,5 +1,5 @@
 schema_version: "1.0"
-release: "0.12.1"
+release: "0.13.0"
 entries:
   - essay: Why Reputation Economies Fail Without Provenance
     artifact: ttg-artifact-provenance-backed-reputation
