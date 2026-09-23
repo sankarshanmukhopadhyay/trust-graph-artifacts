@@ -1,9 +1,9 @@
 schema_version: "1.0"
-release: "0.12.1"
+release: "0.13.0"
 authority:
   source_pressure: The Trust Graph
-  semantic_authority: trust-systems-meta-model@v0.24.0
-  portable_contract_authority: trust-infrastructure-schemas@v0.14.1
+  semantic_authority: trust-systems-meta-model@v0.25.0
+  portable_contract_authority: trust-infrastructure-schemas@v0.15.0
 mappings:
   - artifact: artifacts/provenance-backed-reputation/artifact.yaml
     source_url: https://thetrustgraph.substack.com/p/why-reputation-economies-fail-without
