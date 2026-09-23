@@ -5,71 +5,87 @@ title: TSMS executable golden path
 
 TGA is the **executable governance and implementation layer** of TSMS.
 
-The first stack-qualified golden path is `examples/tsms/golden-path.json`. It makes the dependency chain inspectable:
+The original stack-qualified golden path remains `examples/tsms/golden-path.json`. It makes the dependency chain inspectable:
 
 ```text
 TSMM canonical concepts
-  authority · delegation · scope · evidence · decision · effect
         ↓
 TIS portable contracts
-  authority boundary · evidence bundle · decision receipt
         ↓
-TGA executable artifact
-  delegated-authority decision
+TGA executable governance
         ↓
-make validate
-        ↓
-artifacts/validation/tsms-golden-path.json
+positive and negative execution evidence
 ```
 
-## First evidence-backed stack release
+## Historical accepted baseline
 
-TGA `v0.12.1` participates in **`tsms-stack-2026.1 — Cashew-Nut`** through the accepted immutable TSMS baseline:
+The immutable first stack release remains **`tsms-stack-2026.1 — Cashew-Nut`** at its exact accepted commits:
 
-- TSMM `v0.24.0` — commit `2867010121e8a61971184d8fe7d3306b985e5884`
-- TIS `v0.14.1` — commit `d25539932181e6d883f5bec261daaf011f740059`
-- TGA `v0.12.1` — commit `f0bdc309a691a7be8dca3b48fed8ac1555219bec`
+- TSMM `v0.24.0` — `2867010121e8a61971184d8fe7d3306b985e5884`
+- TIS `v0.14.1` — `d25539932181e6d883f5bec261daaf011f740059`
+- TGA `v0.12.1` — `f0bdc309a691a7be8dca3b48fed8ac1555219bec`
 
-The stack release coordinates evidence through TSMM. It does not transfer TGA's authority over executable governance compositions.
+TGA v0.13.0 does not retroactively alter that receipt.
 
-Complete-stack adopters should start with the TSMS adopter guide:
+## v0.13.0 executable authority posture
 
-https://sankarshanmukhopadhyay.github.io/trust-systems-meta-model/tsms-adopter-guide.html
+The current TGA release consumes:
 
-## What “stack-qualified” means
+- **TSMM v0.25.0** as canonical semantic authority;
+- **TIS v0.15.0** as portable-contract authority.
+
+It adds executable evidence for two post-2026.1 propositions.
+
+### Authority at material commitment
+
+A material action is permitted only when current action-specific authority supports the exact attempted transition. Deterministic negative cases reject:
+
+- valid identity with absent commitment authority;
+- valid signature with insufficient or out-of-scope authority;
+- expired or revoked authority;
+- missing required approval evidence;
+- reputation or runtime success used to expand mandate authority.
+
+### Composite-authority lifecycle invalidation
+
+Executable cases distinguish a collective authority principal from participating controllers and reject stale authority evidence after material governance change, including:
+
+- member added or removed;
+- threshold changed;
+- exercise rule changed;
+- collective authority suspended or revoked.
+
+Historical verification can remain available where the governing semantics permit it, but historical validity does not imply current authorization.
+
+## Stack qualification
 
 A TGA artifact may claim `stackQualified: true` only when it:
 
-1. declares the exact TSMM semantic authority version and concept identifiers it uses;
-2. declares the exact TIS contract authority version and portable contract paths it uses;
-3. declares its TGA version;
-4. survives both positive and negative conformance cases;
-5. does not imply external certification or compatibility with unreviewed future versions.
+1. identifies the TSMM semantic authority and concepts actually consumed;
+2. identifies the TIS contracts actually consumed;
+3. identifies its TGA version and executable artifact identity;
+4. survives positive and meaningful negative cases;
+5. treats unknown or incompatible semantic/contract state as non-success;
+6. does not imply external certification or compatibility with unreviewed future versions.
 
-Cross-repository TSMS compatibility is additionally governed by the accepted baseline and drift evidence. A green local TGA validation does not override `REVIEW_REQUIRED`, `UNSUPPORTED`, or `INDETERMINATE` at stack level.
+A green local TGA gate cannot override `REVIEW_REQUIRED`, `UNSUPPORTED`, or `INDETERMINATE` at stack level.
 
 ## Run it
 
 ```bash
-python3 scripts/validate_tsms_golden_path.py
-```
-
-or run the complete repository gate:
-
-```bash
 make validate
 ```
 
-## Falsification cases
+The canonical gate includes the TSMS golden path, authority-at-commitment execution, composite-authority lifecycle pressure tests, documentation integrity and publication/provenance checks.
 
-The validator includes three boundary cases:
+## Successor stack relationship
 
-- a nonexistent TSMM concept → `reject`;
-- a nonexistent TIS contract → `reject`;
-- an unknown TSMM version → `unsupported`.
+TGA v0.13.0 is an independently versioned component input to the separately governed TSMS Stack 2026.2 renewal. The successor stack becomes accepted only when TSMM records exact component commits in a new immutable receipt, executes the cross-stack release gate, and records explicit human acceptance.
 
-This is intentionally stronger than “the JSON parses.” It tests the claim that the artifact is bound to known semantic and portable-contract authorities.
+Complete-stack adopters should use:
+
+https://qbf-consulting.github.io/trust-systems-meta-model/tsms-adopter-guide.html
 
 ## Non-claims
 
-A passing result is repository conformance evidence. It is not external certification, does not establish that remote repositories are unchanged, and does not transfer TSMM semantic or TIS portable-contract authority into TGA.
+A passing TGA result is repository conformance evidence. It is not external certification, does not establish principal authority absent from the governed system, does not prove remote repositories are unchanged, and does not transfer TSMM semantic or TIS portable-contract authority into TGA.
