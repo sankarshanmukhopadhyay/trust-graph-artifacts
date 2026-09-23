@@ -9,7 +9,7 @@ permalink: /docs/
 
 <p class="tga-lede">Navigate Trust Graph Artifacts by the question you are trying to answer, not by the repository directory tree.</p>
 
-**Current compatibility baseline:** TGA **v0.12.1**, TSMM **v0.24.0** as canonical semantic authority, and TIS **v0.14.1** as portable-contract authority.
+**Current compatibility baseline:** TGA **v0.13.0**, TSMM **v0.25.0** as canonical semantic authority, and TIS **v0.15.0** as portable-contract authority.
 
 ## Four reader journeys
 
@@ -80,7 +80,7 @@ Key references:
 - [Portfolio alignment]({% link docs/crosswalks/tga-portfolio-alignment.md %})
 
 {: .governance }
-> **Authority boundary:** historical release documents can cite older TSMM/TIS baselines. They are evidence of their release state, not current semantic authority. The active compatibility baseline is TSMM v0.24.0 / TIS v0.14.1.
+> **Authority boundary:** historical release documents can cite older TSMM/TIS baselines. They are evidence of their release state, not current semantic authority. The active component authority baseline for TGA v0.13.0 is TSMM v0.25.0 / TIS v0.15.0; accepted cross-stack compatibility remains receipt-specific.
 
 ## Provenance and machine-readable discovery
 
