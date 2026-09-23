@@ -91,7 +91,7 @@ for entry in releases:
 readme = (ROOT / 'README.md').read_text(encoding='utf-8')
 docs_index = (ROOT / 'docs/index.md').read_text(encoding='utf-8')
 for surface, text in [('README.md', readme), ('docs/index.md', docs_index)]:
-    for marker in (f'v{version}', 'TSMM v0.24.0', 'TIS v0.14.1'):
+    for marker in (f'v{version}', 'TSMM v0.25.0', 'TIS v0.15.0'):
         if marker not in text:
             errors.append(f'{surface}: missing current publication marker {marker!r}')
 

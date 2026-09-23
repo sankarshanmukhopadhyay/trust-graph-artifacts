@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_DIRS = ["profiles", "patterns", "overlays", "systems", "evidence"]
-EXPECTED_TIS_VERSION = "v0.14.1"
-EXPECTED_TSMM_VERSION = "v0.24.0"
+EXPECTED_TIS_VERSION = "v0.15.0"
+EXPECTED_TSMM_VERSION = "v0.25.0"
 REQUIRED_TIS_PROJECTION = {
     "authorityBoundary": "governance/authority-boundary.schema.json",
     "evidenceBundle": "evidence/evidence-bundle-manifest.schema.json",

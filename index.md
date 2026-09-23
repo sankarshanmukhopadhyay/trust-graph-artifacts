@@ -11,7 +11,7 @@ permalink: /
 
 <div class="tga-release-strip" role="note">
   <strong>Current baseline</strong><br>
-  TGA v0.12.1 · TSMM v0.24.0 semantic authority · TIS v0.14.1 portable-contract authority
+  TGA v0.13.0 · TSMM v0.25.0 semantic authority · TIS v0.15.0 portable-contract authority
 </div>
 
 Trust Graph Artifacts turns high-signal governance arguments from *The Trust Graph* into reusable, testable trust-system artifacts. The authority boundary is deliberate: **essays create design pressure; TSMM defines canonical semantics; TIS defines portable assurance contracts; TGA packages the implementation and evidence patterns.**

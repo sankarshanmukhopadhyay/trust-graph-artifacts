@@ -95,3 +95,10 @@ releases:
     validation_evidence: github-actions-run-47-and-artifacts-validation-latest-json
     tag_status: pending-publication
     github_release_status: pending-publication
+
+  - version: "0.13.0"
+    merge_commit: pending-pr-merge
+    release_notes: docs/release-notes/v0.13.0.md
+    validation_evidence: pull-request-and-main-canonical-validation-required
+    tag_status: pending-publication
+    github_release_status: pending-publication

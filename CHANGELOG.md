@@ -2,6 +2,27 @@
 
 All notable versioned changes to Trust Graph Artifacts are recorded here. Detailed release evidence is maintained under `docs/release-notes/`, while release commit/tag/publication state is tracked in `governance/release-publication-ledger.yaml`.
 
+## [0.13.0] - 2026-09-23
+
+### Action-specific authority
+
+- Added executable authority-at-material-commitment enforcement that binds the attempted action to current authority, scope, lifecycle state, required approvals and evaluation time.
+- Added negative execution cases proving that identity, signature, reputation, or prior runtime success cannot expand authority.
+- Preserved separation between authority verification, runtime admission, business selection, settlement and reputation.
+
+### Collective-authority lifecycle
+
+- Added deterministic composite-authority invalidation and reassessment execution.
+- Rejects stale membership evidence after member change and stale threshold/exercise-rule evidence after material rule change.
+- Preserves historical verification where governance permits it without promoting historical evidence to current authorization.
+- Keeps threshold-cryptosystem details outside TGA's authority boundary.
+
+### TSMS and authority boundaries
+
+- Aligns executable consumption with TSMM v0.25.0 canonical semantics and TIS v0.15.0 portable contracts.
+- Preserves TGA as the executable-governance and implementation layer; local green execution cannot override unknown or incompatible semantic/contract state.
+- Prepares exact executable evidence for the separately governed TSMS Stack 2026.2 successor baseline.
+
 ## [0.12.1] - 2026-08-20
 
 ### Changed

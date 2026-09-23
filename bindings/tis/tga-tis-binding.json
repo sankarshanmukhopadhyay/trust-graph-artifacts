@@ -1,16 +1,16 @@
 {
-  "bindingId": "tga-tis-v0.14.1",
+  "bindingId": "tga-tis-v0.15.0",
   "bindingType": "runtime-assurance-projection",
   "sourceRepository": "trust-graph-artifacts",
-  "sourceVersion": "v0.12.1",
+  "sourceVersion": "v0.13.0",
   "targetRepository": "trust-infrastructure-schemas",
-  "targetVersion": "v0.14.1",
+  "targetVersion": "v0.15.0",
   "semanticAuthority": {
     "repository": "trust-systems-meta-model",
-    "version": "v0.24.0"
+    "version": "v0.25.0"
   },
   "status": "reviewed",
-  "role": "TGA packages preserve Trust Graph essay-derived governance pressure and project runtime assurance surfaces into TIS v0.14.1 executable artifact contracts when external validation, registry publication, or assurance review is required.",
+  "role": "TGA packages preserve Trust Graph essay-derived governance pressure and project runtime assurance surfaces into TIS v0.15.0 executable artifact contracts when external validation, registry publication, or assurance review is required.",
   "owns": [
     "essay-derived governance pattern corpus",
     "package interpretation",
@@ -58,8 +58,8 @@
     }
   ],
   "compatibleWith": [
-    "trust-systems-meta-model v0.24.0",
-    "trust-infrastructure-schemas v0.14.1"
+    "trust-systems-meta-model v0.25.0",
+    "trust-infrastructure-schemas v0.15.0"
   ],
   "validation": [
     "make validate",

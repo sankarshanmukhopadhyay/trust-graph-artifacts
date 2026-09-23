@@ -2,10 +2,10 @@
 
 > **Flagship repository**  
 > **Role:** `executable-governance-and-implementation-layer`  
-> **Current version:** `0.12.1`  
+> **Current version:** `0.13.0`  
 > **Canonical validation:** `make validate`  
-> **Semantic authority:** `trust-systems-meta-model@v0.24.0`  
-> **Portable contract authority:** `trust-infrastructure-schemas@v0.14.1`
+> **Semantic authority:** `trust-systems-meta-model@v0.25.0`  
+> **Portable contract authority:** `trust-infrastructure-schemas@v0.15.0`
 
 **Trust Graph Artifacts (TGA) converts high-signal governance arguments from The Trust Graph into machine-readable, testable trust-system artifacts without taking semantic authority away from TSMM or portable-schema authority away from TIS.**
 
@@ -14,8 +14,8 @@
 The repository operates as an executable-governance incubation and implementation layer:
 
 - **The Trust Graph** provides source arguments, failure modes, and design pressure.
-- **TSMM v0.24.0** is the canonical semantic authority for subjects, agents, authority, policy, evidence, assessment, trust decisions, effects, delegation, lifecycle, and related trust-system concepts.
-- **TIS v0.14.1** is the portable artifact-contract authority for authority boundaries, evidence bundles, evaluation envelopes, decision receipts, registry records, and other interoperable assurance artifacts.
+- **TSMM v0.25.0** is the canonical semantic authority for subjects, agents, authority, policy, evidence, assessment, trust decisions, effects, delegation, lifecycle, and related trust-system concepts.
+- **TIS v0.15.0** is the portable artifact-contract authority for authority boundaries, evidence bundles, evaluation envelopes, decision receipts, registry records, and other interoperable assurance artifacts.
 - **TGA** owns project-local governance patterns, system compositions, mappings, examples, provenance, and negative-assurance tests.
 
 TGA artifacts are therefore implementation and assurance inputs. They are not independent certification, canonical semantic definitions, or substitutes for the authority of external protocols, institutions, or legal regimes.
@@ -44,7 +44,7 @@ The v0.6.0–v0.11.0 release train added six current artifact families:
 | v0.10.0 | `issuer-incentive-inversion` | issuer-level correction, revocation, redress and institutional legibility |
 | v0.11.0 | `autonomy-native-institution` | mandate, runtime authority, delegation, accreditation, contestability and redress composition |
 
-v0.12.0 consolidated repository assurance and repaired validation/build drift. v0.12.1 aligns the public documentation, source catalog, provenance and crosswalk surfaces with that executable baseline.
+v0.12.0 consolidated repository assurance and repaired validation/build drift. v0.12.1 aligned publication and provenance surfaces. **v0.13.0** adds action-specific authority enforcement and collective-authority lifecycle invalidation, with deterministic negative execution cases that distinguish historical validity from current authorization.
 
 ## Start here
 
