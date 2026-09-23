@@ -97,8 +97,8 @@ releases:
     github_release_status: pending-publication
 
   - version: "0.13.0"
-    merge_commit: pending-pr-merge
+    merge_commit: 457fc18a4be90f439d64f96c5a4d6c8cce237404
     release_notes: docs/release-notes/v0.13.0.md
-    validation_evidence: pull-request-and-main-canonical-validation-required
-    tag_status: pending-publication
-    github_release_status: pending-publication
+    validation_evidence: github-actions-run-35822358611-and-artifacts-validation-latest-json
+    tag_status: published
+    github_release_status: published
