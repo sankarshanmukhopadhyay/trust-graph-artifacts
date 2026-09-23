@@ -16,9 +16,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 errors: list[str] = []
 
 TGA_VERSION = "v" + (ROOT / "VERSION").read_text().strip()
-EXPECTED_TSMM_VERSION = "v0.24.0"
-EXPECTED_TIS_VERSION = "v0.14.1"
-EXPECTED_BINDING_ID = "tga-tsmm-v0.24.0"
+EXPECTED_TSMM_VERSION = "v0.25.0"
+EXPECTED_TIS_VERSION = "v0.15.0"
+EXPECTED_BINDING_ID = "tga-tsmm-v0.25.0"
 EXPECTED_CONCEPTS = {
     "urn:tsmm:concept:authority",
     "urn:tsmm:concept:delegation",
@@ -51,7 +51,7 @@ if binding.get("sourceVersion") != EXPECTED_TSMM_VERSION:
 if binding.get("targetVersion") != TGA_VERSION:
     errors.append(f"TSMM targetVersion {binding.get('targetVersion')} does not match VERSION {TGA_VERSION}")
 if binding.get("semanticRegistry") != "model/semantic-concepts.json":
-    errors.append("TSMM semanticRegistry must identify the v0.24.0 canonical semantic registry path")
+    errors.append("TSMM semanticRegistry must identify the active canonical semantic registry path")
 if not binding.get("sourceCommit"):
     errors.append("TSMM binding must pin the reviewed source commit")
 
