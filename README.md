@@ -2,10 +2,10 @@
 
 > **Flagship repository**  
 > **Role:** `executable-governance-and-implementation-layer`  
-> **Current version:** `0.13.0`  
+> **Current version:** `0.14.0`  
 > **Canonical validation:** `make validate`  
-> **Semantic authority:** `trust-systems-meta-model@v0.25.0`  
-> **Portable contract authority:** `trust-infrastructure-schemas@v0.15.0`
+> **Semantic authority:** `trust-systems-meta-model@v0.26.0` (decision-resolution consumer); historical golden path remains v0.25.0  
+> **Portable contract authority:** `trust-infrastructure-schemas@v0.16.0` (decision-resolution consumer); historical golden path remains v0.15.0
 
 **Trust Graph Artifacts (TGA) converts high-signal governance arguments from The Trust Graph into machine-readable, testable trust-system artifacts without taking semantic authority away from TSMM or portable-schema authority away from TIS.**
 
@@ -45,6 +45,8 @@ The v0.6.0–v0.11.0 release train added six current artifact families:
 | v0.11.0 | `autonomy-native-institution` | mandate, runtime authority, delegation, accreditation, contestability and redress composition |
 
 v0.12.0 consolidated repository assurance and repaired validation/build drift. v0.12.1 aligned publication and provenance surfaces. **v0.13.0** adds action-specific authority enforcement and collective-authority lifecycle invalidation, with deterministic negative execution cases that distinguish historical validity from current authorization.
+
+**v0.14.0** adds a decision-resolution consumer for TSMM v0.26.0 / TIS v0.16.0. It distinguishes admissible material resolution from unsupported or unresolved states and is validated by canonical `make validate`. See [Decision-resolution consumer](docs/tsms-decision-resolution-consumer.md). This does not retroactively revise the historic TSMS baseline or authorize a material effect.
 
 ## Start here
 
