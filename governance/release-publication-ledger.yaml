@@ -104,8 +104,8 @@ releases:
     github_release_status: published
 
   - version: "0.14.0"
-    merge_commit: pending-pr-merge
+    merge_commit: 69692732f61a9f0426ed4a901a4f2702be139593
     release_notes: docs/release-notes/v0.14.0.md
-    validation_evidence: pending-pr-validation
-    tag_status: pending-publication
-    github_release_status: pending-publication
+    validation_evidence: github-actions-run-43362094612-and-artifacts-validation-latest-json
+    tag_status: published
+    github_release_status: published
