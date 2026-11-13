@@ -1,0 +1,52 @@
+{
+  "resolved": {
+    "event_id": "dre-tga-001",
+    "observed_at": "2026-09-28T02:00:00Z",
+    "condition": {
+      "condition_id": "c-release-001",
+      "proposition": "External release authority is required while classification is RESTRICTED.",
+      "state": "resolved",
+      "established_at": "2026-09-28T01:55:00Z",
+      "resolved_at": "2026-09-28T02:00:00Z"
+    },
+    "previous_decision_ref": "urn:decision:deny:001",
+    "current_decision_ref": "urn:decision:permit:002",
+    "transition_basis": {
+      "primary_category": "evidence_change",
+      "changed_dimensions": [
+        "evidence",
+        "proposition"
+      ],
+      "authority_changed": false,
+      "evidence_refs": [
+        "https://example.org/evidence/reclassification-42"
+      ],
+      "rationale": "Authoritative evidence establishes PUBLIC classification before transmission."
+    },
+    "provenance": {
+      "producer": "example-policy-engine",
+      "semantic_profile": "TSMM decision-resolution semantics"
+    }
+  },
+  "unresolved": {
+    "event_id": "dre-tga-002",
+    "observed_at": "2026-09-28T02:01:00Z",
+    "condition": {
+      "condition_id": "c-release-002",
+      "proposition": "Required scoped authority has not been established for external release.",
+      "state": "unresolved",
+      "established_at": "2026-09-28T02:00:00Z"
+    },
+    "transition_basis": {
+      "primary_category": "none",
+      "changed_dimensions": [],
+      "authority_changed": false,
+      "evidence_refs": [],
+      "rationale": "A peer instruction does not change authority, evidence, policy, or lifecycle state."
+    },
+    "provenance": {
+      "producer": "example-policy-engine",
+      "semantic_profile": "TSMM decision-resolution semantics"
+    }
+  }
+}
