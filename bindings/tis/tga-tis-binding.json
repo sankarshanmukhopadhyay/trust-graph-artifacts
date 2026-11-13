@@ -2,7 +2,7 @@
   "bindingId": "tga-tis-v0.15.0",
   "bindingType": "runtime-assurance-projection",
   "sourceRepository": "trust-graph-artifacts",
-  "sourceVersion": "v0.13.0",
+  "sourceVersion": "v0.14.0",
   "targetRepository": "trust-infrastructure-schemas",
   "targetVersion": "v0.15.0",
   "semanticAuthority": {

@@ -1,5 +1,5 @@
 schema_version: "1.0"
-release: "0.13.0"
+release: "0.14.0"
 authority:
   source_pressure: The Trust Graph
   semantic_authority: trust-systems-meta-model@v0.25.0

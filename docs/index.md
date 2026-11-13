@@ -9,7 +9,7 @@ permalink: /docs/
 
 <p class="tga-lede">Navigate Trust Graph Artifacts by the question you are trying to answer, not by the repository directory tree.</p>
 
-**Current compatibility baseline:** TGA **v0.13.0**, TSMM **v0.25.0** as canonical semantic authority, and TIS **v0.15.0** as portable-contract authority.
+**Current release:** TGA **v0.14.0**. Existing packages retain reviewed TSMM **v0.25.0** / TIS **v0.15.0** bindings; the decision-resolution consumer separately targets TSMM **v0.26.0** / TIS **v0.16.0**. The accepted TSMS 2026.2 baseline remains unchanged.
 
 ## Four reader journeys
 

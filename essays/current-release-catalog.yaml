@@ -1,5 +1,5 @@
 schema_version: "1.0"
-release: "0.13.0"
+release: "0.14.0"
 semantic_authority: trust-systems-meta-model@v0.25.0
 portable_contract_authority: trust-infrastructure-schemas@v0.15.0
 entries:

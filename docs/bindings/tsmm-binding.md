@@ -1,7 +1,7 @@
 ---
 owner: maintainers
-last_reviewed: 2026-09-23
-applicable_version: v0.13.0
+last_reviewed: 2026-11-13
+applicable_version: v0.14.0
 title: TSMM Binding
 layout: default
 parent: TSMM alignment
@@ -63,10 +63,12 @@ bindings/tis/constraints.json
 The current compatibility baseline is:
 
 ```text
-TGA  v0.13.0
+TGA  v0.14.0
 TSMM v0.25.0
 TIS  v0.15.0
 ```
+
+Existing package-wide TSMM v0.25.0 and TIS v0.15.0 bindings remain historical. TGA v0.14.0 has an independently validated TSMM v0.26.0 / TIS v0.16.0 decision-resolution consumer, not an automatic upgrade of other packages.
 
 ## Validation
 
