@@ -6,7 +6,7 @@
   "sourceCommit": "a673971d7a3e10cff5ceb679738de4ce5bce6857",
   "semanticRegistry": "model/semantic-concepts.json",
   "targetRepository": "trust-graph-artifacts",
-  "targetVersion": "v0.13.0",
+  "targetVersion": "v0.14.0",
   "status": "reviewed",
   "role": "TGA packages express Trust Graph-derived governance patterns using TSMM v0.25.0 canonical semantics while preserving essay provenance and implementation evidence as repository-specific surfaces.",
   "authority": {

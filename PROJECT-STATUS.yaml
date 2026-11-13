@@ -48,7 +48,7 @@ evidence:
     - project-local evidence is not independent certification
     - Git tag and GitHub Release publication status is tracked separately from merged release metadata
 release:
-  current_version: 0.13.0
+  current_version: 0.14.0
 dependencies:
   - repository: trust-systems-meta-model
     role: canonical-semantic-model
@@ -57,4 +57,4 @@ dependencies:
     role: portable-schema-contracts
     compatibility: v0.15.0 reviewed component authority
 review:
-  last_review: "2026-09-23"
+  last_review: "2026-11-13"
