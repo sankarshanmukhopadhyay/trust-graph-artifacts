@@ -89,3 +89,7 @@ https://qbf-consulting.github.io/trust-systems-meta-model/tsms-adopter-guide.htm
 ## Non-claims
 
 A passing TGA result is repository conformance evidence. It is not external certification, does not establish principal authority absent from the governed system, does not prove remote repositories are unchanged, and does not transfer TSMM semantic or TIS portable-contract authority into TGA.
+
+## v0.14.0 decision-resolution consumer
+
+The new independently validated consumer in `scripts/validate_decision_resolution_consumer.py` accepts TSMM v0.26.0 decision-resolution semantics serialized via TIS v0.16.0. It is additive to the historical v0.13.0 governance package and does not change the pinned 2026.2 baseline. Canonical positive and false-success tests run under `make validate`. The coordinating stack gate retrieves this consumer at an immutable commit and validates TIS schema records separately. A modeled `resolved` state is not source-authenticated authority or permission to execute an effect. A new stack compatibility receipt is still required.
